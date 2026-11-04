@@ -1,35 +1,43 @@
-# SlaintePages — SlainteTech AI Security Labs (Master Product & Website Blueprint)
+# SlaintePages — SlainteTech AI Security Labs (Master Agentic Product & Website Blueprint)
 
 **Repository:** `/home/adman-voids/Desktop/Code/SlaintePages`  
 **Company Identity:** **SlainteTech AI Security Labs**  
-**Tagline:** *Sovereign Clinical Interoperability, Deterministic MCP Guardrails, and Autonomous FHIR R4 Red-Team Verification.*
+**Tagline:** *Autonomous Clinical & Security Agents Bound by Deterministic FastMCP Guardrails on HL7 FHIR R4.*
 
 ---
 
 ## 1. Cohesive Company & Product Narrative (Zero Waffle)
 
-Healthcare organizations do not need another generic AI chatbot. They face three hard engineering problems:
-1. **Unstructured Intake Chaos:** Clinical data arrives as messy CSVs, legacy extracts, PDFs, and handwritten triage notes.
-2. **LLM Hallucination Risk:** Unconstrained language models guess vital scores, invent SNOMED-CT codes, and miss fatal drug-allergy cross-reactivities.
-3. **Authorization & Compartment Leaks:** Multi-tenant FHIR R4 APIs suffer from Broken Object-Level Authorization (BOLA / OWASP API1:2023) when patient compartments are not continuously verified.
+**SlainteTech AI Security Labs** is an **Autonomous Healthcare Agent Company**.
 
-**SlainteTech AI Security Labs** solves all three in **one unified, on-premise clinical appliance (`Slainte-Engine`)** composed of four deterministic layers and one adaptive multi-vertical UI:
+Generic LLM wrappers fail in medicine because language models hallucinate math, invent clinical codes, and ignore API authorization boundaries. SlainteTech solves this by separating **Agentic Reasoning** from **Deterministic Execution**:
+
+1. **The Sovereign Substrate (`SlainteFHIR` + `SlainteScan` FastMCP):**
+   - `SlainteFHIR` (`:8082`) stores verified HL7 FHIR R4 patient compartments with SHA-256 `Provenance` sign-off.
+   - `SlainteScan` (`:8081`) exposes zero-hallucination Python clinical tools via the Model Context Protocol (MCP): Manchester Triage (Cat 1–5), RCP NEWS2 (0–20), Drug-Allergy Cross-Reactivity matrices, and SNOMED-CT/LOINC/UCUM bindings. Agents *must* call these deterministic tools—they never guess clinical numbers in their weights.
+2. **The SlainteTech Autonomous Agent Fleet (`/agents`):**
+   - Instead of one monolithic bot, SlainteTech deploys specialized, sandboxed **Security Agents** (`SlainteShield`) and **Clinical Workflow Agents** (`SlainteClinical`), each powered by pluggable local 3B models (`k9/lime:latest`, `k9/Doggo:3b`, `recordstore:latest`, `gemma3:1b`) or frontier cloud models (`openai/gpt-6.1-luna`, `openai/gpt-4o`).
+   - The **Red-Team BOLA Agent** and **FHIR R4 Terminology Verifier Agent** are the flagship security agents proving the platform's zero-trust guarantees, alongside clinical agents for **Multimodal Ingestion**, **Bedside Summarisation**, **Medication Safety**, and **Diagnostic Triage Support**.
+3. **Adaptive Multi-Vertical Cockpits (`SlainteDash` — "Sign in as..."):**
+   - One unified clinical frontend where signing in as **Emergency Department**, **General Practice**, **Dentist**, **Pharmacy**, **Ambulance EMS**, **Elite Sports Club**, or **Astronaut Health** loads that vertical's tailored dashboard and activates its assigned agents.
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────────────┐
 │                     SLAINTETECH AI SECURITY LABS PLATFORM                       │
 ├─────────────────────────────────────────────────────────────────────────────────┤
-│  4. SLAINTEDASH (Adaptive Role-Based Clinical Cockpits)                         │
-│     "Sign in as...": ED Triage │ GP │ Dentist │ Pharmacy │ EMS │ Sports │ Astro │
+│  3. ADAPTIVE VERTICAL COCKPITS (SlainteDash — "Sign in as...")                  │
+│     ED Triage │ GP │ Dentist │ Pharmacy │ Ambulance EMS │ Elite Sports │ Astro  │
 ├─────────────────────────────────────────────────────────────────────────────────┤
-│  3. SLAINTESHIELD (Autonomous Red-Team FHIR R4 Verifier / Slainte-Auditor)      │
-│     RFC 1918 Guardrail • Compartment Pruning • Live BOLA Probing • SARIF v2.1.0 │
+│  2. AUTONOMOUS AGENT FLEET (/agents — Pluggable Local 3B Ollama or Cloud LLMs)  │
+│     • Agent 01: Red-Team BOLA Security Agent (Dual-Phase Reflection, API1:2023) │
+│     • Agent 02: FHIR R4 Conformance & Terminology Verifier Agent (SARIF v2.1.0) │
+│     • Agent 03: Autonomous Multimodal Ingestion Agent (CSV / PDF / OCR ➔ R4)    │
+│     • Agent 04: Clinical Handover & Summarisation Agent ([ResourceType/id])     │
+│     • Agent 05: Medication Safety & Contraindication Agent (Beta-Lactam/NSAID)  │
+│     • Agent 06: Diagnostic Triage & Deterioration Agent (MTS Cat 1–5 + NEWS2)   │
 ├─────────────────────────────────────────────────────────────────────────────────┤
-│  2. SLAINTESCAN (Deterministic FastMCP Clinical Guardrail Server — Port 8081)   │
-│     MTS Cat 1–5 • RCP NEWS2 • Drug-Allergy Cross-Reactivity • SNOMED/LOINC/UCUM │
-├─────────────────────────────────────────────────────────────────────────────────┤
-│  1. SLAINTEENGINE + SLAINTEFHIR (Autonomous Ingestion & R4 Micro-EHR — 8082)    │
-│     OpenHands Ingestion Loop • Irish GMS OID • SHA-256 Provenance Sign-Off      │
+│  1. DETERMINISTIC SUBSTRATE (SlainteScan FastMCP 8081 + SlainteFHIR R4 8082)    │
+│     Zero-Hallucination Python Rules • Irish GMS OID • SHA-256 Provenance        │
 └─────────────────────────────────────────────────────────────────────────────────┘
 ```
 
@@ -39,106 +47,91 @@ Healthcare organizations do not need another generic AI chatbot. They face three
 
 | Phase | Target Deliverable | Repositories Touched | Files Modified / Created | Estimated LOC | Risk Level |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| **Phase 9 Lite** | Governance Polish: `G10` (`ai_exchange` Audit Trail UI tab) + `G1` (One-Click Signed JSON/DB Audit Snapshot Download) | `SlainteDash` (`Patient-Dashboard-htmx-python-fhir`), `SlainteEngine` (`slainte-engine/frontend`) | **3 files** (`app.py`, `templates/settings_security.html`, `tests/test_phase6_security.py`) | **~140 LOC** | **Very Low (<5%)** — Purely additive admin read/export routes |
-| **Phase 11** | Modernized Navigation + **"Sign in as..."** Role-Based Multi-Vertical Dashboards (`ED`, `GP`, `Dentist`, `Pharmacy`, `EMS`, `Elite Sports`, `Astronaut`) | `SlainteDash` (`Patient-Dashboard-htmx-python-fhir`), `SlainteEngine` (`slainte-engine/frontend`) | **8 files** (`verticals.py`, `app.py`, `templates/login.html`, `templates/header.html`, `templates/sidebar.html`, `templates/dashboard.html`, `static/styles.css`, `tests/test_verticals.py`) | **~550 LOC** | **Low (~10%)** — Uses session-scoped `active_vertical` profile over existing FHIR R4 data |
-| **Phase 12** | **SlaintePages** Public Company & Product Website (Next.js App Router, Netlify + Docker, SEO + GEO `llms.txt`) | `SlaintePages` (`/home/adman-voids/Desktop/Code/SlaintePages`), `slainte-engine/docker-compose.yml` | **~22 files** (`netlify.toml`, `Dockerfile`, `public/llms.txt`, layout/theme tokens, 13 route pages, interactive architecture cards) | **~1,800 LOC** | **Zero Risk to Core App (0%)** — Isolated repository & container |
+| **Phase 9 Lite** | Governance Polish: `G10` (`ai_exchange` Agent Audit Trail UI tab) + `G1` (One-Click Signed JSON/DB Audit Snapshot Download) | `SlainteDash` (`Patient-Dashboard-htmx-python-fhir`), `SlainteEngine` (`slainte-engine/frontend`) | **3 files** (`app.py`, `templates/settings_security.html`, `tests/test_phase6_security.py`) | **~140 LOC** | **Very Low (<5%)** — Additive admin read/export routes |
+| **Phase 11** | **Autonomous Agents Command Center UI (`/agents`)** + **"Sign in as..."** Multi-Vertical Dashboards (`ED`, `GP`, `Dentist`, `Pharmacy`, `EMS`, `Elite Sports`, `Astronaut`) & Modernized Navigation | `SlainteDash` (`Patient-Dashboard-htmx-python-fhir`), `SlainteEngine` (`slainte-engine/frontend`) | **9 files** (`agents_registry.py`, `verticals.py`, `app.py`, `templates/agents.html`, `templates/login.html`, `templates/header.html`, `templates/sidebar.html`, `templates/dashboard.html`, `tests/test_verticals.py`) | **~650 LOC** | **Low (~10%)** — Upgrades the existing `Slainte-Auditor` & `Pipeline` views into a unified **Autonomous Agents Hub** |
+| **Phase 12** | **SlaintePages** Public Startup Website with `/agents/*` & `/verticals/*` Showcases (Next.js App Router, Netlify + Docker, SEO + GEO `llms.txt`) | `SlaintePages` (`/home/adman-voids/Desktop/Code/SlaintePages`), `slainte-engine/docker-compose.yml` | **~26 files** (`netlify.toml`, `Dockerfile`, `public/llms.txt`, 17 route pages including `/agents` & `/verticals`) | **~2,000 LOC** | **Zero Risk to Core App (0%)** — Isolated repository & container |
 
 ---
 
-## 3. Complete Feature Inventory Mapped to Vertical Dashboards & Public Pages
+## 3. The SlainteTech Autonomous Agent Fleet (`/agents`)
 
-Every capability below is **already implemented and verified** in `slainte-engine`, `OCR2FHIR` (`SlainteScan`), and `Patient-Dashboard-htmx-python-fhir` (`SlainteDash`):
+By unifying our existing engines under a clean **Agentic Registry**, `SlainteDash` and `SlaintePages` showcase **6 specialized agents** (with Agents 01–04 already 100% live in code today and Agents 05–06 directly wired to our existing FastMCP tools):
 
-### Core Platform Capabilities (Shared Across All Verticals)
-1. **Autonomous Multimodal Ingestion (`SlainteEngine` + `SlainteScan`):** CSV batch dropzone, PDF clinical extraction, handwritten note OCR, and manual bedside intake (`POST /fhir/intake`, `POST /fhir/upload`).
-2. **Deterministic Terminology & Identifier Binding (`SlainteScan` FastMCP):**
-   - Official Irish GMS Identifier OID (`urn:oid:1.3.6.1.4.1.54392.5.2690.42.80`) with automatic GMS patient deduplication (`find_patient_id_by_gms`).
-   - Deterministic SNOMED-CT condition mapping, LOINC observation coding (`8867-4` HR, `9279-1` RR, `8310-5` Temp, `59408-5` SpO2, `8480-6`/`8462-4` BP), and strict UCUM unit validation (`degC`, `/min`, `mm[Hg]`, `%`).
-3. **Zero-Hallucination Clinical Safety Engines (`SlainteScan` FastMCP):**
-   - **Manchester Triage System (MTS):** Deterministic Cat 1 (Immediate, 0m) to Cat 5 (Non-Urgent, 240m) rules engine (`calculate_mts_category`).
-   - **RCP NEWS2 Early Warning Score:** Deterministic 0–20 physiological deterioration scoring (`calculate_news2_score`) + 24-hour SVG vital trajectory sparklines.
-   - **Drug-Allergy Cross-Reactivity Gate:** Deterministic interception of Beta-Lactam/Penicillin, NSAID, and Sulfonamide contraindications (`check_drug_allergy_contraindications` + `/fhir/validate-safety`).
-4. **Cryptographic Clinical Accountability & Audit (`SlainteFHIR` + `SlainteDash`):**
-   - **Electronic Clinician Sign-Off:** Generates immutable HL7 FHIR `Provenance` resources with practitioner IMC/GMC registration and SHA-256 bundle state hashes.
-   - **Append-Only SQLite Triggers:** Immutable `audit_log` and `ai_exchange` tables enforced by database triggers, progressive 5-attempt / 15-minute account lockout, cross-worker `SqliteStorage` rate limiting, CSP headers, and SRI `sha384-` hashes.
-5. **Pluggable Sovereign & Cloud AI (`Phase 8`):**
-   - Live switcher (`/settings/ai`) between 100% air-gapped Local Ollama models (`k9/lime:latest`, `k9/lime-lite:latest`, `k9/Doggo:3b`, `k9/chihuahua:latest`, `recordstore:latest`, `gemma3:1b`) and Cloud Frontier models (`openai/gpt-6.1-luna`, `openai/gpt-4o`, `openai/gpt-4o-mini` via `.env`), plus one-click **Bedside AI Briefing** (`POST /ai/summarise/<patient_id>`).
-6. **Continuous Autonomous Red-Team Verification (`SlainteShield` / `Slainte-Auditor`):**
-   - 4-stage pipeline: RFC 1918 private-subnet execution guardrail, `CompartmentDefinition/Patient` search-space pruning, deterministic terminology/UCUM audit, Dual-Phase Reflection BOLA probing with `SharedAuditMemory` ($\mathcal{M}$), Live LLM Agent Synthesis, and OASIS SARIF v2.1.0 export.
+| Agent ID | Agent Name | Category | Bound MCP Tools / Engine | Status in Codebase | What It Does |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| **Agent 01** | **BOLA Red-Team Agent** (`SlainteShield-BOLA`) | Security & Adversarial AI | `CompartmentDefinition/Patient`, Dual-Phase Reflection ($\mathcal{M}$), RFC 1918 Guardrail | **LIVE** (`redteam_bola_agent.py`) | Autonomously samples Victim/Attacker patient pairs, probes cross-compartment FHIR endpoints for OWASP API1:2023 / CWE-863 leaks, and synthesizes remediation guidance. |
+| **Agent 02** | **FHIR R4 Conformance & Terminology Agent** (`SlainteShield-FHIR`) | Security & Standards | `$validate`, SNOMED-CT, LOINC, UCUM, Irish GMS OID, SARIF v2.1.0 Exporter | **LIVE** (`terminology_verifier.py` + `sarif_reporter.py`) | Audits every FHIR R4 bundle for unmapped clinical codes, invalid UCUM units, missing GMS OIDs, and structural R4 drift, exporting OASIS SARIF v2.1.0 reports. |
+| **Agent 03** | **Multimodal Clinical Ingestion Agent** (`SlainteEngine-Ingest`) | Data Pipeline & OCR | `scan_clinical_schema`, `resolve_terminology`, `ingest_handwritten_note`, `validate_fhir_resource` | **LIVE** (`openhands/agent_runner.py`) | Watches `/data/raw` and bedside uploads, parses messy CSVs, PDFs, and handwritten notes, deduplicates by GMS number, and commits verified FHIR R4 bundles. |
+| **Agent 04** | **Bedside Handover & Summarisation Agent** (`SlainteScribe-Brief`) | Clinical Documentation | `build_patient_context`, `[ResourceType/id]` Citation Engine, `ai_exchange` Audit Trail | **LIVE** (`app.py` `/ai/summarise/<id>`) | Synthesizes a 3-bullet bedside clinical handover briefing citing exact FHIR resource IDs and logs every prompt hash and response to `ai_exchange`. |
+| **Agent 05** | **Pharmacotherapy & Allergy Safety Agent** (`SlainteRx-Guard`) | Clinical Safety Gate | `check_drug_allergy_contraindications` (FastMCP `:8081`) | **LIVE TOOL / UI AGENT CARD** (`clinical_rules.py`) | Cross-checks active `MedicationRequest` prescriptions against `AllergyIntolerance` records using deterministic Beta-Lactam/Cephalosporin/NSAID/Sulfa cross-reactivity tables. |
+| **Agent 06** | **Acuity Triage & Deterioration Agent** (`SlainteDx-Triage`) | Clinical Decision Support | `calculate_mts_category`, `calculate_news2_score` (FastMCP `:8081`) | **LIVE TOOL / UI AGENT CARD** (`clinical_rules.py`) | Evaluates physiological vitals and presenting complaints to compute deterministic Manchester Triage (Cat 1–5) priority and 24-hour RCP NEWS2 deterioration trajectories. |
 
 ---
 
-### How Existing Features Map to Each "Sign in as..." Vertical Dashboard
+## 4. Mapping the Agent Fleet & Stack Features to the 7 Vertical Cockpits
 
-| Sign-In Vertical Role | Product Name | Primary Dashboard Modules & How Core Tech Maps to It |
-| :--- | :--- | :--- |
-| **1. Emergency Department** | **SlainteED** | **Flagship Acute Cockpit:** Collapsible MTS Cat 1–5 Live Triage Queue, RCP NEWS2 24h deterioration sparklines, acute CSV/PDF intake dropzone, Bedside AI Handover Briefing, and Electronic `Provenance` Sign-Off. |
-| **2. General Practice (GP)** | **SlainteGP** | **Primary Care & Chronic Disease Cockpit:** Patient roster filtered for longitudinal care, SOAP consultation notes, HSE Chronic Disease Management (Diabetes/COPD/Hypertension) vital trend charts, repeat prescribing with live Drug-Allergy safety gate, and GMS OID verification. |
-| **3. Dental Surgery** | **SlainteDent** | **Dental & Periodontal Cockpit:** Pre-procedure medical history & allergy/anticoagulant safety gate (`AllergyIntolerance` + `MedicationRequest`), interactive 32-tooth FDI Odontogram & 6-sextant BPE summary card, dental note/radiograph PDF ingestion via `SlainteScan`, and practitioner `Provenance` sign-off. |
-| **4. Community & Hospital Pharmacy** | **SlaintePharm** | **Clinical Dispensing & Safety Cockpit:** Active `MedicationRequest` dispensing queue, deterministic FastMCP Drug-Allergy cross-reactivity interceptor (Penicillin/Cephalosporin/NSAID alerts), Irish GMS reimbursement identifier validation, and pharmacist `Provenance` verification. |
-| **5. Pre-Hospital Ambulance / EMS** | **SlainteEMS** | **Paramedic ePCR & Rapid Handoff Cockpit:** High-contrast field intake form, instant deterministic MTS Cat 1–5 + NEWS2 acuity calculation from ambulance vitals, voice/handwritten field note OCR ingestion, and zero-latency push into the hospital's `SlainteFHIR` `:8082` queue. |
-| **6. Elite Sports Club** | **SlainteSport** | **Athlete Readiness & Sports Medicine Cockpit:** Squad availability & physiological load telemetry (HR, SpO2, BP, Temp trajectories via `Observation`), concussion & return-to-play clearance sign-off (`Provenance`), TUE/medication safety screening, and compartment-isolated athlete records (`SlainteShield`). |
-| **7. Astronaut Health Monitoring** | **SlainteAstro** | **Deep-Space & Off-World Bio-Telemetry Cockpit:** 100% air-gapped sovereign operation (Local 3B Ollama models + embedded `SlainteFHIR` with zero Earth-cloud dependency), continuous crew vital anomaly & radiation/hypoxia NEWS2 drift tracking, deterministic autonomous medical decision support via `SlainteScan` MCP, and cryptographic telemetry provenance. |
+| Sign-In Vertical Role | Product Brand | Active Agents Assigned to This Cockpit | Primary Dashboard Features |
+| :--- | :--- | :--- | :--- |
+| **1. Emergency Department** | **SlainteED** | `SlainteDx-Triage`, `SlainteEngine-Ingest`, `SlainteScribe-Brief`, `SlainteRx-Guard`, `SlainteShield` | Collapsible MTS Cat 1–5 Live Triage Queue, 24h NEWS2 deterioration sparklines, acute CSV/PDF intake dropzone, Bedside AI Handover Briefing, and Electronic `Provenance` Sign-Off. |
+| **2. General Practice (GP)** | **SlainteGP** | `SlainteScribe-Brief`, `SlainteRx-Guard`, `SlainteEngine-Ingest`, `SlainteShield-FHIR` | Longitudinal patient roster with GMS OID deduplication, SOAP consultation notes, Chronic Disease Management (Diabetes/COPD/Hypertension) vital trends, and repeat prescribing safety gate. |
+| **3. Dental Surgery** | **SlainteDent** | `SlainteRx-Guard`, `SlainteEngine-Ingest`, `SlainteScribe-Brief` | Pre-procedure allergy & anticoagulant safety gate (`AllergyIntolerance` + `MedicationRequest`), interactive 32-tooth FDI Odontogram & 6-sextant BPE summary card, and dental PDF referral ingestion. |
+| **4. Pharmacy** | **SlaintePharm** | `SlainteRx-Guard`, `SlainteShield-FHIR`, `SlainteShield-BOLA` | Active `MedicationRequest` dispensing queue, deterministic FastMCP Drug-Allergy cross-reactivity interceptor, Irish GMS reimbursement ID verification, and pharmacist `Provenance` sign-off. |
+| **5. Ambulance / EMS** | **SlainteEMS** | `SlainteDx-Triage`, `SlainteEngine-Ingest`, `SlainteScribe-Brief` | High-contrast pre-hospital ePCR field intake, instant deterministic MTS Cat 1–5 + NEWS2 acuity scoring from ambulance vitals, handwritten field note OCR, and zero-latency hospital FHIR R4 push. |
+| **6. Elite Sports Club** | **SlainteSport** | `SlainteDx-Triage`, `SlainteRx-Guard`, `SlainteShield-BOLA` | Squad readiness & physiological load telemetry (HR, SpO2, BP, Temp trajectories), concussion & return-to-play `Provenance` clearance sign-off, TUE medication screening, and BOLA-verified athlete privacy. |
+| **7. Astronaut Health** | **SlainteAstro** | **All 6 Agents in 100% Air-Gapped Local 3B Mode** | Offline deep-space bio-telemetry running local 3B Ollama models + embedded `SlainteFHIR` with zero Earth-cloud dependency; tracks crew NEWS2 drift and signs mission medical logs cryptographically. |
 
 ---
 
-## 4. Information Architecture (IA) & Complete Sitemap (`SlaintePages`)
+## 5. Information Architecture (IA) & Complete Sitemap (`SlaintePages`)
 
-Every route below is designed for **Next.js App Router** (Static/SSG + Edge SSR on Netlify) with a strict one-line purpose:
+Every route below is a concise, high-impact page in the **Next.js App Router** (`SlaintePages`):
 
 | Route Path | Page Title | One-Line Content Summary |
 | :--- | :--- | :--- |
-| `/` | **SlainteTech AI Security Labs (Home)** | Category-defining startup lander showcasing the unified 4-layer sovereign clinical AI stack, live metrics, and links to all 7 vertical cockpits. |
-| `/platform/slainte-engine` | **SlainteEngine & SlainteFHIR** | Explains the autonomous OpenHands ingestion loop and the port `8082` HL7 FHIR R4 micro-EHR with zero-restart backend switching and SHA-256 `Provenance`. |
-| `/platform/slainte-scan-mcp` | **SlainteScan (Deterministic FastMCP)** | Technical breakdown of "Intelligence Out of the Loop": how LLMs call deterministic Python MCP tools for MTS triage, NEWS2 scoring, and drug-allergy gates with zero mathematical hallucinations. |
-| `/platform/slainte-shield` | **SlainteShield (Autonomous FHIR Red-Team)** | Showcases the 4-stage `Slainte-Auditor` security engine: RFC 1918 guardrails, `CompartmentDefinition/Patient` pruning, Dual-Phase Reflection BOLA probing ($\mathcal{M}$), and OASIS SARIF v2.1.0 reporting. |
-| `/verticals` | **One Engine, Seven Clinical Verticals** | Interactive matrix showing how a single "Sign in as..." role selector transforms `SlainteDash` across 7 specialized healthcare and aerospace domains. |
-| `/verticals/emergency-department` | **SlainteED — Acute & Emergency Triage** | Product page for hospital EDs featuring collapsible MTS Cat 1–5 queues, 24h NEWS2 trajectory sparklines, and sub-second bedside intake. |
-| `/verticals/general-practice` | **SlainteGP — Primary Care & CDM** | Product page for GP clinics highlighting GMS OID deduplication, longitudinal vital trends, SOAP intake, and deterministic prescribing safety gates. |
-| `/verticals/dentistry` | **SlainteDent — Dental & Periodontal Suite** | Product page for dental practices featuring pre-op allergy/medication safety checks, FDI odontogram charting, and automated referral/note ingestion. |
-| `/verticals/pharmacy` | **SlaintePharm — Clinical Dispensing Gate** | Product page for pharmacies focused on deterministic Beta-Lactam/NSAID cross-reactivity interception, GMS validation, and cryptographic pharmacist sign-off. |
-| `/verticals/ambulance-ems` | **SlainteEMS — Pre-Hospital Paramedic ePCR** | Product page for ambulance trusts demonstrating rapid field vital capture, instant MTS/NEWS2 pre-alerts, and direct FHIR R4 hospital handoff. |
-| `/verticals/elite-sports` | **SlainteSport — High-Performance Athlete Medicine** | Product page for pro sports clubs covering squad physiological telemetry, return-to-play `Provenance` sign-off, and BOLA-verified athlete privacy. |
-| `/verticals/astronaut-health` | **SlainteAstro — Autonomous Deep-Space Bio-Telemetry** | Flagship showcase of 100% air-gapped sovereign clinical AI: running 3B local models and deterministic MCP diagnostics in zero-connectivity environments. |
-| `/security-compliance` | **Security, Governance & EU MDR Posture** | Plain-English engineering transparency page covering append-only SQLite audit triggers, PHI gates (`AI_ALLOW_REAL_PHI`), OWASP API1:2023 BOLA defense, and SARIF verification. |
+| `/` | **SlainteTech AI Security Labs (Home)** | Category-defining startup lander showcasing the Autonomous Healthcare Agent Fleet, deterministic FastMCP guardrails, and 7 vertical cockpits. |
+| `/agents` | **Autonomous Agent Fleet Overview** | Interactive directory of all 6 SlainteTech Security & Clinical Agents, showing how local 3B or cloud models pair with deterministic MCP tools. |
+| `/agents/bola-red-team` | **Agent 01: BOLA Red-Team Security Agent** | Deep dive into `SlainteShield-BOLA`: RFC 1918 guardrails, `CompartmentDefinition/Patient` pruning, and Dual-Phase Reflection ($\mathcal{M}$) API probing. |
+| `/agents/fhir-conformance` | **Agent 02: FHIR R4 Conformance & Terminology Agent** | Shows how `SlainteShield-FHIR` audits SNOMED-CT, LOINC, UCUM, and Irish GMS OIDs and generates OASIS SARIF v2.1.0 compliance reports. |
+| `/agents/multimodal-ingestion` | **Agent 03: Multimodal Clinical Ingestion Agent** | Explains how `SlainteEngine-Ingest` turns messy CSVs, PDFs, and handwritten notes into deduplicated HL7 FHIR R4 bundles. |
+| `/agents/clinical-copilot` | **Agents 04–06: Scribe, Rx-Guard & Triage Agents** | Showcases the bedside clinical agents (`SlainteScribe-Brief`, `SlainteRx-Guard`, `SlainteDx-Triage`) backed by zero-hallucination FastMCP rules. |
+| `/platform/mcp-guardrails` | **SlainteScan FastMCP & SlainteFHIR Core** | Architectural proof of "Intelligence Out of the Loop": why agents must call deterministic Python MCP tools on port `8081` against the `:8082` FHIR micro-EHR. |
+| `/verticals` | **One Agentic Engine, Seven Clinical Verticals** | Matrix demonstrating how the "Sign in as..." selector reconfigures the dashboard and active agent squad for 7 industries. |
+| `/verticals/emergency-department` | **SlainteED — Acute & Emergency Triage** | Hospital ED cockpit powered by the Triage, Ingestion, and Rx-Guard agents with collapsible MTS Cat 1–5 queues and NEWS2 sparklines. |
+| `/verticals/general-practice` | **SlainteGP — Primary Care & CDM** | GP clinic workspace combining the Scribe and Rx-Guard agents for SOAP consultations, chronic disease tracking, and safe repeat prescribing. |
+| `/verticals/dentistry` | **SlainteDent — Dental & Periodontal Suite** | Dental surgery cockpit using the Rx-Guard and Ingestion agents for pre-op medical clearance, 32-tooth FDI charting, and referral parsing. |
+| `/verticals/pharmacy` | **SlaintePharm — Clinical Dispensing Gate** | Pharmacy cockpit led by `SlainteRx-Guard` and `SlainteShield-FHIR` for Beta-Lactam/NSAID cross-reactivity interception and GMS validation. |
+| `/verticals/ambulance-ems` | **SlainteEMS — Pre-Hospital Paramedic ePCR** | Paramedic field cockpit using `SlainteDx-Triage` and OCR Ingestion for rapid ambulance vital scoring and instant ED handoff. |
+| `/verticals/elite-sports` | **SlainteSport — Athlete Performance Medicine** | Pro sports medicine cockpit combining physiological load telemetry, return-to-play `Provenance` sign-off, and `SlainteShield-BOLA` athlete privacy. |
+| `/verticals/astronaut-health` | **SlainteAstro — Deep-Space Bio-Telemetry** | Flagship showcase of all 6 agents running 100% air-gapped on local 3B models for autonomous crew health monitoring in deep space. |
+| `/security-compliance` | **Security, Governance & EU MDR Posture** | Engineering transparency page covering append-only SQLite audit triggers, `ai_exchange` logs, PHI gates, and SARIF v2.1.0 verification. |
 
 ---
 
-## 5. Concise, Zero-Waffle Copy Deck
+## 6. Updated Concise Copy Deck (Agent-First Positioning)
 
-### 5.1 Homepage (`/`)
-- **Hero Badge:** `SLAINTETECH AI SECURITY LABS • HL7 FHIR R4 • FASTMCP • OASIS SARIF v2.1.0`
-- **Hero Headline:** **Clinical AI That Cannot Hallucinate. Healthcare APIs That Cannot Leak.**
-- **Hero Subheadline:** SlainteTech builds the sovereign clinical operating system. We combine autonomous document ingestion (`SlainteEngine`), deterministic Model Context Protocol clinical calculators (`SlainteScan`), an air-gapped FHIR R4 core (`SlainteFHIR`), and continuous red-team BOLA verification (`SlainteShield`)—powering seven specialized clinical cockpits from a single codebase.
-- **Primary CTAs:** `[Launch Live Clinical Cockpit]` · `[Explore the 4-Layer Architecture]`
-- **Proof Bar (Real Verified Metrics):**
-  - `0` Unconstrained LLM Calculations (100% Deterministic FastMCP Scoring)
-  - `4-Stage` Autonomous Red-Team FHIR R4 Audit Pipeline (OWASP API1:2023 & CWE-863)
-  - `7` Role-Based Vertical Cockpits on 1 Unified HL7 FHIR R4 Engine
-  - `100%` On-Premise Sovereign Mode (Runs on 3B Local Models or Enterprise Cloud)
+### 6.1 Homepage Hero (`/`)
+- **Eyebrow Badge:** `SLAINTETECH AI SECURITY LABS • AUTONOMOUS CLINICAL & RED-TEAM AGENTS`
+- **Headline:** **Autonomous Healthcare Agents. Mathematically Bound by FastMCP. Continuously Red-Teamed on FHIR R4.**
+- **Subheadline:** We build specialized AI agents for clinical care and healthcare cybersecurity. Every SlainteTech agent runs against deterministic Model Context Protocol (`SlainteScan`) calculators and an air-gapped HL7 FHIR R4 core (`SlainteFHIR`)—starting with our flagship **BOLA Red-Team** and **FHIR R4 Verification** agents, and scaling to **Ingestion**, **Triage**, **Prescribing Safety**, and **Bedside Summarisation** across seven vertical cockpits.
+- **Primary CTAs:** `[Explore the Autonomous Agent Fleet]` · `[Launch Multi-Vertical Clinical Demo]`
 
-### 5.2 The Three Core Technology Pillars (Homepage Sections)
-1. **Pillar 1 — `SlainteScan` FastMCP ("Intelligence Out of the Loop"):**
-   > LLMs should never calculate a triage category or guess a drug interaction in their weights. `SlainteScan` exposes Manchester Triage (Cat 1–5), Royal College of Physicians NEWS2 (0–20), Drug-Allergy cross-reactivity matrices, and SNOMED-CT/LOINC/UCUM bindings as deterministic FastMCP tools. The AI orchestrates; verified Python math decides.
-2. **Pillar 2 — `SlainteEngine` & `SlainteFHIR` (Messy Notes In, Verified FHIR R4 Out):**
-   > Drop a messy CSV, clinical PDF, or handwritten triage note into the intake bay. `SlainteEngine` extracts structured entities, validates Irish GMS OIDs (`urn:oid:1.3.6.1.4.1.54392.5.2690.42.80`), deduplicates patient records automatically, and commits immutable `Provenance` SHA-256 hashes to `SlainteFHIR`.
-3. **Pillar 3 — `SlainteShield` (Continuous Adversarial FHIR R4 Verification):**
-   > Healthcare APIs fail at object-level authorization. `SlainteShield` (`Slainte-Auditor`) runs inside an RFC 1918 sandbox, prunes the search space via `CompartmentDefinition/Patient`, fires live cross-patient Victim/Attacker BOLA probes using Dual-Phase Reflection ($\mathcal{M}$), and exports OASIS SARIF v2.1.0 reports directly to your dashboard.
+### 6.2 Dashboard UI Upgrade: The "Autonomous Agents" Command Center
+In `SlainteDash`, we replace the single `"Slainte-Auditor"` nav item with **"Autonomous Agents"** (`/agents`):
+- **Top Fleet Telemetry Bar:** Total Active Agents (`6`), Bound FastMCP Tools (`6`), Active LLM Engine (`k9/lime:latest` / `openai/gpt-6.1-luna`), Last Security Audit Status (`SARIF v2.1.0 Verified`).
+- **Section A — Security & Red-Team Agents (`SlainteShield`):**
+  - **Agent 01: BOLA Red-Team Agent** (Live Dual-Phase Reflection $\mathcal{M}$ table, cross-compartment HTTP probe runner)
+  - **Agent 02: FHIR R4 Conformance & Terminology Verifier Agent** (SNOMED/LOINC/UCUM/OID findings + SARIF download)
+- **Section B — Clinical & Ingestion Agents (`SlainteClinical`):**
+  - **Agent 03: Multimodal Ingestion Agent** (Live `/data/raw` queue + one-click ingest trigger)
+  - **Agent 04: Bedside Summarisation Agent** (Live test runner on any patient ID + `ai_exchange` log preview)
+  - **Agent 05: Medication Safety Agent (`SlainteRx-Guard`)** (Interactive drug-allergy cross-reactivity tester)
+  - **Agent 06: Acuity Triage & Deterioration Agent (`SlainteDx-Triage`)** (Interactive MTS Cat 1–5 + NEWS2 calculator)
 
 ---
 
-## 6. 2026 Netlify + Next.js (SEO & GEO) + Docker Blueprint
+## 7. 2026 Netlify + Next.js (SEO & GEO) + Docker Blueprint
 
-### 6.1 Why Next.js (App Router) + Netlify in 2026
-1. **Zero-Config Netlify OpenNext Adapter (`@netlify/plugin-nextjs` v5+):**
-   - Static marketing pages (`/`, `/platform/*`, `/verticals/*`) pre-render at build time as ultra-fast global CDN assets.
-   - Dynamic routes or live telemetry previews run on Netlify Edge Functions automatically.
-2. **Built-In SEO + GEO (Generative Engine Optimization for AI Search Engines):**
-   - **`app/sitemap.ts` & `app/robots.ts`:** Auto-generated XML sitemap and crawler rules.
-   - **`public/llms.txt` & `public/llms-full.txt`:** Dedicated Markdown index at `https://slaintetech.ai/llms.txt` so Perplexity, ChatGPT Search, Google AI Overviews, and Claude cite SlainteTech's exact architecture, FastMCP tools, and SARIF security specs without hallucinating.
-   - **JSON-LD Structured Data (`schema.org`):** Embedded `MedicalOrganization`, `SoftwareApplication`, and `FAQPage` schemas on every vertical page.
-3. **Shared Visual DNA with `SlainteDash`:**
-   - Reuses the exact clinical dark/light slate surfaces (`#0f172a` navbar/sidebar, `#0ea5e9` clinical cyan, `#10b981` verified emerald, `#ef4444` Cat-1 crimson), tabular monospace numerals (`JetBrains Mono`), and high-contrast status pills from `SlainteDash`.
-4. **Dual Deployment (Netlify in Production + Docker Locally):**
-   - **`netlify.toml`:** One-click Git-connected deploy to Netlify (`npm run build`).
-   - **`Dockerfile` (`output: 'standalone'` in `next.config.mjs`):** Runs locally on port `3001` inside Docker (`slainte-pages`) alongside `slainte-dashboard:8000` and `slainte-fhir:8082`.
+1. **Next.js App Router + `@netlify/plugin-nextjs` (OpenNext v5):** Zero-config static/edge hybrid deployment on Netlify with instant rollbacks.
+2. **SEO + GEO (`public/llms.txt` + JSON-LD):** Exposes a clean Markdown manifest at `/llms.txt` documenting all 6 agents, their FastMCP tool schemas, and all 7 vertical cockpits so AI search engines cite SlainteTech with 100% accuracy.
+3. **Shared `SlainteDash` Visual System:** Uses the exact dark slate (`#0f172a`), clinical cyan (`#0ea5e9`), verified emerald (`#10b981`), and monospace telemetry badges from the clinical dashboard.
+4. **Docker Standalone Mode:** Includes a multi-stage `Dockerfile` (`output: 'standalone'`) running on port `3001` for local full-stack appliance demos.
