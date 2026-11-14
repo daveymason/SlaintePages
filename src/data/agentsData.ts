@@ -54,7 +54,7 @@ export interface AgentRecord {
 export const HEALTH_TECH_AGENTS: AgentRecord[] = [
   {
     slug: 'bola-authorization-red-team-agent',
-    name: 'Patient Chart Access & Privacy Testing',
+    name: 'Patient Chart Access & Role-Boundary Testing',
     codeName: 'SlainteShield-BOLA',
     squad: 'SlainteShield Security',
     squadColor: 'error',
@@ -121,7 +121,7 @@ export const HEALTH_TECH_AGENTS: AgentRecord[] = [
   },
   {
     slug: 'fhir-r4-conformance-terminology-agent',
-    name: 'Medical Coding & Standard Check',
+    name: 'HL7 FHIR R4 & Medical Coding Conformance',
     codeName: 'SlainteShield-FHIR',
     squad: 'SlainteShield Security',
     squadColor: 'error',
@@ -188,7 +188,7 @@ export const HEALTH_TECH_AGENTS: AgentRecord[] = [
   },
   {
     slug: 'healthcare-cve-vulnerability-agent',
-    name: 'Supply-Chain & Login Security Check',
+    name: 'Software Supply-Chain & Single Sign-On Security',
     codeName: 'SlainteShield-CVE',
     squad: 'SlainteShield Security',
     squadColor: 'error',
@@ -322,7 +322,7 @@ export const HEALTH_TECH_AGENTS: AgentRecord[] = [
   },
   {
     slug: 'immutable-clinical-ai-audit-agent',
-    name: 'Tamper-Proof Clinical Audit & Certificates',
+    name: 'Tamper-Proof Clinical Audit Ledger',
     codeName: 'SlainteGov-Audit',
     squad: 'SlainteGov Governance',
     squadColor: 'warning',
@@ -389,7 +389,7 @@ export const HEALTH_TECH_AGENTS: AgentRecord[] = [
   },
   {
     slug: 'multimodal-hl7v2-fhir-ingestion-agent',
-    name: 'Legacy Hospital Feed & Paper Intake Bridge',
+    name: 'Legacy Hospital Feed & Document Intake Bridge',
     codeName: 'SlainteEngine-Ingest',
     squad: 'SlainteClinical Care',
     squadColor: 'primary',
@@ -590,7 +590,7 @@ export const HEALTH_TECH_AGENTS: AgentRecord[] = [
   },
   {
     slug: 'manchester-triage-news2-acuity-agent',
-    name: 'Fast, Rule-Based Triage & Sepsis Early Warning',
+    name: 'Manchester Triage & NEWS2 Sepsis Early Warning',
     codeName: 'SlainteDx-Triage',
     squad: 'SlainteClinical Care',
     squadColor: 'primary',
@@ -724,7 +724,7 @@ export const HEALTH_TECH_AGENTS: AgentRecord[] = [
   },
   {
     slug: 'autonomous-icd10-drg-clinical-coding-agent',
-    name: 'HIPE, ICD-10-AM & Hospital Revenue Recovery',
+    name: 'HIPE, ICD-10-AM & DRG Revenue Recovery',
     codeName: 'SlainteRev-Coding',
     squad: 'SlainteGov Governance',
     squadColor: 'warning',
@@ -791,7 +791,7 @@ export const HEALTH_TECH_AGENTS: AgentRecord[] = [
   },
   {
     slug: 'clinic-onboarding-legacy-migration-agent',
-    name: 'Fast Clinic Onboarding & Data Migration',
+    name: 'Clinic Onboarding & Legacy Data Migration',
     codeName: 'SlainteGov-Onboard',
     squad: 'SlainteGov Governance',
     squadColor: 'warning',
@@ -925,7 +925,7 @@ export const HEALTH_TECH_AGENTS: AgentRecord[] = [
   },
   {
     slug: 'emergency-prehospital-prealert-agent',
-    name: 'Ambulance-to-Hospital ED Pre-Alert',
+    name: 'Ambulance-to-ED Pre-Arrival Alert',
     codeName: 'SlainteEMS-Alert',
     squad: 'SlainteClinical Care',
     squadColor: 'error',
@@ -1059,7 +1059,7 @@ export const HEALTH_TECH_AGENTS: AgentRecord[] = [
   },
   {
     slug: 'eu-nis2-directive-compliance-agent',
-    name: 'Continuous EU NIS2 & Hospital Cyber Audit',
+    name: 'EU NIS2 Directive & Hospital Cyber Audit',
     codeName: 'SlainteGov-NIS2',
     squad: 'SlainteGov Governance',
     squadColor: 'error',

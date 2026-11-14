@@ -85,39 +85,39 @@ Hospitals deploy SlainteTech either as a read-only 15-minute SMART-on-FHIR v2 si
 ## Sixteen Clinical, Billing & Security Modules (/health-tech-agents/<slug>/)
 
 ### Squad 1: SlainteShield Security (3 Modules)
-1. **Patient Chart Access & Privacy Testing (`SlainteShield-BOLA`)**: https://slainte-tech.com/health-tech-agents/bola-authorization-red-team-agent/
+1. **Patient Chart Access & Role-Boundary Testing (`SlainteShield-BOLA`)**: https://slainte-tech.com/health-tech-agents/bola-authorization-red-team-agent/
    - Automated OWASP API1 BOLA patient boundary probes, RBAC elevation tests, and SSRF egress blocks with CI pass/fail gates.
-2. **Medical Coding & Standard Check (`SlainteShield-FHIR`)**: https://slainte-tech.com/health-tech-agents/fhir-r4-conformance-terminology-agent/
+2. **HL7 FHIR R4 & Medical Coding Conformance (`SlainteShield-FHIR`)**: https://slainte-tech.com/health-tech-agents/fhir-r4-conformance-terminology-agent/
    - Structural validation of HL7 FHIR R4 bundles and SNOMED CT / LOINC / ICD-10 value sets, exported as OASIS SARIF v2.1.0.
-3. **Supply-Chain & Login Security Check (`SlainteShield-CVE`)**: https://slainte-tech.com/health-tech-agents/healthcare-cve-vulnerability-agent/
+3. **Software Supply-Chain & Single Sign-On Security (`SlainteShield-CVE`)**: https://slainte-tech.com/health-tech-agents/healthcare-cve-vulnerability-agent/
    - Audits Python/Node dependency CVE drift, requirements pins, Subresource Integrity (SRI) hashes, and OIDC auth guards.
 
 ### Squad 2: SlainteGov Governance & Coding (5 Modules)
 4. **GDPR Patient Privacy & Emergency Access Gate (`SlainteGov-GDPR`)**: https://slainte-tech.com/health-tech-agents/gdpr-clinical-privacy-deidentification-agent/
    - Automated PII masking for exports and strict, audited break-glass override tickets with reason tracking and auto-expiry.
-5. **Tamper-Proof Clinical Audit & Certificates (`SlainteGov-Audit`)**: https://slainte-tech.com/health-tech-agents/immutable-clinical-ai-audit-agent/
+5. **Tamper-Proof Clinical Audit Ledger (`SlainteGov-Audit`)**: https://slainte-tech.com/health-tech-agents/immutable-clinical-ai-audit-agent/
    - Cryptographic clinician sign-off tracking in trigger-locked SQLite tables paired with FHIR R4 Provenance hashes.
-6. **HIPE, ICD-10-AM & Hospital Revenue Recovery (`SlainteRev-Coding`)**: https://slainte-tech.com/health-tech-agents/autonomous-icd10-drg-clinical-coding-agent/
+6. **HIPE, ICD-10-AM & DRG Revenue Recovery (`SlainteRev-Coding`)**: https://slainte-tech.com/health-tech-agents/autonomous-icd10-drg-clinical-coding-agent/
    - Reviews lab results (AKI creatinine bumps, potassium shifts, HbA1c) and clinical notes to capture unbilled inpatient DRG complexity.
-7. **Fast Clinic Onboarding & Data Migration (`SlainteGov-Onboard`)**: https://slainte-tech.com/health-tech-agents/clinic-onboarding-legacy-migration-agent/
+7. **Clinic Onboarding & Legacy Data Migration (`SlainteGov-Onboard`)**: https://slainte-tech.com/health-tech-agents/clinic-onboarding-legacy-migration-agent/
    - Migrates GP and dental CSV/XML exports into deduplicated HL7 FHIR R4 patient charts with schema verification before commit.
-8. **Continuous EU NIS2 & Hospital Cyber Audit (`SlainteGov-NIS2`)**: https://slainte-tech.com/health-tech-agents/eu-nis2-directive-compliance-agent/
+8. **EU NIS2 Directive & Hospital Cyber Audit (`SlainteGov-NIS2`)**: https://slainte-tech.com/health-tech-agents/eu-nis2-directive-compliance-agent/
    - Verifies live EU Directive 2022/2555 Article 21 controls, emits HMAC-signed SIEM webhooks, and renders executive compliance certificates.
 
 ### Squad 3: SlainteClinical Care (8 Modules)
-9. **Legacy Hospital Feed & Paper Intake Bridge (`SlainteEngine-Ingest`)**: https://slainte-tech.com/health-tech-agents/multimodal-hl7v2-fhir-ingestion-agent/
+9. **Legacy Hospital Feed & Document Intake Bridge (`SlainteEngine-Ingest`)**: https://slainte-tech.com/health-tech-agents/multimodal-hl7v2-fhir-ingestion-agent/
    - Ingests HL7v2 ADT/ORU/RDE feeds, scanned referral PDFs, and clinic CSV spreadsheets matched cleanly by GMS / MRN identifier.
 10. **Source-Cited Shift Handover Briefing (`SlainteScribe-Brief`)**: https://slainte-tech.com/health-tech-agents/cited-patient-handover-summariser-agent/
     - Summarizes longitudinal charts with direct inline FHIR resource citations so unverified data is never invented.
 11. **3-Tier Allergy, Drug-Clash & Kidney Prescribing Gate (`SlainteRx-Guard`)**: https://slainte-tech.com/health-tech-agents/pharmacotherapy-allergy-renal-safety-agent/
     - Deterministic screening for family cross-allergies, ISMP high-alert DDIs, and real-time LOINC eGFR/Potassium thresholds.
-12. **Fast, Rule-Based Triage & Sepsis Early Warning (`SlainteDx-Triage`)**: https://slainte-tech.com/health-tech-agents/manchester-triage-news2-acuity-agent/
+12. **Manchester Triage & NEWS2 Sepsis Early Warning (`SlainteDx-Triage`)**: https://slainte-tech.com/health-tech-agents/manchester-triage-news2-acuity-agent/
     - Exact RCP NEWS2 (0-20) and Manchester Triage Cat 1-5 queue ranking with 24-hour bedside vital-sign tracking.
 13. **Consultation Scribe & Pre-Screened Order Drafter (`SlainteScribe-Voice`)**: https://slainte-tech.com/health-tech-agents/ambient-clinical-voice-scribe-agent/
     - Converts clinical consultations into structured SOAP drafts and pre-screened medication orders that always require practitioner sign-off.
 14. **Safe Discharge & Medication Reconciliation (`SlainteCare-Transfer`)**: https://slainte-tech.com/health-tech-agents/discharge-clinical-handover-agent/
     - Checks vital-sign readiness trends, reconciles home medications against inpatient changes, and prepares signed GP transfer letters.
-15. **Ambulance-to-Hospital ED Pre-Alert (`SlainteEMS-Alert`)**: https://slainte-tech.com/health-tech-agents/emergency-prehospital-prealert-agent/
+15. **Ambulance-to-ED Pre-Arrival Alert (`SlainteEMS-Alert`)**: https://slainte-tech.com/health-tech-agents/emergency-prehospital-prealert-agent/
     - Streams pre-hospital tablet assessments straight into receiving hospital emergency boards before ambulance arrival.
 16. **Chronic Disease Care-Gap & Recall Tracker (`SlainteCare-CDM`)**: https://slainte-tech.com/health-tech-agents/chronic-disease-surveillance-agent/
     - Flags overdue BP, HbA1c, and kidney eGFR surveillance targets across GP practice populations for Irish HSE CDM billing cycles.
