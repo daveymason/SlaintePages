@@ -16,6 +16,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/agents/',
     '/verticals/',
     '/security-compliance/',
+    '/evals/',
     '/pricing/',
     '/investors/',
     '/docs/',

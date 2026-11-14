@@ -261,6 +261,7 @@ export function SiteChrome({ children }: { children: React.ReactNode }) {
                     { label: 'All 16 Clinical & Security Modules', href: '/health-tech-agents/' },
                     { label: 'Platform & Safety Architecture', href: '/platform/' },
                     { label: 'Security, GDPR Art. 9 & NIS2', href: '/security-compliance/' },
+                    { label: 'Evals Scorecard & MCP Traces', href: '/evals/' },
                     { label: 'Commercial Pricing (Land & Expand)', href: '/pricing/' },
                     { label: 'Developer & SMART-on-FHIR v2 Docs', href: '/docs/' },
                     { label: 'About SlainteTech', href: '/about/' },

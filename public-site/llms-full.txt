@@ -121,3 +121,24 @@ Hospitals deploy SlainteTech either as a read-only 15-minute SMART-on-FHIR v2 si
     - Streams pre-hospital tablet assessments straight into receiving hospital emergency boards before ambulance arrival.
 16. **Chronic Disease Care-Gap & Recall Tracker (`SlainteCare-CDM`)**: https://slainte-tech.com/health-tech-agents/chronic-disease-surveillance-agent/
     - Flags overdue BP, HbA1c, and kidney eGFR surveillance targets across GP practice populations for Irish HSE CDM billing cycles.
+
+
+---
+
+## Verifiable /evals Benchmark Scorecard & OpenTelemetry MCP Tracing
+- **Public Scorecard**: https://slainte-tech.com/evals/
+- **Summary Metrics (`evals/benchmark_runner.py`, v1.0.0)**:
+  - Total Cases: `210` across 5 clinical and security benchmark suites (`210 / 210` passed = `100.0%` accuracy).
+  - Guardrail Catch Rate: `100.0%` across adversarial drug-clash, SSRF, uncited-coding, acute triage, and invalid FHIR R4 cases.
+  - Uncited / Hallucinated Coding Claim Rejection Rate: `100.0%` (`16 / 16` blocked by `verify_coding_evidence_citation`).
+  - False Positive Rate: `0.0%` across safe clinical and internal network controls.
+  - Deterministic Latency: `0.028 ms` mean (`0.073 ms` P95, `0.113 ms` P99).
+- **Suite Breakdown**:
+  - `SlainteRx-Guard` (`50 / 50`): 3-Tier Pharmacology, Drug-Clash & Renal eGFR/K+ Gate (`30 / 30` traps caught, `0.0%` FP).
+  - `SlainteDx-Triage` (`50 / 50`): Manchester Triage System (Cat 1-5) & RCP NEWS2 Acuity (`23 / 23` critical alerts, `0.0%` FP).
+  - `SlainteRev-Coding` (`40 / 40`): HIPE ICD-10-AM Comorbidity Audit & Citation Guardrail (`16 / 16` hallucinated claims blocked, `0.0%` FP).
+  - `SlainteShield-BOLA` (`40 / 40`): RFC 1918 & Loopback Egress Guardrail & Compartment Pruning (`20 / 20` SSRF/external egress URLs blocked, `0.0%` FP).
+  - `SlainteShield-FHIR` (`30 / 30`): HL7 FHIR R4 & Irish GMS Conformance (`15 / 15` malformed resources rejected, `0.0%` FP).
+- **W3C TraceContext & Slainte-Scan-MCP (:8081) Integration**:
+  - Flagship agents (`SlainteShield-BOLA` and `SlainteRev-Coding`) route tool validation and terminology dual-coding through `SlainteMcpBridge` (`agents/mcp_tracer.py`) over live FastMCP SSE (`http://127.0.0.1:8081/sse`) with in-process FastMCP fallback (`MCP_TOOL_REGISTRY`).
+  - Every trace emits `00-<trace_id>-<root_span_id>-01` W3C `traceparent` headers and includes active canary guardrail interception checks (`GUARDRAIL_BLOCKED` for cloud metadata `169.254.169.254` SSRF probes and synthetic uncited `Observation/hallucinated-llm-claim-999` diagnoses).
