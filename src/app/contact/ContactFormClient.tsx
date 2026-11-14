@@ -59,7 +59,7 @@ export function ContactFormClient() {
 
     const selectedVertical = INDUSTRY_VERTICALS.find((v) => v.slug === vertical);
     const verticalLabel = selectedVertical ? `${selectedVertical.forLabel} (${selectedVertical.brand})` : vertical;
-    const subject = `[SlainteTech Briefing] ${selectedTrack.label} — ${organization.trim() || 'Inquiry'}`;
+    const subject = `[SlainteTech Briefing] ${selectedTrack.label}: ${organization.trim() || 'Inquiry'}`;
     const bodyLines = [
       `Track: ${selectedTrack.label}`,
       `Primary Vertical: ${verticalLabel}`,
@@ -125,10 +125,10 @@ export function ContactFormClient() {
   return (
     <Paper elevation={0} sx={{ p: { xs: 3, md: 4 }, bgcolor: '#FFFFFF', border: '1px solid #CBD5E1', borderRadius: 3 }}>
       <Typography component="h2" variant="h2" sx={{ color: '#0F172A', mb: 1 }}>
-        Book a Pilot, CISO Review, or Investor Walkthrough
+        Request Your 30-Minute Live Walkthrough
       </Typography>
       <Typography variant="body2" sx={{ color: '#334155', mb: 3 }}>
-        Select your clinical vertical or diligence track below to schedule a live 30-minute walkthrough of the 8-vertical platform and 16 autonomous agents.
+        Pick your care setting or diligence track below to see SlainteDash running live across your workflows and compliance requirements.
       </Typography>
 
       {submitted ? (
@@ -136,7 +136,7 @@ export function ContactFormClient() {
           <Alert severity="success" sx={{ fontWeight: 600 }}>
             {deliveryMode === 'endpoint' ? (
               <>
-                Thank you — your briefing request has been submitted to{' '}
+                Thank you: your briefing request has been submitted to{' '}
                 <a href={`mailto:${selectedTrack.email}`} style={{ color: 'inherit', fontWeight: 800 }}>
                   {selectedTrack.email}
                 </a>
@@ -144,7 +144,7 @@ export function ContactFormClient() {
               </>
             ) : (
               <>
-                Thank you — your briefing request is ready to send to{' '}
+                Thank you: your briefing request is ready to send to{' '}
                 <a href={mailtoUrl} style={{ color: 'inherit', fontWeight: 800 }}>
                   {selectedTrack.email}
                 </a>

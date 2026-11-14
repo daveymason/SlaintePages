@@ -172,7 +172,80 @@ export function AgentCanonicalTemplate({ agent }: { agent: AgentRecord }) {
         </Container>
       </Box>
 
-      {/* SECTION 2: 3-COLUMN DETERMINISTIC CAPABILITIES */}
+      {/* LIVE SLAINTEDASH AGENT CONSOLE SCREENSHOT */}
+      <Box
+        component="section"
+        aria-labelledby="live-console-heading"
+        sx={{ py: { xs: 5, md: 7 }, bgcolor: '#F8FAFC', borderBottom: '1px solid #E2E8F0' }}
+      >
+        <Container maxWidth="lg">
+          <Stack
+            direction={{ xs: 'column', md: 'row' }}
+            justifyContent="space-between"
+            alignItems={{ xs: 'flex-start', md: 'flex-end' }}
+            spacing={2}
+            sx={{ mb: 3 }}
+          >
+            <Box>
+              <Typography variant="overline" sx={{ color: '#134E68', fontWeight: 800, letterSpacing: '0.08em', display: 'block' }}>
+                Live Application Preview: {agent.codeName}
+              </Typography>
+              <Typography component="h2" variant="h2" id="live-console-heading" sx={{ color: '#0F172A' }}>
+                Inside SlainteDash: Live {agent.name} Console
+              </Typography>
+            </Box>
+            <Typography variant="body2" sx={{ color: '#475569', maxWidth: 420 }}>
+              Real production screenshot from SlainteDash running live clinical checks, FHIR R4 records, and audit logs.
+            </Typography>
+          </Stack>
+
+          <Paper
+            elevation={0}
+            sx={{
+              borderRadius: 3,
+              overflow: 'hidden',
+              border: '1px solid #CBD5E1',
+              boxShadow: '0 20px 50px rgba(15, 23, 42, 0.14)',
+              bgcolor: '#0F172A',
+            }}
+          >
+            <Box
+              sx={{
+                px: 2,
+                py: 1.1,
+                bgcolor: '#1E293B',
+                borderBottom: '1px solid #334155',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'space-between',
+                gap: 2,
+              }}
+            >
+              <Stack direction="row" spacing={0.8} alignItems="center">
+                <Box sx={{ width: 10, height: 10, borderRadius: '50%', bgcolor: '#EF4444' }} />
+                <Box sx={{ width: 10, height: 10, borderRadius: '50%', bgcolor: '#F59E0B' }} />
+                <Box sx={{ width: 10, height: 10, borderRadius: '50%', bgcolor: '#22C55E' }} />
+              </Stack>
+              <Typography variant="caption" sx={{ color: '#CBD5E1', fontFamily: 'monospace', fontSize: '0.78rem' }}>
+                slaintedash.internal / {agent.codeName} ({agent.squad})
+              </Typography>
+              <Box sx={{ width: 42 }} />
+            </Box>
+            <Box
+              component="img"
+              src={agent.dashboardScreenshot}
+              alt={`${agent.name} (${agent.codeName}) live SlainteDash dashboard screenshot`}
+              sx={{
+                width: '100%',
+                height: 'auto',
+                display: 'block',
+              }}
+            />
+          </Paper>
+        </Container>
+      </Box>
+
+      {/* SECTION 2: 3-COLUMN RULE-BASED CAPABILITIES */}
       <Box component="section" aria-labelledby="capabilities-heading" sx={{ py: { xs: 6, md: 8 } }}>
         <Container maxWidth="lg">
           <Box sx={{ mb: 4, maxWidth: 740 }}>
@@ -180,13 +253,13 @@ export function AgentCanonicalTemplate({ agent }: { agent: AgentRecord }) {
               variant="overline"
               sx={{ color: '#134E68', fontWeight: 800, letterSpacing: '0.08em', display: 'block' }}
             >
-              Deterministic FastMCP Execution
+              Verified Safety Architecture
             </Typography>
             <Typography component="h2" variant="h2" id="capabilities-heading" sx={{ color: '#0F172A', mb: 1 }}>
               How {agent.codeName} Enforces Clinical &amp; Security Safety
             </Typography>
             <Typography variant="body1" sx={{ color: '#334155' }}>
-              Every SlainteTech agent separates probabilistic language generation from deterministic Python safety thresholds, schema rules, and cryptographic audit trails.
+              Every SlainteTech module separates language generation from rule-based Python safety checks, HL7 FHIR schema validation, and tamper-evident audit trails.
             </Typography>
           </Box>
 
@@ -245,7 +318,7 @@ export function AgentCanonicalTemplate({ agent }: { agent: AgentRecord }) {
         </Container>
       </Box>
 
-      {/* SECTION 3: FULL-WIDTH PAGE BREAK — REAL EXAMPLE VERTICAL USE CASE */}
+      {/* SECTION 3: FULL-WIDTH PAGE BREAK - REAL EXAMPLE VERTICAL USE CASE */}
       <Box
         component="section"
         aria-labelledby="vertical-use-case-heading"
@@ -347,7 +420,7 @@ export function AgentCanonicalTemplate({ agent }: { agent: AgentRecord }) {
           <TableContainer component={Paper} elevation={0} sx={{ border: '1px solid #CBD5E1', borderRadius: 2 }}>
             <Table aria-label={`${agent.name} technical specification`}>
               <caption style={{ textAlign: 'left', padding: '12px 16px', color: '#334155', fontSize: '0.875rem' }}>
-                Verified implementation parameters for {agent.codeName} inside the SlainteTech FastMCP &amp; HL7 FHIR R4 runtime.
+                Verified configuration parameters for {agent.codeName} inside the SlainteTech HL7 FHIR R4 runtime.
               </caption>
               <TableHead sx={{ bgcolor: '#F1F5F9' }}>
                 <TableRow>
@@ -355,7 +428,7 @@ export function AgentCanonicalTemplate({ agent }: { agent: AgentRecord }) {
                     Control Surface
                   </TableCell>
                   <TableCell scope="col" sx={{ fontWeight: 800, color: '#0F172A' }}>
-                    Deterministic Mechanism
+                    Verified Control Mechanism
                   </TableCell>
                   <TableCell scope="col" sx={{ fontWeight: 800, color: '#0F172A' }}>
                     HL7 FHIR R4 / Endpoint Binding
@@ -384,7 +457,7 @@ export function AgentCanonicalTemplate({ agent }: { agent: AgentRecord }) {
         </Container>
       </Box>
 
-      {/* SECTION 5: OTHER AUTONOMOUS AGENTS IN A 3-COLUMN SOLUTION GRID */}
+      {/* SECTION 5: OTHER CLINICAL & SECURITY AGENTS IN A 3-COLUMN SOLUTION GRID */}
       <Box component="section" aria-labelledby="other-agents-heading" sx={{ py: { xs: 6, md: 8 } }}>
         <Container maxWidth="lg">
           <Stack

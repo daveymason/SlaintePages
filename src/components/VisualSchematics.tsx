@@ -20,7 +20,7 @@ export function AgentSchematicSvg({ agent }: { agent: AgentRecord }) {
       width="100%"
       height="auto"
       role="img"
-      aria-label={`${agent.name} (${agent.codeName}) deterministic FastMCP architecture diagram`}
+      aria-label={`${agent.name} (${agent.codeName}) verified safety pipeline diagram`}
       style={{ display: 'block', borderRadius: 12 }}
     >
       <rect width="480" height="300" rx="12" fill="#0F172A" stroke="#334155" strokeWidth="2" />
@@ -30,7 +30,7 @@ export function AgentSchematicSvg({ agent }: { agent: AgentRecord }) {
       <circle cx="38" cy="20" r="5" fill="#F59E0B" />
       <circle cx="54" cy="20" r="5" fill="#22C55E" className="telemetry-pulse" />
       <text x="74" y="24" fill="#E2E8F0" fontSize="12" fontFamily="monospace" fontWeight="700">
-        {agent.codeName} • FastMCP Deterministic Pipeline
+        {agent.codeName} • Verified Clinical &amp; Security Pipeline
       </text>
 
       {/* Node 1: Input FHIR / Clinical Signal */}
@@ -66,7 +66,7 @@ export function AgentSchematicSvg({ agent }: { agent: AgentRecord }) {
         {agent.capabilities[0].guardrailChip.slice(0, 18)}
       </text>
       <text x="196" y="151" fill="#94A3B8" fontSize="9.5" fontFamily="monospace">
-        0% LLM Math
+        100% Rule-Based Math
       </text>
 
       {/* Connector 2 */}
@@ -91,7 +91,7 @@ export function AgentSchematicSvg({ agent }: { agent: AgentRecord }) {
       {/* Bottom Telemetry Strip */}
       <rect x="24" y="184" width="432" height="92" rx="8" fill="#1E293B" stroke="#334155" strokeWidth="1" />
       <text x="38" y="206" fill="#94A3B8" fontSize="10" fontFamily="monospace" fontWeight="700">
-        DETERMINISTIC GUARDRAIL TELEMETRY
+        RULE-BASED SAFETY TELEMETRY
       </text>
       <text x="38" y="228" fill="#F8FAFC" fontSize="11.5" fontFamily="monospace">
         ✓ {agent.fastMcpBadges[0]}   •   ✓ {agent.fastMcpBadges[1]}
@@ -106,7 +106,7 @@ export function AgentSchematicSvg({ agent }: { agent: AgentRecord }) {
 }
 
 /**
- * 8 completely distinct bespoke SVG illustrations — each Vertical has its own visual motif & layout imagery.
+ * 8 completely distinct bespoke SVG illustrations: each Vertical has its own visual motif and layout imagery.
  */
 export function VerticalUniqueGraphic({
   variant,
@@ -218,7 +218,7 @@ export function VerticalUniqueGraphic({
           <text x="346" y="117" fill="#FFFFFF" fontSize="13" fontFamily="monospace" fontWeight="800">ART.9</text>
           <text x="308" y="166" fill="#FFFFFF" fontSize="12" fontFamily="sans-serif" fontWeight="700">BOLA Isolated</text>
           <text x="308" y="186" fill="#DDD6FE" fontSize="10.5" fontFamily="sans-serif">PII Redacted Before</text>
-          <text x="308" y="202" fill="#DDD6FE" fontSize="10.5" fontFamily="sans-serif">AI Summarisation</text>
+          <text x="308" y="202" fill="#DDD6FE" fontSize="10.5" fontFamily="sans-serif">Note Summarisation</text>
           <text x="308" y="230" fill="#FDE68A" fontSize="9.5" fontFamily="monospace">60m Break-Glass Audit</text>
         </svg>
       );
@@ -355,7 +355,7 @@ export function VerticalUniqueGraphic({
 
     case 'orbital-airgap':
       return (
-        <svg viewBox="0 0 460 280" width="100%" height="auto" role="img" aria-label={`${brand} air-gapped deep-space local 3B autonomous medical bay`}>
+        <svg viewBox="0 0 460 280" width="100%" height="auto" role="img" aria-label={`${brand} air-gapped deep-space offline medical bay`}>
           <rect width="460" height="280" rx="14" fill="#050816" stroke="#818CF8" strokeWidth="2" />
           <circle cx="380" cy="76" r="42" fill="#1E1B4B" stroke="#6366F1" strokeWidth="1.5" />
           <ellipse cx="380" cy="76" rx="64" ry="18" fill="none" stroke="#818CF8" strokeDasharray="4 3" />
@@ -371,7 +371,7 @@ export function VerticalUniqueGraphic({
             Onboard Sovereign Stack
           </text>
           <text x="38" y="110" fill="#A5B4FC" fontSize="11" fontFamily="monospace">
-            • Local Ollama 3B (Doggo / Lime)
+            • Local Offline Safety Engine
           </text>
           <text x="38" y="130" fill="#A5B4FC" fontSize="11" fontFamily="monospace">
             • FastMCP :8081 + SlainteFHIR :8082
@@ -379,7 +379,7 @@ export function VerticalUniqueGraphic({
 
           <rect x="24" y="164" width="412" height="90" rx="10" fill="#0F172A" stroke="#4F46E5" />
           <text x="38" y="190" fill="#86EFAC" fontSize="11.5" fontFamily="monospace" fontWeight="700">
-            ✓ ALL 16 AUTONOMOUS AGENTS ACTIVE IN LOCAL AIR-GAP
+            ✓ ALL 16 CLINICAL &amp; SECURITY AGENTS ACTIVE OFFLINE
           </text>
           <text x="38" y="214" fill="#E0E7FF" fontSize="12" fontFamily="sans-serif">
             EVA Hypoxia NEWS2 Drift Monitoring • Onboard Kit 3-Tier Rx-Guard

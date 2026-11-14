@@ -17,7 +17,7 @@ import CheckCircleRoundedIcon from '@mui/icons-material/CheckCircleRounded';
 import ArrowForwardRoundedIcon from '@mui/icons-material/ArrowForwardRounded';
 
 export const metadata: Metadata = {
-  title: 'Commercial Pricing & Licensing | SlainteTech AI Security Labs',
+  title: 'Commercial Pricing & Licensing | SlainteTech',
   description:
     'Transparent Land-and-Expand licensing for hospital CISOs, GP/Dental/Pharmacy clinics, ambulance fleets, and sovereign air-gapped appliances.',
 };
@@ -44,28 +44,28 @@ const TIERS = [
     price: '€48,000 – €95,000',
     unit: 'annual site license',
     summary:
-      'Zero-disruption 15-minute SMART-on-FHIR v2 sidecar alongside Epic, Cerner, or MEDITECH — no EHR rip-and-replace.',
+      'Zero-disruption 15-minute SMART-on-FHIR v2 sidecar alongside Epic, Cerner, or MEDITECH with no EHR replacement.',
     features: [
       'SlainteShield Squad (BOLA Red-Team, FHIR Conformance SARIF, CVE Audit)',
-      'SlainteRev-Coding Autonomous HIPE / ICD-10-AM DRG Uplift Scanner',
-      'SlainteGov-Audit Append-Only AI Ledger & Printable CISO Certificates',
+      'SlainteRev-Coding HIPE / ICD-10-AM DRG Revenue Uplift Scanner',
+      'SlainteGov-Audit Append-Only Ledger & CISO Compliance Certificates',
       'Enterprise OIDC SSO (Keycloak / Entra ID / Okta) + HMAC SIEM Webhooks',
       'Typical payback < 90 days from recovered uncoded DRG complexity alone',
     ],
     highlighted: true,
   },
   {
-    name: 'Tier 3 • Sovereign Air-Gapped Appliance',
+    name: 'Tier 3 • Private VPC or Air-Gapped Appliance',
     badge: 'Acute Trusts, EMS, Defence & Space',
     price: 'Custom Enterprise',
-    unit: 'dedicated VPC or air-gapped hardware',
+    unit: 'dedicated VPC or offline hardware',
     summary:
-      'Full 8-vertical, 16-agent sovereign deployment with local 3B Ollama models, HL7v2 bridge, and zero external network dependency.',
+      'Full 8-vertical, 16-agent sovereign deployment inside your hospital VPC or offline appliance with HL7v2 hospital bridge and zero external network dependency.',
     features: [
       'All 8 Clinical Verticals (incl. Emergency Dept, Ambulance ePCR & Aerospace)',
-      'All 16 Autonomous Health-Tech Agents + FastMCP :8081 + SlainteFHIR :8082',
+      'All 16 Clinical & Security Agents + Safety Engine :8081 + SlainteFHIR :8082',
       'Native HL7v2 Pipe-Hat (ADT, ORU, RDE) Legacy PAS/LIS Hospital Bridge',
-      '100% Air-Gapped Local 3B Inference (0 bytes transmitted off-premise)',
+      '100% Offline Local Execution (0 bytes transmitted off-premise)',
       'Dedicated clinical safety engineering (DCB0129/0160) onboarding',
     ],
   },
@@ -99,7 +99,7 @@ export default function PricingPage() {
             Land With a 15-Minute Sidecar. Expand Across Every Vertical.
           </Typography>
           <Typography variant="body1" sx={{ color: '#E2E8F0', maxWidth: 740 }}>
-            Hospitals do not need a 3-year EHR replacement to adopt safe autonomous AI. Start with read-only NIS2 BOLA verification and HIPE DRG revenue recovery, or launch full clinical verticals immediately.
+            Hospitals do not need a 3-year EHR replacement to cut charting overload and prove NIS2 compliance. Start with read-only API security verification and HIPE DRG revenue recovery, or launch full clinical workspaces right away.
           </Typography>
         </Container>
       </Box>

@@ -4,9 +4,9 @@ import { Box, Container, Typography } from '@mui/material';
 import { AgentsDirectoryClient } from './AgentsDirectoryClient';
 
 export const metadata: Metadata = {
-  title: '16 Autonomous Health-Tech Agents | SlainteTech AI Security Labs',
+  title: '16 Clinical & Security Agents | SlainteTech',
   description:
-    'Explore all 16 deterministic health-tech security, governance, and clinical agents built on HL7 FHIR R4 and Python FastMCP.',
+    'Inspect all 16 clinical safety, prescribing, revenue recovery, and healthcare API security modules built on HL7 FHIR R4.',
 };
 
 export default function HealthTechAgentsIndexPage() {
@@ -25,7 +25,7 @@ export default function HealthTechAgentsIndexPage() {
       >
         <Container maxWidth="lg">
           <Typography variant="overline" sx={{ color: '#BAE6FD', fontWeight: 800, letterSpacing: '0.08em', display: 'block' }}>
-            Autonomous Health-Tech Agent Fleet
+            Clinical Safety, Revenue &amp; Security Agent Suite
           </Typography>
           <Typography
             component="h1"
@@ -34,10 +34,10 @@ export default function HealthTechAgentsIndexPage() {
             tabIndex={-1}
             sx={{ color: '#FFFFFF', mb: 2, outline: 'none' }}
           >
-            16 Specialized Agents. Zero Hallucinated Clinical Math.
+            16 Specialized Modules. Zero Guessed Clinical Math.
           </Typography>
           <Typography variant="body1" sx={{ color: '#E2E8F0', maxWidth: 740 }}>
-            Every SlainteTech agent operates against structured HL7 FHIR R4 compartments, enforces deterministic Python FastMCP guardrails, and writes immutable SHA-256 audit records. Select any agent below to inspect its architecture, vertical use case, and technical specification.
+            Every SlainteTech agent operates against structured HL7 FHIR R4 patient compartments, enforces rule-based Python safety checks, and writes tamper-evident SHA-256 audit logs. Select any agent below to inspect its live console screenshot, vertical use case, and technical specification.
           </Typography>
         </Container>
       </Box>

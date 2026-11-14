@@ -212,19 +212,19 @@ export function SiteChrome({ children }: { children: React.ReactNode }) {
             <Grid container spacing={4}>
               <Grid size={{ xs: 12, md: 4 }}>
                 <Typography component="p" variant="h6" fontWeight={800} sx={{ color: '#FFFFFF', mb: 1 }}>
-                  SlainteTech AI Security Labs
+                  SlainteTech
                 </Typography>
                 <Typography variant="body2" sx={{ color: '#CBD5E1', mb: 2, maxWidth: 340 }}>
-                  Autonomous clinical, compliance, and cybersecurity agents bound by deterministic Python FastMCP guardrails on HL7 FHIR R4. Responsive across desktop, hospital tablets, ambulance ePCR, and mobile home care.
+                  Clinical safety, prescribing protection, revenue integrity, and healthcare API security built on HL7 FHIR R4. Designed for hospital wards, clinics, community nursing, and ambulance tablets.
                 </Typography>
                 <Typography variant="caption" sx={{ color: '#94A3B8', fontFamily: 'monospace', display: 'block' }}>
-                  WCAG 2.2 AA Verified • NIS2 &amp; EU AI Act Ready • Zero Hallucinated Clinical Math
+                  WCAG 2.2 AA Verified • NIS2 &amp; GDPR Art. 9 Ready • 100% Rule-Based Clinical Scoring
                 </Typography>
               </Grid>
 
               <Grid size={{ xs: 12, sm: 6, md: 4 }}>
                 <Typography component="p" variant="subtitle2" fontWeight={800} sx={{ color: '#FFFFFF', textTransform: 'uppercase', letterSpacing: '0.05em', mb: 1.5 }}>
-                  Industry Verticals (&ldquo;For...&rdquo;)
+                  Industry Verticals
                 </Typography>
                 <Stack component="ul" role="list" spacing={1} sx={{ listStyle: 'none', p: 0, m: 0 }}>
                   {INDUSTRY_VERTICALS.map((v) => (
@@ -244,19 +244,19 @@ export function SiteChrome({ children }: { children: React.ReactNode }) {
 
               <Grid size={{ xs: 12, sm: 6, md: 4 }}>
                 <Typography component="p" variant="subtitle2" fontWeight={800} sx={{ color: '#FFFFFF', textTransform: 'uppercase', letterSpacing: '0.05em', mb: 1.5 }}>
-                  Platform, Agents &amp; Company
+                  Platform, Modules &amp; Company
                 </Typography>
                 <Stack component="ul" role="list" spacing={1} sx={{ listStyle: 'none', p: 0, m: 0 }}>
                   {[
-                    { label: 'All 16 Health-Tech Agents', href: '/health-tech-agents/' },
-                    { label: 'Platform & FastMCP Architecture', href: '/platform/' },
+                    { label: 'All 16 Clinical & Security Agents', href: '/health-tech-agents/' },
+                    { label: 'Platform & Safety Architecture', href: '/platform/' },
                     { label: 'Security, GDPR Art. 9 & NIS2', href: '/security-compliance/' },
                     { label: 'Commercial Pricing (Land & Expand)', href: '/pricing/' },
                     { label: 'Investor Thesis & Data Room', href: '/investors/' },
                     { label: 'Developer & SMART-on-FHIR v2 Docs', href: '/docs/' },
                     { label: 'About SlainteTech', href: '/about/' },
                     { label: 'Contact & Hospital Pilot Booking', href: '/contact/' },
-                    { label: 'GEO AI Manifest (/llms.txt)', href: '/llms.txt' },
+                    { label: 'Technical Platform Index (/llms.txt)', href: '/llms.txt' },
                   ].map((item) => (
                     <li key={item.href}>
                       <Box
@@ -276,7 +276,7 @@ export function SiteChrome({ children }: { children: React.ReactNode }) {
           <Divider sx={{ borderColor: '#1E293B', my: 4 }} />
           <Stack direction={{ xs: 'column', sm: 'row' }} justifyContent="space-between" spacing={1}>
             <Typography variant="caption" sx={{ color: '#94A3B8' }}>
-              © 2026 SlainteTech AI Security Labs. Sovereign Healthcare Cybersecurity &amp; Clinical Interoperability.
+              © 2026 SlainteTech. Healthcare Cybersecurity, Clinical Safety &amp; FHIR R4 Interoperability.
             </Typography>
             <Typography variant="caption" sx={{ color: '#94A3B8' }}>
               HL7® and FHIR® are registered trademarks of Health Level Seven International.

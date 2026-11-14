@@ -35,6 +35,7 @@ export interface VerticalRecord {
   brand: string;
   roleLabel: string;
   layoutVariant: VerticalLayoutVariant;
+  dashboardScreenshot: string;
   palette: VerticalPalette;
   seoTitle: string;
   seoDescription: string;
@@ -67,6 +68,7 @@ export const INDUSTRY_VERTICALS: VerticalRecord[] = [
     brand: 'SlainteED',
     roleLabel: 'ED Consultants, Registrars & Triage Nurses',
     layoutVariant: 'resuscitation-command',
+    dashboardScreenshot: '/images/verticals/emergency-departments.png',
     palette: {
       heroBg: '#1E1B2E',
       heroGradient: 'linear-gradient(135deg, #0F172A 0%, #3B0D1E 100%)',
@@ -78,41 +80,41 @@ export const INDUSTRY_VERTICALS: VerticalRecord[] = [
       badgeBg: '#FEE2E2',
       badgeText: '#7F1D1D', // 9.2:1 on #FEE2E2
     },
-    seoTitle: 'For Emergency Departments (SlainteED) — Deterministic Triage & Resuscitation AI | SlainteTech',
+    seoTitle: 'Emergency Department Triage & Resuscitation Software (SlainteED) | SlainteTech',
     seoDescription:
-      'Acute hospital Emergency Department vertical combining deterministic Manchester Triage (Cat 1–5), 24h RCP NEWS2 sepsis tracking, 3-Tier Rx-Guard, and cited shift handovers.',
-    heroHeadline: 'Zero-Hallucination Manchester Triage, Sepsis Escalation & Cited Shift Handovers',
+      'Cut missed sepsis deterioration and 20-minute shift handovers. SlainteED automates Manchester Triage (Cat 1-5), 24h RCP NEWS2 tracking, 3-Tier prescribing checks, and cited consultant briefings.',
+    heroHeadline: 'Spot Deteriorating Patients Faster. Finish Shift Handovers in Seconds.',
     heroLead:
-      'Built for overcrowded acute floors where clinical guesswork is unacceptable. SlainteED pairs sub-10ms deterministic MTS Cat 1–5 and RCP NEWS2 scoring with 1-click cited consultant handovers and immutable medico-legal Provenance.',
-    mobileReadyNote: 'Responsive workstation layout moves seamlessly from resuscitation wall boards to bedside iPads and registrar tablets.',
+      'Overcrowded emergency floors cannot afford delayed escalation or charting backlogs. SlainteED computes exact Manchester Triage (Cat 1 to 5) and RCP NEWS2 scores in under 10ms, blocks unsafe prescriptions automatically, and builds source-cited consultant handovers ready for sign-off.',
+    mobileReadyNote: 'Adapts cleanly from resuscitation wall boards to bedside iPads and registrar tablets.',
     kpis: [
-      { label: 'Acute Triage Engine', value: 'MTS Cat 1–5', detail: 'Deterministic 0m Immediate to 240m Non-Urgent routing' },
-      { label: 'Sepsis Deterioration', value: 'RCP NEWS2 0–20', detail: '24h SVG vital trajectories with >=7 high-risk escalation' },
-      { label: 'Prescribing Gate', value: '3-Tier Rx-Guard', detail: 'Allergy, high-alert DDI & acute kidney injury eGFR block' },
+      { label: 'Acute Triage Engine', value: 'MTS Cat 1 to 5', detail: 'Instant 0m Immediate to 240m Non-Urgent priority routing' },
+      { label: 'Sepsis Deterioration', value: 'RCP NEWS2 0 to 20', detail: '24h vital trajectories with auto-alerts when score reaches 7 or higher' },
+      { label: 'Prescribing Gate', value: '3-Tier Rx-Guard', detail: 'Allergy, high-risk interaction & renal eGFR block before sign-off' },
     ],
     painPointsSolved: [
       {
-        pain: 'Waiting-room physiological deterioration missed between manual whiteboard updates',
-        deterministicFix: 'Continuous LOINC vital ingestion recomputes RCP NEWS2 on every reading and auto-highlights Cat 1–3 bays.',
+        pain: 'Waiting-room deterioration missed between manual whiteboard checks',
+        deterministicFix: 'Live vital ingestion recalculates RCP NEWS2 on every reading and flags high-risk bays automatically.',
       },
       {
-        pain: 'Fragmented 08:00 & 20:00 shift handovers across 30+ boarded patients',
-        deterministicFix: 'SlainteScribe-Brief generates a 4-bullet cited handover anchored to [Patient/id], NEWS2, labs, and allergies.',
+        pain: 'Slow 08:00 and 20:00 shift handovers across 30+ boarded patients',
+        deterministicFix: 'One-click handover summaries cite exact vital trends, NEWS2 scores, lab markers, and documented allergies.',
       },
       {
-        pain: 'Uncoded acute kidney injury, sepsis lactate, and troponin complexity on discharge',
-        deterministicFix: 'SlainteRev-Coding audits LOINC biomarkers before discharge to capture accurate SNOMED + ICD-10-AM HIPE codes.',
+        pain: 'Missed HIPE complexity funding from uncoded sepsis, lactate, and acute kidney injury labs',
+        deterministicFix: 'Pre-discharge lab audits flag uncoded SNOMED and ICD-10-AM diagnoses so hospitals capture full reimbursement.',
       },
     ],
     workflowSteps: [
-      { step: '01', title: 'Rapid Triage or Ambulance ePCR Arrival', detail: 'Ingest ambulance FHIR bundles, HL7v2 ADT/ORU feeds, or rapid bedside vitals in under a second.' },
-      { step: '02', title: 'Protected Acute Prescribing & Orders', detail: 'File vitals, conditions, and medications with automatic 3-Tier allergy, DDI, and renal eGFR interception.' },
-      { step: '03', title: 'Cryptographic Consultant Sign-Off', detail: 'Lock shift handovers and discharge plans with IMC registration SHA-256 FHIR Provenance.' },
+      { step: '01', title: 'Rapid Triage or Ambulance Arrival', detail: 'Ingest ambulance records, hospital HL7v2 feeds, or bedside vitals in under a second.' },
+      { step: '02', title: 'Protected Acute Prescribing & Orders', detail: 'Record vitals, diagnoses, and medication orders with instant allergy, interaction, and kidney safety screening.' },
+      { step: '03', title: 'Consultant Sign-Off & HIPE Capture', detail: 'Lock handovers and discharge plans with cryptographically signed practitioner attribution.' },
     ],
     buyerRoi: {
       clinicalBuyer: 'Clinical Director of Emergency Medicine & Chief Nursing Information Officer',
-      economicImpact: 'Captures uncoded acute inpatient HIPE DRG complexity while cutting handover preparation to seconds.',
-      complianceGuarantee: 'HIQA National Early Warning System (INEWS), GDPR Art. 9 Break-the-Glass & EU AI Act Art. 12 logging.',
+      economicImpact: 'Recovers uncoded acute HIPE DRG revenue while cutting shift handover preparation to seconds.',
+      complianceGuarantee: 'Aligned with HIQA INEWS escalation rules, GDPR Art. 9 emergency access logging, and complete audit trails.',
     },
     assignedAgentSlugs: [
       'manchester-triage-news2-acuity-agent',
@@ -129,6 +131,7 @@ export const INDUSTRY_VERTICALS: VerticalRecord[] = [
     brand: 'SlainteGP',
     roleLabel: 'GPs, Practice Nurses & Care-at-Home Community Nurses',
     layoutVariant: 'longitudinal-care',
+    dashboardScreenshot: '/images/verticals/general-practice.png',
     palette: {
       heroBg: '#0C2D48',
       heroGradient: 'linear-gradient(135deg, #0F172A 0%, #0E4D6E 100%)',
@@ -140,12 +143,12 @@ export const INDUSTRY_VERTICALS: VerticalRecord[] = [
       badgeBg: '#E0F2FE',
       badgeText: '#0C4A6E', // 9.1:1 on #E0F2FE
     },
-    seoTitle: 'For General Practitioners & Community Nursing (SlainteGP) | SlainteTech',
+    seoTitle: 'GP Practice & Community Nursing Software (SlainteGP) | SlainteTech',
     seoDescription:
-      'Primary care, HSE Chronic Disease Management (CDM), and mobile Care-at-Home community nursing platform with Ambient Voice Scribe, GMS deduplication, and PCRS export.',
-    heroHeadline: '10-Minute Consultations & Mobile Community Home Visits — Without Evening Paperwork',
+      'End evening charting backlogs in 10-minute consultations and home visits with instant structured SOAP notes, safe repeat prescribing, and automated PCRS claims.',
+    heroHeadline: 'Finish Clinics On Time With Zero Evening Charting Backlogs.',
     heroLead:
-      'Designed equally for desktop GP consulting rooms and Care-at-Home / Public Health Nurses on smartphones and tablets. SlainteGP combines ambient voice SOAP scribing, HSE Chronic Disease Management (CDM) tracking, and 28-day repeat prescribing safety.',
+      'Built equally for busy GP consulting rooms and mobile Care-at-Home Nurses. SlainteGP converts consultations into structured SOAP notes for 1-tap sign-off, automates HSE Chronic Disease Management, and protects every repeat prescription.',
     mobileReadyNote: 'Touch-optimised 44px mobile & tablet drawer + quick-action bottom dock built specifically for Community Health and Care-at-Home Nurses on the move.',
     kpis: [
       { label: 'Ambient Consultation', value: 'Voice -> SOAP', detail: 'Live dictation drafts SOAP notes & pre-screened FHIR orders' },
@@ -191,6 +194,7 @@ export const INDUSTRY_VERTICALS: VerticalRecord[] = [
     brand: 'SlaintePsych',
     roleLabel: 'Consultant Psychiatrists, CMHTs & Liaison Mental Health Nurses',
     layoutVariant: 'therapeutic-calm',
+    dashboardScreenshot: '/images/verticals/psychiatry.png',
     palette: {
       heroBg: '#1E1B3A',
       heroGradient: 'linear-gradient(135deg, #17153B 0%, #3B1D5E 100%)',
@@ -231,7 +235,7 @@ export const INDUSTRY_VERTICALS: VerticalRecord[] = [
     workflowSteps: [
       { step: '01', title: 'Select Service User & Review Risk Trajectory', detail: 'View longitudinal PHQ-9, GAD-7, active psychotropics, and latest renal eGFR on one calm clinical screen.' },
       { step: '02', title: 'Record MSE & Standardized LOINC Scales', detail: 'Document appearance, mood, thought, perception, capacity, and crisis safety plan directly to FHIR R4.' },
-      { step: '03', title: 'Enforce GDPR Art. 9 & BOLA Confidentiality', detail: 'Every AI summary strips direct PII and every out-of-team emergency access triggers an immutable audit grant.' },
+      { step: '03', title: 'Enforce GDPR Art. 9 & BOLA Confidentiality', detail: 'Every handover summary strips direct PII and every out-of-team emergency access triggers an immutable audit grant.' },
     ],
     buyerRoi: {
       clinicalBuyer: 'Clinical Directors of Psychiatry, Mental Health Commission Compliance Leads & Private Clinics',
@@ -253,6 +257,7 @@ export const INDUSTRY_VERTICALS: VerticalRecord[] = [
     brand: 'SlainteDent',
     roleLabel: 'Dental Surgeons, Oral Surgeons & Periodontists',
     layoutVariant: 'precision-odontogram',
+    dashboardScreenshot: '/images/verticals/dentistry.png',
     palette: {
       heroBg: '#0B2F35',
       heroGradient: 'linear-gradient(135deg, #082026 0%, #0E5A63 100%)',
@@ -313,6 +318,7 @@ export const INDUSTRY_VERTICALS: VerticalRecord[] = [
     brand: 'SlaintePharm',
     roleLabel: 'Supervising Pharmacists, Hospital Clinical Pharmacists & Dispensers',
     layoutVariant: 'dispensing-matrix',
+    dashboardScreenshot: '/images/verticals/pharmacy.png',
     palette: {
       heroBg: '#092B1E',
       heroGradient: 'linear-gradient(135deg, #062016 0%, #0F5132 100%)',
@@ -329,7 +335,7 @@ export const INDUSTRY_VERTICALS: VerticalRecord[] = [
       'Active MedicationRequest dispensing verification queue powered by 3-Tier SlainteRx-Guard (Allergy, DDI, eGFR), PSI Provenance sign-off, and HSE PCRS GMS export.',
     heroHeadline: 'Lab-Aware 3-Tier Dispensing Safety & Automated HSE PCRS Reimbursement',
     heroLead:
-      'Pharmacists are healthcare’s final safety barrier — yet community dispensaries rarely see renal eGFR labs, and hospital pharmacists drown in alert fatigue. SlaintePharm prioritizes high-risk prescriptions with zero-hallucination pharmacology.',
+      'Pharmacists are the last clinical safety barrier before medicines reach the patient, yet dispensaries rarely see kidney function labs and suffer severe alert fatigue. SlaintePharm ranks queues by real clinical risk and catches dangerous interactions automatically.',
     mobileReadyNote: 'Ward-round tablet ready for hospital clinical pharmacists reviewing inpatient drug kardexes at the bedside.',
     kpis: [
       { label: 'Pharmacology Gate', value: '3-Tier Engine', detail: 'Allergy cross-reactivity + ISMP High-Alert DDI + LOINC eGFR' },
@@ -373,6 +379,7 @@ export const INDUSTRY_VERTICALS: VerticalRecord[] = [
     brand: 'SlainteEMS',
     roleLabel: 'Advanced Paramedics, EMTs & National Ambulance Control',
     layoutVariant: 'rugged-field-tablet',
+    dashboardScreenshot: '/images/verticals/ambulance-ems.png',
     palette: {
       heroBg: '#291805',
       heroGradient: 'linear-gradient(135deg, #1C1917 0%, #5C2D0C 100%)',
@@ -384,12 +391,12 @@ export const INDUSTRY_VERTICALS: VerticalRecord[] = [
       badgeBg: '#FEF3C7',
       badgeText: '#78350F', // 8.7:1 on #FEF3C7
     },
-    seoTitle: 'For Ambulance & Paramedic Services (SlainteEMS) — Tablet Field ePCR | SlainteTech',
+    seoTitle: 'Ambulance Tablet ePCR & ED Pre-Alert Software (SlainteEMS) | SlainteTech',
     seoDescription:
-      'Glove-friendly rugged tablet ePCR vertical for paramedics with 10-second vital entry, deterministic MTS Cat 1–5 + NEWS2 scoring, and instant receiving ED FHIR R4 push.',
-    heroHeadline: 'Glove-Friendly Tablet ePCR, Sub-Second Acuity Scoring & Instant Receiving ED Pre-Alerts',
+      'Glove-friendly rugged tablet ePCR for paramedics with 10-second vital entry, instant MTS Cat 1-5 and NEWS2 scoring, and 1-tap hospital resuscitation bay handoff.',
+    heroHeadline: 'Glove-Friendly Tablet ePCR, Instant Acuity Scoring & Direct Resus Pre-Alerts',
     heroLead:
-      'Engineered for moving ambulances, roadside trauma scenes, and ruggedised tablets. Paramedics enter vitals in 10 seconds with 44px+ coarse-pointer touch controls, compute deterministic MTS & NEWS2 acuity offline or on 5G, and push structured FHIR R4 bundles straight to the receiving resuscitation bay.',
+      'Built for moving ambulances, roadside trauma, and rugged field tablets. Paramedics record vitals in 10 seconds with 44px glove-ready touch buttons, compute validated MTS and NEWS2 scores offline or over 5G, and stream structured records ahead to the hospital resuscitation bay.',
     mobileReadyNote: 'Built mobile- and tablet-first: coarse-pointer 44px inputs, anti-zoom 16px touch fields, and one-thumb bottom dock for ambulance crews.',
     kpis: [
       { label: 'Roadside Triage', value: '<10ms MTS/NEWS2', detail: 'Deterministic Cat 1–5 & NEWS2 0–20 from ambulance vitals' },
@@ -412,7 +419,7 @@ export const INDUSTRY_VERTICALS: VerticalRecord[] = [
     ],
     workflowSteps: [
       { step: '01', title: '10-Second Roadside Vital Entry on Tablet', detail: 'Capture SBP, DBP, HR, SpO2, RR, Temp, Known Allergies, and Field Meds Given on large touch inputs.' },
-      { step: '02', title: 'Automatic MTS Cat 1–5 & NEWS2 Calculation', detail: 'FastMCP computes exact triage target minutes and sepsis/hypoxia escalation tiers instantly.' },
+      { step: '02', title: 'Automatic MTS Cat 1-5 & NEWS2 Calculation', detail: 'Verified clinical rules compute exact triage target minutes and sepsis or hypoxia escalation tiers instantly.' },
       { step: '03', title: 'Zero-Latency Receiving ED Handover', detail: 'Receiving ED consultants see the casualty live in their Cat 1–5 queue before the ambulance bay doors open.' },
     ],
     buyerRoi: {
@@ -433,6 +440,7 @@ export const INDUSTRY_VERTICALS: VerticalRecord[] = [
     brand: 'SlainteSport',
     roleLabel: 'Heads of Sports Medicine, Team Physicians & Club Physiotherapists',
     layoutVariant: 'athletic-telemetry',
+    dashboardScreenshot: '/images/verticals/sports-medicine.png',
     palette: {
       heroBg: '#0B2922',
       heroGradient: 'linear-gradient(135deg, #0F172A 0%, #114B3C 100%)',
@@ -494,6 +502,7 @@ export const INDUSTRY_VERTICALS: VerticalRecord[] = [
     brand: 'SlainteAstro',
     roleLabel: 'Flight Surgeons, Crew Medical Officers & Extreme-Environment Missions',
     layoutVariant: 'orbital-airgap',
+    dashboardScreenshot: '/images/verticals/astronaut-health.png',
     palette: {
       heroBg: '#090D1F',
       heroGradient: 'linear-gradient(135deg, #020617 0%, #1E1B4B 100%)',
@@ -505,26 +514,26 @@ export const INDUSTRY_VERTICALS: VerticalRecord[] = [
       badgeBg: '#E0E7FF',
       badgeText: '#1E1B4B', // 12.6:1 on #E0E7FF
     },
-    seoTitle: 'For Astronaut & Aerospace Medicine (SlainteAstro) — Air-Gapped Clinical AI | SlainteTech',
+    seoTitle: 'Aerospace & Offline Medical Decision Support (SlainteAstro) | SlainteTech',
     seoDescription:
-      '100% air-gapped autonomous medical bay running all 16 SlainteTech agents on local 3B sovereign models alongside SlainteFHIR and FastMCP with zero Earth-cloud dependency.',
-    heroHeadline: '100% Air-Gapped Autonomous Medical Decision Support — Zero Bytes to Earth Required',
+      '100% air-gapped medical bay running clinical triage, prescribing safety checks, and FHIR telemetry completely offline with zero Earth-cloud dependency.',
+    heroHeadline: '100% Air-Gapped Clinical Decision Support. Zero Cloud Uplink Required.',
     heroLead:
-      'On lunar, Martian, submarine, or remote polar deployments, 22-minute communication blackouts make cloud LLMs useless and LLM clinical hallucinations fatal. SlainteAstro runs all 16 agents locally on sovereign 3B models bound by deterministic Python FastMCP guardrails.',
-    mobileReadyNote: 'Runs self-contained on habitat workstations and crew medical tablets over local spacecraft Wi-Fi / Ethernet.',
+      'On deep-space, submarine, or remote polar missions, 22-minute communication blackouts make cloud software useless and medication mistakes fatal. SlainteAstro runs all clinical triage, prescribing safety gates, and audit logging locally inside a self-contained offline appliance.',
+    mobileReadyNote: 'Runs self-contained on habitat workstations and crew medical tablets over local spacecraft Wi-Fi or Ethernet.',
     kpis: [
-      { label: 'Earth Uplink Required', value: '0 Bytes', detail: '100% offline local Ollama 3B inference + local SlainteFHIR :8082' },
-      { label: 'Autonomous Fleet', value: 'All 16 Agents', detail: 'Full security, audit, triage, scribe & 3-Tier pharmacology onboard' },
-      { label: 'EVA Flight Clearance', value: 'SHA-256 Signed', detail: 'Cryptographic Flight Surgeon & Crew Medical Officer logs' },
+      { label: 'Earth Uplink Required', value: '0 Bytes', detail: '100% offline local appliance execution + local FHIR record store' },
+      { label: 'Integrated Modules', value: 'All 16 Modules', detail: 'Full security, audit, triage, documentation & prescribing gate onboard' },
+      { label: 'EVA Flight Clearance', value: 'SHA-256 Signed', detail: 'Cryptographic Flight Surgeon & Crew Medical Officer sign-off logs' },
     ],
     painPointsSolved: [
       {
-        pain: 'Cloud-dependent medical AI fails completely during orbital blackout, deep-space latency, or naval EMCON',
-        deterministicFix: 'Containerized appliance executes 100% locally (`ollama/k9/Doggo:3b`, `SlainteFHIR :8082`, `FastMCP :8081`).',
+        pain: 'Cloud medical software fails completely during orbital blackout, deep-space latency, or naval EMCON',
+        deterministicFix: 'Self-contained container appliance runs 100% locally (`SlainteFHIR :8082` + Safety Gate `:8081` + local engine).',
       },
       {
-        pain: 'Small quantized local models hallucinating drug doses or hypoxia thresholds in high-stress emergencies',
-        deterministicFix: 'All physiological scoring (NEWS2/MTS) and 3-Tier pharmacology execute in deterministic Python — never in model weights.',
+        pain: 'Unchecked dosing errors or hypoxia miscalculations in isolated high-stress emergencies',
+        deterministicFix: 'All physiological scoring (NEWS2/MTS) and 3-Tier prescribing gates run in verified Python rules, never guessed.',
       },
       {
         pain: 'Software supply-chain tampering or unverified telemetry modifications during multi-month missions',
@@ -533,7 +542,7 @@ export const INDUSTRY_VERTICALS: VerticalRecord[] = [
     ],
     workflowSteps: [
       { step: '01', title: 'Continuous Habitat & EVA Bio-Telemetry', detail: 'Ingest crew SpO2, HR, BP, temperature, and lab panels into the onboard SlainteFHIR R4 server.' },
-      { step: '02', title: 'Local Autonomous Triage & Pharmacology', detail: 'Detect subtle NEWS2 hypoxia drift and screen onboard medical-kit prescriptions with zero cloud calls.' },
+      { step: '02', title: 'Local Acuity Scoring & Prescribing Checks', detail: 'Detect subtle NEWS2 hypoxia drift and screen onboard medical-kit prescriptions with zero cloud calls.' },
       { step: '03', title: 'Cryptographic EVA Clearance & Telemetry Sync', detail: 'Sign EVA clearances with SHA-256 Provenance ready for deterministic Earth-sync upon signal acquisition.' },
     ],
     buyerRoi: {

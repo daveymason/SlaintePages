@@ -15,9 +15,9 @@ import Grid from '@mui/material/Grid2';
 import ArrowForwardRoundedIcon from '@mui/icons-material/ArrowForwardRounded';
 
 export const metadata: Metadata = {
-  title: 'Investor Thesis & Defensibility | SlainteTech AI Security Labs',
+  title: 'Investor Thesis & Defensibility | SlainteTech',
   description:
-    'Why SlainteTech wins European and global healthcare AI: statutory NIS2 + EU AI Act regulatory tailwinds, deterministic FastMCP safety moat, and 8 verticals on 1 codebase.',
+    'Why SlainteTech wins European and global regulated healthcare software: statutory NIS2 and clinical safety compliance tailwinds, verified rule-based safety moat, and 8 high-value verticals on one HL7 FHIR R4 platform.',
 };
 
 export default function InvestorsPage() {
@@ -45,10 +45,10 @@ export default function InvestorsPage() {
             tabIndex={-1}
             sx={{ color: '#FFFFFF', mb: 2, outline: 'none' }}
           >
-            The Deterministic Safety Layer for Regulated Healthcare AI
+            The Verifiable Safety &amp; Security Platform for Regulated Healthcare
           </Typography>
           <Typography variant="body1" sx={{ color: '#E2E8F0', maxWidth: 760 }}>
-            Healthcare providers face simultaneous statutory enforcement of the EU NIS2 Directive and the EU AI Act while clinicians suffer historic burnout. SlainteTech solves both problems in a single sovereign HL7 FHIR R4 + FastMCP platform.
+            Healthcare organizations face mandatory EU NIS2 cybersecurity enforcement alongside strict clinical governance rules while frontline clinicians burn out under documentation overload. SlainteTech solves both in one HL7 FHIR R4 platform.
           </Typography>
         </Container>
       </Box>
@@ -62,8 +62,8 @@ export default function InvestorsPage() {
           <Grid container spacing={3}>
             {[
               {
-                title: '1. Zero-Hallucination FastMCP Clinical Math',
-                body: 'Competitors wrapping raw LLMs cannot pass hospital Clinical Safety Case (DCB0129/0160) review because LLM weights hallucinate doses and triage scores. SlainteTech executes RCP NEWS2, MTS Cat 1–5, and 3-Tier Rx-Guard in deterministic Python.',
+                title: '1. Rule-Based Clinical Math That Passes Safety Boards',
+                body: 'Generic software wrappers cannot pass hospital Clinical Safety Case (DCB0129/0160) sign-off because language models guess doses and triage scores. SlainteTech executes RCP NEWS2, MTS Cat 1 to 5, and 3-Tier Rx-Guard in tested Python rules.',
               },
               {
                 title: '2. 15-Minute SMART-on-FHIR v2 "Wedge" Distribution',
@@ -71,11 +71,11 @@ export default function InvestorsPage() {
               },
               {
                 title: '3. 1 Codebase Powering 8 Distinct Verticals',
-                body: 'Emergency Medicine, GP & Mobile Home Nursing, Psychiatry, Dentistry, Pharmacy, Ambulance Tablet ePCR, Elite Sports, and Air-Gapped Aerospace all share one HL7 FHIR R4 + 16-Agent core — multiplying TAM with near-zero marginal R&D.',
+                body: 'Emergency Medicine, GP & Mobile Home Nursing, Psychiatry, Dentistry, Pharmacy, Ambulance Tablet ePCR, Elite Sports, and Air-Gapped Aerospace all share one HL7 FHIR R4 + 16-Agent platform, multiplying market reach with near-zero marginal R&D.',
               },
               {
-                title: '4. Sovereign Air-Gap & Local 3B Readiness',
-                body: 'Runs seamlessly on local quantized 3B models inside hospital VPCs, submarines, or spacecraft with zero external cloud PHI leakage — eliminating GDPR Article 9 cross-border transfer blockers.',
+                title: '4. Private VPC & 100% Air-Gap Readiness',
+                body: 'Runs inside hospital VPCs, remote clinics, or air-gapped field stations with zero external patient-data leakage, eliminating GDPR Article 9 cross-border transfer blockers.',
               },
             ].map((item) => (
               <Grid key={item.title} size={{ xs: 12, md: 6 }}>

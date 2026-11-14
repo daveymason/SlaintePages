@@ -232,7 +232,80 @@ export function VerticalUniqueTemplate({ vertical }: { vertical: VerticalRecord 
         </Container>
       </Box>
 
-      {/* PAIN POINTS VS. DETERMINISTIC SLAINTETECH FIX */}
+      {/* LIVE SLAINTEDASH VERTICAL WORKSPACE SCREENSHOT */}
+      <Box
+        component="section"
+        aria-labelledby="vertical-live-preview-heading"
+        sx={{ py: { xs: 5, md: 7 }, bgcolor: '#FFFFFF', borderBottom: '1px solid #E2E8F0' }}
+      >
+        <Container maxWidth="lg">
+          <Stack
+            direction={{ xs: 'column', md: 'row' }}
+            justifyContent="space-between"
+            alignItems={{ xs: 'flex-start', md: 'flex-end' }}
+            spacing={2}
+            sx={{ mb: 3 }}
+          >
+            <Box>
+              <Typography variant="overline" sx={{ color: palette.accentMain, fontWeight: 800, letterSpacing: '0.08em', display: 'block' }}>
+                Live Production Software: {vertical.brand}
+              </Typography>
+              <Typography component="h2" variant="h2" id="vertical-live-preview-heading" sx={{ color: '#0F172A' }}>
+                Inside SlainteDash: Live {vertical.forLabel.replace(/^For /, '')} Workspace
+              </Typography>
+            </Box>
+            <Typography variant="body2" sx={{ color: '#475569', maxWidth: 440 }}>
+              Real capture from {vertical.brand} running specialty FHIR R4 patient cohorts, frontline workflows, and built-in clinical safety gates.
+            </Typography>
+          </Stack>
+
+          <Paper
+            elevation={0}
+            sx={{
+              borderRadius: 3,
+              overflow: 'hidden',
+              border: '1px solid #CBD5E1',
+              boxShadow: '0 20px 50px rgba(15, 23, 42, 0.14)',
+              bgcolor: '#0F172A',
+            }}
+          >
+            <Box
+              sx={{
+                px: 2,
+                py: 1.1,
+                bgcolor: '#1E293B',
+                borderBottom: '1px solid #334155',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'space-between',
+                gap: 2,
+              }}
+            >
+              <Stack direction="row" spacing={0.8} alignItems="center">
+                <Box sx={{ width: 10, height: 10, borderRadius: '50%', bgcolor: '#EF4444' }} />
+                <Box sx={{ width: 10, height: 10, borderRadius: '50%', bgcolor: '#F59E0B' }} />
+                <Box sx={{ width: 10, height: 10, borderRadius: '50%', bgcolor: '#22C55E' }} />
+              </Stack>
+              <Typography variant="caption" sx={{ color: '#CBD5E1', fontFamily: 'monospace', fontSize: '0.78rem' }}>
+                slaintedash.internal / {vertical.brand} • {vertical.roleLabel}
+              </Typography>
+              <Box sx={{ width: 42 }} />
+            </Box>
+            <Box
+              component="img"
+              src={vertical.dashboardScreenshot}
+              alt={`${vertical.brand} (${vertical.forLabel}) live SlainteDash workspace screenshot`}
+              sx={{
+                width: '100%',
+                height: 'auto',
+                display: 'block',
+              }}
+            />
+          </Paper>
+        </Container>
+      </Box>
+
+      {/* PAIN POINTS VS. RULE-BASED SLAINTETECH FIX */}
       <Box
         component="section"
         aria-labelledby="clinical-challenges-heading"
@@ -247,7 +320,7 @@ export function VerticalUniqueTemplate({ vertical }: { vertical: VerticalRecord 
               Built Specifically for {vertical.roleLabel}
             </Typography>
             <Typography component="h2" variant="h2" id="clinical-challenges-heading" sx={{ color: '#0F172A' }}>
-              Replacing Legacy Clinical Friction With Deterministic Safety
+              Eliminate Workflow Bottlenecks &amp; Protect Every Patient Interaction
             </Typography>
           </Box>
 
@@ -430,7 +503,7 @@ export function VerticalUniqueTemplate({ vertical }: { vertical: VerticalRecord 
         </Container>
       </Box>
 
-      {/* ASSIGNED AUTONOMOUS AGENTS FOR THIS VERTICAL */}
+      {/* ASSIGNED AGENTS FOR THIS VERTICAL */}
       <Box component="section" aria-labelledby="assigned-agents-heading" sx={{ py: { xs: 6, md: 8 } }}>
         <Container maxWidth="lg">
           <Box sx={{ mb: 4 }}>
@@ -438,13 +511,13 @@ export function VerticalUniqueTemplate({ vertical }: { vertical: VerticalRecord 
               variant="overline"
               sx={{ color: palette.accentMain, fontWeight: 800, letterSpacing: '0.08em', display: 'block' }}
             >
-              Autonomous Health-Tech Agents Active in {vertical.brand}
+              Active Clinical &amp; Security Modules in {vertical.brand}
             </Typography>
             <Typography component="h2" variant="h2" id="assigned-agents-heading" sx={{ color: '#0F172A', mb: 1 }}>
-              Pre-Configured Agent Fleet for {vertical.forLabel.replace(/^For /, '')}
+              Built-In Agents for {vertical.forLabel.replace(/^For /, '')}
             </Typography>
             <Typography variant="body2" sx={{ color: '#334155' }}>
-              Each agent below runs natively inside the {vertical.brand} vertical with dedicated telemetry and audit trails.
+              Every module below runs natively inside the {vertical.brand} workspace with verified safety checks and tamper-evident audit logs.
             </Typography>
           </Box>
 

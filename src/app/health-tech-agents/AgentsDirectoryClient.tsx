@@ -28,7 +28,7 @@ export function AgentsDirectoryClient() {
         flexWrap="wrap"
         gap={1}
         role="group"
-        aria-label="Filter autonomous agents by squad"
+        aria-label="Filter clinical and security agents by squad"
         sx={{ mb: 4 }}
       >
         {SQUAD_FILTERS.map((filter) => {

@@ -42,13 +42,13 @@ export default function HomePage() {
             <Grid size={{ xs: 12, md: 7 }}>
               <Stack direction="row" flexWrap="wrap" gap={1} sx={{ mb: 2.5 }}>
                 <Chip
-                  label="16 Autonomous Health-Tech Agents"
+                  label="16 Clinical & Security Modules"
                   color="primary"
                   size="small"
                   sx={{ border: '1px solid #7DD3FC' }}
                 />
                 <Chip
-                  label="8 Specialized Clinical Verticals"
+                  label="8 Specialized Care Verticals"
                   size="small"
                   sx={{ bgcolor: '#1E293B', color: '#F8FAFC', border: '1px solid #475569' }}
                 />
@@ -66,27 +66,27 @@ export default function HomePage() {
                 tabIndex={-1}
                 sx={{ color: '#FFFFFF', mb: 2.5, outline: 'none' }}
               >
-                Autonomous Clinical &amp; Security Agents That Never Guess With Patient Safety.
+                Safer Patient Care, Recovered Hospital Revenue &amp; Continuous FHIR Security.
               </Typography>
 
               <Typography variant="body1" sx={{ color: '#E2E8F0', fontSize: '1.1rem', mb: 3.5, maxWidth: 650 }}>
-                SlainteTech pairs sovereign HL7 FHIR R4 infrastructure with 16 specialized agents governed by deterministic Python FastMCP guardrails — delivering zero-hallucination triage, 3-Tier pharmacology, ambient scribing, and OWASP/NIS2 security across 8 healthcare verticals.
+                Cut clinician charting hours, catch missed HIPE reimbursement, and block unsafe prescriptions before they reach the patient. SlainteTech pairs a unified HL7 FHIR R4 clinical platform with rule-based safety gates and automated NIS2 API verification across 8 frontline care settings.
               </Typography>
 
               <Stack direction={{ xs: 'column', sm: 'row' }} spacing={1.5} sx={{ mb: 4 }}>
                 <Button
                   component={Link}
-                  href="/verticals/"
+                  href="/contact/"
                   variant="contained"
                   color="primary"
                   endIcon={<ArrowForwardRoundedIcon aria-hidden="true" />}
                   sx={{ border: '1px solid #7DD3FC' }}
                 >
-                  Explore Industry Verticals
+                  Book a 15-Min Pilot Demo
                 </Button>
                 <Button
                   component={Link}
-                  href="/health-tech-agents/"
+                  href="/verticals/"
                   variant="outlined"
                   sx={{
                     color: '#FFFFFF',
@@ -94,11 +94,11 @@ export default function HomePage() {
                     '&:hover': { borderColor: '#FFFFFF', bgcolor: 'rgba(255,255,255,0.08)' },
                   }}
                 >
-                  Inspect All 16 Agents
+                  Explore 8 Care Verticals
                 </Button>
                 <Button
                   component={Link}
-                  href="/investors/"
+                  href="/health-tech-agents/"
                   variant="outlined"
                   sx={{
                     color: '#BAE6FD',
@@ -106,15 +106,15 @@ export default function HomePage() {
                     '&:hover': { borderColor: '#7DD3FC', bgcolor: 'rgba(56,189,248,0.12)' },
                   }}
                 >
-                  Investor Thesis
+                  See All 16 Agents
                 </Button>
               </Stack>
 
               <Grid container spacing={2}>
                 {[
-                  { stat: '0% LLM Math', detail: 'RCP NEWS2, MTS Cat 1–5 & 3-Tier Rx-Guard run in deterministic Python' },
-                  { stat: '330+ Automated Tests', detail: 'Continuous CI verification across security, RBAC, and FHIR R4 schemas' },
-                  { stat: '100% Air-Gap Capable', detail: 'Runs on local 3B Ollama models or BAA-gated cloud frontier APIs' },
+                  { stat: '100% Rule-Based Math', detail: 'RCP NEWS2, Manchester Triage & 3-Tier Rx-Guard never rely on guesswork' },
+                  { stat: '15-Min Sidecar Deploy', detail: 'Attach read-only alongside Epic, Cerner, or MEDITECH with zero downtime' },
+                  { stat: 'Private & Offline Ready', detail: 'Deploy in hospital VPCs or 100% offline with zero external PHI exposure' },
                 ].map((item) => (
                   <Grid key={item.stat} size={{ xs: 12, sm: 4 }}>
                     <Box sx={{ p: 1.75, borderRadius: 2, bgcolor: 'rgba(15, 23, 42, 0.72)', border: '1px solid #334155', height: '100%' }}>
@@ -168,20 +168,20 @@ export default function HomePage() {
                 <Stack spacing={1.5}>
                   {[
                     {
-                      layer: 'Layer 1 • Responsive Clinical & Field Verticals',
-                      desc: '8 role-specific workspaces (ED, GP & Home Nursing, Psychiatry, Dentistry, Pharmacy, Ambulance Tablet ePCR, Elite Sport, Aerospace).',
+                      layer: 'Layer 1 • 8 Specialty Clinical Workspaces',
+                      desc: 'Tailored screens for ED, GP & Home Nursing, Psychiatry, Dentistry, Pharmacy, Ambulance ePCR, Elite Sport, and Aerospace.',
                     },
                     {
-                      layer: 'Layer 2 • 16 Autonomous Health-Tech Agents',
-                      desc: '3 specialized squads: SlainteShield Security (3), SlainteGov Governance (5), and SlainteClinical Care (8).',
+                      layer: 'Layer 2 • 16 Clinical & Security Agents',
+                      desc: 'Three coordinated teams: SlainteShield Security (3), SlainteGov Governance & Coding (5), and SlainteClinical Care (8).',
                     },
                     {
-                      layer: 'Layer 3 • FastMCP Deterministic Safety Kernel (:8081)',
-                      desc: 'Hard-coded Python clinical calculators, 3-Tier pharmacology cross-reactivity/DDI/eGFR gates, and RFC 1918 red-team locks.',
+                      layer: 'Layer 3 • Rule-Based Safety Gatekeeper (:8081)',
+                      desc: 'Hard-coded Python acuity scoring, 3-Tier allergy/interaction/renal checks, and private-subnet security boundary locks.',
                     },
                     {
-                      layer: 'Layer 4 • Sovereign HL7 FHIR R4 & Append-Only Audit (:8082)',
-                      desc: 'Micro-EHR compartment store, SMART-on-FHIR v2 PKCE sidecar, SHA-256 Provenance signatures, and SQLite tamper-rejection triggers.',
+                      layer: 'Layer 4 • HL7 FHIR R4 Core & Append-Only Audit (:8082)',
+                      desc: 'Patient compartment record store, SMART-on-FHIR v2 launch, signed practitioner provenance, and tamper-proof SQLite logs.',
                     },
                   ].map((box) => (
                     <Box
@@ -226,7 +226,7 @@ export default function HomePage() {
                 Built For Every Frontline Care Setting
               </Typography>
               <Typography variant="body1" sx={{ color: '#334155' }}>
-                One underlying HL7 FHIR R4 + FastMCP engine tailored into 8 distinct operational verticals — each with its own clinical workflows, bespoke interface, and responsive mobile/tablet ergonomics.
+                One HL7 FHIR R4 clinical foundation adapted into 8 dedicated environments, each with live role workflows, specialty patient views, and mobile tablet responsiveness.
               </Typography>
             </Box>
             <Button component={Link} href="/verticals/" variant="outlined" color="primary">
@@ -249,6 +249,23 @@ export default function HomePage() {
                   }}
                 >
                   <CardContent sx={{ p: 2.75 }}>
+                    <Box
+                      component="img"
+                      src={v.dashboardScreenshot}
+                      alt={`${v.brand} (${v.forLabel}) live SlainteDash workspace screenshot`}
+                      loading="lazy"
+                      sx={{
+                        width: '100%',
+                        height: 152,
+                        objectFit: 'cover',
+                        objectPosition: 'top',
+                        borderRadius: 1.5,
+                        border: '1px solid #CBD5E1',
+                        mb: 2,
+                        display: 'block',
+                        bgcolor: '#0F172A',
+                      }}
+                    />
                     <Box
                       component="span"
                       sx={{
@@ -320,17 +337,17 @@ export default function HomePage() {
                 </Typography>
               </Stack>
               <Typography component="h2" variant="h2" id="responsive-field-heading" sx={{ color: '#0F172A', mb: 1.5 }}>
-                Engineered for Care-at-Home Nurses, Community Teams &amp; Moving Ambulances
+                Built for Care-at-Home Nurses, Community Teams &amp; Moving Ambulances
               </Typography>
               <Typography variant="body1" sx={{ color: '#334155', mb: 2.5 }}>
-                Healthcare no longer stays behind a hospital desk. Both the SlainteTech clinical platform and vertical workspaces adapt automatically to smartphones and ruggedised ambulance tablets with off-canvas touch drawers, sticky 1-thumb quick docks, 44px coarse-pointer targets, and WCAG 2.2 AA contrast.
+                Care happens everywhere, not just at a ward workstation. Every SlainteDash screen adapts automatically to smartphones and rugged ambulance tablets with 1-thumb quick actions, 44px glove-ready buttons, and glare-proof contrast.
               </Typography>
               <Stack direction={{ xs: 'column', sm: 'row' }} spacing={1.5}>
                 <Button component={Link} href="/verticals/general-practice/" variant="contained" color="primary">
-                  Community &amp; Home Nursing UX
+                  Explore GP &amp; Home Nursing
                 </Button>
                 <Button component={Link} href="/verticals/ambulance-ems/" variant="outlined" color="primary">
-                  Ambulance Tablet ePCR UX
+                  Explore Ambulance ePCR
                 </Button>
               </Stack>
             </Grid>
@@ -341,12 +358,12 @@ export default function HomePage() {
                   {
                     icon: <DevicesRoundedIcon sx={{ color: '#1B6B8D' }} aria-hidden="true" />,
                     title: '44px Glove & Thumb Touch Targets',
-                    text: 'Coarse-pointer media queries enlarge bedside inputs, odontogram teeth, and triage actions automatically.',
+                    text: 'Enlarged charting controls, dental odontogram buttons, and triage actions built for real field use.',
                   },
                   {
                     icon: <ShieldRoundedIcon sx={{ color: '#15803D' }} aria-hidden="true" />,
-                    title: 'Sticky Field Bottom Quick-Dock',
-                    text: 'Instant 1-tap switching across Triage, Patients, Vertical Workspace, and Autonomous Agents on phones and iPads.',
+                    title: '1-Tap Sticky Field Quick-Dock',
+                    text: 'Move between Triage, Patient Charts, Vertical Tools, and Security Agents in a single tap on phones and tablets.',
                   },
                   {
                     icon: <LockRoundedIcon sx={{ color: '#B91C1C' }} aria-hidden="true" />,
@@ -374,7 +391,7 @@ export default function HomePage() {
         </Container>
       </Box>
 
-      {/* ALL 16 AUTONOMOUS HEALTH-TECH AGENTS GRID */}
+      {/* ALL 16 CLINICAL & SECURITY AGENTS GRID */}
       <Box component="section" aria-labelledby="agents-fleet-heading" sx={{ py: { xs: 7, md: 9 } }}>
         <Container maxWidth="lg">
           <Stack
@@ -386,17 +403,17 @@ export default function HomePage() {
           >
             <Box sx={{ maxWidth: 740 }}>
               <Typography variant="overline" sx={{ color: '#134E68', fontWeight: 800, letterSpacing: '0.08em', display: 'block' }}>
-                3 Specialized Squads • 16 Verified Agents
+                3 Specialized Squads • 16 Production Modules
               </Typography>
               <Typography component="h2" variant="h2" id="agents-fleet-heading" sx={{ color: '#0F172A', mb: 1 }}>
-                Autonomous Health-Tech Agents
+                Clinical Safety &amp; Security Agents
               </Typography>
               <Typography variant="body1" sx={{ color: '#334155' }}>
-                Every agent has its own dedicated dashboard, FastMCP safety gate, HL7 FHIR R4 resource binding, and immutable SQLite audit trail.
+                Inspect every SlainteDash agent console below. Each module pairs automated clinical workflow speed with rule-based safety gates and tamper-evident audit logging.
               </Typography>
             </Box>
             <Button component={Link} href="/health-tech-agents/" variant="contained" color="primary">
-              Filter Agents by Squad
+              Browse All 16 Agents
             </Button>
           </Stack>
 
@@ -430,7 +447,7 @@ export default function HomePage() {
               Built for Frontline Clinicians, Hospital Trusts &amp; Community Care Teams
             </Typography>
             <Typography variant="body1" sx={{ color: '#334155' }}>
-              Like leading healthcare technology platforms, SlainteTech is designed for real clinical workflows — from high-acuity resuscitation bays and multi-disciplinary inpatient rounds to community nursing and enterprise cybersecurity command centres.
+              SlainteTech fits directly into frontline clinical delivery: from emergency resuscitation bays and ward rounds to community nursing visits and hospital security operations centres.
             </Typography>
           </Stack>
 
@@ -440,13 +457,13 @@ export default function HomePage() {
                 img: '/images/hero-clinicians.jpg',
                 title: 'Multi-Disciplinary Clinical Rounds',
                 subtitle: 'Hospital Inpatient & Specialist Wards',
-                desc: 'Physicians and charge nurses review live vital trajectories, NEWS2 early warnings, and cited AI bedside briefings on mobile tablets.',
+                desc: 'Physicians and charge nurses review 24-hour vital trajectories, NEWS2 escalation flags, and source-cited shift briefings on ward tablets.',
               },
               {
                 img: '/images/bedside-doctor.jpg',
                 title: 'Point-of-Care Bedside Review',
                 subtitle: 'General Practice & Ambulatory Care',
-                desc: 'Ambient voice scribing drafts structured SOAP notes and pre-screened orders while clinicians maintain unbroken eye contact with patients.',
+                desc: 'Structured SOAP consultation notes and safety-checked prescriptions are prepared in seconds so clinicians keep focus on the patient.',
               },
               {
                 img: '/images/emergency-team.jpg',
@@ -535,10 +552,10 @@ export default function HomePage() {
                 </Typography>
               </Stack>
               <Typography component="h2" variant="h2" id="decision-makers-heading" sx={{ color: '#FFFFFF', mb: 1.5 }}>
-                Land With Zero-Disruption Security. Expand Into Full Clinical Verticals.
+                Start in 15 Minutes Without Replacing Your EHR. Expand When Ready.
               </Typography>
               <Typography variant="body1" sx={{ color: '#CBD5E1' }}>
-                Deploy as a 15-minute read-only SMART-on-FHIR v2 security &amp; HIPE coding sidecar alongside Epic, Cerner, or MEDITECH — or launch standalone sovereign verticals for clinics, pharmacies, ambulances, and aerospace missions.
+                Launch a read-only SMART-on-FHIR v2 security and HIPE revenue audit beside Epic, Cerner, or MEDITECH, or run complete specialty clinical workspaces across hospitals, clinics, pharmacies, and ambulances.
               </Typography>
             </Grid>
             <Grid size={{ xs: 12, md: 5 }}>
@@ -552,7 +569,7 @@ export default function HomePage() {
                   endIcon={<ArrowForwardRoundedIcon aria-hidden="true" />}
                   sx={{ border: '1px solid #7DD3FC' }}
                 >
-                  Book a 30-Minute Live Architecture Demo
+                  Book Your 30-Minute Live Demo
                 </Button>
                 <Stack direction={{ xs: 'column', sm: 'row' }} spacing={1.5}>
                   <Button

@@ -8,7 +8,7 @@ import { CopyCodeBlock } from '@/components/CopyCodeBlock';
 export const metadata: Metadata = {
   title: 'Developer, SMART-on-FHIR v2 & HL7v2 Docs | SlainteTech',
   description:
-    'Technical integration documentation for SMART-on-FHIR v2 PKCE sidecar launch, HL7v2 pipe-hat ingestion, OIDC SSO, and FastMCP safety endpoints.',
+    'Technical integration documentation for SMART-on-FHIR v2 PKCE sidecar launch, HL7v2 pipe-hat ingestion, OIDC SSO, and clinical safety API endpoints.',
 };
 
 const SMART_CONFIG_JSON = `GET /.well-known/smart-configuration HTTP/1.1
@@ -48,7 +48,7 @@ export default function DocsPage() {
             tabIndex={-1}
             sx={{ color: '#FFFFFF', mb: 2, outline: 'none' }}
           >
-            SMART-on-FHIR v2, HL7v2 Bridge &amp; FastMCP Integration
+            SMART-on-FHIR v2, HL7v2 Bridge &amp; API Integration
           </Typography>
           <Typography variant="body1" sx={{ color: '#CBD5E1', maxWidth: 760 }}>
             Integrate SlainteTech alongside any HL7 FHIR R4 server (Epic, Oracle Cerner, HAPI FHIR, Azure Health Data Services) or legacy HL7v2 v2.3–v2.5 hospital interface engine.
@@ -88,10 +88,10 @@ export default function DocsPage() {
             <Grid size={{ xs: 12, md: 6 }}>
               <Paper elevation={0} sx={{ p: 3, bgcolor: '#FFFFFF', border: '1px solid #CBD5E1', borderRadius: 2.5, height: '100%' }}>
                 <Typography component="h3" variant="h3" sx={{ color: '#0F172A', mb: 1 }}>
-                  GEO &amp; Machine-Readable Manifest
+                  Technical &amp; Developer Platform Index
                 </Typography>
                 <Typography variant="body2" sx={{ color: '#334155', mb: 2 }}>
-                  Inspect our structured <code>/llms.txt</code> manifest indexing all 16 <code>/health-tech-agents/</code> and 8 <code>/verticals/</code> endpoints.
+                  Inspect our structured <code>/llms.txt</code> platform index covering all 16 <code>/health-tech-agents/</code> and 8 <code>/verticals/</code> endpoints.
                 </Typography>
                 <Stack direction="row" spacing={1.5}>
                   <Button component={Link} href="/llms.txt" variant="outlined" color="primary" size="small">

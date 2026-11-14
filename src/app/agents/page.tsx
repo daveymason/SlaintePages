@@ -8,8 +8,8 @@ import { HEALTH_TECH_AGENTS } from '@/data/agentsData';
 import { AgentSolutionCard } from '@/components/AgentSolutionCard';
 
 export const metadata: Metadata = {
-  title: 'Autonomous Agents Directory | SlainteTech AI Security Labs',
-  description: 'Direct index to all 16 SlainteTech autonomous health-tech agents at /health-tech-agents/.',
+  title: '16 Clinical & Security Agents Directory | SlainteTech',
+  description: 'Explore all 16 live SlainteTech clinical safety, revenue, and healthcare security modules.',
 };
 
 export default function AgentsAliasPage() {
@@ -28,10 +28,10 @@ export default function AgentsAliasPage() {
             tabIndex={-1}
             sx={{ color: '#FFFFFF', mb: 2, outline: 'none' }}
           >
-            SlainteTech Autonomous Health-Tech Agents
+            SlainteTech Clinical &amp; Security Agents
           </Typography>
           <Typography variant="body1" sx={{ color: '#CBD5E1', mb: 3, maxWidth: 680 }}>
-            Each of our 16 autonomous clinical, governance, and security agents has a dedicated technical page under <code>/health-tech-agents/</code>.
+            Inspect real screenshots and technical specifications for every module below, or open its full profile under <code>/health-tech-agents/</code>.
           </Typography>
           <Button
             component={Link}

@@ -5,9 +5,9 @@ import Grid from '@mui/material/Grid2';
 import { ContactFormClient } from './ContactFormClient';
 
 export const metadata: Metadata = {
-  title: 'Contact, Hospital Pilots & Investor Data Room | SlainteTech',
+  title: 'Book a 30-Day Clinical & Security Pilot | SlainteTech',
   description:
-    'Book a 30-day hospital SMART-on-FHIR pilot, clinic vertical deployment, or institutional investor data room walkthrough.',
+    'Start a zero-disruption 30-day hospital SMART-on-FHIR pilot, clinic deployment, or executive platform walkthrough with SlainteTech.',
 };
 
 export default function ContactPage() {
@@ -20,7 +20,7 @@ export default function ContactPage() {
       >
         <Container maxWidth="lg">
           <Typography variant="overline" sx={{ color: '#BAE6FD', fontWeight: 800, letterSpacing: '0.08em', display: 'block' }}>
-            Pilots • CISO Security Audits • Investor Data Room
+            30-Day Hospital Pilots • CISO Security Audits • Investor Briefings
           </Typography>
           <Typography
             component="h1"
@@ -29,10 +29,10 @@ export default function ContactPage() {
             tabIndex={-1}
             sx={{ color: '#FFFFFF', mb: 2, outline: 'none' }}
           >
-            Start With a Zero-Disruption Pilot
+            Go Live in 15 Minutes With Zero Disruption to Your Existing EHR
           </Typography>
           <Typography variant="body1" sx={{ color: '#E2E8F0', maxWidth: 720 }}>
-            Deploy SlainteTech inside your staging or clinical environment in under 15 minutes via Docker Compose or SMART-on-FHIR v2.
+            Connect SlainteTech alongside Epic, Cerner, MEDITECH, or your clinic database via read-only SMART-on-FHIR v2 and surface security gaps, missed HIPE revenue, and prescribing risks within days.
           </Typography>
         </Container>
       </Box>

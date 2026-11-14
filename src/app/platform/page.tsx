@@ -16,9 +16,9 @@ import ArrowForwardRoundedIcon from '@mui/icons-material/ArrowForwardRounded';
 import { CopyCodeBlock } from '@/components/CopyCodeBlock';
 
 export const metadata: Metadata = {
-  title: 'Platform & FastMCP Architecture | SlainteTech AI Security Labs',
+  title: 'Platform Architecture & Clinical Safety Engine | SlainteTech',
   description:
-    'Explore the 4-layer SlainteTech architecture: Responsive Clinical Verticals, 16 Autonomous Agents, Python FastMCP Safety Guardrails, and Sovereign HL7 FHIR R4.',
+    'Explore the 4-layer SlainteTech architecture: 8 Responsive Clinical Workspaces, 16 Clinical & Security Modules, Rule-Based Python Safety Gates, and Sovereign HL7 FHIR R4.',
 };
 
 const DOCKER_SNIPPET = `# Air-gapped or on-premise hospital deployment (under 5 minutes)
@@ -48,7 +48,7 @@ export default function PlatformPage() {
       >
         <Container maxWidth="lg">
           <Typography variant="overline" sx={{ color: '#BAE6FD', fontWeight: 800, letterSpacing: '0.08em', display: 'block' }}>
-            Deterministic Clinical &amp; Security Architecture
+            Clinical Safety &amp; Healthcare Cybersecurity Architecture
           </Typography>
           <Typography
             component="h1"
@@ -57,10 +57,10 @@ export default function PlatformPage() {
             tabIndex={-1}
             sx={{ color: '#FFFFFF', mb: 2, outline: 'none' }}
           >
-            Why SlainteTech Separates Language Models From Clinical Math
+            Why Clinical Decisions Never Rely on Guesswork
           </Typography>
           <Typography variant="body1" sx={{ color: '#E2E8F0', maxWidth: 760 }}>
-            Generic healthcare AI wrappers send raw patient charts to external LLMs and hope probabilistic weights calculate triage scores and drug interactions accurately. SlainteTech enforces a strict architectural boundary: LLMs draft and summarise; deterministic Python FastMCP tools compute scores, block unsafe drugs, and sign audit records.
+            Generic documentation tools send patient charts to cloud text generators and hope they score urgency or drug interactions safely. SlainteTech enforces a strict boundary: assisted drafting saves clinician time, while tested Python safety rules compute triage scores, block unsafe drugs, and sign immutable audit records.
           </Typography>
         </Container>
       </Box>
@@ -80,13 +80,13 @@ export default function PlatformPage() {
               },
               {
                 step: 'LAYER 02',
-                title: '16 Autonomous Health-Tech Agents',
-                desc: 'Three coordinated squads — SlainteShield Security (3), SlainteGov Governance & Coding (5), and SlainteClinical Care (8).',
+                title: '16 Clinical & Security Agents',
+                desc: 'Three coordinated squads: SlainteShield Security (3), SlainteGov Governance & Coding (5), and SlainteClinical Care (8).',
               },
               {
                 step: 'LAYER 03',
-                title: 'Python FastMCP Deterministic Safety Server (:8081)',
-                desc: 'Executes Royal College of Physicians NEWS2, Manchester Triage Cat 1–5, 3-Tier pharmacology (cross-reactivity, ISMP high-alert DDI, LOINC eGFR/Potassium), and RFC 1918 red-team locks with 0% LLM arithmetic.',
+                title: 'Python Clinical Safety Server (:8081)',
+                desc: 'Executes Royal College of Physicians NEWS2, Manchester Triage Cat 1 to 5, 3-Tier pharmacology (allergy cross-reactivity, high-alert interactions, renal eGFR/Potassium), and private-network security locks with 100% rule-based arithmetic.',
               },
               {
                 step: 'LAYER 04',
@@ -117,7 +117,7 @@ export default function PlatformPage() {
               5-Minute Sovereign Appliance Deployment
             </Typography>
             <Typography variant="body2" sx={{ color: '#334155', mb: 3 }}>
-              Run the entire stack inside a hospital VPC, private clinic server, or air-gapped field workstation using Docker Compose — or attach solely as a read-only SMART-on-FHIR v2 sidecar to Epic, Oracle Cerner, MEDITECH, or HAPI FHIR.
+              Run the entire platform inside a hospital VPC, clinic server, or air-gapped field workstation using Docker Compose, or attach safely as a read-only SMART-on-FHIR v2 sidecar to Epic, Oracle Cerner, MEDITECH, or HAPI FHIR.
             </Typography>
             <CopyCodeBlock caption="docker-compose sovereign appliance quickstart" code={DOCKER_SNIPPET} />
             <Stack direction={{ xs: 'column', sm: 'row' }} spacing={1.5} sx={{ mt: 3 }}>

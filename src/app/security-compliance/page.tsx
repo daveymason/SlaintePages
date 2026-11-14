@@ -18,26 +18,26 @@ import {
 import ArrowForwardRoundedIcon from '@mui/icons-material/ArrowForwardRounded';
 
 export const metadata: Metadata = {
-  title: 'Security, EU NIS2, EU AI Act & GDPR Art. 9 Compliance | SlainteTech',
+  title: 'Security, EU NIS2, Regulatory & GDPR Art. 9 Compliance | SlainteTech',
   description:
-    'Provable technical controls for EU NIS2, EU AI Act High-Risk Healthcare AI, GDPR Article 9 special-category PHI, OWASP API1:2023 BOLA, and HIQA standards.',
+    'Provable technical controls for EU NIS2, clinical safety governance, GDPR Article 9 special-category health data, OWASP API1:2023 BOLA, and HIQA standards.',
 };
 
 const COMPLIANCE_ROWS = [
   {
     framework: 'EU NIS2 Directive (2022/2555)',
     requirement: 'Art. 21 Cybersecurity Risk-Management, Supply-Chain & Incident Reporting',
-    control: 'Continuous BOLA compartment red-teaming (SlainteShield-BOLA), exact == dependency pinning + SRI sha384 checks (SlainteShield-CVE), and HMAC-SHA256 SIEM webhooks.',
+    control: 'Continuous BOLA compartment testing (SlainteShield-BOLA), exact == dependency pinning + SRI sha384 checks (SlainteShield-CVE), and HMAC-SHA256 SIEM webhooks.',
   },
   {
-    framework: 'EU AI Act (High-Risk Annex III)',
-    requirement: 'Art. 12 Record-Keeping, Art. 14 Human Oversight & Art. 15 Accuracy/Robustness',
-    control: 'Append-only ai_exchange SQLite ledger with BEFORE UPDATE/DELETE abort triggers, mandatory clinician co-sign on Ambient Scribe drafts, and deterministic Python NEWS2/Rx-Guard math.',
+    framework: 'Clinical Safety & AI Governance (EU AI Act Annex III / DCB0129)',
+    requirement: 'Art. 12 Record-Keeping, Art. 14 Human Oversight & Clinical Safety Case Verification',
+    control: 'Append-only audit ledger with SQLite BEFORE UPDATE/DELETE tamper abort triggers, mandatory clinician co-sign on consultation drafts, and rule-based Python NEWS2/Rx-Guard checks.',
   },
   {
     framework: 'EU GDPR Article 9 & 32',
     requirement: 'Special-Category Health Data Minimisation, Pseudonymisation & Vital Interests',
-    control: 'Pre-inference PII stripping (names, telecom, addresses, GMS IDs), salted SHA-256 subject digests in logs, BAA cloud gate, and 60-minute Break-the-Glass emergency grants.',
+    control: 'Pre-processing PII stripping (names, telecom, addresses, GMS IDs), salted SHA-256 subject digests in logs, BAA cloud gate, and 60-minute Break-the-Glass emergency grants.',
   },
   {
     framework: 'OWASP API Security Top 10 (2023)',
@@ -67,7 +67,7 @@ export default function SecurityCompliancePage() {
       >
         <Container maxWidth="lg">
           <Typography variant="overline" sx={{ color: '#FCA5A5', fontWeight: 800, letterSpacing: '0.08em', display: 'block' }}>
-            Provable Engineering Controls — Not Paper Promises
+            Provable Engineering Controls, Not Paper Promises
           </Typography>
           <Typography
             component="h1"

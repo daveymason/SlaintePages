@@ -23,9 +23,9 @@ import ArrowForwardRoundedIcon from '@mui/icons-material/ArrowForwardRounded';
 import { INDUSTRY_VERTICALS } from '@/data/verticalsData';
 
 export const metadata: Metadata = {
-  title: '8 Healthcare Industry Verticals | SlainteTech AI Security Labs',
+  title: '8 Healthcare Industry Verticals | SlainteTech',
   description:
-    'Explore all 8 SlainteTech clinical verticals: Emergency Departments, General Practice & Community Nursing, Psychiatry, Dentistry, Pharmacy, Ambulance ePCR, Sports Medicine, and Aerospace.',
+    'See live SlainteDash screenshots across all 8 healthcare verticals: Emergency Departments, GP & Community Nursing, Psychiatry, Dentistry, Pharmacy, Ambulance ePCR, Sports Medicine, and Aerospace.',
 };
 
 export default function VerticalsHubPage() {
@@ -44,7 +44,7 @@ export default function VerticalsHubPage() {
       >
         <Container maxWidth="lg">
           <Typography variant="overline" sx={{ color: '#BAE6FD', fontWeight: 800, letterSpacing: '0.08em', display: 'block' }}>
-            One Sovereign Engine • 8 Tailored Verticals
+            One Unified FHIR Platform • 8 Specialty Workspaces
           </Typography>
           <Typography
             component="h1"
@@ -53,10 +53,10 @@ export default function VerticalsHubPage() {
             tabIndex={-1}
             sx={{ color: '#FFFFFF', mb: 2, outline: 'none' }}
           >
-            Clinical Verticals Engineered for Every Care Setting
+            Purpose-Built Workspaces for Every Frontline Care Setting
           </Typography>
           <Typography variant="body1" sx={{ color: '#E2E8F0', maxWidth: 760 }}>
-            Every vertical runs natively inside the SlainteTech core application (&ldquo;Sign in as...&rdquo;) with role-specific FHIR R4 workflows, pre-assigned autonomous safety agents, and responsive desktop, tablet, and smartphone layouts.
+            Every vertical runs natively inside SlainteDash with dedicated specialty patient cohorts, FHIR R4 workflows, built-in safety gates, and responsive desktop, tablet, and mobile layouts.
           </Typography>
         </Container>
       </Box>
@@ -83,6 +83,23 @@ export default function VerticalsHubPage() {
                   }}
                 >
                   <CardContent sx={{ p: 3.5 }}>
+                    <Box
+                      component="img"
+                      src={v.dashboardScreenshot}
+                      alt={`${v.brand} (${v.forLabel}) live SlainteDash workspace screenshot`}
+                      loading="lazy"
+                      sx={{
+                        width: '100%',
+                        height: 220,
+                        objectFit: 'cover',
+                        objectPosition: 'top',
+                        borderRadius: 2,
+                        border: '1px solid #CBD5E1',
+                        mb: 2.5,
+                        display: 'block',
+                        bgcolor: '#0F172A',
+                      }}
+                    />
                     <Stack direction="row" justifyContent="space-between" alignItems="center" sx={{ mb: 1.5 }}>
                       <Box
                         component="span"
@@ -168,7 +185,7 @@ export default function VerticalsHubPage() {
           <TableContainer component={Paper} elevation={0} sx={{ border: '1px solid #CBD5E1', borderRadius: 2 }}>
             <Table aria-label="Industry verticals capability comparison">
               <caption style={{ textAlign: 'left', padding: '12px 16px', color: '#334155', fontSize: '0.875rem' }}>
-                Overview of primary clinical users, deterministic safety anchors, and responsive field form-factors per vertical.
+                Comparison of clinical users, safety guardrails, and supported devices across all 8 care settings.
               </caption>
               <TableHead sx={{ bgcolor: '#F1F5F9' }}>
                 <TableRow>

@@ -39,6 +39,21 @@ export function AgentSolutionCard({
         bgcolor: '#FFFFFF',
       }}
     >
+      <Box
+        component="img"
+        src={agent.dashboardScreenshot}
+        alt={`${agent.name} (${agent.codeName}) live SlainteDash preview`}
+        loading="lazy"
+        sx={{
+          width: '100%',
+          height: 175,
+          objectFit: 'cover',
+          objectPosition: 'top',
+          borderBottom: '1px solid #E2E8F0',
+          display: 'block',
+          bgcolor: '#0F172A',
+        }}
+      />
       <CardContent sx={{ p: 3, pb: 1.5 }}>
         <Stack direction="row" justifyContent="space-between" alignItems="flex-start" spacing={1.5} sx={{ mb: 2 }}>
           <Box

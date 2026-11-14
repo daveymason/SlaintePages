@@ -6,9 +6,9 @@ import Grid from '@mui/material/Grid2';
 import ArrowForwardRoundedIcon from '@mui/icons-material/ArrowForwardRounded';
 
 export const metadata: Metadata = {
-  title: 'About SlainteTech AI Security Labs | Sovereign Digital Health',
+  title: 'About SlainteTech | Clinical Safety & Healthcare API Security',
   description:
-    'SlainteTech AI Security Labs builds deterministic clinical safety, HL7 FHIR R4 interoperability, and autonomous healthcare cybersecurity agents in Ireland.',
+    'SlainteTech builds verified clinical safety checks, HL7 FHIR R4 interoperability, and continuous healthcare API security in Ireland.',
 };
 
 export default function AboutPage() {
@@ -30,10 +30,10 @@ export default function AboutPage() {
             tabIndex={-1}
             sx={{ color: '#FFFFFF', mb: 2, outline: 'none' }}
           >
-            Making Autonomous Clinical AI Provably Safe, Auditable &amp; Sovereign
+            Making Clinical Automation Safe, Verifiable &amp; Hospital-Ready
           </Typography>
           <Typography variant="body1" sx={{ color: '#E2E8F0', maxWidth: 740 }}>
-            Born from Irish healthcare interoperability and offensive API security research, SlainteTech AI Security Labs was founded on a simple rule: no language model should ever guess a vital-sign deterioration score, invent a drug interaction result, or silently leak special-category patient records.
+            Born from Irish healthcare interoperability and offensive API security engineering, SlainteTech was founded on one rule: vital-sign triage scores, medication safety checks, and patient privacy must never rely on guesswork.
           </Typography>
         </Container>
       </Box>
@@ -47,8 +47,8 @@ export default function AboutPage() {
           <Grid container spacing={3}>
             {[
               {
-                title: 'Deterministic Guardrails Over Probabilistic Hope',
-                text: 'Every physiological score (RCP NEWS2, Manchester Triage) and pharmacology check (Allergy cross-reactivity, ISMP DDI, LOINC eGFR) is executed by deterministic Python FastMCP code covered by automated regression tests.',
+                title: 'Rule-Based Safety Gates Before Anything Reaches the Chart',
+                text: 'Every physiological score (RCP NEWS2, Manchester Triage) and pharmacology check (allergy cross-reactivity, high-alert drug interactions, renal eGFR) executes in verified Python code backed by automated regression tests.',
               },
               {
                 title: 'Continuous Offensive Security Inside the Clinic',
