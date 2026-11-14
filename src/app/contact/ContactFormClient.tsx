@@ -5,7 +5,10 @@ import {
   Alert,
   Box,
   Button,
+  Checkbox,
   FormControl,
+  FormControlLabel,
+  FormHelperText,
   InputLabel,
   MenuItem,
   Paper,
@@ -43,6 +46,8 @@ export function ContactFormClient() {
   const [vertical, setVertical] = useState('emergency-departments');
   const [inquiryType, setInquiryType] = useState<TrackKey>('pilot');
   const [notes, setNotes] = useState('');
+  const [consentAccepted, setConsentAccepted] = useState(false);
+  const [consentError, setConsentError] = useState(false);
 
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
@@ -55,6 +60,10 @@ export function ContactFormClient() {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (!consentAccepted) {
+      setConsentError(true);
+      return;
+    }
     setSubmitting(true);
 
     const selectedVertical = INDUSTRY_VERTICALS.find((v) => v.slug === vertical);
@@ -67,6 +76,7 @@ export function ContactFormClient() {
       `Work Email: ${email.trim()}`,
       `Organization: ${organization.trim()}`,
       `Deployment Context: ${notes.trim() || 'Not specified'}`,
+      'Explicit Consent: Confirmed by requester (GDPR)',
     ];
     const body = bodyLines.join('\n');
     const composedMailto = `mailto:${selectedTrack.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
@@ -92,6 +102,7 @@ export function ContactFormClient() {
             vertical,
             verticalLabel,
             notes: notes.trim(),
+            consentAccepted: true,
             recipient: selectedTrack.email,
           }),
         });
@@ -277,12 +288,41 @@ export function ContactFormClient() {
               fullWidth
             />
 
+            <FormControl required error={consentError}>
+              <FormControlLabel
+                control={
+                  <Checkbox
+                    required
+                    id="contact-consent"
+                    name="consent"
+                    checked={consentAccepted}
+                    onChange={(e) => {
+                      setConsentAccepted(e.target.checked);
+                      if (e.target.checked) setConsentError(false);
+                    }}
+                    color="primary"
+                  />
+                }
+                label={
+                  <Typography variant="body2" sx={{ color: '#334155', fontSize: '0.88rem' }}>
+                    I explicitly consent to SlainteTech processing my contact details to respond to this inquiry and schedule the requested briefing in accordance with GDPR.
+                  </Typography>
+                }
+                sx={{ alignItems: 'flex-start', '& .MuiCheckbox-root': { pt: 0.25 } }}
+              />
+              {consentError && (
+                <FormHelperText>
+                  Please tick the consent box above so we can respond to your inquiry.
+                </FormHelperText>
+              )}
+            </FormControl>
+
             <Button
               type="submit"
               variant="contained"
               color="primary"
               size="large"
-              disabled={submitting}
+              disabled={submitting || !consentAccepted}
               endIcon={<SendRoundedIcon aria-hidden="true" />}
             >
               {submitting ? 'Sending Briefing Request...' : 'Request Live Briefing'}

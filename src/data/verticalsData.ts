@@ -40,6 +40,8 @@ export interface VerticalRecord {
   brand: string;
   roleLabel: string;
   layoutVariant: VerticalLayoutVariant;
+  coverImage: string;
+  coverImageAlt: string;
   dashboardScreenshot: string;
   palette: VerticalPalette;
   seoTitle: string;
@@ -74,6 +76,8 @@ export const INDUSTRY_VERTICALS: VerticalRecord[] = [
     brand: 'SlainteED',
     roleLabel: 'ED Consultants, Registrars & Triage Nurses',
     layoutVariant: 'resuscitation-command',
+    coverImage: '/images/verticals-photos/emergency-departments.jpg',
+    coverImageAlt: 'Emergency medicine doctors and triage nurses working around resuscitation bay monitors in a busy hospital ED',
     dashboardScreenshot: '/images/verticals/emergency-departments.png',
     palette: {
       heroBg: '#1E1B2E',
@@ -159,6 +163,8 @@ export const INDUSTRY_VERTICALS: VerticalRecord[] = [
     brand: 'SlainteGP',
     roleLabel: 'GPs, Practice Nurses & Care-at-Home Community Nurses',
     layoutVariant: 'longitudinal-care',
+    coverImage: '/images/verticals-photos/general-practice.jpg',
+    coverImageAlt: 'General practitioner and community nurse reviewing a patient chart together in a bright consultation room',
     dashboardScreenshot: '/images/verticals/general-practice.png',
     palette: {
       heroBg: '#0C2D48',
@@ -244,6 +250,8 @@ export const INDUSTRY_VERTICALS: VerticalRecord[] = [
     brand: 'SlaintePsych',
     roleLabel: 'Consultant Psychiatrists, CMHTs & Liaison Mental Health Nurses',
     layoutVariant: 'therapeutic-calm',
+    coverImage: '/images/verticals-photos/psychiatry.jpg',
+    coverImageAlt: 'Calm sunlit psychiatry and mental health therapy suite with indoor plants and warm clinician consultation',
     dashboardScreenshot: '/images/verticals/psychiatry.png',
     palette: {
       heroBg: '#1E1B3A',
@@ -329,6 +337,8 @@ export const INDUSTRY_VERTICALS: VerticalRecord[] = [
     brand: 'SlainteDent',
     roleLabel: 'Dental Surgeons, Oral Surgeons & Periodontists',
     layoutVariant: 'precision-odontogram',
+    coverImage: '/images/verticals-photos/dentistry.jpg',
+    coverImageAlt: 'Dental surgeon and chairside assistant working beside a digital tooth charting monitor in a modern surgery',
     dashboardScreenshot: '/images/verticals/dentistry.png',
     palette: {
       heroBg: '#0B2F35',
@@ -412,6 +422,8 @@ export const INDUSTRY_VERTICALS: VerticalRecord[] = [
     brand: 'SlaintePharm',
     roleLabel: 'Supervising Pharmacists, Hospital Clinical Pharmacists & Dispensers',
     layoutVariant: 'dispensing-matrix',
+    coverImage: '/images/verticals-photos/pharmacy.jpg',
+    coverImageAlt: 'Clinical pharmacist verifying prescriptions on a digital tablet inside a bright modern dispensary',
     dashboardScreenshot: '/images/verticals/pharmacy.png',
     palette: {
       heroBg: '#092B1E',
@@ -495,6 +507,8 @@ export const INDUSTRY_VERTICALS: VerticalRecord[] = [
     brand: 'SlainteEMS',
     roleLabel: 'Advanced Paramedics, EMTs & National Ambulance Control',
     layoutVariant: 'rugged-field-tablet',
+    coverImage: '/images/verticals-photos/ambulance-ems.jpg',
+    coverImageAlt: 'Paramedic crew with rugged ePCR tablet beside an emergency ambulance with warning lights at dusk',
     dashboardScreenshot: '/images/verticals/ambulance-ems.png',
     palette: {
       heroBg: '#291805',
@@ -578,6 +592,8 @@ export const INDUSTRY_VERTICALS: VerticalRecord[] = [
     brand: 'SlainteSport',
     roleLabel: 'Heads of Sports Medicine, Team Physicians & Club Physiotherapists',
     layoutVariant: 'athletic-telemetry',
+    coverImage: '/images/verticals-photos/sports-medicine.jpg',
+    coverImageAlt: 'Floodlit Irish Hurling and Gaelic Football stadium action with club medical staff tracking sideline vitals',
     dashboardScreenshot: '/images/verticals/sports-medicine.png',
     palette: {
       heroBg: '#0B2922',
@@ -662,6 +678,8 @@ export const INDUSTRY_VERTICALS: VerticalRecord[] = [
     brand: 'SlainteAstro',
     roleLabel: 'Flight Surgeons, Crew Medical Officers & Extreme-Environment Missions',
     layoutVariant: 'orbital-airgap',
+    coverImage: '/images/verticals-photos/astronaut-health.jpg',
+    coverImageAlt: 'Astronaut inspecting medical telemetry equipment inside a spacecraft bay overlooking Earth from orbit',
     dashboardScreenshot: '/images/verticals/astronaut-health.png',
     palette: {
       heroBg: '#090D1F',

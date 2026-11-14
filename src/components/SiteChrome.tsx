@@ -13,6 +13,7 @@ import {
   List,
   ListItem,
   ListItemButton,
+  ListItemIcon,
   ListItemText,
   Stack,
   Toolbar,
@@ -23,16 +24,21 @@ import MenuRoundedIcon from '@mui/icons-material/MenuRounded';
 import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
 import ShieldRoundedIcon from '@mui/icons-material/ShieldRounded';
 import MailOutlineRoundedIcon from '@mui/icons-material/MailOutlineRounded';
+import LayersRoundedIcon from '@mui/icons-material/LayersRounded';
+import WidgetsRoundedIcon from '@mui/icons-material/WidgetsRounded';
+import LocalHospitalRoundedIcon from '@mui/icons-material/LocalHospitalRounded';
+import VerifiedUserRoundedIcon from '@mui/icons-material/VerifiedUserRounded';
+import PaymentsRoundedIcon from '@mui/icons-material/PaymentsRounded';
+import CodeRoundedIcon from '@mui/icons-material/CodeRounded';
 import { INDUSTRY_VERTICALS } from '@/data/verticalsData';
 
 const PRIMARY_NAV = [
-  { label: 'Platform', href: '/platform/' },
-  { label: 'Agents', href: '/health-tech-agents/' },
-  { label: 'Verticals', href: '/verticals/' },
-  { label: 'Security', href: '/security-compliance/' },
-  { label: 'Pricing', href: '/pricing/' },
-  { label: 'Investors', href: '/investors/' },
-  { label: 'Docs', href: '/docs/' },
+  { label: 'Platform', href: '/platform/', icon: <LayersRoundedIcon sx={{ fontSize: 17 }} aria-hidden="true" /> },
+  { label: 'Agents', href: '/health-tech-agents/', icon: <WidgetsRoundedIcon sx={{ fontSize: 17 }} aria-hidden="true" /> },
+  { label: 'Verticals', href: '/verticals/', icon: <LocalHospitalRoundedIcon sx={{ fontSize: 17 }} aria-hidden="true" /> },
+  { label: 'Security', href: '/security-compliance/', icon: <VerifiedUserRoundedIcon sx={{ fontSize: 17 }} aria-hidden="true" /> },
+  { label: 'Pricing', href: '/pricing/', icon: <PaymentsRoundedIcon sx={{ fontSize: 17 }} aria-hidden="true" /> },
+  { label: 'Docs', href: '/docs/', icon: <CodeRoundedIcon sx={{ fontSize: 17 }} aria-hidden="true" /> },
 ];
 
 export function SiteChrome({ children }: { children: React.ReactNode }) {
@@ -100,11 +106,12 @@ export function SiteChrome({ children }: { children: React.ReactNode }) {
                   key={item.href}
                   component={Link}
                   href={item.href}
+                  startIcon={item.icon}
                   sx={{
                     color: '#E2E8F0',
                     fontWeight: 600,
-                    fontSize: '0.9rem',
-                    px: 1.4,
+                    fontSize: '0.88rem',
+                    px: 1.15,
                     whiteSpace: 'nowrap',
                     '&:hover': { bgcolor: 'rgba(56, 189, 248, 0.14)', color: '#FFFFFF' },
                   }}
@@ -171,6 +178,9 @@ export function SiteChrome({ children }: { children: React.ReactNode }) {
                   onClick={() => setMobileOpen(false)}
                   sx={{ borderRadius: 1.5, minHeight: 48 }}
                 >
+                  <ListItemIcon sx={{ minWidth: 36, color: '#38BDF8' }}>
+                    {item.icon}
+                  </ListItemIcon>
                   <ListItemText primary={item.label} primaryTypographyProps={{ fontWeight: 700, color: '#F8FAFC' }} />
                 </ListItemButton>
               </ListItem>
@@ -204,7 +214,7 @@ export function SiteChrome({ children }: { children: React.ReactNode }) {
           borderTop: '1px solid #1E293B',
           pt: 7,
           pb: 5,
-          mt: 8,
+          mt: 0,
         }}
       >
         <Container maxWidth="lg">
@@ -252,7 +262,6 @@ export function SiteChrome({ children }: { children: React.ReactNode }) {
                     { label: 'Platform & Safety Architecture', href: '/platform/' },
                     { label: 'Security, GDPR Art. 9 & NIS2', href: '/security-compliance/' },
                     { label: 'Commercial Pricing (Land & Expand)', href: '/pricing/' },
-                    { label: 'Investor Thesis & Data Room', href: '/investors/' },
                     { label: 'Developer & SMART-on-FHIR v2 Docs', href: '/docs/' },
                     { label: 'About SlainteTech', href: '/about/' },
                     { label: 'Contact & Hospital Pilot Booking', href: '/contact/' },

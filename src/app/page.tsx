@@ -295,14 +295,14 @@ export default function HomePage() {
                   <CardContent sx={{ p: 2.75 }}>
                     <Box
                       component="img"
-                      src={v.dashboardScreenshot}
-                      alt={`${v.brand} (${v.forLabel}) live SlainteDash workspace screenshot`}
+                      src={v.coverImage}
+                      alt={v.coverImageAlt}
                       loading="lazy"
                       sx={{
                         width: '100%',
-                        height: 152,
+                        height: 156,
                         objectFit: 'cover',
-                        objectPosition: 'top',
+                        objectPosition: 'center',
                         borderRadius: 1.5,
                         border: '1px solid #CBD5E1',
                         mb: 2,

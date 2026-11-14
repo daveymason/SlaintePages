@@ -115,14 +115,14 @@ export default function VerticalsHubPage() {
                   <CardContent sx={{ p: 3.5 }}>
                     <Box
                       component="img"
-                      src={v.dashboardScreenshot}
-                      alt={`${v.brand} (${v.forLabel}) live SlainteDash workspace screenshot`}
+                      src={v.coverImage}
+                      alt={v.coverImageAlt}
                       loading="lazy"
                       sx={{
                         width: '100%',
                         height: 220,
                         objectFit: 'cover',
-                        objectPosition: 'top',
+                        objectPosition: 'center',
                         borderRadius: 2,
                         border: '1px solid #CBD5E1',
                         mb: 2.5,

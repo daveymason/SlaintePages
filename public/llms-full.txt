@@ -30,7 +30,7 @@ Hospitals deploy SlainteTech either as a read-only 15-minute SMART-on-FHIR v2 si
 ---
 
 ## Commercial Pricing & Hospital ROI
-- **Tier 1: Clinic & Practice Edition (€199 - €499 / clinician / site / month)**
+- **Tier 1: Clinic & Practice Edition (€12,000 - €15,000 / year)**
   - Targets GP clinics, dental surgeries & DSOs, psychiatry practices, community nursing teams, and pharmacies.
   - Includes hands-free SOAP drafting, 3-Tier prescribing protection, mobile/tablet home-visit screens, and monthly Irish HSE PCRS / GMS batch CSV exports with GDPR Article 9 redaction.
 - **Tier 2: Hospital Security & Coding Sidecar (€48,000 - €95,000 / site / year)**

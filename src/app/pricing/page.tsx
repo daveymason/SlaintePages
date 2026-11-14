@@ -30,8 +30,8 @@ const TIERS = [
   {
     name: 'Tier 1: Clinic & Practice Edition',
     badge: 'GP, Dental, Psych & Pharmacy',
-    price: '€199 - €499',
-    unit: 'per clinician / site / month',
+    price: '€12,000 - €15,000',
+    unit: 'per year',
     summary:
       'Complete clinical workspace for GP surgeries, dental groups, psychiatry clinics, community nurses, and pharmacies.',
     features: [
@@ -94,7 +94,7 @@ const PRICING_FAQS: FaqItem[] = [
   {
     question: 'Are there per-API-call fees or hidden egress costs?',
     answer:
-      'No. All licensing is predictable per clinician/site (Tier 1) or per hospital site/private cloud instance (Tiers 2 and 3) with unlimited rule-based safety checks, NEWS2/MTS calculations, and security scans inside your licensed environment.',
+      'No. All licensing is predictable annual clinic or practice site licensing (Tier 1) or per hospital site/private cloud instance (Tiers 2 and 3) with unlimited rule-based safety checks, NEWS2/MTS calculations, and security scans inside your licensed environment.',
   },
 ];
 

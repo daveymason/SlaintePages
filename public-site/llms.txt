@@ -10,7 +10,7 @@ Contact & 30-Day Pilot Booking: hello@slainte-tech.com
 - [Home & Platform Overview](https://slainte-tech.com/): Rule-based clinical safety, EU NIS2 cybersecurity, and fast frontline charting on one HL7 FHIR R4 core.
 - [Platform & Safety Architecture](https://slainte-tech.com/platform/): Four-layer architecture separating HTMX frontline screens (:8000), 16 modules, FastMCP Python safety gates (:8081), and SlainteFHIR R4 (:8082).
 - [Security, GDPR Art. 9 & NIS2 Compliance](https://slainte-tech.com/security-compliance/): Built-in EU NIS2 Article 21 safeguards, GDPR Article 9 redaction, DCB0129/0160 engineering, OASIS SARIF v2.1.0 outputs, and offline execution.
-- [Commercial Pricing & Licensing](https://slainte-tech.com/pricing/): Clinic Edition (€199-€499/mo), Hospital Security & Coding Sidecar (€48,000-€95,000/yr with typical <90-day HIPE DRG payback), and Enterprise VPC / Offline deployment.
+- [Commercial Pricing & Licensing](https://slainte-tech.com/pricing/): Clinic Edition (€12,000-€15,000/yr), Hospital Security & Coding Sidecar (€48,000-€95,000/yr with typical <90-day HIPE DRG payback), and Enterprise VPC / Offline deployment.
 - [Investors & Strategic Rationale](https://slainte-tech.com/investors/): Defensibility thesis built on deterministic clinical safety, 15-minute SMART-on-FHIR v2 hospital entry, and 8 verticals on one codebase.
 - [Integration & API Documentation](https://slainte-tech.com/docs/): SMART-on-FHIR v2 PKCE S256 launch, HL7v2 ADT/ORU/RDE pipe-hat ingestion, OIDC SSO, and HMAC SIEM webhooks.
 - [About SlainteTech](https://slainte-tech.com/about/): Irish healthcare interoperability and security engineering team focused on measurable patient safety.
