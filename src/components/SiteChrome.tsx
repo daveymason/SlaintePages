@@ -248,7 +248,7 @@ export function SiteChrome({ children }: { children: React.ReactNode }) {
                 </Typography>
                 <Stack component="ul" role="list" spacing={1} sx={{ listStyle: 'none', p: 0, m: 0 }}>
                   {[
-                    { label: 'All 16 Clinical & Security Agents', href: '/health-tech-agents/' },
+                    { label: 'All 16 Clinical & Security Modules', href: '/health-tech-agents/' },
                     { label: 'Platform & Safety Architecture', href: '/platform/' },
                     { label: 'Security, GDPR Art. 9 & NIS2', href: '/security-compliance/' },
                     { label: 'Commercial Pricing (Land & Expand)', href: '/pricing/' },
@@ -256,7 +256,9 @@ export function SiteChrome({ children }: { children: React.ReactNode }) {
                     { label: 'Developer & SMART-on-FHIR v2 Docs', href: '/docs/' },
                     { label: 'About SlainteTech', href: '/about/' },
                     { label: 'Contact & Hospital Pilot Booking', href: '/contact/' },
-                    { label: 'Technical Platform Index (/llms.txt)', href: '/llms.txt' },
+                    { label: 'XML Sitemap (/sitemap.xml)', href: '/sitemap.xml' },
+                    { label: 'Platform Index (/llms.txt)', href: '/llms.txt' },
+                    { label: 'Full Technical Reference (/llms-full.txt)', href: '/llms-full.txt' },
                   ].map((item) => (
                     <li key={item.href}>
                       <Box

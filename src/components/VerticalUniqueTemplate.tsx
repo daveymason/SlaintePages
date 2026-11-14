@@ -20,12 +20,14 @@ import { HEALTH_TECH_AGENTS } from '@/data/agentsData';
 import { INDUSTRY_VERTICALS, type VerticalRecord } from '@/data/verticalsData';
 import { VerticalUniqueGraphic } from '@/components/VisualSchematics';
 import { AgentSolutionCard } from '@/components/AgentSolutionCard';
+import { TechnicalFaqSection } from '@/components/TechnicalFaqSection';
 
 /**
- * Unlike the canonical identical Agent pages, each of the 8 Vertical pages has:
- * - Its own WCAG-AA verified bespoke palette (`vertical.palette`)
- * - Its own unique custom SVG illustration (`<VerticalUniqueGraphic variant={vertical.layoutVariant} />`)
- * - Distinct section composition & visual framing keyed to `vertical.layoutVariant`
+ * Distinct bespoke Vertical template featuring:
+ * - Vertical-specific WCAG-AA verified palette & bespoke visual schematic graph
+ * - Clear, plain-language buyer copy
+ * - Live SlainteDash specialty screenshot
+ * - Buyer & ROI case, assigned safety modules, and dedicated Technical FAQ + JSON-LD
  */
 export function VerticalUniqueTemplate({ vertical }: { vertical: VerticalRecord }) {
   const { palette } = vertical;
@@ -35,7 +37,6 @@ export function VerticalUniqueTemplate({ vertical }: { vertical: VerticalRecord 
 
   const otherVerticals = INDUSTRY_VERTICALS.filter((v) => v.slug !== vertical.slug);
 
-  // Alternate visual hero alignment & KPI strip architecture per vertical variant so each industry feels bespoke
   const reverseHeroColumns =
     vertical.layoutVariant === 'longitudinal-care' ||
     vertical.layoutVariant === 'precision-odontogram' ||
@@ -48,8 +49,37 @@ export function VerticalUniqueTemplate({ vertical }: { vertical: VerticalRecord 
     vertical.layoutVariant === 'athletic-telemetry' ||
     vertical.layoutVariant === 'orbital-airgap';
 
+  const verticalUrl = `https://slainte-tech.com/verticals/${vertical.slug}/`;
+  const schemaGraph = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://slainte-tech.com/' },
+          { '@type': 'ListItem', position: 2, name: 'Care Verticals', item: 'https://slainte-tech.com/verticals/' },
+          { '@type': 'ListItem', position: 3, name: vertical.brand, item: verticalUrl },
+        ],
+      },
+      {
+        '@type': 'SoftwareApplication',
+        name: `SlainteTech ${vertical.brand} (${vertical.forLabel})`,
+        applicationCategory: 'HealthApplication',
+        operatingSystem: 'Web, iPadOS, Android, Linux',
+        url: verticalUrl,
+        description: vertical.seoDescription,
+        screenshot: `https://slainte-tech.com${vertical.dashboardScreenshot}`,
+      },
+    ],
+  };
+
   return (
     <Box>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaGraph) }}
+      />
+
       {/* BESPOKE VERTICAL HERO */}
       <Box
         component="section"
@@ -80,7 +110,7 @@ export function VerticalUniqueTemplate({ vertical }: { vertical: VerticalRecord 
               <li aria-hidden="true">/</li>
               <li>
                 <Box component={Link} href="/verticals/" sx={{ color: '#FFFFFF', textDecoration: 'underline' }}>
-                  Industry Verticals
+                  Care Verticals
                 </Box>
               </li>
               <li aria-hidden="true">/</li>
@@ -127,7 +157,7 @@ export function VerticalUniqueTemplate({ vertical }: { vertical: VerticalRecord 
                     fontSize: '0.8rem',
                   }}
                 >
-                  In-App Vertical: {vertical.brand}
+                  Workspace: {vertical.brand}
                 </Box>
               </Stack>
 
@@ -162,7 +192,7 @@ export function VerticalUniqueTemplate({ vertical }: { vertical: VerticalRecord 
               >
                 <DevicesRoundedIcon sx={{ color: '#7DD3FC', mt: 0.25, flexShrink: 0 }} aria-hidden="true" />
                 <Typography variant="body2" sx={{ color: '#F8FAFC' }}>
-                  <strong>Responsive Desktop, Tablet &amp; Mobile UX:</strong> {vertical.mobileReadyNote}
+                  <strong>Desktop, Tablet &amp; Mobile Ready:</strong> {vertical.mobileReadyNote}
                 </Typography>
               </Paper>
 
@@ -178,7 +208,7 @@ export function VerticalUniqueTemplate({ vertical }: { vertical: VerticalRecord 
                     '&:hover': { bgcolor: '#F1F5F9' },
                   }}
                 >
-                  Request {vertical.brand} Live Demo
+                  Book a Live {vertical.brand} Demo
                 </Button>
                 <Button
                   component={Link}
@@ -190,7 +220,7 @@ export function VerticalUniqueTemplate({ vertical }: { vertical: VerticalRecord 
                     '&:hover': { borderColor: '#FFFFFF', bgcolor: 'rgba(255,255,255,0.1)' },
                   }}
                 >
-                  View Vertical Licensing
+                  See Pricing &amp; Pilot Options
                 </Button>
               </Stack>
             </Grid>
@@ -248,14 +278,14 @@ export function VerticalUniqueTemplate({ vertical }: { vertical: VerticalRecord 
           >
             <Box>
               <Typography variant="overline" sx={{ color: palette.accentMain, fontWeight: 800, letterSpacing: '0.08em', display: 'block' }}>
-                Live Production Software: {vertical.brand}
+                See {vertical.brand} In Action
               </Typography>
               <Typography component="h2" variant="h2" id="vertical-live-preview-heading" sx={{ color: '#0F172A' }}>
-                Inside SlainteDash: Live {vertical.forLabel.replace(/^For /, '')} Workspace
+                What Your Team Sees Every Day in {vertical.brand}
               </Typography>
             </Box>
             <Typography variant="body2" sx={{ color: '#475569', maxWidth: 440 }}>
-              Real capture from {vertical.brand} running specialty FHIR R4 patient cohorts, frontline workflows, and built-in clinical safety gates.
+              Real live screen capture from SlainteDash with dedicated {vertical.forLabel.replace(/^For /, '').toLowerCase()} patient records and built-in safety checks.
             </Typography>
           </Stack>
 
@@ -287,7 +317,7 @@ export function VerticalUniqueTemplate({ vertical }: { vertical: VerticalRecord 
                 <Box sx={{ width: 10, height: 10, borderRadius: '50%', bgcolor: '#22C55E' }} />
               </Stack>
               <Typography variant="caption" sx={{ color: '#CBD5E1', fontFamily: 'monospace', fontSize: '0.78rem' }}>
-                slaintedash.internal / {vertical.brand} • {vertical.roleLabel}
+                SlainteDash | {vertical.brand} ({vertical.roleLabel})
               </Typography>
               <Box sx={{ width: 42 }} />
             </Box>
@@ -305,7 +335,7 @@ export function VerticalUniqueTemplate({ vertical }: { vertical: VerticalRecord 
         </Container>
       </Box>
 
-      {/* PAIN POINTS VS. RULE-BASED SLAINTETECH FIX */}
+      {/* PAIN POINTS VS. CLEAN CLINICAL SOLUTION */}
       <Box
         component="section"
         aria-labelledby="clinical-challenges-heading"
@@ -317,10 +347,13 @@ export function VerticalUniqueTemplate({ vertical }: { vertical: VerticalRecord 
               variant="overline"
               sx={{ color: palette.accentMain, fontWeight: 800, letterSpacing: '0.08em', display: 'block' }}
             >
-              Built Specifically for {vertical.roleLabel}
+              Built for {vertical.roleLabel}
             </Typography>
-            <Typography component="h2" variant="h2" id="clinical-challenges-heading" sx={{ color: '#0F172A' }}>
-              Eliminate Workflow Bottlenecks &amp; Protect Every Patient Interaction
+            <Typography component="h2" variant="h2" id="clinical-challenges-heading" sx={{ color: '#0F172A', mb: 1 }}>
+              Save Staff Hours &amp; Prevent Avoidable Clinical Mistakes
+            </Typography>
+            <Typography variant="body1" sx={{ color: '#334155' }}>
+              Replace fragmented workarounds and alert fatigue with clear safety checks built around how your care team actually works.
             </Typography>
           </Box>
 
@@ -340,7 +373,7 @@ export function VerticalUniqueTemplate({ vertical }: { vertical: VerticalRecord 
                       <WarningAmberRoundedIcon sx={{ color: '#B45309', mt: 0.25, flexShrink: 0 }} aria-hidden="true" />
                       <Box>
                         <Typography variant="caption" sx={{ fontWeight: 800, color: '#B45309', textTransform: 'uppercase' }}>
-                          Legacy Risk #{idx + 1}
+                          Daily Bottleneck #{idx + 1}
                         </Typography>
                         <Typography component="h3" variant="h3" sx={{ fontSize: '1.05rem', color: '#0F172A', mt: 0.25 }}>
                           {item.pain}
@@ -359,7 +392,7 @@ export function VerticalUniqueTemplate({ vertical }: { vertical: VerticalRecord 
                       <Stack direction="row" spacing={1} alignItems="flex-start">
                         <CheckCircleRoundedIcon sx={{ color: '#15803D', mt: 0.25, flexShrink: 0 }} aria-hidden="true" />
                         <Typography variant="body2" sx={{ color: '#0F172A', fontWeight: 500 }}>
-                          <strong>{vertical.brand} Guardrail:</strong> {item.deterministicFix}
+                          <strong>How {vertical.brand} Solves It:</strong> {item.deterministicFix}
                         </Typography>
                       </Stack>
                     </Box>
@@ -371,7 +404,7 @@ export function VerticalUniqueTemplate({ vertical }: { vertical: VerticalRecord 
         </Container>
       </Box>
 
-      {/* OPERATIONAL WORKFLOW & EXECUTIVE BUYER / INVESTOR ROI */}
+      {/* OPERATIONAL WORKFLOW & EXECUTIVE BUYER ROI */}
       <Box component="section" aria-labelledby="workflow-roi-heading" sx={{ py: { xs: 6, md: 8 }, bgcolor: '#FFFFFF', borderBottom: '1px solid #CBD5E1' }}>
         <Container maxWidth="lg">
           <Grid container spacing={4} alignItems="stretch">
@@ -380,10 +413,13 @@ export function VerticalUniqueTemplate({ vertical }: { vertical: VerticalRecord 
                 variant="overline"
                 sx={{ color: palette.accentMain, fontWeight: 800, letterSpacing: '0.08em', display: 'block' }}
               >
-                Live In-App Workflow (&ldquo;Sign in as {vertical.brand}&rdquo;)
+                Day-One Workflow
               </Typography>
-              <Typography component="h2" variant="h2" id="workflow-roi-heading" sx={{ color: '#0F172A', mb: 3 }}>
-                3-Step Operational Execution
+              <Typography component="h2" variant="h2" id="workflow-roi-heading" sx={{ color: '#0F172A', mb: 1 }}>
+                How Your Team Uses {vertical.brand} in 3 Simple Steps
+              </Typography>
+              <Typography variant="body2" sx={{ color: '#475569', mb: 3 }}>
+                Fast onboarding for doctors, nurses, and allied staff with minimal clicks.
               </Typography>
 
               <Stack spacing={2}>
@@ -450,17 +486,17 @@ export function VerticalUniqueTemplate({ vertical }: { vertical: VerticalRecord 
                   <Stack direction="row" spacing={1} alignItems="center" sx={{ mb: 2 }}>
                     <VerifiedUserRoundedIcon sx={{ color: '#7DD3FC' }} aria-hidden="true" />
                     <Typography variant="overline" sx={{ color: '#BAE6FD', fontWeight: 800, letterSpacing: '0.08em' }}>
-                      Decision-Maker &amp; Buyer Brief
+                      Buyer Business Case
                     </Typography>
                   </Stack>
 
                   <Typography component="h3" variant="h3" sx={{ color: '#FFFFFF', mb: 2.5 }}>
-                    Commercial &amp; Governance Case for {vertical.brand}
+                    Why Executives Choose {vertical.brand}
                   </Typography>
 
                   <Box sx={{ mb: 2 }}>
                     <Typography variant="caption" sx={{ color: '#94A3B8', fontWeight: 800, textTransform: 'uppercase' }}>
-                      Primary Clinical &amp; Executive Buyers
+                      Who Owns the Budget
                     </Typography>
                     <Typography variant="body2" sx={{ color: '#F8FAFC', mt: 0.5 }}>
                       {vertical.buyerRoi.clinicalBuyer}
@@ -469,7 +505,7 @@ export function VerticalUniqueTemplate({ vertical }: { vertical: VerticalRecord 
 
                   <Box sx={{ mb: 2 }}>
                     <Typography variant="caption" sx={{ color: '#94A3B8', fontWeight: 800, textTransform: 'uppercase' }}>
-                      Measurable Operational &amp; Financial ROI
+                      Financial &amp; Operational Payback
                     </Typography>
                     <Typography variant="body2" sx={{ color: '#F8FAFC', mt: 0.5 }}>
                       {vertical.buyerRoi.economicImpact}
@@ -478,7 +514,7 @@ export function VerticalUniqueTemplate({ vertical }: { vertical: VerticalRecord 
 
                   <Box sx={{ mb: 3 }}>
                     <Typography variant="caption" sx={{ color: '#94A3B8', fontWeight: 800, textTransform: 'uppercase' }}>
-                      Regulatory &amp; Medico-Legal Guarantee
+                      Inspection &amp; Liability Protection
                     </Typography>
                     <Typography variant="body2" sx={{ color: '#DCFCE7', mt: 0.5 }}>
                       {vertical.buyerRoi.complianceGuarantee}
@@ -495,7 +531,7 @@ export function VerticalUniqueTemplate({ vertical }: { vertical: VerticalRecord 
                   endIcon={<ArrowForwardRoundedIcon aria-hidden="true" />}
                   sx={{ border: '1px solid #7DD3FC' }}
                 >
-                  Schedule {vertical.brand} Pilot Review
+                  Book a 15-Min {vertical.brand} Walkthrough
                 </Button>
               </Paper>
             </Grid>
@@ -511,13 +547,13 @@ export function VerticalUniqueTemplate({ vertical }: { vertical: VerticalRecord 
               variant="overline"
               sx={{ color: palette.accentMain, fontWeight: 800, letterSpacing: '0.08em', display: 'block' }}
             >
-              Active Clinical &amp; Security Modules in {vertical.brand}
+              Included in {vertical.brand}
             </Typography>
             <Typography component="h2" variant="h2" id="assigned-agents-heading" sx={{ color: '#0F172A', mb: 1 }}>
-              Built-In Agents for {vertical.forLabel.replace(/^For /, '')}
+              Safety &amp; Security Modules Active in This Workspace
             </Typography>
             <Typography variant="body2" sx={{ color: '#334155' }}>
-              Every module below runs natively inside the {vertical.brand} workspace with verified safety checks and tamper-evident audit logs.
+              Every module below runs automatically inside {vertical.brand} with full staff audit trails.
             </Typography>
           </Box>
 
@@ -532,7 +568,7 @@ export function VerticalUniqueTemplate({ vertical }: { vertical: VerticalRecord 
           {/* Cross-vertical switcher pills */}
           <Paper elevation={0} sx={{ mt: 6, p: 3, bgcolor: '#FFFFFF', border: '1px solid #CBD5E1', borderRadius: 2.5 }}>
             <Typography component="h3" variant="h3" sx={{ color: '#0F172A', mb: 1.5 }}>
-              Explore Other SlainteTech Industry Verticals
+              Other Care Settings Powered by SlainteTech
             </Typography>
             <Stack direction="row" flexWrap="wrap" gap={1}>
               {otherVerticals.map((ov) => (
@@ -555,6 +591,15 @@ export function VerticalUniqueTemplate({ vertical }: { vertical: VerticalRecord 
           </Paper>
         </Container>
       </Box>
+
+      {/* TECHNICAL FAQ FOR THIS VERTICAL */}
+      <TechnicalFaqSection
+        eyebrow={`${vertical.brand} Technical FAQ`}
+        title={`${vertical.brand} Technical & Integration FAQ`}
+        subtitle={`Architecture, standards, privacy, and deployment details for IT leads and clinical safety teams reviewing ${vertical.forLabel.replace(/^For /, '')}.`}
+        accentColor={palette.accentMain}
+        items={vertical.faqs}
+      />
     </Box>
   );
 }

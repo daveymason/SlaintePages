@@ -2,7 +2,7 @@
   "name": "slainte-pages",
   "version": "1.0.0",
   "private": true,
-  "description": "SlainteTech AI Security Labs — MUI + Next.js Static Public Platform (/health-tech-agents/* & /verticals/*)",
+  "description": "SlainteTech: MUI + Next.js Static Public Platform (/health-tech-agents/* & /verticals/*)",
   "scripts": {
     "dev": "next dev --port 3001",
     "build": "next build",

@@ -48,7 +48,7 @@ export function AgentsDirectoryClient() {
       </Stack>
 
       <Typography variant="body2" sx={{ color: '#334155', mb: 2.5, fontWeight: 700 }} aria-live="polite">
-        Showing {visibleAgents.length} of {HEALTH_TECH_AGENTS.length} verified health-tech agents
+        Showing {visibleAgents.length} of {HEALTH_TECH_AGENTS.length} verified clinical &amp; security modules
       </Typography>
 
       <Grid container spacing={3}>

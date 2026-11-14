@@ -21,24 +21,56 @@ import Grid from '@mui/material/Grid2';
 import ArrowForwardRoundedIcon from '@mui/icons-material/ArrowForwardRounded';
 import VerifiedRoundedIcon from '@mui/icons-material/VerifiedRounded';
 import HubRoundedIcon from '@mui/icons-material/HubRounded';
-import { HEALTH_TECH_AGENTS, type AgentRecord } from '@/data/agentsData';
+import { HEALTH_TECH_AGENTS, getAgentFaqs, type AgentRecord } from '@/data/agentsData';
 import { AgentIcon } from '@/components/AgentIcon';
 import { AgentSchematicSvg } from '@/components/VisualSchematics';
 import { AgentSolutionCard } from '@/components/AgentSolutionCard';
+import { TechnicalFaqSection } from '@/components/TechnicalFaqSection';
 
 /**
- * Canonical, identical layout template shared across all 16 `/health-tech-agents/<agent-real-name>/` pages:
- * 1. Hero + Architecture Schematic
- * 2. 3-Column Deterministic Capabilities & Guardrails
- * 3. Full-Width Page Break featuring a verified real-world Vertical Use Case + direct Vertical link
- * 4. Technical Specification & HL7 FHIR R4 Binding Table
- * 5. End-of-page 3-Column Solution Grid showcasing the other 15 Health-Tech Agents
+ * Canonical module layout shared across all 16 `/health-tech-agents/<slug>/` pages:
+ * 1. Clear buyer hero + workflow schematic graph
+ * 2. Live SlainteDash console screenshot
+ * 3. Plain-English 3-column protection & time-saving benefits
+ * 4. Full-width real healthcare scenario & vertical link
+ * 5. Technical specification table + dedicated Technical FAQ with JSON-LD
+ * 6. Solution grid showcasing the other 15 modules
  */
 export function AgentCanonicalTemplate({ agent }: { agent: AgentRecord }) {
   const otherAgents = HEALTH_TECH_AGENTS.filter((item) => item.slug !== agent.slug);
+  const agentFaqs = getAgentFaqs(agent);
+  const agentUrl = `https://slainte-tech.com/health-tech-agents/${agent.slug}/`;
+
+  const schemaGraph = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://slainte-tech.com/' },
+          { '@type': 'ListItem', position: 2, name: 'Modules & Agents', item: 'https://slainte-tech.com/health-tech-agents/' },
+          { '@type': 'ListItem', position: 3, name: agent.name, item: agentUrl },
+        ],
+      },
+      {
+        '@type': 'SoftwareApplication',
+        name: `${agent.name} (${agent.codeName})`,
+        applicationCategory: 'HealthApplication',
+        operatingSystem: 'Web, Linux, Cloud VPC',
+        url: agentUrl,
+        description: agent.seoDescription,
+        screenshot: `https://slainte-tech.com${agent.dashboardScreenshot}`,
+      },
+    ],
+  };
 
   return (
     <Box>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaGraph) }}
+      />
+
       {/* SECTION 1: CANONICAL AGENT HERO */}
       <Box
         component="section"
@@ -73,7 +105,7 @@ export function AgentCanonicalTemplate({ agent }: { agent: AgentRecord }) {
                   href="/health-tech-agents/"
                   sx={{ color: '#BAE6FD', textDecoration: 'none', '&:hover': { textDecoration: 'underline' } }}
                 >
-                  Health-Tech Agents
+                  Clinical &amp; Security Modules
                 </Box>
               </li>
               <li aria-hidden="true">/</li>
@@ -88,7 +120,7 @@ export function AgentCanonicalTemplate({ agent }: { agent: AgentRecord }) {
               <Stack direction="row" flexWrap="wrap" gap={1} alignItems="center" sx={{ mb: 2 }}>
                 <Chip label={agent.squad} color={agent.squadColor} size="small" />
                 <Chip
-                  label={`Agent ID: ${agent.codeName}`}
+                  label={`Module ID: ${agent.codeName}`}
                   size="small"
                   sx={{
                     bgcolor: '#1E293B',
@@ -148,7 +180,7 @@ export function AgentCanonicalTemplate({ agent }: { agent: AgentRecord }) {
                   endIcon={<ArrowForwardRoundedIcon aria-hidden="true" />}
                   sx={{ border: '1px solid #7DD3FC' }}
                 >
-                  Deploy {agent.codeName} Pilot
+                  Book a {agent.codeName} Pilot
                 </Button>
                 <Button
                   component={Link}
@@ -188,14 +220,14 @@ export function AgentCanonicalTemplate({ agent }: { agent: AgentRecord }) {
           >
             <Box>
               <Typography variant="overline" sx={{ color: '#134E68', fontWeight: 800, letterSpacing: '0.08em', display: 'block' }}>
-                Live Application Preview: {agent.codeName}
+                See {agent.codeName} Running Live
               </Typography>
               <Typography component="h2" variant="h2" id="live-console-heading" sx={{ color: '#0F172A' }}>
-                Inside SlainteDash: Live {agent.name} Console
+                Inside SlainteDash: Live {agent.name} View
               </Typography>
             </Box>
             <Typography variant="body2" sx={{ color: '#475569', maxWidth: 420 }}>
-              Real production screenshot from SlainteDash running live clinical checks, FHIR R4 records, and audit logs.
+              Real software capture from SlainteDash showing live checks, patient safety alerts, and signed audit logs.
             </Typography>
           </Stack>
 
@@ -227,7 +259,7 @@ export function AgentCanonicalTemplate({ agent }: { agent: AgentRecord }) {
                 <Box sx={{ width: 10, height: 10, borderRadius: '50%', bgcolor: '#22C55E' }} />
               </Stack>
               <Typography variant="caption" sx={{ color: '#CBD5E1', fontFamily: 'monospace', fontSize: '0.78rem' }}>
-                slaintedash.internal / {agent.codeName} ({agent.squad})
+                SlainteDash | {agent.codeName} ({agent.squad})
               </Typography>
               <Box sx={{ width: 42 }} />
             </Box>
@@ -245,7 +277,7 @@ export function AgentCanonicalTemplate({ agent }: { agent: AgentRecord }) {
         </Container>
       </Box>
 
-      {/* SECTION 2: 3-COLUMN RULE-BASED CAPABILITIES */}
+      {/* SECTION 2: 3-COLUMN BUYER BENEFITS */}
       <Box component="section" aria-labelledby="capabilities-heading" sx={{ py: { xs: 6, md: 8 } }}>
         <Container maxWidth="lg">
           <Box sx={{ mb: 4, maxWidth: 740 }}>
@@ -253,13 +285,13 @@ export function AgentCanonicalTemplate({ agent }: { agent: AgentRecord }) {
               variant="overline"
               sx={{ color: '#134E68', fontWeight: 800, letterSpacing: '0.08em', display: 'block' }}
             >
-              Verified Safety Architecture
+              Key Buyer Outcomes
             </Typography>
             <Typography component="h2" variant="h2" id="capabilities-heading" sx={{ color: '#0F172A', mb: 1 }}>
-              How {agent.codeName} Enforces Clinical &amp; Security Safety
+              Three Ways {agent.codeName} Protects Your Patients &amp; Organization
             </Typography>
             <Typography variant="body1" sx={{ color: '#334155' }}>
-              Every SlainteTech module separates language generation from rule-based Python safety checks, HL7 FHIR schema validation, and tamper-evident audit trails.
+              Every safeguard runs automatically behind your clinical workflows using verified rules and clear audit trails.
             </Typography>
           </Box>
 
@@ -366,7 +398,7 @@ export function AgentCanonicalTemplate({ agent }: { agent: AgentRecord }) {
                   fontWeight: 700,
                 }}
               >
-                Verified Impact: {agent.verticalUseCase.outcomeMetric}
+                Verified Result: {agent.verticalUseCase.outcomeMetric}
               </Box>
             </Grid>
 
@@ -382,10 +414,10 @@ export function AgentCanonicalTemplate({ agent }: { agent: AgentRecord }) {
                 }}
               >
                 <Typography component="p" variant="subtitle2" sx={{ color: '#BAE6FD', fontWeight: 800, mb: 1 }}>
-                  DEPLOYED INDUSTRY VERTICAL
+                  SEE THIS CARE SETTING LIVE
                 </Typography>
                 <Typography variant="body2" sx={{ color: '#E2E8F0', mb: 2.5 }}>
-                  See how {agent.codeName} operates inside the live {agent.verticalUseCase.verticalTitle.replace(/^For /, '')} workflow across desktop and mobile clinical devices.
+                  Explore how {agent.codeName} fits directly into {agent.verticalUseCase.verticalTitle.replace(/^For /, '')} across desktop and mobile tablets.
                 </Typography>
                 <Button
                   component={Link}
@@ -404,31 +436,34 @@ export function AgentCanonicalTemplate({ agent }: { agent: AgentRecord }) {
         </Container>
       </Box>
 
-      {/* SECTION 4: TECHNICAL SPECIFICATION & HL7 FHIR R4 BINDING TABLE */}
-      <Box component="section" aria-labelledby="specs-heading" sx={{ py: { xs: 6, md: 8 }, bgcolor: '#FFFFFF', borderBottom: '1px solid #CBD5E1' }}>
+      {/* SECTION 4: TECHNICAL SPECIFICATION TABLE */}
+      <Box component="section" aria-labelledby="specs-heading" sx={{ py: { xs: 6, md: 8 }, bgcolor: '#FFFFFF' }}>
         <Container maxWidth="lg">
           <Typography
             variant="overline"
             sx={{ color: '#134E68', fontWeight: 800, letterSpacing: '0.08em', display: 'block' }}
           >
-            Engineering &amp; Regulatory Verification
+            For Hospital IT &amp; Safety Engineers
           </Typography>
-          <Typography component="h2" variant="h2" id="specs-heading" sx={{ color: '#0F172A', mb: 3 }}>
-            HL7 FHIR R4 Bindings &amp; Standards Alignment
+          <Typography component="h2" variant="h2" id="specs-heading" sx={{ color: '#0F172A', mb: 1 }}>
+            Technical Architecture &amp; Standards Mapping
+          </Typography>
+          <Typography variant="body2" sx={{ color: '#475569', mb: 3 }}>
+            Exact mechanisms, HL7 FHIR R4 bindings, and statutory standards verified for {agent.codeName}.
           </Typography>
 
           <TableContainer component={Paper} elevation={0} sx={{ border: '1px solid #CBD5E1', borderRadius: 2 }}>
             <Table aria-label={`${agent.name} technical specification`}>
               <caption style={{ textAlign: 'left', padding: '12px 16px', color: '#334155', fontSize: '0.875rem' }}>
-                Verified configuration parameters for {agent.codeName} inside the SlainteTech HL7 FHIR R4 runtime.
+                Verified technical controls for {agent.codeName} inside the SlainteTech HL7 FHIR R4 runtime.
               </caption>
               <TableHead sx={{ bgcolor: '#F1F5F9' }}>
                 <TableRow>
                   <TableCell scope="col" sx={{ fontWeight: 800, color: '#0F172A' }}>
-                    Control Surface
+                    Control Area
                   </TableCell>
                   <TableCell scope="col" sx={{ fontWeight: 800, color: '#0F172A' }}>
-                    Verified Control Mechanism
+                    How It Works Under the Hood
                   </TableCell>
                   <TableCell scope="col" sx={{ fontWeight: 800, color: '#0F172A' }}>
                     HL7 FHIR R4 / Endpoint Binding
@@ -457,8 +492,16 @@ export function AgentCanonicalTemplate({ agent }: { agent: AgentRecord }) {
         </Container>
       </Box>
 
-      {/* SECTION 5: OTHER CLINICAL & SECURITY AGENTS IN A 3-COLUMN SOLUTION GRID */}
-      <Box component="section" aria-labelledby="other-agents-heading" sx={{ py: { xs: 6, md: 8 } }}>
+      {/* SECTION 5: DEDICATED TECHNICAL FAQ WITH JSON-LD */}
+      <TechnicalFaqSection
+        eyebrow={`${agent.codeName} Technical FAQ`}
+        title={`${agent.codeName} Technical & Integration FAQ`}
+        subtitle={`Architecture, standards, API integration, and safety details for IT and governance leads reviewing ${agent.name}.`}
+        items={agentFaqs}
+      />
+
+      {/* SECTION 6: OTHER MODULES IN A 3-COLUMN SOLUTION GRID */}
+      <Box component="section" aria-labelledby="other-agents-heading" sx={{ py: { xs: 6, md: 8 }, bgcolor: '#FFFFFF' }}>
         <Container maxWidth="lg">
           <Stack
             direction={{ xs: 'column', md: 'row' }}
@@ -472,14 +515,14 @@ export function AgentCanonicalTemplate({ agent }: { agent: AgentRecord }) {
                 variant="overline"
                 sx={{ color: '#134E68', fontWeight: 800, letterSpacing: '0.08em', display: 'block' }}
               >
-                Unified 16-Agent Sovereign Fleet
+                Explore the Full Platform
               </Typography>
               <Typography component="h2" variant="h2" id="other-agents-heading" sx={{ color: '#0F172A' }}>
-                Explore the Other 15 Health-Tech Agents
+                See All 15 Other SlainteTech Modules
               </Typography>
             </Box>
             <Button component={Link} href="/health-tech-agents/" variant="outlined" color="primary">
-              View All 16 Agents Directory
+              Browse Full 16-Module Directory
             </Button>
           </Stack>
 

@@ -1,15 +1,42 @@
-import type { Metadata } from 'next';
 import React from 'react';
 import Link from 'next/link';
 import { Box, Button, Card, CardContent, Container, Stack, Typography } from '@mui/material';
 import Grid from '@mui/material/Grid2';
 import ArrowForwardRoundedIcon from '@mui/icons-material/ArrowForwardRounded';
+import { TechnicalFaqSection, type FaqItem } from '@/components/TechnicalFaqSection';
+import { buildPageMetadata } from '@/utils/seo';
 
-export const metadata: Metadata = {
-  title: 'About SlainteTech | Clinical Safety & Healthcare API Security',
+export const metadata = buildPageMetadata({
+  title: 'About SlainteTech | Patient Safety & Healthcare Security',
   description:
-    'SlainteTech builds verified clinical safety checks, HL7 FHIR R4 interoperability, and continuous healthcare API security in Ireland.',
-};
+    'SlainteTech builds verified clinical workflow software, rule-based prescription safety checks, and continuous healthcare API protection in Ireland.',
+  path: '/about/',
+  ogImage: '/images/og/slainte-og.png',
+  ogImageAlt: 'About SlainteTech Clinical Safety & Healthcare Software',
+});
+
+const ABOUT_FAQS: FaqItem[] = [
+  {
+    question: 'What clinical safety standards guide SlainteTech engineering?',
+    answer:
+      'All acute physiology calculators (RCP NEWS2 0-20, Manchester Triage Category 1-5), 3-Tier Rx-Guard drug safety rules (allergy cross-reactivity, ISMP high-alert drug pairs, and LOINC eGFR renal limits), and permanent SQLite provenance logs are engineered to support UK/EU DCB0129 and DCB0160 clinical risk management files.',
+  },
+  {
+    question: 'How does SlainteShield protect hospitals from API breaches and EU NIS2 penalties?',
+    answer:
+      'SlainteShield automates continuous BOLA cross-patient compartment fuzzing, HL7 FHIR R4 schema conformance checks exported in OASIS SARIF v2.1.0, dependency hash pinning, SRI script verification, and EU NIS2 Article 21 control audits.',
+  },
+  {
+    question: 'Are all interfaces tested for screen readers, tablets, and mobile gloves?',
+    answer:
+      'Yes. Every public and operational UI complies with WCAG 2.2 AA contrast minimums (at least 4.5:1 body text), keyboard focus indicators, landmarks, and 44x44px coarse-pointer touch targets for ambulances, ward tablets, and house-call phones.',
+  },
+  {
+    question: 'Where is SlainteTech based and how do hospitals deploy the platform?',
+    answer:
+      'SlainteTech is built in Ireland with zero dependency on external consumer cloud APIs. Hospitals and clinics deploy via Docker Compose in private EU/UK cloud VPCs, on-site clinic servers, or offline hardware appliances.',
+  },
+];
 
 export default function AboutPage() {
   return (
@@ -21,7 +48,7 @@ export default function AboutPage() {
       >
         <Container maxWidth="lg">
           <Typography variant="overline" sx={{ color: '#BAE6FD', fontWeight: 800, letterSpacing: '0.08em', display: 'block' }}>
-            Mission &amp; Engineering Philosophy
+            Mission &amp; Principles
           </Typography>
           <Typography
             component="h1"
@@ -30,10 +57,10 @@ export default function AboutPage() {
             tabIndex={-1}
             sx={{ color: '#FFFFFF', mb: 2, outline: 'none' }}
           >
-            Making Clinical Automation Safe, Verifiable &amp; Hospital-Ready
+            Healthcare Software Built Around Patient Safety First
           </Typography>
           <Typography variant="body1" sx={{ color: '#E2E8F0', maxWidth: 740 }}>
-            Born from Irish healthcare interoperability and offensive API security engineering, SlainteTech was founded on one rule: vital-sign triage scores, medication safety checks, and patient privacy must never rely on guesswork.
+            Born from hands-on Irish healthcare integration and offensive API security work, SlainteTech follows one strict rule: triage scores, medication checks, and patient privacy must never rely on guesswork.
           </Typography>
         </Container>
       </Box>
@@ -41,22 +68,22 @@ export default function AboutPage() {
       <Box component="section" aria-labelledby="principles-heading" sx={{ py: { xs: 6, md: 8 } }}>
         <Container maxWidth="lg">
           <Typography component="h2" variant="h2" id="principles-heading" sx={{ color: '#0F172A', mb: 4 }}>
-            Our Three Non-Negotiable Engineering Rules
+            Our Three Non-Negotiable Promises
           </Typography>
 
           <Grid container spacing={3}>
             {[
               {
-                title: 'Rule-Based Safety Gates Before Anything Reaches the Chart',
-                text: 'Every physiological score (RCP NEWS2, Manchester Triage) and pharmacology check (allergy cross-reactivity, high-alert drug interactions, renal eGFR) executes in verified Python code backed by automated regression tests.',
+                title: 'Rule-Based Safety Gates Before Any Order Is Signed',
+                text: 'Vital-sign scoring and drug allergy/kidney safety rules run in tested clinical code with zero hidden black-box math.',
               },
               {
-                title: 'Continuous Offensive Security Inside the Clinic',
-                text: 'Healthcare APIs are prime ransomware and BOLA targets. Our SlainteShield squad continuously verifies patient compartment isolation, dependency pins, and Subresource Integrity hashes.',
+                title: 'Always-On Security Testing Inside the Clinic',
+                text: 'Healthcare APIs are prime ransomware and data-leak targets. Our built-in security suite constantly checks record locks, access permissions, and software dependencies.',
               },
               {
-                title: 'Built for Real Frontline Conditions',
-                text: 'Whether used by an Emergency Consultant at a workstation, a Care-at-Home Nurse on a phone, a Paramedic on a rugged tablet, or a Crew Medical Officer in an offline habitat, the UI stays fast, accessible (WCAG 2.2 AA), and calm.',
+                title: 'Fast, Calm Screens for Real Frontline Work',
+                text: 'Whether used by an Emergency Consultant at a workstation, a Care-at-Home Nurse on a phone, a Paramedic in a moving ambulance, or a medic at an offline station, the interface stays responsive and simple.',
               },
             ].map((p) => (
               <Grid key={p.title} size={{ xs: 12, md: 4 }}>
@@ -82,14 +109,21 @@ export default function AboutPage() {
               color="primary"
               endIcon={<ArrowForwardRoundedIcon aria-hidden="true" />}
             >
-              Get in Touch With Engineering
+              Talk With Our Engineering Team
             </Button>
             <Button component={Link} href="/verticals/" variant="outlined" color="primary">
-              Explore Our 8 Verticals
+              Explore Our 8 Care Settings
             </Button>
           </Stack>
         </Container>
       </Box>
+
+      <TechnicalFaqSection
+        eyebrow="Engineering & Governance FAQ"
+        title="Clinical Safety, Compliance & Security Architecture FAQ"
+        subtitle="Underlying safety rules, SlainteShield continuous verification, WCAG 2.2 AA accessibility standards, and hosting options."
+        items={ABOUT_FAQS}
+      />
     </Box>
   );
 }

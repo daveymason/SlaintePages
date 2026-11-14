@@ -1,0 +1,123 @@
+# SlainteTech: Complete Technical, Commercial & Compliance Reference
+
+Canonical URL: https://slainte-tech.com/
+Index URL: https://slainte-tech.com/llms.txt
+Sitemap URL: https://slainte-tech.com/sitemap.xml
+Direct Engineering & Pilot Inquiries: hello@slainte-tech.com
+
+## Executive Summary
+SlainteTech builds healthcare safety, hospital revenue protection, and continuous EU NIS2 cybersecurity software on a native HL7 FHIR R4 core. Unlike consumer chat software that attempts open-ended statistical guessing on vital signs or prescriptions, SlainteTech enforces a hard engineering boundary: clinician convenience tools draft structured charts quickly, while every emergency triage score, sepsis warning, allergy cross-check, kidney dosing limit, and access control runs in unit-tested deterministic Python rules backed by tamper-proof audit logs.
+
+Hospitals deploy SlainteTech either as a read-only 15-minute SMART-on-FHIR v2 sidecar alongside Epic, Oracle Cerner, or MEDITECH (recovering uncoded DRG revenue and proving EU NIS2 Article 21 readiness), or as a full private-cloud / offline clinical platform powering 8 frontline healthcare verticals.
+
+---
+
+## Platform Architecture (4 Layers)
+1. **Layer 1: Frontline Clinical Interfaces (Port :8000)**
+   - Lightweight server-rendered HTML with sub-50ms HTMX updates and coarse-pointer 44x44px touch targets for workstations, iPads, rugged ambulance tablets, and community phones.
+   - Tested to WCAG 2.2 AA contrast ratios (>= 4.5:1 body text).
+2. **Layer 2: 16 Coordinated Safety, Coding & Cybersecurity Modules**
+   - Grouped into three operational teams: **SlainteShield Security** (3 modules), **SlainteGov Governance & Coding** (5 modules), and **SlainteClinical Care** (8 modules).
+3. **Layer 3: Deterministic FastMCP Safety Server (Port :8081)**
+   - Executes hard-coded Python calculators and gates in under 10 milliseconds:
+     - **RCP NEWS2** (0-20 scale) & **Manchester Triage System** (Categories 1-5)
+     - **3-Tier SlainteRx-Guard**: Tier 1 drug-class cross-allergies (Beta-Lactam, NSAID, Sulfa), Tier 2 ISMP high-alert drug-drug interactions (warfarin + NSAID, SSRI + tramadol, ACEi + potassium-sparing agents), Tier 3 renal & electrolyte gating (LOINC 33914-3 eGFR, potassium).
+     - Strict private-IP SSRF locks (`127.0.0.1`, `10.0.0.0/8`, `169.254.169.254` blocked) and compartment enforcement.
+4. **Layer 4: SlainteFHIR R4 Core & Immutable Audit Ledger (Port :8082)**
+   - HL7 FHIR R4 CompartmentDefinition/Patient isolation.
+   - SQLite ledger with `audit_log`, `ai_exchange`, and `break_glass_grants` tables enforced by `BEFORE UPDATE` and `BEFORE DELETE` abort triggers, paired with SHA-256 HL7 FHIR R4 `Provenance` records.
+
+---
+
+## Commercial Pricing & Hospital ROI
+- **Tier 1: Clinic & Practice Edition (€199 - €499 / clinician / site / month)**
+  - Targets GP clinics, dental surgeries & DSOs, psychiatry practices, community nursing teams, and pharmacies.
+  - Includes hands-free SOAP drafting, 3-Tier prescribing protection, mobile/tablet home-visit screens, and monthly Irish HSE PCRS / GMS batch CSV exports with GDPR Article 9 redaction.
+- **Tier 2: Hospital Security & Coding Sidecar (€48,000 - €95,000 / site / year)**
+  - Connects read-only beside Epic, Cerner, or MEDITECH via SMART-on-FHIR v2 (`PKCE S256`) in 15 minutes with zero disruption to clinical staff.
+  - Includes SlainteShield BOLA/FHIR/CVE testing, SlainteRev-Coding HIPE / ICD-10-AM DRG revenue uplift audits, OIDC SSO, HMAC-SHA256 SIEM webhooks, and board compliance certificates.
+  - Typical payback under 90 days through recovered under-coded hospital comorbidities (CC/MCC modifiers).
+- **Tier 3: Private Cloud or Offline Edition (Custom Enterprise)**
+  - Full 8-vertical, 16-module sovereign platform inside hospital private VPCs or offline hardware appliances.
+  - Adds legacy HL7v2 (`ADT^A01/A04/A08`, `ORU^R01`, `RDE^O11`) pipe-hat hospital bridge and zero external network traffic.
+
+---
+
+## Interoperability & Cybersecurity Matrix
+- **SMART-on-FHIR v2 Discovery**: `/.well-known/smart-configuration` enforcing RFC 7636 PKCE `S256`, state parameter binding, and granular launch scopes (`launch`, `launch/patient`, `patient/*.read`, `user/*.cruds`).
+- **HL7v2 Ingestion Endpoint**: `POST /enterprise/hl7v2/ingest` parsing pipe-hat MSH, PID, AL1, DG1, and OBX segments into deduplicated HL7 FHIR R4 Patient, AllergyIntolerance, Condition, Observation, and MedicationRequest resources.
+- **Identity & Access Control**: `OIDC_DISCOVERY_URL` integration with Keycloak, Microsoft Entra ID, and Okta mapping claims to `consultant`, `gp`, `pharmacist`, `triage_nurse`, `dental_surgeon`, `paramedic`, `flight_surgeon`, and `admin`.
+- **Compliance Frameworks**:
+  - **EU NIS2 Directive (2022/2555) Article 21**: Supply-chain pinning, BOLA compartment isolation, SRI verification, OASIS SARIF v2.1.0 outputs, and signed SIEM webhooks (Sentinel, Splunk, PagerDuty).
+  - **EU GDPR Article 9**: Zero external chart transmission, automated PII redaction, and time-boxed dual-logged break-glass emergency overrides.
+  - **Clinical Governance (UK/EU DCB0129 / DCB0160 & HIQA)**: Rule-based physiological/dosing code backed by 344+ automated tests and immutable `Provenance` attribution.
+
+---
+
+## Eight Healthcare Verticals (/verticals/<slug>/)
+1. **Emergency Departments (`SlainteED`)**: https://slainte-tech.com/verticals/emergency-departments/
+   - Audience: ED Consultants, Triage Charge Nurses, Chief Information Officers.
+   - Capabilities: Manchester Triage Cat 1-5 queue, RCP NEWS2 sepsis progression trendlines, ambulance pre-alert handover, high-acuity drug safety checks.
+2. **General Practice & Community Nursing (`SlainteGP`)**: https://slainte-tech.com/verticals/general-practice/
+   - Audience: GP Partners, Practice Managers, District & Home-Care Nurses.
+   - Capabilities: Desk-to-home-visit responsive charts, ambient consultation scribing, HSE Chronic Disease Management tracking, and monthly HSE PCRS GMS CSV exports.
+3. **Psychiatry & Mental Health (`SlaintePsych`)**: https://slainte-tech.com/verticals/psychiatry/
+   - Audience: Consultant Psychiatrists, Mental Health Trusts, Community Teams.
+   - Capabilities: Low-stress clinical UI, longitudinal LOINC PHQ-9 (44261-6) and GAD-7 (70274-6) scoring, lithium/SSRI renal & interaction gating, GDPR Art. 9 compartment locks.
+4. **Dental Surgeons & DSOs (`SlainteDent`)**: https://slainte-tech.com/verticals/dentistry/
+   - Audience: Principal Dentists, Multi-Site DSO Clinical Directors.
+   - Capabilities: Interactive 32-tooth FDI odontogram (11-48), 6-sextant BPE gum charting, immediate allergy & anticoagulant bleeding banners, post-op antibiotic screening.
+5. **Clinical & Community Pharmacies (`SlaintePharm`)**: https://slainte-tech.com/verticals/pharmacy/
+   - Audience: Superintendent Pharmacists, Hospital Pharmacy Leads.
+   - Capabilities: Risk-prioritized dispensing queue, 3-Tier allergy/DDI/renal holds, pharmacist query tracking, verified PSI/HSE PCRS claim exports.
+6. **Ambulance & Paramedic Services (`SlainteEMS`)**: https://slainte-tech.com/verticals/ambulance-ems/
+   - Audience: Chief Ambulance Officers, Fleet Medical Directors, Paramedics.
+   - Capabilities: Glove-tested 44px touch tablet ePCR, local sub-10ms NEWS2/MTS calculations through signal dead zones, 1-tap ED pre-alert handover.
+7. **Elite Sports Clubs & Federations (`SlainteSport`)**: https://slainte-tech.com/verticals/sports-medicine/
+   - Audience: Heads of Sports Medicine, Team Physicians, Governing Bodies.
+   - Capabilities: Squad daily vitals readiness, SCAT6 concussion Return-to-Play SHA-256 governance, anti-doping TUE medication checks, athlete privacy isolation.
+8. **Astronaut & Aerospace Medicine (`SlainteAstro`)**: https://slainte-tech.com/verticals/astronaut-health/
+   - Audience: Flight Surgeons, Space Medicine Directors, Remote Expedition Leads.
+   - Capabilities: 100% air-gapped onboard medical workstation running complete pharmacology and triage checks offline in remote habitats and orbital missions.
+
+---
+
+## Sixteen Clinical, Billing & Security Modules (/health-tech-agents/<slug>/)
+
+### Squad 1: SlainteShield Security (3 Modules)
+1. **Patient Chart Access & Privacy Testing (`SlainteShield-BOLA`)**: https://slainte-tech.com/health-tech-agents/bola-authorization-red-team-agent/
+   - Automated OWASP API1 BOLA patient boundary probes, RBAC elevation tests, and SSRF egress blocks with CI pass/fail gates.
+2. **Medical Coding & Standard Check (`SlainteShield-FHIR`)**: https://slainte-tech.com/health-tech-agents/fhir-r4-conformance-terminology-agent/
+   - Structural validation of HL7 FHIR R4 bundles and SNOMED CT / LOINC / ICD-10 value sets, exported as OASIS SARIF v2.1.0.
+3. **Supply-Chain & Login Security Check (`SlainteShield-CVE`)**: https://slainte-tech.com/health-tech-agents/healthcare-cve-vulnerability-agent/
+   - Audits Python/Node dependency CVE drift, requirements pins, Subresource Integrity (SRI) hashes, and OIDC auth guards.
+
+### Squad 2: SlainteGov Governance & Coding (5 Modules)
+4. **GDPR Patient Privacy & Emergency Access Gate (`SlainteGov-GDPR`)**: https://slainte-tech.com/health-tech-agents/gdpr-clinical-privacy-deidentification-agent/
+   - Automated PII masking for exports and strict, audited break-glass override tickets with reason tracking and auto-expiry.
+5. **Tamper-Proof Clinical Audit & Certificates (`SlainteGov-Audit`)**: https://slainte-tech.com/health-tech-agents/immutable-clinical-ai-audit-agent/
+   - Cryptographic clinician sign-off tracking in trigger-locked SQLite tables paired with FHIR R4 Provenance hashes.
+6. **HIPE, ICD-10-AM & Hospital Revenue Recovery (`SlainteRev-Coding`)**: https://slainte-tech.com/health-tech-agents/autonomous-icd10-drg-clinical-coding-agent/
+   - Reviews lab results (AKI creatinine bumps, potassium shifts, HbA1c) and clinical notes to capture unbilled inpatient DRG complexity.
+7. **Fast Clinic Onboarding & Data Migration (`SlainteGov-Onboard`)**: https://slainte-tech.com/health-tech-agents/clinic-onboarding-legacy-migration-agent/
+   - Migrates GP and dental CSV/XML exports into deduplicated HL7 FHIR R4 patient charts with schema verification before commit.
+8. **Continuous EU NIS2 & Hospital Cyber Audit (`SlainteGov-NIS2`)**: https://slainte-tech.com/health-tech-agents/eu-nis2-directive-compliance-agent/
+   - Verifies live EU Directive 2022/2555 Article 21 controls, emits HMAC-signed SIEM webhooks, and renders executive compliance certificates.
+
+### Squad 3: SlainteClinical Care (8 Modules)
+9. **Legacy Hospital Feed & Paper Intake Bridge (`SlainteEngine-Ingest`)**: https://slainte-tech.com/health-tech-agents/multimodal-hl7v2-fhir-ingestion-agent/
+   - Ingests HL7v2 ADT/ORU/RDE feeds, scanned referral PDFs, and clinic CSV spreadsheets matched cleanly by GMS / MRN identifier.
+10. **Source-Cited Shift Handover Briefing (`SlainteScribe-Brief`)**: https://slainte-tech.com/health-tech-agents/cited-patient-handover-summariser-agent/
+    - Summarizes longitudinal charts with direct inline FHIR resource citations so unverified data is never invented.
+11. **3-Tier Allergy, Drug-Clash & Kidney Prescribing Gate (`SlainteRx-Guard`)**: https://slainte-tech.com/health-tech-agents/pharmacotherapy-allergy-renal-safety-agent/
+    - Deterministic screening for family cross-allergies, ISMP high-alert DDIs, and real-time LOINC eGFR/Potassium thresholds.
+12. **Fast, Rule-Based Triage & Sepsis Early Warning (`SlainteDx-Triage`)**: https://slainte-tech.com/health-tech-agents/manchester-triage-news2-acuity-agent/
+    - Exact RCP NEWS2 (0-20) and Manchester Triage Cat 1-5 queue ranking with 24-hour bedside vital-sign tracking.
+13. **Consultation Scribe & Pre-Screened Order Drafter (`SlainteScribe-Voice`)**: https://slainte-tech.com/health-tech-agents/ambient-clinical-voice-scribe-agent/
+    - Converts clinical consultations into structured SOAP drafts and pre-screened medication orders that always require practitioner sign-off.
+14. **Safe Discharge & Medication Reconciliation (`SlainteCare-Transfer`)**: https://slainte-tech.com/health-tech-agents/discharge-clinical-handover-agent/
+    - Checks vital-sign readiness trends, reconciles home medications against inpatient changes, and prepares signed GP transfer letters.
+15. **Ambulance-to-Hospital ED Pre-Alert (`SlainteEMS-Alert`)**: https://slainte-tech.com/health-tech-agents/emergency-prehospital-prealert-agent/
+    - Streams pre-hospital tablet assessments straight into receiving hospital emergency boards before ambulance arrival.
+16. **Chronic Disease Care-Gap & Recall Tracker (`SlainteCare-CDM`)**: https://slainte-tech.com/health-tech-agents/chronic-disease-surveillance-agent/
+    - Flags overdue BP, HbA1c, and kidney eGFR surveillance targets across GP practice populations for Irish HSE CDM billing cycles.

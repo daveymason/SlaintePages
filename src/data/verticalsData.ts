@@ -29,9 +29,14 @@ export interface VerticalWorkflowStep {
   detail: string;
 }
 
+export interface VerticalFaq {
+  question: string;
+  answer: string;
+}
+
 export interface VerticalRecord {
   slug: string; // /verticals/<slug>/
-  forLabel: string; // "For Emergency Departments", etc.
+  forLabel: string;
   brand: string;
   roleLabel: string;
   layoutVariant: VerticalLayoutVariant;
@@ -59,6 +64,7 @@ export interface VerticalRecord {
     complianceGuarantee: string;
   };
   assignedAgentSlugs: string[];
+  faqs: [VerticalFaq, VerticalFaq, VerticalFaq, VerticalFaq];
 }
 
 export const INDUSTRY_VERTICALS: VerticalRecord[] = [
@@ -74,47 +80,47 @@ export const INDUSTRY_VERTICALS: VerticalRecord[] = [
       heroGradient: 'linear-gradient(135deg, #0F172A 0%, #3B0D1E 100%)',
       heroText: '#FFFFFF',
       heroMuted: '#E2E8F0',
-      accentMain: '#B91C1C', // 6.47:1 on white
+      accentMain: '#B91C1C',
       surfaceTint: '#FEF2F2',
       borderTint: '#FECACA',
       badgeBg: '#FEE2E2',
-      badgeText: '#7F1D1D', // 9.2:1 on #FEE2E2
+      badgeText: '#7F1D1D',
     },
     seoTitle: 'Emergency Department Triage & Resuscitation Software (SlainteED) | SlainteTech',
     seoDescription:
-      'Cut missed sepsis deterioration and 20-minute shift handovers. SlainteED automates Manchester Triage (Cat 1-5), 24h RCP NEWS2 tracking, 3-Tier prescribing checks, and cited consultant briefings.',
-    heroHeadline: 'Spot Deteriorating Patients Faster. Finish Shift Handovers in Seconds.',
+      'Spot deteriorating emergency patients earlier, cut 20-minute shift handovers to seconds, stop unsafe prescriptions, and capture missed HIPE funding.',
+    heroHeadline: 'Spot Deteriorating Patients Earlier. Finish Handovers in Seconds.',
     heroLead:
-      'Overcrowded emergency floors cannot afford delayed escalation or charting backlogs. SlainteED computes exact Manchester Triage (Cat 1 to 5) and RCP NEWS2 scores in under 10ms, blocks unsafe prescriptions automatically, and builds source-cited consultant handovers ready for sign-off.',
-    mobileReadyNote: 'Adapts cleanly from resuscitation wall boards to bedside iPads and registrar tablets.',
+      'Busy emergency floors cannot afford delayed escalation or long shift handovers. SlainteED calculates urgency and early-warning scores as vitals arrive, stops unsafe prescriptions before sign-off, and builds clear handover briefings linked straight to patient labs.',
+    mobileReadyNote: 'Works seamlessly across resuscitation wall displays, bedside iPads, and registrar tablets.',
     kpis: [
-      { label: 'Acute Triage Engine', value: 'MTS Cat 1 to 5', detail: 'Instant 0m Immediate to 240m Non-Urgent priority routing' },
-      { label: 'Sepsis Deterioration', value: 'RCP NEWS2 0 to 20', detail: '24h vital trajectories with auto-alerts when score reaches 7 or higher' },
-      { label: 'Prescribing Gate', value: '3-Tier Rx-Guard', detail: 'Allergy, high-risk interaction & renal eGFR block before sign-off' },
+      { label: 'Arrival Urgency', value: '5-Level Triage', detail: 'Instant priority timing from 0m immediate care to 240m standard wait' },
+      { label: 'Deterioration Watch', value: 'Live Early Warning', detail: '24-hour vital trends with automatic escalation when risk rises' },
+      { label: 'Prescribing Check', value: '3-Step Safety Gate', detail: 'Screens allergies, risky combinations, and kidney labs automatically' },
     ],
     painPointsSolved: [
       {
-        pain: 'Waiting-room deterioration missed between manual whiteboard checks',
-        deterministicFix: 'Live vital ingestion recalculates RCP NEWS2 on every reading and flags high-risk bays automatically.',
+        pain: 'Waiting-room patients quietly worsen between manual nurse checks',
+        deterministicFix: 'Every new vital sign updates the patient risk score immediately and raises a clear warning on the bay board.',
       },
       {
-        pain: 'Slow 08:00 and 20:00 shift handovers across 30+ boarded patients',
-        deterministicFix: 'One-click handover summaries cite exact vital trends, NEWS2 scores, lab markers, and documented allergies.',
+        pain: 'Long, stressful shift handovers across 30+ emergency patients',
+        deterministicFix: 'One-click handover summaries highlight vital trends, active risk flags, abnormal labs, and documented allergies.',
       },
       {
-        pain: 'Missed HIPE complexity funding from uncoded sepsis, lactate, and acute kidney injury labs',
-        deterministicFix: 'Pre-discharge lab audits flag uncoded SNOMED and ICD-10-AM diagnoses so hospitals capture full reimbursement.',
+        pain: 'Hospitals lose funding when sepsis, high lactate, or kidney injuries go uncoded',
+        deterministicFix: 'Automatic discharge checks flag missing diagnoses supported by lab results so finance teams capture full funding.',
       },
     ],
     workflowSteps: [
-      { step: '01', title: 'Rapid Triage or Ambulance Arrival', detail: 'Ingest ambulance records, hospital HL7v2 feeds, or bedside vitals in under a second.' },
-      { step: '02', title: 'Protected Acute Prescribing & Orders', detail: 'Record vitals, diagnoses, and medication orders with instant allergy, interaction, and kidney safety screening.' },
-      { step: '03', title: 'Consultant Sign-Off & HIPE Capture', detail: 'Lock handovers and discharge plans with cryptographically signed practitioner attribution.' },
+      { step: '01', title: 'Receive Arrival or Ambulance Alert', detail: 'Pull ambulance ePCR updates, hospital admission feeds, or bedside vitals straight into the board.' },
+      { step: '02', title: 'Track Risk & Prescribe Safely', detail: 'Monitor vital trends live while automatically screening allergies, drug clashes, and kidney function on every order.' },
+      { step: '03', title: 'Sign Off Shift Handover & Coding', detail: 'Close shifts with consultant-signed summaries and full billing capture for every treated condition.' },
     ],
     buyerRoi: {
       clinicalBuyer: 'Clinical Director of Emergency Medicine & Chief Nursing Information Officer',
-      economicImpact: 'Recovers uncoded acute HIPE DRG revenue while cutting shift handover preparation to seconds.',
-      complianceGuarantee: 'Aligned with HIQA INEWS escalation rules, GDPR Art. 9 emergency access logging, and complete audit trails.',
+      economicImpact: 'Recovers missed acute HIPE hospital funding while giving clinicians hours back on every shift handover.',
+      complianceGuarantee: 'Meets national early-warning escalation standards with permanent audit records for every clinical decision.',
     },
     assignedAgentSlugs: [
       'manchester-triage-news2-acuity-agent',
@@ -123,6 +129,28 @@ export const INDUSTRY_VERTICALS: VerticalRecord[] = [
       'multimodal-hl7v2-fhir-ingestion-agent',
       'immutable-clinical-ai-audit-agent',
       'autonomous-icd10-drg-clinical-coding-agent',
+    ],
+    faqs: [
+      {
+        question: 'How does SlainteED calculate Manchester Triage and RCP NEWS2 scores?',
+        answer:
+          'All physiological calculations run inside tested Python clinical rule modules rather than statistical text guessing. SlainteED reads LOINC-coded vital signs (SBP 8480-6, HR 8867-4, RR 9279-1, SpO2 2708-6/59408-5, Temp 8310-5, GCS 9269-2) directly from HL7 FHIR R4 Observations, assigns Manchester Triage Category 1 to 5 wait targets (0m to 240m) and exact RCP NEWS2 scores (0 to 20) in under 10 milliseconds, and flags high-risk thresholds (>= 7).',
+      },
+      {
+        question: 'Can we run SlainteED beside Epic, Oracle Cerner, or MEDITECH without replacing our EHR?',
+        answer:
+          'Yes. Hospital IT teams can launch SlainteED in 15 minutes as a read-only SMART-on-FHIR v2 sidecar (supporting RFC 7636 S256 PKCE) or mirror existing HL7v2 ADT^A01 and ORU^R01 streams via POST /enterprise/hl7v2/ingest with zero downtime to your core PAS or EHR.',
+      },
+      {
+        question: 'How are emergency chart accesses audited for GDPR Article 9 and HIQA inspections?',
+        answer:
+          'Every triage score, medication override, handover summary, and Break-the-Glass emergency record access writes a signed HL7 FHIR R4 Provenance resource (SHA-256 bundle hash + practitioner registration ID) into append-only SQLite audit tables protected by BEFORE UPDATE and BEFORE DELETE abort triggers, plus HMAC-SHA256 SIEM webhooks.',
+      },
+      {
+        question: 'What happens if the hospital internet or cloud connection drops during an emergency?',
+        answer:
+          'Nothing breaks. SlainteED operates natively inside your hospital VPC or local container cluster (web server :8000, Python safety engine :8081, local SlainteFHIR R4 store :8082) with zero mandatory external cloud dependencies.',
+      },
     ],
   },
   {
@@ -137,47 +165,47 @@ export const INDUSTRY_VERTICALS: VerticalRecord[] = [
       heroGradient: 'linear-gradient(135deg, #0F172A 0%, #0E4D6E 100%)',
       heroText: '#FFFFFF',
       heroMuted: '#E0F2FE',
-      accentMain: '#155E75', // 7.18:1 on white
+      accentMain: '#155E75',
       surfaceTint: '#F0F9FF',
       borderTint: '#BAE6FD',
       badgeBg: '#E0F2FE',
-      badgeText: '#0C4A6E', // 9.1:1 on #E0F2FE
+      badgeText: '#0C4A6E',
     },
     seoTitle: 'GP Practice & Community Nursing Software (SlainteGP) | SlainteTech',
     seoDescription:
-      'End evening charting backlogs in 10-minute consultations and home visits with instant structured SOAP notes, safe repeat prescribing, and automated PCRS claims.',
-    heroHeadline: 'Finish Clinics On Time With Zero Evening Charting Backlogs.',
+      'Finish GP clinics and home visits on time without evening paperwork. Draft clean SOAP notes during consultations, screen repeat prescriptions, and export ready GMS claims.',
+    heroHeadline: 'Finish Clinics On Time With Zero Evening Paperwork.',
     heroLead:
-      'Built equally for busy GP consulting rooms and mobile Care-at-Home Nurses. SlainteGP converts consultations into structured SOAP notes for 1-tap sign-off, automates HSE Chronic Disease Management, and protects every repeat prescription.',
-    mobileReadyNote: 'Touch-optimised 44px mobile & tablet drawer + quick-action bottom dock built specifically for Community Health and Care-at-Home Nurses on the move.',
+      'Made for busy GP surgeries and mobile Care-at-Home Nurses alike. SlainteGP turns consultations into clean notes ready for 1-tap approval, keeps chronic care reviews on schedule, and checks every repeat prescription for kidney and drug risks.',
+    mobileReadyNote: 'Large 44px touch buttons and a mobile quick-dock let community nurses chart comfortably on phones or iPads during home visits.',
     kpis: [
-      { label: 'Ambient Consultation', value: 'Voice -> SOAP', detail: 'Live dictation drafts SOAP notes & pre-screened FHIR orders' },
-      { label: 'Mobile Home-Care UX', value: 'Phone & Tablet', detail: 'Responsive off-canvas drawer & 44px touch controls for home visits' },
-      { label: 'GMS & PCRS Ready', value: 'HSE GMS OID', detail: 'Automatic GMS deduplication & 1-click PCRS claim CSV export' },
+      { label: 'Faster Charting', value: 'Ready SOAP Notes', detail: 'Consultations draft clean structured notes and pre-checked orders for sign-off' },
+      { label: 'Home-Visit Ready', value: 'Phone & Tablet UI', detail: 'Comfortable one-thumb navigation and large controls for community nurses' },
+      { label: 'Clean Claims', value: 'HSE PCRS Export', detail: 'Consistent GMS patient matching and 1-click monthly reimbursement batches' },
     ],
     painPointsSolved: [
       {
-        pain: '2+ hours of evening SOAP note typing after full GP surgeries or community home-visit rounds',
-        deterministicFix: 'SlainteScribe-Voice structures live consultations into SOAP DocumentReferences and pre-screened orders for 1-click co-sign.',
+        pain: 'Two or more hours of evening typing after full surgeries and home visits',
+        deterministicFix: 'Consultations draft structured clinical notes and pre-screened medication orders so GPs simply review and approve.',
       },
       {
-        pain: 'Clunky desktop-only EHRs that fail Care-at-Home Nurses standing in a patient’s living room',
-        deterministicFix: 'Responsive mobile/tablet layout provides thumb-reachable Patient, Vertical, Agent, and Vitals recording on 4G/5G phones and iPads.',
+        pain: 'Desktop-only software that slows down Care-at-Home Nurses standing in patient homes',
+        deterministicFix: 'Mobile and tablet screens surface vitals entry, risk warnings, and patient histories cleanly on any 4G/5G device.',
       },
       {
-        pain: 'Unsafe repeat prescribing when hospital discharge letters alter renal function or add anticoagulants',
-        deterministicFix: '3-Tier SlainteRx-Guard checks latest LOINC eGFR and active DDI pairs on every repeat renewal.',
+        pain: 'Repeat prescriptions missed when recent hospital letters change medications or kidney labs',
+        deterministicFix: 'Every repeat renewal automatically checks current allergy records, blood test kidney results, and drug interactions.',
       },
     ],
     workflowSteps: [
-      { step: '01', title: 'Consult in Clinic or Patient’s Home', detail: 'Open the longitudinal GMS-linked chart on desktop, tablet, or mobile and start Ambient Voice Scribe.' },
-      { step: '02', title: 'Review CDM Targets & 3-Tier Rx-Guard', detail: 'Inspect HbA1c, BP, and eGFR trends while screening new or 28-day repeat prescriptions automatically.' },
-      { step: '03', title: 'Co-Sign & Export HSE PCRS Claims', detail: 'Commit structured FHIR resources with GDPR Art. 9 PII protection and export monthly GMS batches.' },
+      { step: '01', title: 'Open Chart in Surgery or Home Visit', detail: 'View patient conditions, recent hospital letters, and chronic targets on desktop, iPad, or phone.' },
+      { step: '02', title: 'Review Notes, Chronic Care & Rx Checks', detail: 'Check blood pressure, HbA1c, and kidney function alongside automatic 3-tier prescription safety screening.' },
+      { step: '03', title: 'Approve Record & Export Monthly Claims', detail: 'Sign off the finished note with full privacy protection and export verified GMS claim batches in seconds.' },
     ],
     buyerRoi: {
       clinicalBuyer: 'GP Principals, Primary Care Networks & Community Healthcare Organisations (CHOs)',
-      economicImpact: 'Saves 6–10 clinician hours per week on consultation notes and streamlines HSE CDM & PCRS reimbursement.',
-      complianceGuarantee: 'Irish GMS OID Conformance, EU GDPR Art. 9 De-Identification & IMC Provenance Attribution.',
+      economicImpact: 'Saves 6 to 10 clinician hours every week while cutting delayed HSE Chronic Disease and PCRS claims.',
+      complianceGuarantee: 'Supports Irish GMS patient identifiers, strict GDPR patient privacy rules, and practitioner sign-off trails.',
     },
     assignedAgentSlugs: [
       'ambient-clinical-voice-scribe-agent',
@@ -186,6 +214,28 @@ export const INDUSTRY_VERTICALS: VerticalRecord[] = [
       'gdpr-clinical-privacy-deidentification-agent',
       'autonomous-icd10-drg-clinical-coding-agent',
       'multimodal-hl7v2-fhir-ingestion-agent',
+    ],
+    faqs: [
+      {
+        question: 'How does SlainteGP link with HSE GMS numbers and PCRS monthly claim exports?',
+        answer:
+          'Incoming patient demographics and clinic CSV/HL7v2 exports deduplicate cleanly against the Irish GMS OID namespace (urn:oid:1.3.6.1.4.1.54392.5.2690.42.80) using find_patient_id_by_gms, ensuring repeat episodes update one longitudinal record. Verified GMS dispensing and billing records export directly in CSV format via /enterprise/pcrs/export.',
+      },
+      {
+        question: 'Does voice consultation drafting modify the patient medical record automatically?',
+        answer:
+          'No. SlainteScribe-Voice generates a structured SOAP DocumentReference (LOINC 11506-3), SNOMED-CT candidate codes, and draft MedicationRequests strictly for human review. Every suggested medication passes through evaluate_clinical_pharmacology_3tier first, and nothing commits to HL7 FHIR R4 until the licensed clinician explicitly signs off.',
+      },
+      {
+        question: 'How is patient privacy protected during note summarisation and Chronic Disease recalls?',
+        answer:
+          'SlainteGov-GDPR enforces pre-processing field redaction (removing names, phone numbers, addresses, GMS IDs, and full birth dates except birth year) via ai/context.py, replaces raw identifiers in logs with salted SHA-256 digests, and blocks external cloud transit unless explicitly permitted.',
+      },
+      {
+        question: 'How well does SlainteGP work for Community Nurses on iPads or smartphones?',
+        answer:
+          'Templates use CSS coarse-pointer media queries providing minimum 44x44px touch targets, 16px anti-zoom input fields, an off-canvas mobile navigation drawer, and a sticky one-thumb bottom action dock tested at WCAG 2.2 AA contrast ratios.',
+      },
     ],
   },
   {
@@ -200,47 +250,47 @@ export const INDUSTRY_VERTICALS: VerticalRecord[] = [
       heroGradient: 'linear-gradient(135deg, #17153B 0%, #3B1D5E 100%)',
       heroText: '#FFFFFF',
       heroMuted: '#EDE9FE',
-      accentMain: '#5B21B6', // 8.38:1 on white
+      accentMain: '#5B21B6',
       surfaceTint: '#F5F3FF',
       borderTint: '#DDD6FE',
       badgeBg: '#EDE9FE',
-      badgeText: '#4C1D95', // 10.1:1 on #EDE9FE
+      badgeText: '#4C1D95',
     },
-    seoTitle: 'For Psychiatrists & Mental Health Services (SlaintePsych) | SlainteTech',
+    seoTitle: 'Psychiatry & Mental Health Software (SlaintePsych) | SlainteTech',
     seoDescription:
-      'Psychiatry & Community Mental Health Team (CMHT) vertical featuring MSE documentation, LOINC PHQ-9/GAD-7 tracking, psychotropic renal/DDI safety, and GDPR Art. 9 isolation.',
-    heroHeadline: 'High-Confidentiality Mental State Documentation, LOINC Scales & Psychotropic Safety',
+      'Protect deeply sensitive mental health notes, keep full focus during patient sessions, track PHQ-9 and GAD-7 progress, and screen psychiatric prescribing risks.',
+    heroHeadline: 'Stay Focused on the Patient. Keep Every Sensitive Note Locked Down.',
     heroLead:
-      'Mental health clinicians require narrative depth without sacrificing eye contact, strict compartment privacy, and vigilant renal/electrolyte monitoring for complex psychotropic regimens. SlaintePsych is now built natively into the core platform.',
-    mobileReadyNote: 'Supports Community Mental Health Teams (CMHTs) and Crisis Home Treatment nurses on mobile and tablet devices.',
+      'Mental health teams need distraction-free sessions, strict chart privacy against unauthorized staff browsing, and reliable medication checks across complex prescriptions. SlaintePsych combines structured clinical scales with strict patient record locks.',
+    mobileReadyNote: 'Built for Community Mental Health Teams and Crisis Home Treatment nurses on mobile tablets.',
     kpis: [
-      { label: 'Rating Scales', value: 'PHQ-9 & GAD-7', detail: 'Standardized LOINC 44261-6 & 70274-6 longitudinal scoring' },
-      { label: 'Psychotropic Gate', value: 'Renal & DDI', detail: 'Screens eGFR impairment, CNS depressant stacking & allergies' },
-      { label: 'Record Isolation', value: 'BOLA + Art. 9', detail: 'Compartment-isolated notes with SIEM-audited Break-the-Glass' },
+      { label: 'Outcome Scales', value: 'PHQ-9 & GAD-7', detail: 'Track recovery trends cleanly across outpatient and crisis visits' },
+      { label: 'Medication Gate', value: 'Kidney & CNS Check', detail: 'Screens lithium/kidney function, sedative stacking, and drug clashes' },
+      { label: 'Chart Confidentiality', value: 'Strict Record Lock', detail: 'Patient compartment isolation plus audited emergency access overrides' },
     ],
     painPointsSolved: [
       {
-        pain: 'Typing lengthy Mental State Examinations (MSE) disrupts therapeutic rapport during consultations',
-        deterministicFix: 'Ambient Voice Scribe & structured MSE composer file LOINC-coded psychiatric assessments in minutes.',
+        pain: 'Typing detailed Mental State Examinations breaks eye contact and rapport during sensitive sessions',
+        deterministicFix: 'Structured assessment templates and consultation capture organize session notes quickly for fast review.',
       },
       {
-        pain: 'Polypharmacy interactions and declining renal eGFR missed across primary and specialist care',
-        deterministicFix: '3-Tier SlainteRx-Guard cross-checks CNS regimens, Opioid/Benzodiazepine co-prescribing, and LOINC eGFR labs.',
+        pain: 'Sedative stacking or declining kidney function missed when GP and specialist prescriptions overlap',
+        deterministicFix: 'Every medication entry automatically cross-checks kidney labs, opioid/benzodiazepine stacking, and allergy lists.',
       },
       {
-        pain: 'Unauthorized snooping into sensitive psychiatric histories inside shared hospital EHRs',
-        deterministicFix: 'SlainteShield-BOLA verifies compartment boundaries while SlainteGov-GDPR logs and alerts on every emergency override.',
+        pain: 'Risk of unauthorized hospital staff reading sensitive psychiatric records in shared EHRs',
+        deterministicFix: 'Automated security testing proves chart isolation across roles, while out-of-hours emergency views trigger instant security alerts.',
       },
     ],
     workflowSteps: [
-      { step: '01', title: 'Select Service User & Review Risk Trajectory', detail: 'View longitudinal PHQ-9, GAD-7, active psychotropics, and latest renal eGFR on one calm clinical screen.' },
-      { step: '02', title: 'Record MSE & Standardized LOINC Scales', detail: 'Document appearance, mood, thought, perception, capacity, and crisis safety plan directly to FHIR R4.' },
-      { step: '03', title: 'Enforce GDPR Art. 9 & BOLA Confidentiality', detail: 'Every handover summary strips direct PII and every out-of-team emergency access triggers an immutable audit grant.' },
+      { step: '01', title: 'Review Service User Risk & Meds', detail: 'See PHQ-9 and GAD-7 progress curves, current medications, and latest blood tests on one calm screen.' },
+      { step: '02', title: 'Complete MSE & Recovery Plan', detail: 'Record appearance, mood, cognition, safety plan, and standardized scores directly into the structured chart.' },
+      { step: '03', title: 'Share Safe Letters & Lock Access', detail: 'Generate clean GP letters with sensitive details minimized and log every authorized care-team access.' },
     ],
     buyerRoi: {
-      clinicalBuyer: 'Clinical Directors of Psychiatry, Mental Health Commission Compliance Leads & Private Clinics',
-      economicImpact: 'Reduces MSE & tribunal/referral dictation overhead while preventing high-cost psychotropic adverse drug events.',
-      complianceGuarantee: 'EU GDPR Art. 9 Special Category Isolation, Mental Health Audit Non-Repudiation & OWASP BOLA Verification.',
+      clinicalBuyer: 'Clinical Directors of Psychiatry, Mental Health Governance Leads & Private Clinics',
+      economicImpact: 'Cuts assessment and tribunal report typing hours while preventing costly psychiatric medication side effects.',
+      complianceGuarantee: 'Enforces EU GDPR Article 9 special-category health data isolation, non-repudiable sign-off logs, and BOLA chart testing.',
     },
     assignedAgentSlugs: [
       'gdpr-clinical-privacy-deidentification-agent',
@@ -249,6 +299,28 @@ export const INDUSTRY_VERTICALS: VerticalRecord[] = [
       'bola-authorization-red-team-agent',
       'immutable-clinical-ai-audit-agent',
       'cited-patient-handover-summariser-agent',
+    ],
+    faqs: [
+      {
+        question: 'How does SlaintePsych enforce OWASP BOLA isolation and Break-the-Glass crisis overrides?',
+        answer:
+          'SlainteShield-BOLA continuously tests CompartmentDefinition/Patient endpoints with dual-phase differential probes to verify out-of-team tokens cannot read psychiatric Observation or DocumentReference resources. During genuine out-of-hours crises, SlainteGov-GDPR provides time-boxed 60-minute GDPR Art. 9(2)(c) Break-the-Glass grants recorded in an immutable SQLite table with real-time SIEM alerts.',
+      },
+      {
+        question: 'Which standardized LOINC codes are used for PHQ-9 and GAD-7 tracking?',
+        answer:
+          'SlaintePsych stores total depression screening scores under LOINC 44261-6 (PHQ-9) and generalized anxiety scores under LOINC 70274-6 (GAD-7) as HL7 FHIR R4 Observation resources, allowing longitudinal trend graphs across inpatient, CMHT, and primary care.',
+      },
+      {
+        question: 'How does medication screening protect patients on Lithium, SSRIs, or CNS depressants?',
+        answer:
+          'SlainteRx-Guard evaluates active HL7 FHIR R4 MedicationRequests against latest renal LOINC Observations (eGFR 33914-3 and Potassium 2823-3) alongside ISMP high-alert drug pairs such as concurrent Opioid + Benzodiazepine regimens before saving prescriptions.',
+      },
+      {
+        question: 'Are patient names ever leaked into logs or third-party tools?',
+        answer:
+          'No. Patient names, addresses, telecom details, and national IDs are stripped upstream by ai/context.py, and audit logs store salted SHA-256 digests keyed to LOG_HASH_SALT.',
+      },
     ],
   },
   {
@@ -263,53 +335,75 @@ export const INDUSTRY_VERTICALS: VerticalRecord[] = [
       heroGradient: 'linear-gradient(135deg, #082026 0%, #0E5A63 100%)',
       heroText: '#FFFFFF',
       heroMuted: '#CCFBF1',
-      accentMain: '#0F626A', // 6.84:1 on white
+      accentMain: '#0F626A',
       surfaceTint: '#F0FDFA',
       borderTint: '#99F6E4',
       badgeBg: '#CCFBF1',
-      badgeText: '#115E59', // 7.3:1 on #CCFBF1
+      badgeText: '#115E59',
     },
-    seoTitle: 'For Dental Surgeons, Oral Surgery & DSOs (SlainteDent) | SlainteTech',
+    seoTitle: 'Dental Surgeons & DSO Charting Software (SlainteDent) | SlainteTech',
     seoDescription:
-      'Interactive 32-tooth FDI Odontogram (11–48), 6-sextant BPE periodontal charting, and chairside antibiotic/anticoagulant medical clearance on HL7 FHIR R4.',
-    heroHeadline: 'Chairside 32-Tooth FDI Odontogram & Instant Medical Clearance Before You Inject or Extract',
+      'Unite 32-tooth dental charting and gum scoring with instant pre-op checks for penicillin allergies, blood thinners, and kidney risks before prescribing or extracting.',
+    heroHeadline: 'Chairside 32-Tooth Charting & Instant Safety Checks Before You Prescribe or Extract.',
     heroLead:
-      'Dental software is historically cut off from medical pathology and pharmacology. SlainteDent unites interactive FDI 11–48 tooth charting and 6-sextant BPE periodontal scoring with live medical allergy, anticoagulant, and renal safety checks.',
-    mobileReadyNote: 'Chairside tablet-friendly 32-tooth FDI Odontogram with touch-scrollable quadrants for surgery iPads.',
+      'Most dental systems sit cut off from hospital labs and GP medication lists. SlainteDent pairs a fast 32-tooth chart and 6-sextant gum scoring with automatic warnings for penicillin allergies, blood thinners, and kidney impairment before any chairside script goes out.',
+    mobileReadyNote: 'Touch-ready 32-tooth dental chart built for chairside surgery iPads and sterile tablet sleeves.',
     kpis: [
-      { label: 'Dental Charting', value: 'FDI 11–48', detail: 'Interactive 32-tooth status persisted as SNOMED/LOINC FHIR Observations' },
-      { label: 'Periodontal Matrix', value: '6-Sextant BPE', detail: '0–4* Basic Periodontal Examination recorded chairside' },
-      { label: 'Pre-Op Medical Gate', value: 'Allergy & Bleed', detail: 'Flags Penicillin allergy, Warfarin/DOACs & NSAID renal risk' },
+      { label: 'Tooth Charting', value: '32-Tooth Visual', detail: 'Tap-to-update status across all quadrants synced to clinical records' },
+      { label: 'Periodontal Care', value: '6-Sextant Gum Score', detail: 'Fast chairside BPE scoring stored directly in patient history' },
+      { label: 'Pre-Op Clearance', value: 'Allergy & Bleed Alert', detail: 'Instant checks for penicillin allergy, blood thinners, and kidney risks' },
     ],
     painPointsSolved: [
       {
-        pain: 'Prescribing Amoxicillin or Ibuprofen post-extraction without visibility into GP allergy or CKD labs',
-        deterministicFix: '3-Tier SlainteRx-Guard intercepts Beta-Lactam cross-reactivity, Warfarin+NSAID bleed risk, and eGFR < 60.',
+        pain: 'Prescribing Amoxicillin or Ibuprofen post-extraction without seeing GP allergies or kidney function',
+        deterministicFix: 'Built-in checks block penicillin cross-reactions, blood-thinner bleed clashes, and unsafe painkiller doses immediately.',
       },
       {
-        pain: 'Paper medical history questionnaires that miss recently started bisphosphonates or DOACs',
-        deterministicFix: 'Reads active FHIR MedicationRequests and flags anticoagulants/hemostasis risks right above the Odontogram.',
+        pain: 'Paper medical questionnaires missing recently started blood thinners or bisphosphonates',
+        deterministicFix: 'Surfaces active medical conditions and high-bleeding-risk medications right above the tooth chart on opening.',
       },
       {
-        pain: 'Siloed proprietary dental charts that cannot exchange referrals with hospital oral & maxillofacial units',
-        deterministicFix: 'Persists dental charts and operative notes as standard HL7 FHIR R4 Observations and DocumentReferences.',
+        pain: 'Locked dental software that cannot send clean referrals to hospital oral surgery units',
+        deterministicFix: 'Stores tooth charts, gum scores, and operative notes in standard HL7 FHIR R4 format for effortless hospital exchange.',
       },
     ],
     workflowSteps: [
-      { step: '01', title: 'Automatic Pre-Procedure Medical Clearance', detail: 'Review highlighted Penicillin/Latex allergies and Warfarin/Apixaban hemostasis banners upon opening the chart.' },
-      { step: '02', title: 'Tap-to-Chart 32-Tooth FDI & 6-Sextant BPE', detail: 'Toggle Sound, Carious, Restored, Endodontic, Crown, Extraction Planned, or Missing states per tooth.' },
-      { step: '03', title: 'Prescribe Safely & File Operative Note', detail: 'Screen post-op analgesia/antibiotics through SlainteRx-Guard and save the signed operative note to FHIR R4.' },
+      { step: '01', title: 'Check Pre-Procedure Warnings', detail: 'See highlighted allergy banners and Warfarin/DOAC bleeding alerts immediately on opening the patient chart.' },
+      { step: '02', title: 'Update 32-Tooth & Gum Chart', detail: 'Tap any tooth to mark caries, restorations, root treatment, crowns, or planned extractions plus 6-sextant BPE.' },
+      { step: '03', title: 'Screen Antibiotics & Sign Note', detail: 'Verify post-op prescriptions automatically and lock the signed operative note to the permanent record.' },
     ],
     buyerRoi: {
       clinicalBuyer: 'Dental Support Organisations (DSOs), Hospital Maxillofacial Units & Specialist Practices',
-      economicImpact: 'Eliminates chairside medical-clearance delays and standardizes multi-clinic periodontal & surgical audits.',
-      complianceGuarantee: 'SNOMED-CT Dental Binding, Dental Council Audit Trail & Deterministic Prescribing Safety.',
+      economicImpact: 'Removes chairside medical-history guesswork while standardizing clinical audits across multi-site dental groups.',
+      complianceGuarantee: 'Aligns with standard dental coding, hospital referral interoperability, and verifiable prescribing safety.',
     },
     assignedAgentSlugs: [
       'pharmacotherapy-allergy-renal-safety-agent',
       'multimodal-hl7v2-fhir-ingestion-agent',
       'cited-patient-handover-summariser-agent',
       'gdpr-clinical-privacy-deidentification-agent',
+    ],
+    faqs: [
+      {
+        question: 'How does SlainteDent represent FDI teeth 11-48 and 6-sextant BPE in HL7 FHIR R4?',
+        answer:
+          'Every tooth status update and Basic Periodontal Examination (BPE 0 to 4*) persists natively as SNOMED-CT and LOINC bound HL7 FHIR R4 Observation and DocumentReference resources inside the patient compartment, allowing seamless referrals to hospital Oral and Maxillofacial departments.',
+      },
+      {
+        question: 'Which chairside prescribing risks does SlainteRx-Guard check automatically?',
+        answer:
+          'SlainteRx-Guard runs a 3-tier Python check against documented Beta-Lactam/Penicillin allergies (blocking Amoxicillin and cross-reactive Cephalosporins), anticoagulant combinations (Warfarin or Apixaban + NSAIDs like Ibuprofen, plus Metronidazole interactions), and LOINC renal eGFR thresholds below 60 mL/min.',
+      },
+      {
+        question: 'Can Dental Support Organisations import legacy clinic CSVs or hospital medical summaries?',
+        answer:
+          'Yes. SlainteEngine-Ingest and SlainteGov-Onboard ingest clinic CSV exports, referral PDFs, and hospital HL7v2 messages cleanly while preserving allergy and medication lists across sites.',
+      },
+      {
+        question: 'Are DSO staff actions separated by role and auditable for Dental Council inspections?',
+        answer:
+          'Every chart edit, prescription check, and operative sign-off links to authenticated practitioner credentials (OIDC or local RBAC) and writes tamper-evident SHA-256 audit entries.',
+      },
     ],
   },
   {
@@ -324,53 +418,75 @@ export const INDUSTRY_VERTICALS: VerticalRecord[] = [
       heroGradient: 'linear-gradient(135deg, #062016 0%, #0F5132 100%)',
       heroText: '#FFFFFF',
       heroMuted: '#DCFCE7',
-      accentMain: '#15803D', // 5.13:1 on white
+      accentMain: '#15803D',
       surfaceTint: '#F0FDF4',
       borderTint: '#BBF7D0',
       badgeBg: '#DCFCE7',
-      badgeText: '#14532D', // 9.4:1 on #DCFCE7
+      badgeText: '#14532D',
     },
-    seoTitle: 'For Clinical & Community Pharmacies (SlaintePharm) | SlainteTech',
+    seoTitle: 'Pharmacy Dispensing Safety & Claims Software (SlaintePharm) | SlainteTech',
     seoDescription:
-      'Active MedicationRequest dispensing verification queue powered by 3-Tier SlainteRx-Guard (Allergy, DDI, eGFR), PSI Provenance sign-off, and HSE PCRS GMS export.',
-    heroHeadline: 'Lab-Aware 3-Tier Dispensing Safety & Automated HSE PCRS Reimbursement',
+      'Cut pharmacist alert fatigue by sorting dispensing queues by real allergy, drug-interaction, and kidney lab risk while keeping monthly HSE PCRS claims clean.',
+    heroHeadline: 'Catch Hidden Drug & Kidney Risks Early. Stop Claim Rejections.',
     heroLead:
-      'Pharmacists are the last clinical safety barrier before medicines reach the patient, yet dispensaries rarely see kidney function labs and suffer severe alert fatigue. SlaintePharm ranks queues by real clinical risk and catches dangerous interactions automatically.',
-    mobileReadyNote: 'Ward-round tablet ready for hospital clinical pharmacists reviewing inpatient drug kardexes at the bedside.',
+      'Pharmacists are the final safety check before medicines reach the patient, yet most systems bury critical warnings in noisy pop-ups and hide kidney blood test results. SlaintePharm ranks queues by real risk and prepares clean monthly claim batches.',
+    mobileReadyNote: 'Ward-round tablet layout helps hospital clinical pharmacists check patient drug charts right at the bedside.',
     kpis: [
-      { label: 'Pharmacology Gate', value: '3-Tier Engine', detail: 'Allergy cross-reactivity + ISMP High-Alert DDI + LOINC eGFR' },
-      { label: 'GMS Claims', value: 'PCRS Batch CSV', detail: '1-click verified Irish GMS OID monthly claim export' },
-      { label: 'RBAC Separation', value: 'PSI Enforced', detail: 'Granular pharmacist role gate & immutable Provenance sign-off' },
+      { label: 'Risk Queue', value: 'Sorted by Danger', detail: 'High-risk allergy, drug-clash, and kidney alerts float to the top' },
+      { label: 'Monthly Claims', value: '1-Click PCRS CSV', detail: 'Checks GMS numbers and unit formats before submission' },
+      { label: 'Role Control', value: 'Verified Sign-Off', detail: 'Strict separation so only registered pharmacists approve final release' },
     ],
     painPointsSolved: [
       {
-        pain: 'Dispensing Clarithromycin alongside Simvastatin or Metformin in unrecognised Stage 4 CKD',
-        deterministicFix: 'SlainteRx-Guard evaluates active regimens and LOINC eGFR/Potassium labs automatically before dispense.',
+        pain: 'Missing dangerous antibiotic-statin clashes or Metformin prescriptions in Stage 4 kidney disease',
+        deterministicFix: 'Every queued order checks patient allergies, high-alert drug pairs, and recent kidney blood tests before release.',
       },
       {
-        pain: 'Rejected monthly HSE PCRS claims caused by malformed GMS identifiers or non-UCUM dosage units',
-        deterministicFix: 'SlainteShield-FHIR validates GMS OIDs and UCUM units upstream of the `/enterprise/pcrs/export` batch.',
+        pain: 'Rejected monthly HSE PCRS claims caused by broken GMS identifiers or sloppy dose formatting',
+        deterministicFix: 'Automated validation cleans patient GMS numbers and dosage units upstream before exporting the monthly batch CSV.',
       },
       {
-        pain: 'Weak separation of duties between prescribing and dispensing in shared clinical software',
-        deterministicFix: 'Granular clinical RBAC restricts Dispense Verified / Hold Rx actions exclusively to registered pharmacists.',
+        pain: 'Pharmacists wasting hours clicking past minor warnings while real interactions blend in',
+        deterministicFix: 'The dispensing queue ranks genuine high-severity interactions and kidney thresholds at the very top for instant focus.',
       },
     ],
     workflowSteps: [
-      { step: '01', title: 'Risk-Sorted Active Dispensing Queue', detail: 'Flagged prescriptions with cross-reactivity, high-alert DDIs, or renal alerts sort automatically to the top.' },
-      { step: '02', title: 'Pharmacist Clinical Intervention or Verify', detail: 'Place unsafe orders On-Hold with prescriber query notes or mark Dispensed & PSI Verified in one click.' },
-      { step: '03', title: 'Export Verified HSE PCRS Batch', detail: 'Download clean monthly GMS reimbursement CSVs with verified timestamps and dispenser attribution.' },
+      { step: '01', title: 'Review Risk-Ranked Prescriptions', detail: 'Flagged items with allergies, drug interactions, or kidney warnings automatically surface first.' },
+      { step: '02', title: 'Hold With Note or Approve Dispense', detail: 'Place risky items on hold with a prescriber query note or verify safe orders in a single tap.' },
+      { step: '03', title: 'Export Clean Monthly Claim Batch', detail: 'Download pre-validated monthly reimbursement CSVs with full pharmacist verification timestamps.' },
     ],
     buyerRoi: {
       clinicalBuyer: 'Pharmacy Chains, Hospital Chief Pharmacists & Supervising Pharmacists',
-      economicImpact: 'Cuts PCRS claim rejections and focuses clinical pharmacist time on genuine high-severity DDI/renal interventions.',
-      complianceGuarantee: 'PSI Inspection Auditability, HL7 FHIR R4 UCUM Conformance & RBAC Separation of Duties.',
+      economicImpact: 'Cuts monthly PCRS reimbursement clawbacks and focuses pharmacist time on high-value clinical interventions.',
+      complianceGuarantee: 'Built for PSI inspection readiness, clean dosage formatting, and role-enforced separation of duties.',
     },
     assignedAgentSlugs: [
       'pharmacotherapy-allergy-renal-safety-agent',
       'fhir-r4-conformance-terminology-agent',
       'immutable-clinical-ai-audit-agent',
       'gdpr-clinical-privacy-deidentification-agent',
+    ],
+    faqs: [
+      {
+        question: 'How does SlaintePharm prioritize high-severity drug interactions and renal risks?',
+        answer:
+          'SlainteRx-Guard evaluates every active HL7 FHIR R4 MedicationRequest using a 3-tier rule engine covering allergy cross-reactivity, ISMP high-alert drug interactions (such as Clarithromycin + Statin, Warfarin + NSAID/Metronidazole, ACEi + Spironolactone), and live LOINC eGFR (33914-3) / Potassium (2823-3) laboratory readings.',
+      },
+      {
+        question: 'What validation runs before exporting monthly HSE PCRS claim files?',
+        answer:
+          'SlainteShield-FHIR verifies that Patient.identifier systems conform to the Irish GMS OID (urn:oid:1.3.6.1.4.1.54392.5.2690.42.80) and checks UCUM dosage units (http://unitsofmeasure.org) across MedicationRequests before /enterprise/pcrs/export generates the monthly batch CSV.',
+      },
+      {
+        question: 'How is RBAC separation of duties enforced between prescribers and pharmacists?',
+        answer:
+          'Role-based access control mapped to local credentials or OIDC claims (Entra ID, Keycloak, Okta) ensures only authenticated pharmacist roles can mark items Dispense Verified or Hold Rx, writing a SHA-256 FHIR Provenance record with registration metadata.',
+      },
+      {
+        question: 'Can hospital clinical pharmacists run SlaintePharm read-only alongside an existing PAS/EPMA?',
+        answer:
+          'Yes. SlaintePharm supports SMART-on-FHIR v2 read-only attachment or HL7v2 RDE^O11 / ORU^R01 order and lab mirroring without replacing existing dispensary hardware.',
+      },
     ],
   },
   {
@@ -385,53 +501,75 @@ export const INDUSTRY_VERTICALS: VerticalRecord[] = [
       heroGradient: 'linear-gradient(135deg, #1C1917 0%, #5C2D0C 100%)',
       heroText: '#FFFFFF',
       heroMuted: '#FEF3C7',
-      accentMain: '#B45309', // 5.02:1 on white
+      accentMain: '#B45309',
       surfaceTint: '#FFFBEB',
       borderTint: '#FDE68A',
       badgeBg: '#FEF3C7',
-      badgeText: '#78350F', // 8.7:1 on #FEF3C7
+      badgeText: '#78350F',
     },
-    seoTitle: 'Ambulance Tablet ePCR & ED Pre-Alert Software (SlainteEMS) | SlainteTech',
+    seoTitle: 'Ambulance Tablet ePCR & Pre-Alert Software (SlainteEMS) | SlainteTech',
     seoDescription:
-      'Glove-friendly rugged tablet ePCR for paramedics with 10-second vital entry, instant MTS Cat 1-5 and NEWS2 scoring, and 1-tap hospital resuscitation bay handoff.',
-    heroHeadline: 'Glove-Friendly Tablet ePCR, Instant Acuity Scoring & Direct Resus Pre-Alerts',
+      'Give paramedics 10-second vital entry on rugged tablets, instant urgency scores offline, and 1-tap hospital resuscitation pre-alerts with zero double entry.',
+    heroHeadline: '10-Second Ambulance Charting & Direct Resus Pre-Alerts.',
     heroLead:
-      'Built for moving ambulances, roadside trauma, and rugged field tablets. Paramedics record vitals in 10 seconds with 44px glove-ready touch buttons, compute validated MTS and NEWS2 scores offline or over 5G, and stream structured records ahead to the hospital resuscitation bay.',
-    mobileReadyNote: 'Built mobile- and tablet-first: coarse-pointer 44px inputs, anti-zoom 16px touch fields, and one-thumb bottom dock for ambulance crews.',
+      'Built for moving ambulances and rugged tablets in bright light or night calls. Paramedics log vitals in seconds using large glove-ready buttons, get immediate triage priority scores even without signal, and beam patient alerts straight to the receiving ED bay.',
+    mobileReadyNote: 'Engineered tablet-first: 44px glove touch controls, high-contrast outdoor mode, and a one-thumb field dock.',
     kpis: [
-      { label: 'Roadside Triage', value: '<10ms MTS/NEWS2', detail: 'Deterministic Cat 1–5 & NEWS2 0–20 from ambulance vitals' },
-      { label: 'Rugged Ergonomics', value: '44px Touch UI', detail: 'High-contrast mode & glove-safe controls on Toughbooks/iPads' },
-      { label: 'Hospital Pre-Alert', value: '1-Tap FHIR Push', detail: 'Transmits Patient, Vitals, Allergies & Meds to ED queue' },
+      { label: 'Roadside Scoring', value: '<10ms Triage', detail: 'Instant priority category and early-warning calculation offline' },
+      { label: 'Field Controls', value: '44px Glove UI', detail: 'Large anti-zoom buttons designed for Toughbooks and ambulances' },
+      { label: 'Hospital Arrival', value: '1-Tap ED Alert', detail: 'Sends vitals, allergies, and field meds straight to resuscitation teams' },
     ],
     painPointsSolved: [
       {
-        pain: 'Crackly radio pre-alerts and lost paper ambulance sheets during chaotic resuscitation handovers',
-        deterministicFix: 'POST /fhir/Vertical/ems/epcr transmits a complete SNOMED/LOINC FHIR R4 Bundle directly to the receiving ED.',
+        pain: 'Crackly radio handovers and lost paper ambulance sheets when rushing into resuscitation bays',
+        deterministicFix: 'One tap pushes the complete structured casualty card directly into the receiving hospital live queue.',
       },
       {
-        pain: 'Tiny desktop buttons and hover-only menus that fail on bouncing ambulance tablets',
-        deterministicFix: 'Responsive mobile drawer, sticky bottom quick-dock, and High-Contrast Clinical Priority Mode work cleanly in the field.',
+        pain: 'Fiddly tiny buttons that become impossible to tap in a moving ambulance with gloves on',
+        deterministicFix: 'Coarse-pointer 44px touch targets, 16px inputs, and high-contrast visibility work reliably in real road conditions.',
       },
       {
-        pain: 'Handwritten field notes and ECG observations stranded outside the electronic record',
-        deterministicFix: 'SlainteEngine-Ingest extracts photographed triage notes into structured FHIR Observations.',
+        pain: 'Hospital triage teams wasting precious minutes re-typing everything paramedics already recorded',
+        deterministicFix: 'Hospital consultants inspect incoming vitals, field treatments, and allergies before the ambulance doors open.',
       },
     ],
     workflowSteps: [
-      { step: '01', title: '10-Second Roadside Vital Entry on Tablet', detail: 'Capture SBP, DBP, HR, SpO2, RR, Temp, Known Allergies, and Field Meds Given on large touch inputs.' },
-      { step: '02', title: 'Automatic MTS Cat 1-5 & NEWS2 Calculation', detail: 'Verified clinical rules compute exact triage target minutes and sepsis or hypoxia escalation tiers instantly.' },
-      { step: '03', title: 'Zero-Latency Receiving ED Handover', detail: 'Receiving ED consultants see the casualty live in their Cat 1–5 queue before the ambulance bay doors open.' },
+      { step: '01', title: 'Log Vitals on Tablet in 10 Seconds', detail: 'Enter blood pressure, pulse, oxygen, breathing rate, allergies, and treatments on large touch fields.' },
+      { step: '02', title: 'Compute Priority Score Locally', detail: 'Tested clinical rules assign emergency priority and sepsis or hypoxia warnings immediately, offline or online.' },
+      { step: '03', title: 'Pre-Alert Receiving Trauma Team', detail: 'Hospital ED bays receive the live record with arrival status before handover begins.' },
     ],
     buyerRoi: {
       clinicalBuyer: 'National Ambulance Services, Private EMS Operators & Aeromedical Retrieval Teams',
-      economicImpact: 'Shaves critical minutes off ambulance-to-resuscitation turnaround and eliminates duplicate ED triage re-entry.',
-      complianceGuarantee: 'PHECC / Pre-Hospital Audit Traceability, HL7 FHIR R4 Interoperability & Offline-Capable Architecture.',
+      economicImpact: 'Shaves critical minutes off ambulance turnaround and prepares stroke or trauma bays before arrival.',
+      complianceGuarantee: 'Full pre-hospital audit trail, standard HL7 FHIR R4 data exchange, and resilient offline operation.',
     },
     assignedAgentSlugs: [
       'manchester-triage-news2-acuity-agent',
       'multimodal-hl7v2-fhir-ingestion-agent',
       'cited-patient-handover-summariser-agent',
       'immutable-clinical-ai-audit-agent',
+    ],
+    faqs: [
+      {
+        question: 'How does SlainteEMS transmit pre-alerts from the ambulance to the hospital ED?',
+        answer:
+          'Pressing Push ED Alert calls POST /fhir/Vertical/ems/epcr, packaging Patient demographics, LOINC vital Observations, AllergyIntolerances, field MedicationRequests, and calculated MTS/NEWS2 risk into a validated HL7 FHIR R4 Bundle received immediately in the hospital SlainteED queue.',
+      },
+      {
+        question: 'What happens in rural cellular dead zones before reaching the hospital?',
+        answer:
+          'All triage and early-warning scoring runs locally in under 10ms without cloud latency. Records stay queued cleanly on the tablet until connectivity resumes.',
+      },
+      {
+        question: 'How does the UI meet tough physical ambulance conditions?',
+        answer:
+          'The frontend enforces CSS pointer:coarse 44px minimum touch controls, 16px typography to prevent iOS/Android auto-zoom, WCAG 2.2 AA contrast palettes, and a single-thumb sticky bottom quick-dock.',
+      },
+      {
+        question: 'Can handwritten field triage cards or photos also be imported?',
+        answer:
+          'Yes. SlainteEngine-Ingest extracts key vitals and chief complaints from uploaded CSVs or scanned triage sheets via POST /fhir/intake/upload into structured HL7 FHIR R4 Observations.',
+      },
     ],
   },
   {
@@ -446,47 +584,47 @@ export const INDUSTRY_VERTICALS: VerticalRecord[] = [
       heroGradient: 'linear-gradient(135deg, #0F172A 0%, #114B3C 100%)',
       heroText: '#FFFFFF',
       heroMuted: '#D1FAE5',
-      accentMain: '#0F766E', // 5.47:1 on white
+      accentMain: '#0F766E',
       surfaceTint: '#F0FDFA',
       borderTint: '#99F6E4',
       badgeBg: '#CCFBF1',
-      badgeText: '#134E4A', // 8.9:1 on #CCFBF1
+      badgeText: '#134E4A',
     },
-    seoTitle: 'For Elite Sports Clubs & Federations (SlainteSport) | SlainteTech',
+    seoTitle: 'Elite Sports Club Medical & Concussion Software (SlainteSport) | SlainteTech',
     seoDescription:
-      'Athlete performance medicine vertical featuring squad physiological readiness, SCAT6 concussion Return-to-Play cryptographic Provenance, TUE screening, and BOLA privacy.',
-    heroHeadline: 'Cryptographic Return-to-Play Clearance, TUE Pharmacology & BOLA-Isolated Athlete Privacy',
+      'Lock down sensitive squad medical files against leaks, screen matchday medications for TUE and kidney safety, and record indisputable doctor concussion sign-offs.',
+    heroHeadline: 'Indisputable Return-to-Play Sign-Off & Leak-Proof Athlete Privacy.',
     heroLead:
-      'High-value squad medical data is a prime target for leaks, media intrusion, and medico-legal concussion disputes. SlainteSport combines pitchside physiological tracking, Therapeutic Use Exemption (TUE) medication screening, and SHA-256 signed Return-to-Play clearances.',
-    mobileReadyNote: 'Pitchside iPad and dressing-room tablet responsive interface for immediate concussion & injury assessment.',
+      'High-profile player medical records attract intense scrutiny, media leaks, and liability disputes over head injuries. SlainteSport combines squad readiness tracking and matchday medication safety with doctor-signed, tamper-proof Return-to-Play records.',
+    mobileReadyNote: 'Fast pitchside iPad and dressing-room view built for matchday medical teams.',
     kpis: [
-      { label: 'Return-to-Play', value: 'SCAT6 + SHA-256', detail: 'Team physician cryptographic FHIR Provenance clearance' },
-      { label: 'Roster Privacy', value: 'BOLA Red-Teamed', detail: 'Continuous cross-athlete compartment isolation probing' },
-      { label: 'Pharmacology Gate', value: 'Rx & TUE Check', detail: 'Allergy, NSAID renal & DDI screening before matchday meds' },
+      { label: 'Concussion Sign-Off', value: 'Doctor Signed Log', detail: 'Clear, timestamped team doctor proof for every Return-to-Play call' },
+      { label: 'Record Privacy', value: 'Role-Locked Charts', detail: 'Automated tests prove coaching logins cannot snoop player records' },
+      { label: 'Matchday Safety', value: 'NSAID & TUE Gate', detail: 'Checks kidney load and allergies before prescribing pain relief' },
     ],
     painPointsSolved: [
       {
-        pain: 'Disputed concussion or hamstring Return-to-Play sign-offs during high-stakes tournament weeks',
-        deterministicFix: '1-click Team Doctor clearance writes an immutable SHA-256 signed FHIR Provenance + clinical note.',
+        pain: 'Disputes over who cleared an athlete to play after a concussion or major hamstring injury',
+        deterministicFix: 'One-tap clearance records the signing doctor ID, assessment summary, and timestamp permanently.',
       },
       {
-        pain: 'Sensitive athlete medical records exposed across broad coaching or analytics logins',
-        deterministicFix: 'SlainteShield-BOLA continuously tests CompartmentDefinition/Patient boundaries to guarantee strict isolation.',
+        pain: 'Sensitive athlete medical charts visible to broad coaching, scouting, or analytics accounts',
+        deterministicFix: 'Continuous automated security probes verify strict medical compartment isolation across team roles.',
       },
       {
-        pain: 'Repeated NSAID analgesia masking renal strain or interacting with concurrent prescriptions',
-        deterministicFix: '3-Tier SlainteRx-Guard checks athlete allergies, DDIs, and LOINC renal biomarkers prior to prescribing.',
+        pain: 'Repeated matchday painkillers straining athlete kidneys or clashing with active treatments',
+        deterministicFix: 'Built-in pharmacology screening checks allergies, drug combinations, and recent kidney blood markers first.',
       },
     ],
     workflowSteps: [
-      { step: '01', title: 'Monitor Squad Bio-Telemetry Board', detail: 'Review live HR, SpO2, BP, Temp, and NEWS2 physiological drift across the first-team roster.' },
-      { step: '02', title: 'Screen Matchday & Recovery Prescriptions', detail: 'Verify analgesia and recovery regimens through 3-Tier SlainteRx-Guard on tablet or desktop.' },
-      { step: '03', title: 'Sign Cryptographic Return-to-Play Clearance', detail: 'Bind IMC registration and timestamped SHA-256 Provenance before clearing an athlete for selection.' },
+      { step: '01', title: 'Monitor First-Team Readiness', detail: 'Track resting heart rate, oxygen, blood pressure, and physiological drift across squad dashboards.' },
+      { step: '02', title: 'Screen Matchday Treatments', detail: 'Verify analgesia and TUE recovery plans through the 3-tier pharmacology gate before administration.' },
+      { step: '03', title: 'Lock Concussion & RTP Clearance', detail: 'Issue team-physician signed Return-to-Play records backed by tamper-evident audit logs.' },
     ],
     buyerRoi: {
       clinicalBuyer: 'Premier Rugby, Football, GAA, Olympic Federations & Pro Sports Medical Departments',
-      economicImpact: 'Protects multi-million-euro squad availability while eliminating medico-legal clearance ambiguity.',
-      complianceGuarantee: 'OWASP API1:2023 BOLA Verification, EU GDPR Art. 9 Athlete Privacy & Non-Repudiable Provenance.',
+      economicImpact: 'Protects multi-million-euro squad availability while eliminating medico-legal clearance uncertainty.',
+      complianceGuarantee: 'Enforces EU GDPR Article 9 athlete health protection, verified BOLA isolation, and permanent provenance records.',
     },
     assignedAgentSlugs: [
       'bola-authorization-red-team-agent',
@@ -494,6 +632,28 @@ export const INDUSTRY_VERTICALS: VerticalRecord[] = [
       'pharmacotherapy-allergy-renal-safety-agent',
       'gdpr-clinical-privacy-deidentification-agent',
       'immutable-clinical-ai-audit-agent',
+    ],
+    faqs: [
+      {
+        question: 'How does SlainteSport prove that non-medical staff cannot access player medical files?',
+        answer:
+          'SlainteShield-BOLA automatically probes CompartmentDefinition/Patient endpoints across coaching, physio, and external tokens, generating repeatable audit evidence showing zero unauthorized cross-athlete or cross-role reads (OWASP API1:2023).',
+      },
+      {
+        question: 'How are SCAT6 concussion Return-to-Play clearances cryptographically signed?',
+        answer:
+          'When a team physician signs Return-to-Play clearance, SlainteGov-Audit creates a canonical JSON SHA-256 digest stored inside an HL7 FHIR R4 Provenance resource alongside practitioner registration credentials and append-only SQLite audit protection.',
+      },
+      {
+        question: 'How does medication screening protect athletes using NSAIDs or acute pain relief?',
+        answer:
+          'SlainteRx-Guard inspects LOINC eGFR kidney function markers and AllergyIntolerance profiles prior to saving matchday MedicationRequests, catching nephrotoxic NSAID risks when kidney function dips under 60 mL/min.',
+      },
+      {
+        question: 'Can federations run SlainteSport privately inside their own club servers?',
+        answer:
+          'Yes. The full appliance deploys via Docker Compose in under 5 minutes inside a private cloud VPC or local training-ground server with zero third-party cloud data exposure.',
+      },
     ],
   },
   {
@@ -508,47 +668,47 @@ export const INDUSTRY_VERTICALS: VerticalRecord[] = [
       heroGradient: 'linear-gradient(135deg, #020617 0%, #1E1B4B 100%)',
       heroText: '#FFFFFF',
       heroMuted: '#E0E7FF',
-      accentMain: '#3730A3', // 9.42:1 on white
+      accentMain: '#3730A3',
       surfaceTint: '#EEF2FF',
       borderTint: '#C7D2FE',
       badgeBg: '#E0E7FF',
-      badgeText: '#1E1B4B', // 12.6:1 on #E0E7FF
+      badgeText: '#1E1B4B',
     },
-    seoTitle: 'Aerospace & Offline Medical Decision Support (SlainteAstro) | SlainteTech',
+    seoTitle: 'Offline & Aerospace Clinical Decision Software (SlainteAstro) | SlainteTech',
     seoDescription:
-      '100% air-gapped medical bay running clinical triage, prescribing safety checks, and FHIR telemetry completely offline with zero Earth-cloud dependency.',
-    heroHeadline: '100% Air-Gapped Clinical Decision Support. Zero Cloud Uplink Required.',
+      'Full clinical triage, prescribing safety checks, and tamper-proof medical logs running 100% locally offline with zero internet or cloud required.',
+    heroHeadline: 'Full Clinical Safety & Records With Zero Internet Required.',
     heroLead:
-      'On deep-space, submarine, or remote polar missions, 22-minute communication blackouts make cloud software useless and medication mistakes fatal. SlainteAstro runs all clinical triage, prescribing safety gates, and audit logging locally inside a self-contained offline appliance.',
-    mobileReadyNote: 'Runs self-contained on habitat workstations and crew medical tablets over local spacecraft Wi-Fi or Ethernet.',
+      'In deep space, naval missions, or isolated hospitals during a cyber outage, cloud-dependent medical tools stop working. SlainteAstro proves every triage check, drug safety rule, and audit log inside SlainteTech runs 100% locally inside a sealed offline unit.',
+    mobileReadyNote: 'Operates self-contained over local habitat Wi-Fi, Ethernet, or crew tablets with zero external uplink.',
     kpis: [
-      { label: 'Earth Uplink Required', value: '0 Bytes', detail: '100% offline local appliance execution + local FHIR record store' },
-      { label: 'Integrated Modules', value: 'All 16 Modules', detail: 'Full security, audit, triage, documentation & prescribing gate onboard' },
-      { label: 'EVA Flight Clearance', value: 'SHA-256 Signed', detail: 'Cryptographic Flight Surgeon & Crew Medical Officer sign-off logs' },
+      { label: 'Internet Required', value: 'Zero Bytes', detail: 'Every safety check and record store runs locally onboard' },
+      { label: 'Full Feature Set', value: 'All 16 Modules', detail: 'Complete triage, medication screening, and cyber audit tools offline' },
+      { label: 'EVA Clearance Log', value: 'Signed & Synced', detail: 'Tamper-evident medical logs ready whenever Earth link returns' },
     ],
     painPointsSolved: [
       {
-        pain: 'Cloud medical software fails completely during orbital blackout, deep-space latency, or naval EMCON',
-        deterministicFix: 'Self-contained container appliance runs 100% locally (`SlainteFHIR :8082` + Safety Gate `:8081` + local engine).',
+        pain: 'Cloud healthcare apps fail completely during mission blackouts, offshore gaps, or hospital network outages',
+        deterministicFix: 'The self-contained software stack runs all dashboards, rules, and FHIR patient stores cleanly inside one local box.',
       },
       {
-        pain: 'Unchecked dosing errors or hypoxia miscalculations in isolated high-stress emergencies',
-        deterministicFix: 'All physiological scoring (NEWS2/MTS) and 3-Tier prescribing gates run in verified Python rules, never guessed.',
+        pain: 'Dosing mistakes or slow hypoxia detection under extreme remote pressure without specialist support',
+        deterministicFix: 'Tested medical rules score early-warning deterioration and check kit medications locally in milliseconds.',
       },
       {
-        pain: 'Software supply-chain tampering or unverified telemetry modifications during multi-month missions',
-        deterministicFix: 'SlainteShield-CVE & SlainteGov-Audit continuously verify dependency pins, SRI hashes, and append-only SQLite triggers.',
+        pain: 'Software tampering or missing file integrity verification on long multi-month missions',
+        deterministicFix: 'Continuous integrity checks verify exact package pins, browser file hashes, and locked audit tables offline.',
       },
     ],
     workflowSteps: [
-      { step: '01', title: 'Continuous Habitat & EVA Bio-Telemetry', detail: 'Ingest crew SpO2, HR, BP, temperature, and lab panels into the onboard SlainteFHIR R4 server.' },
-      { step: '02', title: 'Local Acuity Scoring & Prescribing Checks', detail: 'Detect subtle NEWS2 hypoxia drift and screen onboard medical-kit prescriptions with zero cloud calls.' },
-      { step: '03', title: 'Cryptographic EVA Clearance & Telemetry Sync', detail: 'Sign EVA clearances with SHA-256 Provenance ready for deterministic Earth-sync upon signal acquisition.' },
+      { step: '01', title: 'Monitor Crew Vitals Onboard', detail: 'Collect oxygen, heart rate, blood pressure, and panel checks into the onboard medical server.' },
+      { step: '02', title: 'Run Triage & Kit Prescribing Checks', detail: 'Spot subtle early-warning drift and screen onboard medical kit drugs locally with zero cloud calls.' },
+      { step: '03', title: 'Sign EVA Clearances & Delayed Sync', detail: 'Seal flight-surgeon sign-offs in append-only logs ready to sync cleanly when ground signal returns.' },
     ],
     buyerRoi: {
-      clinicalBuyer: 'Space Agencies (ESA / NASA Commercial), Subsea/Polar Expeditions & Sovereign Defence Medical Units',
-      economicImpact: 'Proves extreme edge-autonomy: if SlainteTech runs safely in deep space without internet, it runs effortlessly inside an air-gapped hospital.',
-      complianceGuarantee: '100% Air-Gapped Data Sovereignty, Deterministic Clinical Math & Tamper-Evident Mission Logs.',
+      clinicalBuyer: 'Space Agencies, Naval/Defence Medical Units & Resilient Air-Gapped Hospitals',
+      economicImpact: 'Proves extreme resilience: if our software protects crews offline in deep space, it handles air-gapped hospitals effortlessly.',
+      complianceGuarantee: '100% offline data sovereignty, tested safety calculations, and tamper-proof medical event logs.',
     },
     assignedAgentSlugs: [
       'manchester-triage-news2-acuity-agent',
@@ -557,6 +717,28 @@ export const INDUSTRY_VERTICALS: VerticalRecord[] = [
       'immutable-clinical-ai-audit-agent',
       'ambient-clinical-voice-scribe-agent',
       'bola-authorization-red-team-agent',
+    ],
+    faqs: [
+      {
+        question: 'How does SlainteAstro guarantee 0-byte external cloud dependency?',
+        answer:
+          'All services run inside three isolated local containers (Clinical Web UI :8000, FastMCP Safety Engine :8081, and SlainteFHIR R4 Store :8082) with optional local model endpoints. SlainteGov-GDPR enforces AI_ALLOW_REAL_PHI=false safeguards by default so zero health telemetry ever exits the perimeter.',
+      },
+      {
+        question: 'How is build supply-chain integrity guaranteed when operating offline?',
+        answer:
+          'SlainteShield-CVE continuously audits exact == dependency pinning in production manifests, verifies cryptographic sha384 Subresource Integrity hashes on static templates, and validates strict Content-Security-Policy and SameSite=Lax browser headers.',
+      },
+      {
+        question: 'How do EVA flight-surgeon clearances sync reliably when communications return?',
+        answer:
+          'Every medical sign-off and physiological observation carries HL7 FHIR R4 timestamps and canonical SHA-256 Provenance hashes inside immutable audit tables, allowing deterministic transaction bundle replay without record corruption.',
+      },
+      {
+        question: 'What does SlainteAstro prove for mainland hospitals?',
+        answer:
+          'It proves zero external vendor lock-in or ransomware cloud dependency: NHS trusts, HSE hospitals, or defence clinics can air-gap SlainteTech inside their own hardware rack with identical safety guarantees.',
+      },
     ],
   },
 ];

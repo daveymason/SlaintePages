@@ -1,5 +1,31 @@
+# SlainteTech robots.txt: Standard Search & Generative Engine Optimization
 User-agent: *
 Allow: /
 
+# OpenAI Search & Discovery
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+# Anthropic, Perplexity, Google & Apple crawlers
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+Host: https://slainte-tech.com
 Sitemap: https://slainte-tech.com/sitemap.xml
 LLMs-Txt: https://slainte-tech.com/llms.txt
+LLMs-Full-Txt: https://slainte-tech.com/llms-full.txt

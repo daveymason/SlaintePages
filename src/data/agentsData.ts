@@ -1,3 +1,5 @@
+import type { FaqItem } from '@/components/TechnicalFaqSection';
+
 export type AgentSquad = 'SlainteShield Security' | 'SlainteGov Governance' | 'SlainteClinical Care';
 
 export interface AgentCapability {
@@ -26,7 +28,7 @@ export interface AgentSpecRow {
 }
 
 export interface AgentRecord {
-  slug: string; // SEO slug at /health-tech-agents/<slug>/
+  slug: string;
   name: string;
   codeName: string;
   squad: AgentSquad;
@@ -52,47 +54,47 @@ export interface AgentRecord {
 export const HEALTH_TECH_AGENTS: AgentRecord[] = [
   {
     slug: 'bola-authorization-red-team-agent',
-    name: 'BOLA & Role-Boundary Security Verifier',
+    name: 'Patient Chart Access & Privacy Testing',
     codeName: 'SlainteShield-BOLA',
     squad: 'SlainteShield Security',
     squadColor: 'error',
     iconKey: 'security',
     dashboardScreenshot: '/images/agents/bola-authorization-red-team-agent.png',
-    seoTitle: 'Healthcare API BOLA & Role-Boundary Security Agent | SlainteTech',
+    seoTitle: 'Healthcare API BOLA & Role-Boundary Security Testing | SlainteTech',
     seoDescription:
-      'Continuous OWASP API1:2023 Broken Object Level Authorization (BOLA) security testing across HL7 FHIR R4 patient compartments and clinical role boundaries.',
+      'Prove one staff login or portal account can never read another patient chart by swapping an ID across hospital and clinic APIs.',
     heroSummary:
-      'Automatically tests every patient-record API endpoint across different user roles to prove one clinician or portal account can never read another patient chart by swapping an ID.',
-    fastMcpBadges: ['OWASP API1:2023', 'CompartmentDefinition/Patient', 'Private Network Lock'],
+      'Continuously tests every patient record endpoint to prove unauthorized staff or outside accounts can never view someone else’s medical chart by changing a record ID.',
+    fastMcpBadges: ['OWASP API1:2023', 'Patient Record Isolation', 'Safe Test Boundary'],
     capabilities: [
       {
-        title: 'Targeted Patient-Surface Scoping',
+        title: 'Focused on Real Patient Records',
         description:
-          'Reads live server capabilities and focuses security checks strictly on clinical patient records rather than wasting time on public reference pages.',
+          'Automatically finds active patient record endpoints and tests those first instead of wasting time scanning public information pages.',
         guardrailChip: '82.5% Surface Focus',
         iconKey: 'security',
       },
       {
-        title: 'Cross-Account Authorization Checks',
+        title: 'Cross-Account Read Comparison',
         description:
-          'Compares legitimate record reads against cross-account probes in isolated sessions to confirm zero unauthorized chart exposure.',
+          'Safely compares authorized doctor access against unauthorized account probes in isolated sessions to confirm zero data leaks.',
         guardrailChip: 'Exact Access Diff',
         iconKey: 'verified',
       },
       {
-        title: 'Private-Subnet Safety Lock',
+        title: 'Safe Hospital-Network Lock',
         description:
-          'Built-in network guardrails block scanning of public production endpoints unless explicitly authorized in a staging environment.',
+          'Built-in network safety locks prevent accidental testing outside approved internal or staging hospital networks.',
         guardrailChip: 'Zero Live Disruption',
         iconKey: 'factCheck',
       },
     ],
     verticalUseCase: {
-      eyebrow: 'Verified Vertical Use Case: Elite Sports Medicine',
-      headline: 'Preventing Cross-Roster Medical Chart Leaks in Professional Clubs',
+      eyebrow: 'Real-World Example: Elite Sports Medicine',
+      headline: 'Keeping Coaching Accounts Out of Confidential Player Medical Files',
       scenario:
-        'When physiotherapy, coaching, and club doctors share an athlete readiness platform, SlainteShield-BOLA continuously verifies that squad role tokens cannot query restricted medical, cardiac, or TUE records belonging to other athletes.',
-      outcomeMetric: '0 Cross-Patient Compartment Leaks Across 8 Clinical Resource Types',
+        'When physiotherapists, coaches, and club doctors share one squad readiness portal, SlainteShield-BOLA regularly verifies that coaching or external logins cannot open confidential cardiac, concussion, or TUE medical files.',
+      outcomeMetric: '0 Cross-Patient Record Leaks Across 8 Medical Data Types',
       verticalTitle: 'For Elite Sports Clubs & Federations',
       verticalHref: '/verticals/sports-medicine/',
     },
@@ -119,47 +121,47 @@ export const HEALTH_TECH_AGENTS: AgentRecord[] = [
   },
   {
     slug: 'fhir-r4-conformance-terminology-agent',
-    name: 'FHIR R4 Conformance & Terminology Agent',
+    name: 'Medical Coding & Standard Check',
     codeName: 'SlainteShield-FHIR',
     squad: 'SlainteShield Security',
     squadColor: 'error',
     iconKey: 'verified',
     dashboardScreenshot: '/images/agents/fhir-r4-conformance-terminology-agent.png',
-    seoTitle: 'HL7 FHIR R4 Conformance, SNOMED, LOINC & UCUM Agent | SlainteTech',
+    seoTitle: 'HL7 FHIR R4 Schema, SNOMED, LOINC & UCUM Verification | SlainteTech',
     seoDescription:
-      'Deterministic HL7 FHIR R4 schema, SNOMED-CT, LOINC, UCUM unit, and Irish GMS OID conformance verifier with OASIS SARIF v2.1.0 reporting.',
+      'Keep clinical codes, dosage units, and GMS patient numbers clean across hospital transfers, pharmacy queues, and reimbursement claims.',
     heroSummary:
-      'Audits clinical bundles and micro-EHR stores for unmapped SNOMED-CT diagnoses, missing LOINC observation codes, non-standard UCUM dosage units, and Irish GMS identifier OID drift.',
-    fastMcpBadges: ['HL7 FHIR R4 $validate', 'SNOMED-CT / LOINC / UCUM', 'OASIS SARIF v2.1.0'],
+      'Catches missing diagnosis codes, sloppy medication dose units, and broken patient IDs before prescriptions reach pharmacies or records move between clinics.',
+    fastMcpBadges: ['HL7 FHIR R4 Validation', 'SNOMED / LOINC / UCUM', 'Clean Export Reports'],
     capabilities: [
       {
-        title: 'Terminology & UCUM Unit Verification',
+        title: 'Clean Dose & Lab Unit Checks',
         description:
-          'Validates that every vital sign, laboratory result, and prescription carries canonical LOINC/SNOMED URIs and machine-safe UCUM units (mg, mL, mmol/L).',
-        guardrailChip: 'Strict UCUM Gate',
+          'Makes sure every vital sign, lab reading, and prescription carries exact medical units (mg, mL, mmol/L) instead of ambiguous free text.',
+        guardrailChip: 'Strict Dose Unit Gate',
         iconKey: 'verified',
       },
       {
-        title: 'Irish GMS & National Identifier Binding',
+        title: 'Irish GMS Number Validation',
         description:
-          'Checks Patient.identifier systems against the Irish GMS OID (urn:oid:1.3.6.1.4.1.54392.5.2690.42.80) to prevent orphaned reimbursement records.',
-        guardrailChip: 'HSE HIQA Interop Ready',
+          'Checks patient records against official Irish GMS identifier rules so clinic transfers and monthly pharmacy claims never get rejected.',
+        guardrailChip: 'HSE Interop Ready',
         iconKey: 'factCheck',
       },
       {
-        title: 'CI/CD OASIS SARIF v2.1.0 Export',
+        title: 'Developer & QA Pipeline Export',
         description:
-          'Serializes every schema or terminology defect into standard OASIS SARIF v2.1.0 reports consumable directly by GitHub Code Scanning and hospital QA pipelines.',
-        guardrailChip: 'SARIF v2.1.0 Native',
+          'Outputs standard machine-readable defect reports directly into hospital IT testing and deployment pipelines.',
+        guardrailChip: 'SARIF v2.1.0 Reports',
         iconKey: 'analytics',
       },
     ],
     verticalUseCase: {
-      eyebrow: 'Verified Vertical Use Case: Clinical & Community Pharmacies',
-      headline: 'Eliminating Ambiguous Dosage Units & Unverified GMS Identifiers Before Dispensing',
+      eyebrow: 'Real-World Example: Clinical & Community Pharmacies',
+      headline: 'Stopping Sloppy Dose Text & Broken GMS Numbers Before Claims Fail',
       scenario:
-        'Before prescriptions enter the pharmacist verification queue or monthly HSE PCRS claim batch, SlainteShield-FHIR flags non-UCUM free-text dose strings and missing GMS identifier systems.',
-      outcomeMetric: '100% Schema & Identifier Validation Prior to HSE PCRS Batch Export',
+        'Before orders reach the pharmacist queue or leave for monthly HSE PCRS reimbursement, SlainteShield-FHIR flags unclear text instructions and missing GMS identifiers automatically.',
+      outcomeMetric: '100% Data Check Prior to Monthly Claim Export',
       verticalTitle: 'For Clinical & Community Pharmacies',
       verticalHref: '/verticals/pharmacy/',
     },
@@ -186,47 +188,47 @@ export const HEALTH_TECH_AGENTS: AgentRecord[] = [
   },
   {
     slug: 'healthcare-cve-vulnerability-agent',
-    name: 'Healthcare Supply-Chain & CVE Vulnerability Agent',
+    name: 'Supply-Chain & Login Security Check',
     codeName: 'SlainteShield-CVE',
     squad: 'SlainteShield Security',
     squadColor: 'error',
     iconKey: 'bug',
     dashboardScreenshot: '/images/agents/healthcare-cve-vulnerability-agent.png',
-    seoTitle: 'Healthcare Software Supply-Chain, CSP & CVE Audit Agent | SlainteTech',
+    seoTitle: 'Healthcare Software Supply-Chain & CVE Security Check | SlainteTech',
     seoDescription:
-      'Continuous dependency pinning, Subresource Integrity (SRI sha384), Content-Security-Policy, and rate-limiter posture auditing for clinical web platforms.',
+      'Keep clinical software locked down against third-party package tampering, browser script attacks, and brute-force login attempts.',
     heroSummary:
-      'Continuously inspects Python package pins, Subresource Integrity (SRI sha384) cryptographic hashes on browser assets, Content-Security-Policy headers, and SQLite multi-worker rate-limiting.',
-    fastMcpBadges: ['Exact == Dependency Pins', 'SRI sha384 Verified', 'CSP & SameSite=Lax'],
+      'Protects clinic and hospital deployments from hidden software tampering, outdated third-party packages, browser script risks, and repeated password guessing.',
+    fastMcpBadges: ['Locked Package Versions', 'Verified Browser Assets', 'Login Lockout Defense'],
     capabilities: [
       {
-        title: 'Deterministic Dependency Pin Audit',
+        title: 'Strict Software Package Locks',
         description:
-          'Parses production manifests to verify exact version pinning (==), preventing unreviewed transitive package drift across clinical container builds.',
-        guardrailChip: 'Zero Unpinned Packages',
+          'Confirms every server dependency is pinned to an approved version so unexpected software updates never sneak into clinical systems.',
+        guardrailChip: 'Zero Unpinned Code',
         iconKey: 'bug',
       },
       {
-        title: 'Cryptographic SRI & Browser Hardening',
+        title: 'Verified Browser Assets',
         description:
-          'Verifies sha384 Subresource Integrity hashes on external scripts/stylesheets alongside Content-Security-Policy, X-Frame-Options, and HttpOnly session flags.',
-        guardrailChip: 'SRI sha384 Enforced',
+          'Checks cryptographic file hashes and strict browser headers so every screen delivered to clinicians matches approved builds.',
+        guardrailChip: 'Tamper-Proof Browser UI',
         iconKey: 'security',
       },
       {
-        title: 'Brute-Force & Rate-Limit Storage Check',
+        title: 'Brute-Force Login Protection',
         description:
-          'Confirms multi-worker SQLite rate-limit storage and progressive 15-minute account lockouts after 5 failed authentication attempts.',
-        guardrailChip: 'Shared Worker Lockout',
+          'Enforces shared login attempt tracking and automatic 15-minute lockouts after 5 failed password tries across all server workers.',
+        guardrailChip: '5-Strike Auto Lockout',
         iconKey: 'verified',
       },
     ],
     verticalUseCase: {
-      eyebrow: 'Verified Vertical Use Case: Astronaut & Aerospace Medicine',
-      headline: 'Guaranteeing Zero Supply-Chain Drift in Air-Gapped Orbital Medical Bays',
+      eyebrow: 'Real-World Example: Aerospace & Offline Care',
+      headline: 'Zero Software Drift Inside Sealed Offline Medical Bays',
       scenario:
-        'Before sealing an offline spacecraft or hospital VPC medical appliance, SlainteShield-CVE verifies that every Python package version is strictly pinned and every UI asset matches its cryptographic hash.',
-      outcomeMetric: '100% Deterministic Build & Cryptographic Asset Integrity Offline',
+        'Before locking an offline hospital server or expedition medical container, SlainteShield-CVE checks that every library version and UI asset matches approved security hashes.',
+      outcomeMetric: '100% Repeatable Build & Offline File Verification',
       verticalTitle: 'For Astronaut & Aerospace Medicine',
       verticalHref: '/verticals/astronaut-health/',
     },
@@ -253,47 +255,47 @@ export const HEALTH_TECH_AGENTS: AgentRecord[] = [
   },
   {
     slug: 'gdpr-clinical-privacy-deidentification-agent',
-    name: 'GDPR Art. 9 Clinical Privacy & De-Identification Agent',
+    name: 'GDPR Patient Privacy & Emergency Access Gate',
     codeName: 'SlainteGov-GDPR',
     squad: 'SlainteGov Governance',
     squadColor: 'warning',
     iconKey: 'privacy',
     dashboardScreenshot: '/images/agents/gdpr-clinical-privacy-deidentification-agent.png',
-    seoTitle: 'GDPR Art. 9 Healthcare Privacy, PII Redaction & Break-the-Glass Agent | SlainteTech',
+    seoTitle: 'GDPR Art. 9 Healthcare Privacy & Emergency Access Control | SlainteTech',
     seoDescription:
-      'Enforces EU GDPR Article 9 data minimisation, strips patient PII prior to external processing, pseudonymises logs with salted SHA-256, and audits Break-the-Glass access.',
+      'Protect patient identities automatically under GDPR Article 9, keep raw PHI out of system logs, and record audited 60-minute emergency chart overrides.',
     heroSummary:
-      'Enforces EU GDPR Article 9 special-category health data minimisation by stripping direct identifiers before external processing, salting log subject IDs, and governing 60-minute Break-the-Glass emergency overrides.',
-    fastMcpBadges: ['EU GDPR Art. 9 & 32', 'Live PII Redaction Gate', '60m Break-the-Glass'],
+      'Keeps patient names, addresses, and phone numbers out of logs and outside summaries, while giving clinicians an audited 60-minute emergency override when lives are at risk.',
+    fastMcpBadges: ['GDPR Article 9 Ready', 'Automatic Name Removal', '60-Min Emergency Access'],
     capabilities: [
       {
-        title: 'Automatic Patient PII Stripping',
+        title: 'Automatic Patient Name Removal',
         description:
-          'Removes patient names, street addresses, phone numbers, GMS identifiers, and reduces birth dates to birth year before assembling external processing payloads.',
-        guardrailChip: 'Pre-Send Redaction Gate',
+          'Strips direct names, street addresses, phone numbers, and GMS IDs before notes or summaries leave secure chart views.',
+        guardrailChip: 'Pre-Send Privacy Gate',
         iconKey: 'privacy',
       },
       {
-        title: 'Salted SHA-256 Subject Pseudonymisation',
+        title: 'Clean Pseudonymized System Logs',
         description:
-          'Replaces raw patient identifiers in application and clinical event logs with salted cryptographic digests verified against LOG_HASH_SALT.',
+          'Replaces real patient IDs in technical logs with scrambled cryptographic tokens so troubleshooting never leaks patient identity.',
         guardrailChip: 'Zero Raw PHI in Logs',
         iconKey: 'security',
       },
       {
-        title: 'Audited Break-the-Glass Vital-Interest Grants',
+        title: 'Audited 60-Minute Emergency Overrides',
         description:
-          'Provides time-boxed 60-minute GDPR Art. 9(2)(c) emergency access overrides backed by append-only SQLite triggers and instant HMAC-SHA256 SIEM alerts.',
-        guardrailChip: 'Immutable Override Ledger',
+          'Lets on-call clinicians open urgent charts in an emergency with automatic time expiry and instant alerts sent to security teams.',
+        guardrailChip: 'Audited Override Log',
         iconKey: 'factCheck',
       },
     ],
     verticalUseCase: {
-      eyebrow: 'Verified Vertical Use Case: Psychiatry & Mental Health',
-      headline: 'Protecting Highly Sensitive Psychiatric Notes While Supporting Crisis Care',
+      eyebrow: 'Real-World Example: Psychiatry & Mental Health',
+      headline: 'Keeping Mental Health Notes Confidential While Enabling Crisis Care',
       scenario:
-        'Community mental health records carry extreme confidentiality sensitivity. SlainteGov-GDPR strips all direct patient identifiers before consultation summarisation and requires a justified, SIEM-alerted Break-the-Glass grant for out-of-hours crisis access.',
-      outcomeMetric: '100% Direct-Identifier Redaction Prior to External Processing',
+        'Because psychiatric notes carry extreme privacy sensitivity, SlainteGov-GDPR removes patient identity details before note summaries run and records a security-alerted Break-the-Glass entry for out-of-hours crises.',
+      outcomeMetric: '100% Direct-Identifier Removal Prior to Note Processing',
       verticalTitle: 'For Psychiatrists & Mental Health',
       verticalHref: '/verticals/psychiatry/',
     },
@@ -320,47 +322,47 @@ export const HEALTH_TECH_AGENTS: AgentRecord[] = [
   },
   {
     slug: 'immutable-clinical-ai-audit-agent',
-    name: 'Immutable Clinical Audit Ledger Agent',
+    name: 'Tamper-Proof Clinical Audit & Certificates',
     codeName: 'SlainteGov-Audit',
     squad: 'SlainteGov Governance',
     squadColor: 'warning',
     iconKey: 'factCheck',
     dashboardScreenshot: '/images/agents/immutable-clinical-ai-audit-agent.png',
-    seoTitle: 'Immutable Healthcare & Regulatory Audit Trail Agent | SlainteTech',
+    seoTitle: 'Tamper-Proof Healthcare Audit Trail & Compliance Certificates | SlainteTech',
     seoDescription:
-      'Tamper-evident SQLite kernel triggers, SHA-256 FHIR Provenance sign-off, HMAC SIEM webhooks, and printable NIS2 / EU AI Act compliance certificates.',
+      'Lock every clinical decision, sign-off, and record change into an unchangeable database log ready for HIQA, NIS2, and medico-legal review.',
     heroSummary:
-      'Guarantees tamper-evident auditability across every clinical record change and automated workflow step using database-level BEFORE UPDATE/DELETE rejection triggers, SHA-256 FHIR Provenance hashes, and signed compliance snapshots.',
-    fastMcpBadges: ['Append-Only SQL Triggers', 'SHA-256 FHIR Provenance', 'EU AI Act Art. 12'],
+      'Locks every triage score, prescribing override, and clinical sign-off into an unchangeable audit log that proves who approved every decision and exports board-ready certificates.',
+    fastMcpBadges: ['Unchangeable Audit Log', 'Signed Doctor Sign-Off', 'Board Certificates'],
     capabilities: [
       {
-        title: 'Live Tamper-Rejection Savepoint Verification',
+        title: 'Database-Level Tamper Protection',
         description:
-          'Executes non-destructive SQLite savepoint probes attempting UPDATE and DELETE mutations against audit_log and ai_exchange to prove kernel triggers reject tampering.',
-        guardrailChip: 'SQLITE_ABORT Verified',
+          'Database rules physically block any attempt to edit or delete past audit history, keeping medico-legal evidence intact.',
+        guardrailChip: 'Tamper Lock Verified',
         iconKey: 'factCheck',
       },
       {
-        title: 'Cryptographic Clinician Provenance Sign-Off',
+        title: 'Signed Practitioner Attribution',
         description:
-          'Binds IMC/PSI/NMBI practitioner registration IDs and SHA-256 bundle hashes into HL7 FHIR R4 Provenance resources on clinical sign-off.',
-        guardrailChip: 'SHA-256 Bundle Hash',
+          'Ties doctor, nurse, or pharmacist registration details permanently to approved handovers, prescriptions, and clearances.',
+        guardrailChip: 'Signed Record Proof',
         iconKey: 'verified',
       },
       {
-        title: 'SIEM Webhooks & Executive Attestation',
+        title: 'SOC Security Alerts & Certificates',
         description:
-          'Dispatches HMAC-SHA256 signed security events to hospital SOCs and generates printable NIS2, EU AI Act, GDPR, and ISO 27001 attestation certificates.',
-        guardrailChip: 'X-Slainte-Signature HMAC',
+          'Sends signed security alerts straight to hospital IT security tools and prints inspection-ready compliance certificates.',
+        guardrailChip: 'Instant Audit Export',
         iconKey: 'analytics',
       },
     ],
     verticalUseCase: {
-      eyebrow: 'Verified Vertical Use Case: Emergency Departments',
-      headline: 'Defensible Medico-Legal Handover & Complete Audit Traceability in High-Acuity Care',
+      eyebrow: 'Real-World Example: Emergency Departments',
+      headline: 'Indisputable Medico-Legal Proof Across High-Pressure ED Shifts',
       scenario:
-        'During rapid shift changes in overcrowded Emergency Departments, every triage score, medication override, handover summary, and consultant Provenance signature is locked into an append-only ledger.',
-      outcomeMetric: 'Zero Mutable Audit Rows Across Clinical & Operational Log Tables',
+        'During busy emergency handovers, every urgency score, prescribing override, and consultant approval is sealed immediately into an unchangeable audit ledger.',
+      outcomeMetric: 'Zero Editable or Deletable Rows Across Audit Tables',
       verticalTitle: 'For Emergency Departments',
       verticalHref: '/verticals/emergency-departments/',
     },
@@ -387,47 +389,47 @@ export const HEALTH_TECH_AGENTS: AgentRecord[] = [
   },
   {
     slug: 'multimodal-hl7v2-fhir-ingestion-agent',
-    name: 'Multimodal & HL7v2-to-FHIR R4 Ingestion Agent',
+    name: 'Legacy Hospital Feed & Paper Intake Bridge',
     codeName: 'SlainteEngine-Ingest',
     squad: 'SlainteClinical Care',
     squadColor: 'primary',
     iconKey: 'sync',
     dashboardScreenshot: '/images/agents/multimodal-hl7v2-fhir-ingestion-agent.png',
-    seoTitle: 'HL7v2 ADT/ORU & Multimodal OCR to FHIR R4 Ingestion Agent | SlainteTech',
+    seoTitle: 'HL7v2, CSV, PDF & Photo Intake to HL7 FHIR R4 | SlainteTech',
     seoDescription:
-      'Converts legacy hospital HL7v2 pipe-hat messages (ADT, ORU, RDE), CSV cohorts, PDFs, and handwritten triage notes into validated HL7 FHIR R4 bundles.',
+      'Connect older hospital feeds, clinic spreadsheets, referral PDFs, and handwritten ambulance notes into clean modern charts without buying expensive middleware.',
     heroSummary:
-      'Bridges legacy hospital PAS/LIS interfaces and paper workflows by translating HL7v2 pipe-hat streams (ADT^A01, ORU^R01, RDE^O11), CSV batches, PDFs, and clinical images into deduplicated HL7 FHIR R4 bundles.',
-    fastMcpBadges: ['HL7v2 MSH|PID|OBX|RXE', 'PDF & Image OCR Gate', 'Irish GMS Deduplication'],
+      'Brings older hospital HL7v2 feeds, clinic spreadsheets, referral letters, and handwritten triage notes cleanly into one patient record without duplicate patient files.',
+    fastMcpBadges: ['HL7v2 Hospital Bridge', 'CSV, PDF & Photo Intake', 'Zero Duplicate Patients'],
     capabilities: [
       {
-        title: 'Deterministic HL7v2 Pipe-Hat Translator',
+        title: 'Direct Legacy Hospital Translation',
         description:
-          'Parses MSH, PID, PV1, AL1, DG1, OBR, OBX, and RXE segments directly into FHIR R4 Patient, Condition, AllergyIntolerance, Observation, and MedicationRequest resources.',
-        guardrailChip: 'Zero Interface Engine Tax',
+          'Converts classic HL7v2 hospital admission, lab result, and pharmacy messages straight into modern HL7 FHIR R4 patient charts.',
+        guardrailChip: 'Zero Middleware Tax',
         iconKey: 'sync',
       },
       {
-        title: 'Multimodal CSV, PDF & Field Note Intake',
+        title: 'Spreadsheets, PDFs & Handwritten Notes',
         description:
-          'Extracts vitals, presenting complaints, and allergies from structured CSVs, referral PDFs, and photographed triage sheets with strict schema validation.',
-        guardrailChip: '5-Stage Harmonization',
+          'Reads clinic rosters, referral PDFs, and photographed triage sheets into structured vitals and allergies.',
+        guardrailChip: 'Multi-Format Intake',
         iconKey: 'factCheck',
       },
       {
-        title: 'GMS Identifier Deduplication',
+        title: 'Smart Patient Matching by GMS ID',
         description:
-          'Matches incoming Irish GMS identifiers against existing Patient records via find_patient_id_by_gms so repeat admissions update the longitudinal chart rather than duplicating it.',
-        guardrailChip: 'Single Longitudinal Record',
+          'Matches returning patients by GMS identifier so hospital admissions and GP visits enrich one timeline rather than creating duplicates.',
+        guardrailChip: 'Single Clean Record',
         iconKey: 'verified',
       },
     ],
     verticalUseCase: {
-      eyebrow: 'Verified Vertical Use Case: Ambulance & Paramedic Services',
-      headline: 'Turning Roadside Paramedic Notes & Legacy Hospital Feeds into Live FHIR Charts',
+      eyebrow: 'Real-World Example: Ambulance & Paramedics',
+      headline: 'Turning Field Vitals & Hospital Feeds Into Live Emergency Charts',
       scenario:
-        'Paramedics transmitting rapid pre-hospital ePCR observations or hospitals streaming legacy HL7v2 ADT/ORU messages land in SlainteFHIR within milliseconds, pre-scored for Manchester Triage and deduplicated by GMS ID.',
-      outcomeMetric: '<50ms Deterministic HL7v2-to-FHIR R4 Bundle Translation',
+        'When paramedics send pre-hospital vitals or an older hospital PAS sends an admission feed, SlainteEngine-Ingest merges patient allergies and readings into the emergency queue in milliseconds.',
+      outcomeMetric: '<50ms Legacy Message Conversion Without Middleware',
       verticalTitle: 'For Ambulance & Paramedic Services',
       verticalHref: '/verticals/ambulance-ems/',
     },
@@ -454,47 +456,47 @@ export const HEALTH_TECH_AGENTS: AgentRecord[] = [
   },
   {
     slug: 'cited-patient-handover-summariser-agent',
-    name: 'Cited Clinical Handover Summariser Agent',
+    name: 'Source-Cited Shift Handover Briefing',
     codeName: 'SlainteScribe-Brief',
     squad: 'SlainteClinical Care',
     squadColor: 'primary',
     iconKey: 'summarize',
     dashboardScreenshot: '/images/agents/cited-patient-handover-summariser-agent.png',
-    seoTitle: 'Cited HL7 FHIR R4 Clinical Handover Summariser Agent | SlainteTech',
+    seoTitle: 'Source-Cited Clinical Shift Handover Summaries | SlainteTech',
     seoDescription:
-      'Generates 4-bullet bedside shift-handover briefings citing exact HL7 FHIR R4 resource IDs and grounded in verified NEWS2 and drug-allergy checks.',
+      'Turn long patient records into clear 4-bullet shift briefings where every claim links back to real allergies, vital scores, and lab results.',
     heroSummary:
-      'Synthesizes longitudinal patient charts into concise 4-bullet clinical shift handovers where every statement is anchored to explicit FHIR R4 resource types, verified NEWS2 scores, and documented allergy records.',
-    fastMcpBadges: ['Mandatory [ResourceType] Citations', 'Allergies-First Context', 'Audit Logged'],
+      'Turns dense patient histories into a crisp 4-bullet shift handover where every point cites the exact underlying allergy, vital trend, or blood test record.',
+    fastMcpBadges: ['Record-Cited Bullets', 'Allergies Shown First', 'Works Even Offline'],
     capabilities: [
       {
-        title: 'Allergies-First Token Curation',
+        title: 'Allergies & Active Meds Always Kept First',
         description:
-          'Deterministic context curator guarantees AllergyIntolerance and active MedicationRequests survive even tight token ceilings before trimming older observations.',
-        guardrailChip: 'Safety-Priority Curation',
+          'Even on patients with years of notes, allergies and active prescriptions are never trimmed out of shift briefings.',
+        guardrailChip: 'Allergies-First Policy',
         iconKey: 'summarize',
       },
       {
-        title: 'Failure-Is-Never-Emptiness Guardrail',
+        title: 'Never Invents Missing Data',
         description:
-          'If a FHIR endpoint times out, that clinical section is explicitly marked unreadable rather than filling missing data with assumptions.',
-        guardrailChip: 'Source-Cited Only Policy',
+          'If a lab link is slow or missing, the summary clearly states the section is unavailable instead of filling gaps with guesses.',
+        guardrailChip: 'Source-Cited Only',
         iconKey: 'verified',
       },
       {
-        title: 'Offline Fallback & Complete Action Logging',
+        title: 'Offline Shift Briefing Ready',
         description:
-          'Produces a structured 4-bullet shift briefing even while completely offline and logs complete verification timestamps and source references.',
+          'Produces a structured 4-bullet shift handover even during internet outages and logs full verification timestamps.',
         guardrailChip: '100% Uptime Handover',
         iconKey: 'factCheck',
       },
     ],
     verticalUseCase: {
-      eyebrow: 'Verified Vertical Use Case: Emergency Departments',
-      headline: 'Zero-Omission Consultant & Nursing Shift Handovers Under Time Pressure',
+      eyebrow: 'Real-World Example: Emergency Departments',
+      headline: 'Calm, Complete Shift Handovers Across 30+ Boarded Patients',
       scenario:
-        'At 08:00 resuscitation handover, clinicians trigger SlainteScribe-Brief directly from the patient roster or chart to review presentation, 24h NEWS2 acuity, abnormal labs, and active drug-allergy alerts in 4 cited bullets.',
-      outcomeMetric: '4-Bullet Cited Briefing Grounded in Live FHIR R4 Compartments',
+        'At 08:00 shift change, incoming doctors pull up SlainteScribe-Brief to review presenting issues, 24-hour early-warning trends, key abnormal labs, and active drug allergies in seconds.',
+      outcomeMetric: '4 Clear Bullets Linked Straight to Verified Chart Records',
       verticalTitle: 'For Emergency Departments',
       verticalHref: '/verticals/emergency-departments/',
     },
@@ -512,8 +514,8 @@ export const HEALTH_TECH_AGENTS: AgentRecord[] = [
         standardAlignment: 'DCB0129 Clinical Risk Control',
       },
       {
-        parameter: 'Sovereign Model Choice',
-        deterministicMechanism: 'Runs cleanly inside private VPCs or offline local hospital servers',
+        parameter: 'Deployment Flexibility',
+        deterministicMechanism: 'Runs inside private hospital VPCs or offline local servers',
         fhirBinding: '/settings/ai & POST /ai/summarise/<patient_id>',
         standardAlignment: 'EU AI Act Transparency & Traceability',
       },
@@ -521,54 +523,54 @@ export const HEALTH_TECH_AGENTS: AgentRecord[] = [
   },
   {
     slug: 'pharmacotherapy-allergy-renal-safety-agent',
-    name: '3-Tier Pharmacotherapy, Allergy & Renal Safety Gate',
+    name: '3-Tier Allergy, Drug-Clash & Kidney Prescribing Gate',
     codeName: 'SlainteRx-Guard',
     squad: 'SlainteClinical Care',
     squadColor: 'primary',
     iconKey: 'medication',
     dashboardScreenshot: '/images/agents/pharmacotherapy-allergy-renal-safety-agent.png',
-    seoTitle: '3-Tier Drug-Allergy, High-Alert DDI & Renal eGFR Safety Gate | SlainteTech',
+    seoTitle: '3-Tier Allergy, Drug Interaction & Kidney Prescribing Safety | SlainteTech',
     seoDescription:
-      'Rule-based 3-tier clinical pharmacology safety gate screening drug-allergy cross-reactivity, ISMP high-alert drug interactions, and LOINC eGFR renal dosing before prescriptions are saved.',
+      'Stop unsafe prescriptions automatically by checking cross-allergies, dangerous drug combinations, and blood test kidney limits before dispensing.',
     heroSummary:
-      'Stops unsafe prescriptions before they reach the pharmacy by checking allergy cross-reactivity (Beta-Lactam, NSAID, Sulfa), ISMP high-alert drug interactions, and patient kidney function (LOINC eGFR and Potassium) with 100% rule-based logic.',
-    fastMcpBadges: ['Tier 1: Allergy Cross-Reactivity', 'Tier 2: ISMP High-Alert DDI', 'Tier 3: Lab eGFR & K+ Gate'],
+      'Catches dangerous prescriptions in under 5ms by screening drug-family allergies, high-risk medicine clashes, and current kidney and potassium blood test results.',
+    fastMcpBadges: ['Allergy Cross-Check', 'High-Alert Drug Clashes', 'Kidney Lab Screening'],
     capabilities: [
       {
-        title: 'Tier 1: Cross-Reactivity Matrix',
+        title: 'Tier 1: Cross-Allergy Family Block',
         description:
-          'Detects Penicillin-to-Amoxicillin/Cephalosporin, Aspirin/NSAID, and Sulfonamide cross-reactivity directly against active AllergyIntolerance records.',
+          'Stops Penicillin allergies from receiving Amoxicillin or related antibiotics, plus Aspirin/NSAID and Sulfa cross-reactions.',
         guardrailChip: 'Anaphylaxis Hard-Stop',
         iconKey: 'medication',
       },
       {
-        title: 'Tier 2: ISMP High-Alert Drug-Drug Interactions',
+        title: 'Tier 2: Life-Threatening Drug Pairs',
         description:
-          'Screens active regimens for life-threatening pairs including Clarithromycin + Statin (rhabdomyolysis), Warfarin + NSAID/Metronidazole, Opioid + Benzodiazepine, and ACEi + Spironolactone.',
-        guardrailChip: 'High-Alert DDI Matrix',
+          'Flags high-risk pairs such as Clarithromycin + Statin, Warfarin + NSAID, Opioid + Benzodiazepine, and Potassium-sparing stacks.',
+        guardrailChip: 'High-Alert Clash Check',
         iconKey: 'security',
       },
       {
-        title: 'Tier 3: Lab-Guided Renal eGFR & Potassium Gate',
+        title: 'Tier 3: Live Kidney & Potassium Dosing Check',
         description:
-          'Queries latest LOINC eGFR (33914-3) and Potassium (2823-3) Observations to block Metformin in severe renal impairment (eGFR < 30) and nephrotoxic NSAIDs when eGFR < 60.',
+          'Checks recent lab results automatically to intercept Metformin in severe kidney disease (eGFR < 30) and risky NSAIDs below eGFR 60.',
         guardrailChip: 'Live Lab-Aware Dosing',
         iconKey: 'verified',
       },
     ],
     verticalUseCase: {
-      eyebrow: 'Verified Vertical Use Case: Dental Surgeons & DSOs',
-      headline: 'Blocking Penicillin Anaphylaxis & Anticoagulant Bleeding Risks Chairside',
+      eyebrow: 'Real-World Example: Dental Surgeons & DSOs',
+      headline: 'Catching Penicillin Allergies & Blood Thinner Risks Before Writing a Script',
       scenario:
-        'Before prescribing post-extraction Amoxicillin or Ibuprofen on the dental surgery chart, SlainteRx-Guard cross-checks the patient’s Penicillin allergy, Warfarin/Apixaban regimen, and baseline renal eGFR in under 5 milliseconds.',
-      outcomeMetric: '3 Simultaneous Pharmacology Tiers Checked on Every Prescription & Voice Order',
+        'Before prescribing post-extraction antibiotics or painkillers chairside, SlainteRx-Guard checks patient allergies, active Warfarin or Apixaban use, and recent kidney labs immediately.',
+      outcomeMetric: 'All 3 Safety Layers Checked in Under 5ms Per Order',
       verticalTitle: 'For Dental Surgeons & DSOs',
       verticalHref: '/verticals/dentistry/',
     },
     technicalSpecs: [
       {
         parameter: 'Execution Engine',
-        deterministicMechanism: '100% deterministic Python rule matrix (evaluate_clinical_pharmacology_3tier)',
+        deterministicMechanism: '100% rule-based Python check matrix (evaluate_clinical_pharmacology_3tier)',
         fhirBinding: 'AllergyIntolerance, MedicationRequest, Observation (LOINC 33914-3, 2823-3)',
         standardAlignment: 'ISMP High-Alert Medications & NICE CKD Guidance',
       },
@@ -580,7 +582,7 @@ export const HEALTH_TECH_AGENTS: AgentRecord[] = [
       },
       {
         parameter: 'Embedded Surfaces',
-        deterministicMechanism: 'Runs inline on Patient Prescribing, Ambient Voice Scribe drafts, and Pharmacy Queue',
+        deterministicMechanism: 'Runs inline on Patient Prescribing, Consultation Scribe drafts, and Pharmacy Queue',
         fhirBinding: 'MedicationRequest.note & AuditEvent',
         standardAlignment: 'Rule-Based Clinical Calculation Standard',
       },
@@ -588,47 +590,47 @@ export const HEALTH_TECH_AGENTS: AgentRecord[] = [
   },
   {
     slug: 'manchester-triage-news2-acuity-agent',
-    name: 'Manchester Triage & RCP NEWS2 Acuity Scorer',
+    name: 'Fast, Rule-Based Triage & Sepsis Early Warning',
     codeName: 'SlainteDx-Triage',
     squad: 'SlainteClinical Care',
     squadColor: 'primary',
     iconKey: 'monitorHeart',
     dashboardScreenshot: '/images/agents/manchester-triage-news2-acuity-agent.png',
-    seoTitle: 'Rule-Based Manchester Triage (MTS) & RCP NEWS2 Acuity Agent | SlainteTech',
+    seoTitle: 'Manchester Triage (MTS) & RCP NEWS2 Early Warning Scoring | SlainteTech',
     seoDescription:
-      'Verified Manchester Triage System (Cat 1-5) priority assignment and Royal College of Physicians NEWS2 (0-20) early warning tracking from LOINC vital signs.',
+      'Compute exact Manchester Triage categories (1-5) and RCP NEWS2 early-warning scores in under 10ms as every vital sign arrives.',
     heroSummary:
-      'Calculates exact Manchester Triage System categories (Cat 1 Immediate to Cat 5 Non-Urgent) and Royal College of Physicians NEWS2 scores (0 to 20) from patient vital signs in under 10ms, never left to clinical guesswork.',
-    fastMcpBadges: ['MTS Cat 1–5 (0m–240m)', 'RCP NEWS2 (0–20)', '24h SVG Vital Sparklines'],
+      'Calculates official Manchester Triage urgency levels (Cat 1-5) and RCP NEWS2 sepsis warning scores in under 10ms using tested clinical math every time vitals update.',
+    fastMcpBadges: ['Manchester Triage 1-5', 'RCP NEWS2 (0-20)', '24h Vital Trend Graphs'],
     capabilities: [
       {
-        title: 'Royal College of Physicians NEWS2 Engine',
+        title: 'Exact RCP NEWS2 Scoring',
         description:
-          'Scores respiratory rate, SpO2, systolic BP, heart rate, temperature, and consciousness/GCS against exact RCP physiological thresholds with automatic sepsis escalation at NEWS2 >= 7.',
-        guardrailChip: 'Exact RCP Thresholds',
+          'Scores breathing rate, oxygen saturation, blood pressure, pulse, temperature, and alertness against official Royal College thresholds.',
+        guardrailChip: 'Official RCP Rules',
         iconKey: 'monitorHeart',
       },
       {
-        title: 'Manchester Triage System (Cat 1–5) Queueing',
+        title: '5-Level Emergency Triage Queue',
         description:
-          'Combines vital-sign discriminators and high-risk presenting complaints to classify arrivals from Category 1 (0 min Immediate) to Category 5 (240 min).',
+          'Combines vital-sign triggers with presenting symptoms to classify patients from Immediate (0 min) to Non-Urgent (240 min).',
         guardrailChip: 'Sub-10ms Triage Math',
         iconKey: 'verified',
       },
       {
-        title: '24-Hour Trajectory Sparklines & Live Refresh',
+        title: '24-Hour Bedside Trend Graphs',
         description:
-          'Generates bedside 24-hour physiological trend sparklines and triggers real-time HTMX NEWS2 card updates whenever fresh vitals are recorded.',
-        guardrailChip: 'HX-Trigger Live Sync',
+          'Displays crisp 24-hour vital trend curves that refresh live the moment a nurse or tablet records a new observation.',
+        guardrailChip: 'Live Vital Refresh',
         iconKey: 'analytics',
       },
     ],
     verticalUseCase: {
-      eyebrow: 'Verified Vertical Use Case: Ambulance & Paramedic Services',
-      headline: 'Instant Pre-Hospital Acuity Pre-Alerts From Ruggedised Ambulance Tablets',
+      eyebrow: 'Real-World Example: Ambulance & Paramedics',
+      headline: 'Instant Pre-Hospital Acuity Warnings Straight From Moving Ambulances',
       scenario:
-        'An Advanced Paramedic enters roadside BP 84/52, HR 135, SpO2 87%, and RR 30 on a tablet; SlainteDx-Triage immediately flags MTS Category 1 (0m Immediate) and NEWS2 High Clinical Risk before the ambulance reaches the ED bay.',
-      outcomeMetric: '<10ms Deterministic MTS + NEWS2 Calculation With Zero Cloud Latency',
+        'A paramedic enters roadside BP 84/52, HR 135, SpO2 87%, and RR 30 on a tablet; SlainteDx-Triage raises MTS Category 1 and NEWS2 High Risk immediately before hospital arrival.',
+      outcomeMetric: '<10ms Clinical Acuity Scoring With Zero Cloud Delay',
       verticalTitle: 'For Ambulance & Paramedic Services',
       verticalHref: '/verticals/ambulance-ems/',
     },
@@ -655,54 +657,54 @@ export const HEALTH_TECH_AGENTS: AgentRecord[] = [
   },
   {
     slug: 'ambient-clinical-voice-scribe-agent',
-    name: 'Ambient Clinical Consultation Scribe & Order Drafter',
+    name: 'Consultation Scribe & Pre-Screened Order Drafter',
     codeName: 'SlainteScribe-Voice',
     squad: 'SlainteClinical Care',
     squadColor: 'primary',
     iconKey: 'mic',
     dashboardScreenshot: '/images/agents/ambient-clinical-voice-scribe-agent.png',
-    seoTitle: 'Ambient Clinical Voice Scribe & Safe FHIR R4 Order Drafter | SlainteTech',
+    seoTitle: 'Consultation Documentation & Safe Prescription Drafting | SlainteTech',
     seoDescription:
-      'Turns live clinician-patient consultations into structured SOAP DocumentReference notes, SNOMED conditions, and 3-Tier Rx-Guard pre-screened FHIR draft orders.',
+      'Turn consultations into ready SOAP notes, structured diagnoses, and allergy-checked prescription drafts for fast 1-tap clinician sign-off.',
     heroSummary:
-      'Eliminates after-hours documentation by converting live consultation speech or uploaded audio into structured SOAP notes, SNOMED-CT/ICD-10-AM diagnoses, and draft prescriptions pre-screened by 3-Tier SlainteRx-Guard before clinician co-sign.',
-    fastMcpBadges: ['Web Speech & Whisper ASR', 'Structured SOAP Note', 'Pre-Screened FHIR Orders'],
+      'Cuts evening typing by turning consultations into clean SOAP notes, coded diagnoses, and safety-screened draft prescriptions waiting for clinician approval.',
+    fastMcpBadges: ['Ready SOAP Notes', 'Pre-Screened Draft Orders', 'Mandatory Doctor Co-Sign'],
     capabilities: [
       {
-        title: 'Structured SOAP & Vital Extraction',
+        title: 'Structured SOAP Notes & Vitals',
         description:
-          'Transforms consultation dialogue into Subjective, Objective, Assessment, and Plan sections while extracting mentioned BP, HR, SpO2, RR, and temperature readings into LOINC Observations.',
-        guardrailChip: 'LOINC Vitals Extracted',
+          'Organizes consultation audio or dictation into clean Subjective, Objective, Assessment, and Plan sections plus vital readings.',
+        guardrailChip: 'Vitals & Plan Ready',
         iconKey: 'mic',
       },
       {
-        title: 'Mandatory 3-Tier Rx-Guard Pre-Screening',
+        title: 'Safety-Checked Draft Prescriptions',
         description:
-          'Every medication mentioned during dictation is automatically passed through SlainteRx-Guard so allergies, high-alert DDIs, and eGFR renal blocks surface before a single order is committed.',
-        guardrailChip: 'Zero Unscreened Voice Orders',
+          'Every medicine discussed during the visit runs automatically through SlainteRx-Guard so allergy or kidney risks surface right away.',
+        guardrailChip: 'Zero Unscreened Orders',
         iconKey: 'medication',
       },
       {
-        title: 'Human-in-the-Loop Co-Sign & Commit',
+        title: 'Clinician Always Approves First',
         description:
-          'Ambient drafts never auto-mutate the legal medical record; a licensed prescriber reviews checkboxes and commits approved resources in one click.',
-        guardrailChip: 'Mandatory Clinician Co-Sign',
+          'Drafts never alter the permanent medical record on their own; licensed clinicians review checkboxes and approve in one click.',
+        guardrailChip: 'Clinician Co-Sign Required',
         iconKey: 'verified',
       },
     ],
     verticalUseCase: {
-      eyebrow: 'Verified Vertical Use Case: General Practitioners & Community Nursing',
-      headline: 'Reclaiming 60% of Consultation Documentation Time in GP Clinics & Home Visits',
+      eyebrow: 'Real-World Example: GP Surgeries & Home Nursing',
+      headline: 'Giving Clinicians Hours Back After Busy Clinics & House Calls',
       scenario:
-        'Whether consulting in a busy GP surgery or visiting a housebound chronic-disease patient on a tablet, SlainteScribe-Voice drafts the SOAP note, maps SNOMED/ICD-10 diagnoses, and flags Penicillin or renal dosing conflicts prior to sign-off.',
-      outcomeMetric: '1-Click Commit of SOAP DocumentReference, SNOMED Conditions & Safe Rx',
+        'After a 10-minute surgery visit or home-care call, the clinician reviews the pre-drafted SOAP note, checks the allergy-verified repeat orders, and signs off before the next patient.',
+      outcomeMetric: '1-Click Commit of Approved Consultation Note & Safe Prescriptions',
       verticalTitle: 'For General Practitioners & Community Nursing',
       verticalHref: '/verticals/general-practice/',
     },
     technicalSpecs: [
       {
         parameter: 'Speech & Text Pipeline',
-        deterministicMechanism: 'Browser Web Speech API (en-IE) / OpenAI Whisper ASR + structured clinical parser',
+        deterministicMechanism: 'Browser Web Speech API (en-IE) / local Whisper ASR + structured clinical parser',
         fhirBinding: 'POST /enterprise/scribe/process',
         standardAlignment: 'EU GDPR Art. 9 & Local-First Option',
       },
@@ -722,47 +724,47 @@ export const HEALTH_TECH_AGENTS: AgentRecord[] = [
   },
   {
     slug: 'autonomous-icd10-drg-clinical-coding-agent',
-    name: 'HIPE, ICD-10-AM & DRG Clinical Coding Revenue Auditor',
+    name: 'HIPE, ICD-10-AM & Hospital Revenue Recovery',
     codeName: 'SlainteRev-Coding',
     squad: 'SlainteGov Governance',
     squadColor: 'warning',
     iconKey: 'analytics',
     dashboardScreenshot: '/images/agents/autonomous-icd10-drg-clinical-coding-agent.png',
-    seoTitle: 'HIPE, ICD-10-AM & SNOMED DRG Clinical Coding Auditor | SlainteTech',
+    seoTitle: 'HIPE, ICD-10-AM & DRG Hospital Revenue Recovery Auditor | SlainteTech',
     seoDescription:
-      'Audits objective LOINC laboratory and vital observations against active FHIR Conditions to detect uncoded comorbidities and recover hospital DRG complexity reimbursement.',
+      'Find uncoded diagnoses supported by real blood tests and vital results so hospitals capture legitimate HIPE funding without guesswork.',
     heroSummary:
-      'Cross-examines objective laboratory biomarkers and vital signs (eGFR, HbA1c, Troponin, Lactate, SpO2, BP) against recorded diagnoses to surface uncoded ICD-10-AM / SNOMED-CT comorbidities with full LOINC observation citations.',
-    fastMcpBadges: ['Irish HIPE / ABF Ready', 'Dual SNOMED + ICD-10-AM', 'Objective Lab Evidence'],
+      'Compares abnormal blood tests and vitals against diagnosis lists to flag missed HIPE / ICD-10-AM conditions with clear lab evidence so hospitals recover earned funding.',
+    fastMcpBadges: ['Irish HIPE / ABF Ready', 'Dual SNOMED + ICD-10', 'Backed by Real Lab Proof'],
     capabilities: [
       {
-        title: 'Objective Biomarker-to-Diagnosis Audit',
+        title: 'Lab-Proven Diagnosis Gap Check',
         description:
-          'Evaluates LOINC labs and vitals (eGFR < 60 CKD, HbA1c >= 48 T2DM, Troponin > 50 myocardial injury, Lactate >= 2.0 hyperlactataemia, SpO2 <= 91% hypoxaemia) against active Conditions.',
+          'Matches clear clinical lab thresholds (kidney eGFR < 60, HbA1c >= 48, elevated Troponin or Lactate) against missing diagnosis codes.',
         guardrailChip: 'Lab-Backed Coding Only',
         iconKey: 'analytics',
       },
       {
-        title: 'Irish HIPE DRG Complexity Uplift Estimation',
+        title: 'Transparent CFO Reimbursement ROI',
         description:
-          'Quantifies estimated Activity-Based Funding (ABF) / HIPE DRG complexity reimbursement impact across uncoded secondary comorbidities for hospital finance review.',
-        guardrailChip: 'Transparent CFO ROI',
+          'Estimates missed HIPE DRG complexity value clearly for hospital finance teams before discharge billing closes.',
+        guardrailChip: 'Clear Payback Metric',
         iconKey: 'factCheck',
       },
       {
-        title: '1-Click Dual-Coded FHIR Condition Capture',
+        title: 'One-Click Clinician Coding Capture',
         description:
-          'Writes clinician-approved Condition resources carrying both SNOMED-CT clinical codes and ICD-10-AM classification bindings alongside the citing Observation reference.',
-        guardrailChip: 'SNOMED + ICD-10-AM Bound',
+          'Applies approved dual diagnosis codes linked directly to the supporting blood test or vital record.',
+        guardrailChip: 'Full Billing Evidence',
         iconKey: 'verified',
       },
     ],
     verticalUseCase: {
-      eyebrow: 'Verified Vertical Use Case: Hospital & Chronic Disease Medicine',
-      headline: 'Recovering Unbilled Secondary Comorbidities With Provable Laboratory Citations',
+      eyebrow: 'Real-World Example: Acute & Chronic Care',
+      headline: 'Capturing Missed Secondary Diagnoses Backed by Blood Test Proof',
       scenario:
-        'When an inpatient or CDM patient has an eGFR of 38 mL/min and HbA1c of 56 mmol/mol in laboratory Observations without corresponding CKD Stage 3 or Type 2 Diabetes codes on the problem list, SlainteRev-Coding surfaces the exact gap for 1-click capture.',
-      outcomeMetric: 'Every Suggested ICD-10-AM Code Cites Its Exact LOINC Observation Evidence',
+        'When a patient chart shows repeated low eGFR (38) and raised HbA1c (56) without Stage 3 Kidney Disease or Type 2 Diabetes on the problem list, SlainteRev-Coding surfaces the exact lab proof for sign-off.',
+      outcomeMetric: 'Every Suggested Billing Code Links to a Verified Lab Result',
       verticalTitle: 'For General Practitioners & Primary Care',
       verticalHref: '/verticals/general-practice/',
     },
@@ -789,54 +791,54 @@ export const HEALTH_TECH_AGENTS: AgentRecord[] = [
   },
   {
     slug: 'clinic-onboarding-legacy-migration-agent',
-    name: 'Clinic Onboarding & Legacy Data Migration Agent',
+    name: 'Fast Clinic Onboarding & Data Migration',
     codeName: 'SlainteGov-Onboard',
     squad: 'SlainteGov Governance',
     squadColor: 'warning',
     iconKey: 'verified',
     dashboardScreenshot: '/images/agents/clinic-onboarding-legacy-migration-agent.png',
-    seoTitle: 'Clinic Onboarding & Legacy Data Migration Agent | SlainteTech',
+    seoTitle: 'Clinic Onboarding & Legacy Medical Record Migration | SlainteTech',
     seoDescription:
-      'Automated onboarding engine that maps legacy GP, dental, and hospital exports into validated Irish Core HL7 FHIR R4 Bundles in hours instead of months.',
+      'Import years of legacy GP, dental, or clinic exports into clean, validated HL7 FHIR R4 patient charts in hours instead of months.',
     heroSummary:
-      'Introspects raw practice exports (CSV, HL7v2, scanned PDF), maps heterogeneous schemas into SNOMED-CT and LOINC ontologies, and compiles zero-defect Irish Core FHIR R4 Bundles for seamless practice onboarding.',
-    fastMcpBadges: ['Irish Core FHIR R4', 'LOINC / SNOMED-CT Mapping', 'Zero-Defect Validation'],
+      'Turns messy spreadsheets, old clinic database exports, and scanned referral files into clean, standards-compliant HL7 FHIR R4 patient charts in hours.',
+    fastMcpBadges: ['Clean Patient Migration', 'Standard Code Mapping', 'Zero Lost Records'],
     capabilities: [
       {
-        title: 'Multi-Modal Schema Introspection',
+        title: 'Universal Practice Export Support',
         description:
-          'Ingests heterogeneous practice dumps across CSV tabular exports, legacy HL7v2 pipe-hat streams, and scanned referral letters.',
-        guardrailChip: 'Universal Ingestion',
+          'Reads mixed CSV tables, legacy HL7v2 messages, and scanned clinic referral letters without custom engineering projects.',
+        guardrailChip: 'Multi-Format Import',
         iconKey: 'sync',
       },
       {
-        title: 'Deterministic Terminology Binding',
+        title: 'Clean National Coding Alignment',
         description:
-          'Resolves and binds clinical attributes to official Irish HIQA SNOMED-CT releases, LOINC observational codes, and UCUM units.',
-        guardrailChip: 'Strict HIQA OID Standards',
+          'Maps imported conditions, medications, and labs to official SNOMED-CT, LOINC, and UCUM standards automatically.',
+        guardrailChip: 'HIQA Standard Aligned',
         iconKey: 'factCheck',
       },
       {
-        title: 'Automated FHIR R4 Bundle Compilation',
+        title: 'Validation Before Import Commits',
         description:
-          'Constructs verified Patient, Condition, Observation, AllergyIntolerance, and MedicationRequest resources bound within validated bundles.',
-        guardrailChip: '100% FHIR R4 Validated',
+          'Rejects malformed fields cleanly upfront so your new live database launches with clean patient histories.',
+        guardrailChip: 'Zero-Defect Import',
         iconKey: 'verified',
       },
     ],
     verticalUseCase: {
-      eyebrow: 'Verified Vertical Use Case: Practice Onboarding & M&A',
-      headline: 'Migrating 10 Years of Legacy GP Records in Minutes',
+      eyebrow: 'Real-World Example: Clinic Networks & Practice Groups',
+      headline: 'Onboarding Newly Acquired Clinics in Hours Instead of Quarters',
       scenario:
-        'When onboarding a newly acquired medical centre with legacy tabular database dumps, SlainteGov-Onboard validates every patient against Irish GMS OIDs and compiles verified FHIR R4 Bundles without data loss.',
-      outcomeMetric: 'Zero Data Loss Migration Across Patient Cohorts',
+        'When a clinic group brings a new medical centre onto the platform, SlainteGov-Onboard validates GMS identifiers and imports years of diagnoses, allergies, and lab results cleanly.',
+      outcomeMetric: 'Zero Data Loss Across Imported Clinic Cohorts',
       verticalTitle: 'For General Practitioners & Clinic Networks',
       verticalHref: '/verticals/general-practice/',
     },
     technicalSpecs: [
       {
         parameter: 'Source Ingestion Formats',
-        deterministicMechanism: 'Native CSV, HL7v2 ADT/ORU parsers, and OCR text extractors',
+        deterministicMechanism: 'Native CSV, HL7v2 ADT/ORU parsers, and text extractors',
         fhirBinding: 'Bundle.entry with provenance attribution',
         standardAlignment: 'HL7 FHIR R4 Core & Irish National Profiles',
       },
@@ -856,47 +858,47 @@ export const HEALTH_TECH_AGENTS: AgentRecord[] = [
   },
   {
     slug: 'discharge-clinical-handover-agent',
-    name: 'Discharge & Clinical Handover Coordinator',
+    name: 'Safe Discharge & Medication Reconciliation',
     codeName: 'SlainteCare-Transfer',
     squad: 'SlainteClinical Care',
     squadColor: 'primary',
     iconKey: 'sync',
     dashboardScreenshot: '/images/agents/discharge-clinical-handover-agent.png',
-    seoTitle: 'Discharge & Clinical Handover Coordinator Agent | SlainteTech',
+    seoTitle: 'Hospital Discharge Safety & Medication Reconciliation | SlainteTech',
     seoDescription:
-      'Evaluates inpatient physiological stability, reconciles discharge medications against allergies, and drafts structured electronic transfer summaries.',
+      'Prevent unsafe premature discharges and take-home medication errors with automatic vital stability checks and GP transfer letters.',
     heroSummary:
-      'Enforces physiological stability gates (NEWS2 <= 2), runs 3-Tier pharmacology reconciliation against documented patient allergies, and drafts structured HL7 FHIR DocumentReference transfer letters.',
-    fastMcpBadges: ['NEWS2 <= 2 Stability Gate', '3-Tier Med Reconciliation', 'FHIR DocumentReference'],
+      'Verifies patient vital stability before ward discharge, checks every take-home prescription against allergies and kidney labs, and drafts clean GP transfer summaries.',
+    fastMcpBadges: ['Vital Stability Gate', 'Take-Home Med Check', 'Ready GP Transfer Letter'],
     capabilities: [
       {
-        title: 'Physiological Stability Verification',
+        title: 'Pre-Discharge Vital Stability Check',
         description:
-          'Evaluates 24-hour vital sign trajectories to ensure NEWS2 <= 2 prior to step-down ward discharge or GP transfer.',
-        guardrailChip: 'Hard Hold on NEWS2 >= 3',
+          'Reviews the last 24 hours of observations and puts an automatic clinical warning on discharges when NEWS2 stability criteria are not met.',
+        guardrailChip: 'Unstable Vital Hold',
         iconKey: 'monitorHeart',
       },
       {
-        title: '3-Tier Discharge Medication Reconciliation',
+        title: 'Take-Home Medication Safety Review',
         description:
-          'Screens all to-take-out (TTO) medications against recorded allergies, active inpatient orders, and renal eGFR thresholds.',
-        guardrailChip: 'Zero Unreconciled Meds',
+          'Screens every discharge medication against inpatient orders, allergies, drug clashes, and kidney function before going home.',
+        guardrailChip: 'Zero Med Gaps',
         iconKey: 'medication',
       },
       {
-        title: 'Structured Electronic Transfer Letter',
+        title: 'Signed GP Transfer Summary',
         description:
-          'Compiles problem lists, discharge vitals, follow-up instructions, and practitioner IMC sign-off into signed FHIR DocumentReference notes.',
-        guardrailChip: 'Provenance Signed',
+          'Bundles problem lists, discharge vitals, follow-up steps, and clinician sign-off into a structured transfer letter.',
+        guardrailChip: 'Doctor Signed Transfer',
         iconKey: 'factCheck',
       },
     ],
     verticalUseCase: {
-      eyebrow: 'Verified Vertical Use Case: Acute Inpatient Wards',
-      headline: 'Preventing Premature Discharges and Unreconciled Medication Errors',
+      eyebrow: 'Real-World Example: Acute Hospital Wards',
+      headline: 'Stopping Unsafe Discharges Before Patients Leave the Ward',
       scenario:
-        'When a patient is scheduled for discharge but their respiratory rate elevates to 24 with SpO2 at 93% (NEWS2: 4), SlainteCare-Transfer places an automated clinical hold, preventing premature step-down.',
-      outcomeMetric: '100% of Discharged Patients Meet Verified Stability Criteria',
+        'If a patient planned for discharge shows raised breathing rate (24) and dipped oxygen (93%), SlainteCare-Transfer raises an automatic stability hold before discharge papers print.',
+      outcomeMetric: '100% of Discharged Patients Screened for Vital & Rx Safety',
       verticalTitle: 'For Hospital Inpatient Wards & ED',
       verticalHref: '/verticals/emergency-departments/',
     },
@@ -923,48 +925,48 @@ export const HEALTH_TECH_AGENTS: AgentRecord[] = [
   },
   {
     slug: 'emergency-prehospital-prealert-agent',
-    name: 'Emergency Pre-Hospital Pre-Alert Agent',
+    name: 'Ambulance-to-Hospital ED Pre-Alert',
     codeName: 'SlainteEMS-Alert',
     squad: 'SlainteClinical Care',
     squadColor: 'error',
     iconKey: 'monitorHeart',
     dashboardScreenshot: '/images/agents/emergency-prehospital-prealert-agent.png',
-    seoTitle: 'Emergency Pre-Hospital Pre-Alert Agent | SlainteTech',
+    seoTitle: 'Ambulance Pre-Hospital Pre-Alert to Receiving ED | SlainteTech',
     seoDescription:
-      'Rapid ambulance tablet telemetry agent computing Manchester Triage urgency and beaming real-time pre-arrival alerts to receiving Emergency Departments.',
+      'Compute emergency priority scores on paramedic tablets and alert receiving hospital stroke and trauma bays before the ambulance arrives.',
     heroSummary:
-      'Evaluates pre-hospital field vitals on ambulance tablets, computes rule-based Manchester Triage and NEWS2 urgency, and beams encrypted pre-alerts with ETA to receiving Emergency Department resuscitation bays.',
-    fastMcpBadges: ['Sub-Second MTS Scorer', 'ED Resus Pre-Alert', 'Mobile Field ePCR Ready'],
+      'Calculates triage urgency from paramedic tablet vitals in milliseconds and beams structured pre-arrival alerts with ETA straight to receiving hospital ED bays.',
+    fastMcpBadges: ['Instant Roadside Scoring', 'Live ED Bay Pre-Alert', 'Offline Tablet Cache'],
     capabilities: [
       {
-        title: 'Sub-Second Field Urgency Scoring',
+        title: 'Sub-Second Field Urgency Math',
         description:
-          'Calculates Manchester Triage System Category 1 to 5 and RCP NEWS2 deterioration scores from field vitals in milliseconds.',
+          'Assigns official Manchester Triage and RCP NEWS2 scores directly from field blood pressure, pulse, oxygen, and breathing rate.',
         guardrailChip: 'Zero-Latency Triage',
         iconKey: 'monitorHeart',
       },
       {
-        title: 'Encrypted Emergency Pre-Alert Dispatch',
+        title: 'Direct Resus Bay Notification',
         description:
-          'Transmits patient physiological telemetry, chief complaints, and estimated arrival time (ETA) directly into hospital ED queues.',
-        guardrailChip: 'Direct Resus Notification',
+          'Sends vital signs, allergies, field treatments, and ETA straight onto receiving hospital emergency boards.',
+        guardrailChip: 'Live ED Pre-Alert',
         iconKey: 'sync',
       },
       {
-        title: 'Offline-First Ambulance Tablet Cache',
+        title: 'Works Through Signal Blackouts',
         description:
-          'Full operational capability in mobile environments with automatic FHIR R4 Bundle sync upon cellular network reconnection.',
-        guardrailChip: 'High-Contrast Field UI',
+          'Keeps paramedics charting smoothly in rural dead zones and syncs records cleanly the moment signal returns.',
+        guardrailChip: 'High-Contrast Tablet UI',
         iconKey: 'security',
       },
     ],
     verticalUseCase: {
-      eyebrow: 'Verified Vertical Use Case: Pre-Hospital Emergency Care',
-      headline: 'Pre-Alerting Hospital Trauma Bays Before Ambulance Arrival',
+      eyebrow: 'Real-World Example: Ambulance & Paramedics',
+      headline: 'Preparing Stroke & Trauma Teams Before Ambulance Doors Open',
       scenario:
-        'A paramedic crew enters vital signs for a suspected stroke patient (BP 185/105, HR 105, RR 22, MTS Cat 2). SlainteEMS-Alert immediately transmits an AMBER alert to the receiving ED, allowing the stroke team to prepare the CT scanner.',
-      outcomeMetric: 'Reduced ED Door-to-Needle Time by Pre-Alerting Trauma Teams',
-      verticalTitle: 'For Emergency Medical Services & Paramedics',
+        'A crew records suspected stroke vitals en route; SlainteEMS-Alert pushes an immediate priority alert to the receiving hospital so the CT suite and team are ready on arrival.',
+      outcomeMetric: 'Shorter Door-to-Treatment Times via Live ED Pre-Alerting',
+      verticalTitle: 'For Ambulance & Paramedic Services',
       verticalHref: '/verticals/ambulance-ems/',
     },
     technicalSpecs: [
@@ -990,48 +992,48 @@ export const HEALTH_TECH_AGENTS: AgentRecord[] = [
   },
   {
     slug: 'chronic-disease-surveillance-agent',
-    name: 'Chronic Disease & Quality Care Surveillance Agent',
+    name: 'Chronic Disease Care-Gap & Recall Tracker',
     codeName: 'SlainteCare-CDM',
     squad: 'SlainteClinical Care',
     squadColor: 'primary',
     iconKey: 'summarize',
     dashboardScreenshot: '/images/agents/chronic-disease-surveillance-agent.png',
-    seoTitle: 'Chronic Disease & Quality Care Surveillance Agent | SlainteTech',
+    seoTitle: 'Chronic Disease Care-Gap & HSE CDM Recall Surveillance | SlainteTech',
     seoDescription:
-      'Continuously audits patient cohorts for diabetes, hypertension, and CKD to detect overdue surveillance markers and surface proactive GP care gap alerts.',
+      'Spot overdue diabetic HbA1c, kidney eGFR, and blood pressure reviews across practice rosters before complications happen.',
     heroSummary:
-      'Continuously sweeps patient panels for diabetes, hypertension, and cardiovascular disease to identify overdue surveillance biomarkers (HbA1c > 12m, eGFR decline, uncontrolled BP) and generate proactive clinical recall lists.',
-    fastMcpBadges: ['HSE CDM Contract Aligned', 'Overdue Marker Detection', 'Automated Care Gap Recall'],
+      'Sweeps GP and primary care patient rosters to highlight overdue diabetes, kidney, and blood pressure checks so nurses can book timely follow-ups effortlessly.',
+    fastMcpBadges: ['HSE CDM Aligned', 'Overdue Test Alerts', 'Ready Nurse Recall Lists'],
     capabilities: [
       {
-        title: 'Panel-Wide Biomarker Surveillance',
+        title: 'Practice-Wide Test Monitoring',
         description:
-          'Scans entire practice rosters for overdue diabetes (HbA1c > 12 months), hypertension (BP > 6 months), and CKD (eGFR) checks.',
+          'Continuously checks patient rosters for overdue yearly HbA1c, 6-month blood pressure, and kidney function panels.',
         guardrailChip: 'Zero-Miss Recall',
         iconKey: 'analytics',
       },
       {
-        title: 'Objective Care Gap Escalation',
+        title: 'Prioritized Risk Escalation',
         description:
-          'Flags clinically significant biomarker drift (SBP >= 150 mmHg, rapid eGFR loss) with prioritized recommendations for GP review.',
-        guardrailChip: 'Actionable Insights',
+          'Puts clinically worsening patients (such as rising systolic BP or falling kidney eGFR) at the top of review lists.',
+        guardrailChip: 'Risk-First Sorting',
         iconKey: 'factCheck',
       },
       {
-        title: 'Irish HSE CDM Protocol Compliance',
+        title: 'Irish HSE CDM Contract Alignment',
         description:
-          'Aligns with the national Chronic Disease Management contract guidelines, supporting structured bi-annual review requirements.',
-        guardrailChip: 'HSE CDM Contract Ready',
+          'Structured directly around biannual Chronic Disease Management review schedules for effortless practice revenue capture.',
+        guardrailChip: 'HSE CDM Ready',
         iconKey: 'verified',
       },
     ],
     verticalUseCase: {
-      eyebrow: 'Verified Vertical Use Case: General Practice & Primary Care Networks',
-      headline: 'Closing Chronic Disease Care Gaps Before Complications Arise',
+      eyebrow: 'Real-World Example: GP & Primary Care Networks',
+      headline: 'Closing Chronic Care Gaps Before Emergencies Happen',
       scenario:
-        'Across a practice panel of 1,200 diabetic patients, SlainteCare-CDM surfaces 42 patients whose HbA1c has not been tested in over 14 months, allowing practice nurses to trigger proactive recall appointments.',
-      outcomeMetric: '94% On-Time Annual Review Rate for Chronic Disease Cohorts',
-      verticalTitle: 'For Primary Care & Family Medicine',
+        'Across 1,200 diabetic patients, SlainteCare-CDM spots 42 patients overdue for HbA1c tests by more than 14 months so practice nurses schedule proactive reviews in minutes.',
+      outcomeMetric: '94% On-Time Chronic Review Coverage Across Active Panels',
+      verticalTitle: 'For General Practitioners & Community Nursing',
       verticalHref: '/verticals/general-practice/',
     },
     technicalSpecs: [
@@ -1057,48 +1059,48 @@ export const HEALTH_TECH_AGENTS: AgentRecord[] = [
   },
   {
     slug: 'eu-nis2-directive-compliance-agent',
-    name: 'EU NIS2 Directive & Continuous Compliance Auditor',
+    name: 'Continuous EU NIS2 & Hospital Cyber Audit',
     codeName: 'SlainteGov-NIS2',
     squad: 'SlainteGov Governance',
     squadColor: 'error',
     iconKey: 'security',
     dashboardScreenshot: '/images/agents/eu-nis2-directive-compliance-agent.png',
-    seoTitle: 'EU NIS2 Directive & Continuous Compliance Auditor | SlainteTech',
+    seoTitle: 'EU NIS2 Directive Healthcare Compliance & Attestation | SlainteTech',
     seoDescription:
-      'Continuous compliance auditor testing hospital digital infrastructure against EU Directive 2022/2555 Article 21 cybersecurity risk-management requirements.',
+      'Replace annual compliance spreadsheets with continuous automated EU NIS2 Article 21 verification, SIEM webhooks, and board-ready certificates.',
     heroSummary:
-      'Continuously audits healthcare operational controls against EU Directive 2022/2555 (NIS2) Article 21, verifying SIEM event dispatch, supply-chain dependency pins, cryptographic integrity, and incident reporting readiness.',
-    fastMcpBadges: ['EU Directive 2022/2555', 'Article 21 Safeguards', 'Continuous Attestation'],
+      'Continuously tests hospital cybersecurity controls against EU NIS2 Article 21, verifying access locks, package pins, and security alerts, and prints audit-ready certificates.',
+    fastMcpBadges: ['EU Directive 2022/2555', 'Article 21 Safeguards', 'Board-Ready Proof'],
     capabilities: [
       {
-        title: 'Article 21 Control Verification',
+        title: 'Live Article 21 Technical Checks',
         description:
-          'Audits access controls, multi-factor authentication, incident handling readiness, and supply chain security against NIS2 standards.',
-        guardrailChip: '5/5 Controls Verified',
+          'Continuously tests access controls, multi-factor policies, incident alerting, and software supply-chain hygiene.',
+        guardrailChip: '5/5 Controls Checked',
         iconKey: 'security',
       },
       {
-        title: 'SIEM Security Webhook Dispatcher',
+        title: 'Hospital SOC Webhook Alerts',
         description:
-          'Verifies live dispatch of HMAC-SHA256 signed security alert payloads to hospital SIEM platforms (Microsoft Sentinel, Splunk, PagerDuty).',
-        guardrailChip: 'Instant SIEM Telemetry',
+          'Verifies instant signed security alert delivery straight to Microsoft Sentinel, Splunk, and PagerDuty.',
+        guardrailChip: 'Live SIEM Webhooks',
         iconKey: 'sync',
       },
       {
-        title: 'Printable Executive Compliance Certificate',
+        title: 'Printable Board & Auditor Certificates',
         description:
-          'Generates verifiable, print-ready attestation certificates certifying compliance with NIS2, EU AI Act, HIQA, and ISO 27001.',
-        guardrailChip: 'Board-Ready Attestation',
+          'Outputs clear, timestamped compliance certificates ready for trust boards, insurers, and national cyber regulators.',
+        guardrailChip: 'Executive Ready',
         iconKey: 'factCheck',
       },
     ],
     verticalUseCase: {
-      eyebrow: 'Verified Vertical Use Case: Hospital CISOs & Health Boards',
-      headline: 'Automating Continuous NIS2 Compliance for Hospital Trusts',
+      eyebrow: 'Real-World Example: Hospital CISOs & Trust Boards',
+      headline: 'Instant Regulatory Proof When National Cyber Auditors Ask',
       scenario:
-        'Ahead of an external regulatory audit by the National Cyber Security Centre (NCSC), hospital leadership generates a cryptographically signed NIS2 Article 21 attestation showing 100% compliance across all digital clinical systems.',
-      outcomeMetric: '100% Audit Readiness with Continuous Cryptographic Proof',
-      verticalTitle: 'For Hospital CISOs, CIOs & Trust Boards',
+        'Ahead of an external regulatory inspection, the CISO exports a signed EU NIS2 Article 21 certificate proving live technical compliance across every clinical API and login boundary.',
+      outcomeMetric: '100% Continuous Audit Readiness Across All Safeguards',
+      verticalTitle: 'Security & NIS2 Compliance Matrix',
       verticalHref: '/security-compliance/',
     },
     technicalSpecs: [
@@ -1126,4 +1128,33 @@ export const HEALTH_TECH_AGENTS: AgentRecord[] = [
 
 export function getAgentBySlug(slug: string): AgentRecord | undefined {
   return HEALTH_TECH_AGENTS.find((a) => a.slug === slug);
+}
+
+/**
+ * Generates tailored, non-generic technical FAQs for every single one of the 16 modules
+ * so deep technical, FHIR, API, and regulatory details live in a dedicated FAQ section.
+ */
+export function getAgentFaqs(agent: AgentRecord): FaqItem[] {
+  const specSummary = agent.technicalSpecs
+    .map((s) => `${s.parameter}: ${s.deterministicMechanism} (${s.fhirBinding})`)
+    .join('; ');
+
+  return [
+    {
+      question: `How does ${agent.codeName} execute under the hood without guessing?`,
+      answer: `${agent.codeName} (${agent.name}) runs tested, rule-based Python verification logic rather than relying on statistical guesswork. Specifically: ${specSummary}.`,
+    },
+    {
+      question: `Which HL7 FHIR R4 resources and endpoints does ${agent.codeName} bind to?`,
+      answer: `It connects directly with ${agent.technicalSpecs.map((s) => s.fhirBinding).join(' | ')}. It runs side-by-side with Epic, Oracle Cerner, MEDITECH, or HAPI FHIR via SMART-on-FHIR v2 or mirrors legacy hospital HL7v2 messages.`,
+    },
+    {
+      question: `Which compliance and clinical standards does ${agent.codeName} help satisfy?`,
+      answer: `Built directly around ${agent.technicalSpecs.map((s) => s.standardAlignment).join(', ')}. Every action produces verifiable proof inside append-only audit storage or OASIS SARIF / compliance certificate exports.`,
+    },
+    {
+      question: `How fast can our hospital or clinic deploy ${agent.codeName} in a pilot?`,
+      answer: `You can run a 15-minute read-only SMART-on-FHIR v2 sidecar pilot alongside your existing system with zero downtime, or deploy the entire private container stack (UI :8000, Safety Engine :8081, SlainteFHIR :8082) inside your hospital VPC or offline environment.`,
+    },
+  ];
 }

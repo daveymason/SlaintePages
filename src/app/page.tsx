@@ -21,6 +21,50 @@ import LockRoundedIcon from '@mui/icons-material/LockRounded';
 import { HEALTH_TECH_AGENTS } from '@/data/agentsData';
 import { INDUSTRY_VERTICALS } from '@/data/verticalsData';
 import { AgentSolutionCard } from '@/components/AgentSolutionCard';
+import { TechnicalFaqSection, type FaqItem } from '@/components/TechnicalFaqSection';
+import { buildPageMetadata } from '@/utils/seo';
+
+export const metadata = buildPageMetadata({
+  title: 'SlainteTech | Safer Care, Recovered Hospital Funding & Proven API Security',
+  description:
+    'Save clinician charting hours, catch unsafe prescriptions automatically, recover missed hospital HIPE funding, and prove EU NIS2 cybersecurity compliance across 8 care settings.',
+  path: '/',
+  ogImage: '/images/og/slainte-og.png',
+  ogImageAlt: 'SlainteTech Clinical Safety, Hospital Revenue Integrity & API Security Platform',
+});
+
+const HOME_TECHNICAL_FAQS: FaqItem[] = [
+  {
+    question: 'Do we have to rip out Epic, Oracle Cerner, MEDITECH, or our clinic system to use SlainteTech?',
+    answer:
+      'No. You can connect SlainteTech alongside your existing EHR in 15 minutes via read-only SMART-on-FHIR v2 (supporting RFC 7636 S256 PKCE launch at /.well-known/smart-configuration) or mirror legacy HL7v2 ADT/ORU/RDE feeds at POST /enterprise/hl7v2/ingest with zero disruption to live clinical systems.',
+  },
+  {
+    question: 'Why does SlainteTech compute triage scores and drug checks in Python rules instead of text generation?',
+    answer:
+      'Hospital clinical safety boards (such as DCB0129/0160 and HIQA reviewers) will not approve unverified text prediction for patient doses or sepsis scoring. Our FastMCP Safety Server (:8081) runs RCP NEWS2 (0-20), Manchester Triage (Cat 1-5), and 3-Tier Rx-Guard (Beta-Lactam/NSAID/Sulfa cross-reactivity, ISMP high-alert drug pairs, and LOINC eGFR/Potassium checks) inside unit-tested Python code in under 10 milliseconds.',
+  },
+  {
+    question: 'How does the HL7 FHIR R4 core handle legacy data, coding units, and patient matching?',
+    answer:
+      'SlainteFHIR (:8082) stores clinical resources cleanly in Patient Compartments using SNOMED-CT, LOINC, UCUM dosage units (http://unitsofmeasure.org), and Irish GMS identifiers (urn:oid:1.3.6.1.4.1.54392.5.2690.42.80). SlainteGov-Onboard and SlainteShield-FHIR validate imports upfront and output OASIS SARIF v2.1.0 quality reports.',
+  },
+  {
+    question: 'How do you prove security and GDPR Article 9 compliance to hospital CISOs and regulators?',
+    answer:
+      'All audit_log, ai_exchange, and break_glass_grants SQLite tables are locked with BEFORE UPDATE and BEFORE DELETE abort triggers so history can never be altered. SlainteShield-BOLA continuously verifies OWASP API1:2023 tenant isolation, SlainteGov-GDPR strips direct identifiers before external processing, and SlainteGov-NIS2 issues board-ready EU NIS2 Article 21 certificates alongside HMAC-SHA256 SIEM webhooks.',
+  },
+  {
+    question: 'Can we host everything inside our hospital private cloud or completely offline?',
+    answer:
+      'Yes. The full platform deploys via Docker Compose inside a hospital VPC, clinic server, or air-gapped field workstation (web UI :8000, safety engine :8081, local FHIR store :8082) with 0 bytes of required external internet traffic.',
+  },
+  {
+    question: 'How is the software tested before each release?',
+    answer:
+      'Our core engine ships with 344+ automated pytest security, RBAC, prescribing safety, HL7 FHIR R4 conformance, and per-vertical patient-cohort tests alongside WCAG 2.2 AA accessibility and coarse-pointer 44px touch-target checks.',
+  },
+];
 
 export default function HomePage() {
   return (
@@ -42,18 +86,18 @@ export default function HomePage() {
             <Grid size={{ xs: 12, md: 7 }}>
               <Stack direction="row" flexWrap="wrap" gap={1} sx={{ mb: 2.5 }}>
                 <Chip
-                  label="16 Clinical & Security Modules"
+                  label="16 Clinical & Cyber Modules"
                   color="primary"
                   size="small"
                   sx={{ border: '1px solid #7DD3FC' }}
                 />
                 <Chip
-                  label="8 Specialized Care Verticals"
+                  label="8 Care Settings"
                   size="small"
                   sx={{ bgcolor: '#1E293B', color: '#F8FAFC', border: '1px solid #475569' }}
                 />
                 <Chip
-                  label="Desktop • Tablet • Mobile Home Care"
+                  label="Desktop • Tablet • Mobile Care-at-Home"
                   size="small"
                   sx={{ bgcolor: '#0F291E', color: '#DCFCE7', border: '1px solid #4ADE80' }}
                 />
@@ -66,11 +110,11 @@ export default function HomePage() {
                 tabIndex={-1}
                 sx={{ color: '#FFFFFF', mb: 2.5, outline: 'none' }}
               >
-                Safer Patient Care, Recovered Hospital Revenue &amp; Continuous FHIR Security.
+                Save Clinician Hours. Protect Every Prescription. Recover Missed Funding.
               </Typography>
 
               <Typography variant="body1" sx={{ color: '#E2E8F0', fontSize: '1.1rem', mb: 3.5, maxWidth: 650 }}>
-                Cut clinician charting hours, catch missed HIPE reimbursement, and block unsafe prescriptions before they reach the patient. SlainteTech pairs a unified HL7 FHIR R4 clinical platform with rule-based safety gates and automated NIS2 API verification across 8 frontline care settings.
+                Built for hospital directors, practice owners, and CISOs. SlainteTech stops dangerous drug clashes before they reach patients, captures missed HIPE funding from verified lab results, and automates continuous healthcare cyber testing across 8 frontline care settings.
               </Typography>
 
               <Stack direction={{ xs: 'column', sm: 'row' }} spacing={1.5} sx={{ mb: 4 }}>
@@ -94,7 +138,7 @@ export default function HomePage() {
                     '&:hover': { borderColor: '#FFFFFF', bgcolor: 'rgba(255,255,255,0.08)' },
                   }}
                 >
-                  Explore 8 Care Verticals
+                  Explore 8 Care Settings
                 </Button>
                 <Button
                   component={Link}
@@ -106,15 +150,15 @@ export default function HomePage() {
                     '&:hover': { borderColor: '#7DD3FC', bgcolor: 'rgba(56,189,248,0.12)' },
                   }}
                 >
-                  See All 16 Agents
+                  See All 16 Modules
                 </Button>
               </Stack>
 
               <Grid container spacing={2}>
                 {[
-                  { stat: '100% Rule-Based Math', detail: 'RCP NEWS2, Manchester Triage & 3-Tier Rx-Guard never rely on guesswork' },
-                  { stat: '15-Min Sidecar Deploy', detail: 'Attach read-only alongside Epic, Cerner, or MEDITECH with zero downtime' },
-                  { stat: 'Private & Offline Ready', detail: 'Deploy in hospital VPCs or 100% offline with zero external PHI exposure' },
+                  { stat: 'Zero Guesswork Safety', detail: 'Exact clinical rules check triage urgency, drug clashes & kidney labs every time' },
+                  { stat: '15-Min Sidecar Setup', detail: 'Attach read-only alongside Epic, Cerner, or MEDITECH with zero downtime' },
+                  { stat: 'Private & Offline Ready', detail: 'Host inside hospital networks or completely offline with full patient privacy' },
                 ].map((item) => (
                   <Grid key={item.stat} size={{ xs: 12, sm: 4 }}>
                     <Box sx={{ p: 1.75, borderRadius: 2, bgcolor: 'rgba(15, 23, 42, 0.72)', border: '1px solid #334155', height: '100%' }}>
@@ -143,7 +187,7 @@ export default function HomePage() {
               >
                 <Stack direction="row" justifyContent="space-between" alignItems="center" sx={{ mb: 2 }}>
                   <Typography variant="caption" sx={{ fontFamily: 'monospace', color: '#7DD3FC', fontWeight: 800 }}>
-                    LIVE PLATFORM ARCHITECTURE
+                    HOW SLAINTETECH WORKS TOGETHER
                   </Typography>
                   <Box
                     component="span"
@@ -161,27 +205,27 @@ export default function HomePage() {
                       className="telemetry-pulse"
                       sx={{ width: 8, height: 8, borderRadius: '50%', bgcolor: '#22C55E', display: 'inline-block' }}
                     />
-                    VERIFIED R4
+                    LIVE PLATFORM
                   </Box>
                 </Stack>
 
                 <Stack spacing={1.5}>
                   {[
                     {
-                      layer: 'Layer 1 • 8 Specialty Clinical Workspaces',
-                      desc: 'Tailored screens for ED, GP & Home Nursing, Psychiatry, Dentistry, Pharmacy, Ambulance ePCR, Elite Sport, and Aerospace.',
+                      layer: '1. Frontline Care Workspaces',
+                      desc: 'Role-tailored screens for ED, GP & Home Nursing, Psychiatry, Dentistry, Pharmacy, Ambulance Tablets, Sport, and Aerospace.',
                     },
                     {
-                      layer: 'Layer 2 • 16 Clinical & Security Agents',
-                      desc: 'Three coordinated teams: SlainteShield Security (3), SlainteGov Governance & Coding (5), and SlainteClinical Care (8).',
+                      layer: '2. 16 Clinical & Security Modules',
+                      desc: 'Three teams working together: Security Testing (3), Coding & Compliance (5), and Clinical Care & Safety (8).',
                     },
                     {
-                      layer: 'Layer 3 • Rule-Based Safety Gatekeeper (:8081)',
-                      desc: 'Hard-coded Python acuity scoring, 3-Tier allergy/interaction/renal checks, and private-subnet security boundary locks.',
+                      layer: '3. Tested Safety Rule Gatekeeper',
+                      desc: 'Runs exact triage scores, allergy/interaction/kidney prescribing checks, and security boundary locks with zero guesswork.',
                     },
                     {
-                      layer: 'Layer 4 • HL7 FHIR R4 Core & Append-Only Audit (:8082)',
-                      desc: 'Patient compartment record store, SMART-on-FHIR v2 launch, signed practitioner provenance, and tamper-proof SQLite logs.',
+                      layer: '4. Clean Patient Records & Audit Log',
+                      desc: 'Stores structured records side-by-side with existing hospital feeds and signs every decision into an unchangeable log.',
                     },
                   ].map((box) => (
                     <Box
@@ -220,13 +264,13 @@ export default function HomePage() {
           >
             <Box sx={{ maxWidth: 720 }}>
               <Typography variant="overline" sx={{ color: '#134E68', fontWeight: 800, letterSpacing: '0.08em', display: 'block' }}>
-                8 Purpose-Built Clinical Verticals
+                8 Purpose-Built Care Settings
               </Typography>
               <Typography component="h2" variant="h2" id="for-verticals-heading" sx={{ color: '#0F172A', mb: 1 }}>
-                Built For Every Frontline Care Setting
+                Tailored to Every Care Team You Run
               </Typography>
               <Typography variant="body1" sx={{ color: '#334155' }}>
-                One HL7 FHIR R4 clinical foundation adapted into 8 dedicated environments, each with live role workflows, specialty patient views, and mobile tablet responsiveness.
+                One reliable clinical core adapted into 8 clean workspaces, each pre-loaded with specialty patient views, safety checks, and tablet/mobile responsiveness.
               </Typography>
             </Box>
             <Button component={Link} href="/verticals/" variant="outlined" color="primary">
@@ -333,21 +377,21 @@ export default function HomePage() {
               <Stack direction="row" spacing={1} alignItems="center" sx={{ mb: 1 }}>
                 <DevicesRoundedIcon sx={{ color: '#1B6B8D' }} aria-hidden="true" />
                 <Typography variant="overline" sx={{ color: '#134E68', fontWeight: 800, letterSpacing: '0.08em' }}>
-                  Responsive Desktop, Rugged Tablet &amp; Smartphone Clinical UX
+                  Works Where Your Team Works
                 </Typography>
               </Stack>
               <Typography component="h2" variant="h2" id="responsive-field-heading" sx={{ color: '#0F172A', mb: 1.5 }}>
-                Built for Care-at-Home Nurses, Community Teams &amp; Moving Ambulances
+                Built for Care-at-Home Nurses, Clinics &amp; Moving Ambulances
               </Typography>
               <Typography variant="body1" sx={{ color: '#334155', mb: 2.5 }}>
-                Care happens everywhere, not just at a ward workstation. Every SlainteDash screen adapts automatically to smartphones and rugged ambulance tablets with 1-thumb quick actions, 44px glove-ready buttons, and glare-proof contrast.
+                Care happens on home visits, clinic rounds, and ambulances, not just behind a desk. Every SlainteDash screen adapts smoothly to phones and rugged tablets with large glove-ready buttons and clear glare-free contrast.
               </Typography>
               <Stack direction={{ xs: 'column', sm: 'row' }} spacing={1.5}>
                 <Button component={Link} href="/verticals/general-practice/" variant="contained" color="primary">
-                  Explore GP &amp; Home Nursing
+                  See GP &amp; Home Nursing
                 </Button>
                 <Button component={Link} href="/verticals/ambulance-ems/" variant="outlined" color="primary">
-                  Explore Ambulance ePCR
+                  See Ambulance Tablet ePCR
                 </Button>
               </Stack>
             </Grid>
@@ -357,18 +401,18 @@ export default function HomePage() {
                 {[
                   {
                     icon: <DevicesRoundedIcon sx={{ color: '#1B6B8D' }} aria-hidden="true" />,
-                    title: '44px Glove & Thumb Touch Targets',
-                    text: 'Enlarged charting controls, dental odontogram buttons, and triage actions built for real field use.',
+                    title: 'Glove & Thumb Friendly Controls',
+                    text: 'Enlarged charting buttons, dental tooth charts, and triage triggers built for fast field use.',
                   },
                   {
                     icon: <ShieldRoundedIcon sx={{ color: '#15803D' }} aria-hidden="true" />,
-                    title: '1-Tap Sticky Field Quick-Dock',
-                    text: 'Move between Triage, Patient Charts, Vertical Tools, and Security Agents in a single tap on phones and tablets.',
+                    title: 'One-Tap Mobile Navigation',
+                    text: 'Jump straight between patient charts, safety checks, and alerts on phones or iPads.',
                   },
                   {
                     icon: <LockRoundedIcon sx={{ color: '#B91C1C' }} aria-hidden="true" />,
-                    title: 'WCAG 2.2 AA & High-Contrast Ready',
-                    text: 'Readable under bright ambulance bay glare or dimmed night-shift wards with zero rainbow visual noise.',
+                    title: 'Easy on the Eyes Day & Night',
+                    text: 'Accessible high contrast stays legible in bright ambulance bays or dim night-shift wards.',
                   },
                 ].map((feat) => (
                   <Paper key={feat.title} elevation={0} sx={{ p: 2, border: '1px solid #CBD5E1', borderRadius: 2, bgcolor: '#F8FAFC' }}>
@@ -391,7 +435,7 @@ export default function HomePage() {
         </Container>
       </Box>
 
-      {/* ALL 16 CLINICAL & SECURITY AGENTS GRID */}
+      {/* ALL 16 CLINICAL & SECURITY MODULES GRID */}
       <Box component="section" aria-labelledby="agents-fleet-heading" sx={{ py: { xs: 7, md: 9 } }}>
         <Container maxWidth="lg">
           <Stack
@@ -403,17 +447,17 @@ export default function HomePage() {
           >
             <Box sx={{ maxWidth: 740 }}>
               <Typography variant="overline" sx={{ color: '#134E68', fontWeight: 800, letterSpacing: '0.08em', display: 'block' }}>
-                3 Specialized Squads • 16 Production Modules
+                3 Specialized Teams • 16 Focused Modules
               </Typography>
               <Typography component="h2" variant="h2" id="agents-fleet-heading" sx={{ color: '#0F172A', mb: 1 }}>
-                Clinical Safety &amp; Security Agents
+                Clinical Safety, Coding &amp; Security Modules
               </Typography>
               <Typography variant="body1" sx={{ color: '#334155' }}>
-                Inspect every SlainteDash agent console below. Each module pairs automated clinical workflow speed with rule-based safety gates and tamper-evident audit logging.
+                See live screenshots of every module below. Each tool removes busywork, catches safety risks early, or proves cybersecurity compliance automatically.
               </Typography>
             </Box>
             <Button component={Link} href="/health-tech-agents/" variant="contained" color="primary">
-              Browse All 16 Agents
+              Browse All 16 Modules
             </Button>
           </Stack>
 
@@ -441,13 +485,13 @@ export default function HomePage() {
         <Container maxWidth="lg">
           <Stack spacing={2} sx={{ mb: 4.5, maxWidth: 780 }}>
             <Typography variant="overline" sx={{ color: '#134E68', fontWeight: 800, letterSpacing: '0.08em', display: 'block' }}>
-              Real-World Clinical Environments
+              Proven in Frontline Care Settings
             </Typography>
             <Typography component="h2" variant="h2" id="clinical-delivery-heading" sx={{ color: '#0F172A' }}>
-              Built for Frontline Clinicians, Hospital Trusts &amp; Community Care Teams
+              Designed With Frontline Teams, Hospital Trusts &amp; CISOs
             </Typography>
             <Typography variant="body1" sx={{ color: '#334155' }}>
-              SlainteTech fits directly into frontline clinical delivery: from emergency resuscitation bays and ward rounds to community nursing visits and hospital security operations centres.
+              From acute emergency bays and busy GP surgeries to community nursing visits and hospital security operations centres, SlainteTech fits into daily clinical care without disruption.
             </Typography>
           </Stack>
 
@@ -455,33 +499,33 @@ export default function HomePage() {
             {[
               {
                 img: '/images/hero-clinicians.jpg',
-                title: 'Multi-Disciplinary Clinical Rounds',
+                title: 'Ward Rounds & Shift Handovers',
                 subtitle: 'Hospital Inpatient & Specialist Wards',
-                desc: 'Physicians and charge nurses review 24-hour vital trajectories, NEWS2 escalation flags, and source-cited shift briefings on ward tablets.',
+                desc: 'Clinicians review 24-hour vital trends, early-warning alerts, and source-cited shift briefings on ward tablets in seconds.',
               },
               {
                 img: '/images/bedside-doctor.jpg',
-                title: 'Point-of-Care Bedside Review',
+                title: 'Faster Consultation Notes',
                 subtitle: 'General Practice & Ambulatory Care',
-                desc: 'Structured SOAP consultation notes and safety-checked prescriptions are prepared in seconds so clinicians keep focus on the patient.',
+                desc: 'Structured notes and safety-checked prescriptions draft automatically so clinicians keep full focus on the patient.',
               },
               {
                 img: '/images/emergency-team.jpg',
-                title: 'Acute Emergency Resuscitation',
-                subtitle: 'Emergency Departments & Trauma Bays',
-                desc: 'Manchester Triage Cat 1–5 urgency calculation and automated ambulance pre-alert telemetry prepared before the patient arrives.',
+                title: 'Emergency & Resuscitation Bays',
+                subtitle: 'Emergency Departments & Trauma Care',
+                desc: 'Live triage urgency scores and pre-arrival ambulance updates are ready before the casualty reaches the door.',
               },
               {
                 img: '/images/telehealth-nurse.jpg',
-                title: 'Chronic Disease Surveillance',
+                title: 'Proactive Chronic Care',
                 subtitle: 'Primary Care & Care-at-Home Nursing',
-                desc: 'Continuous surveillance of diabetic and hypertensive panels to surface overdue surveillance markers and proactive recall interventions.',
+                desc: 'Spot overdue diabetes, kidney, and blood pressure checks early to schedule timely follow-up care.',
               },
               {
                 img: '/images/security-soc.jpg',
-                title: 'CISO Cybersecurity Command',
-                subtitle: 'EU NIS2 & SIEM Webhook Telemetry',
-                desc: 'Continuous Article 21 technical safeguards verification with live HMAC-signed security alerts dispatched to Sentinel, Splunk, and PagerDuty.',
+                title: 'Hospital Cybersecurity Command',
+                subtitle: 'EU NIS2 & Continuous Audit Proof',
+                desc: 'Continuous chart isolation tests and instant signed alerts pushed straight to hospital security teams.',
               },
             ].map((card, idx) => (
               <Grid key={card.title} size={{ xs: 12, sm: 6, md: idx === 0 ? 8 : idx === 1 ? 4 : 4 }}>
@@ -531,6 +575,14 @@ export default function HomePage() {
         </Container>
       </Box>
 
+      {/* TECHNICAL FAQ FOR BUYERS & IT TEAMS */}
+      <TechnicalFaqSection
+        eyebrow="Platform Technical FAQ"
+        title="How It Works Under the Hood (IT, Safety & Procurement FAQ)"
+        subtitle="Answers for hospital CIOs, CISOs, Clinical Safety Officers, and procurement teams checking integration, hosting, and compliance."
+        items={HOME_TECHNICAL_FAQS}
+      />
+
       {/* DECISION-MAKER & INVESTOR FOOTER CTA */}
       <Box
         component="section"
@@ -548,14 +600,14 @@ export default function HomePage() {
               <Stack direction="row" spacing={1} alignItems="center" sx={{ mb: 1 }}>
                 <VerifiedRoundedIcon sx={{ color: '#38BDF8' }} aria-hidden="true" />
                 <Typography variant="overline" sx={{ color: '#BAE6FD', fontWeight: 800, letterSpacing: '0.08em' }}>
-                  For Hospital CISOs, Clinical Directors &amp; Institutional Investors
+                  Start Low-Risk, See Value in Days
                 </Typography>
               </Stack>
               <Typography component="h2" variant="h2" id="decision-makers-heading" sx={{ color: '#FFFFFF', mb: 1.5 }}>
-                Start in 15 Minutes Without Replacing Your EHR. Expand When Ready.
+                Launch in 15 Minutes Without Replacing Your Existing EHR.
               </Typography>
               <Typography variant="body1" sx={{ color: '#CBD5E1' }}>
-                Launch a read-only SMART-on-FHIR v2 security and HIPE revenue audit beside Epic, Cerner, or MEDITECH, or run complete specialty clinical workspaces across hospitals, clinics, pharmacies, and ambulances.
+                Start with a read-only security and HIPE funding check beside Epic, Cerner, or MEDITECH, or switch on complete specialty clinical workspaces as you grow.
               </Typography>
             </Grid>
             <Grid size={{ xs: 12, md: 5 }}>
@@ -569,7 +621,7 @@ export default function HomePage() {
                   endIcon={<ArrowForwardRoundedIcon aria-hidden="true" />}
                   sx={{ border: '1px solid #7DD3FC' }}
                 >
-                  Book Your 30-Minute Live Demo
+                  Book Your 15-Min Pilot Demo
                 </Button>
                 <Stack direction={{ xs: 'column', sm: 'row' }} spacing={1.5}>
                   <Button
@@ -579,7 +631,7 @@ export default function HomePage() {
                     fullWidth
                     sx={{ color: '#FFFFFF', borderColor: '#64748B', '&:hover': { borderColor: '#FFFFFF' } }}
                   >
-                    View Commercial Tiers
+                    See Pricing Tiers
                   </Button>
                   <Button
                     component={Link}
@@ -588,7 +640,7 @@ export default function HomePage() {
                     fullWidth
                     sx={{ color: '#FFFFFF', borderColor: '#64748B', '&:hover': { borderColor: '#FFFFFF' } }}
                   >
-                    NIS2 &amp; EU AI Act Matrix
+                    Compliance Checklist
                   </Button>
                 </Stack>
               </Stack>

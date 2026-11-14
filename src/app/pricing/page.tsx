@@ -1,4 +1,3 @@
-import type { Metadata } from 'next';
 import React from 'react';
 import Link from 'next/link';
 import {
@@ -15,59 +14,87 @@ import {
 import Grid from '@mui/material/Grid2';
 import CheckCircleRoundedIcon from '@mui/icons-material/CheckCircleRounded';
 import ArrowForwardRoundedIcon from '@mui/icons-material/ArrowForwardRounded';
+import { TechnicalFaqSection, type FaqItem } from '@/components/TechnicalFaqSection';
+import { buildPageMetadata } from '@/utils/seo';
 
-export const metadata: Metadata = {
-  title: 'Commercial Pricing & Licensing | SlainteTech',
+export const metadata = buildPageMetadata({
+  title: 'Pricing & Licensing | SlainteTech',
   description:
-    'Transparent Land-and-Expand licensing for hospital CISOs, GP/Dental/Pharmacy clinics, ambulance fleets, and sovereign air-gapped appliances.',
-};
+    'Transparent licensing for GP and dental clinics, 15-minute hospital security and billing sidecars, and private offline healthcare deployments.',
+  path: '/pricing/',
+  ogImage: '/images/og/slainte-og.png',
+  ogImageAlt: 'SlainteTech Commercial Pricing & Licensing',
+});
 
 const TIERS = [
   {
-    name: 'Tier 1 • Clinic & Practice Vertical',
+    name: 'Tier 1: Clinic & Practice Edition',
     badge: 'GP, Dental, Psych & Pharmacy',
-    price: '€199 – €499',
+    price: '€199 - €499',
     unit: 'per clinician / site / month',
     summary:
-      'Turnkey sovereign clinical vertical for independent practices, DSOs, community nursing teams, and pharmacies.',
+      'Complete clinical workspace for GP surgeries, dental groups, psychiatry clinics, community nurses, and pharmacies.',
     features: [
-      'Choice of Vertical (SlainteGP, SlainteDent, SlaintePsych, SlaintePharm)',
-      'Ambient Clinical Voice Scribe (SOAP + pre-screened FHIR draft orders)',
-      '3-Tier SlainteRx-Guard (Allergy, ISMP High-Alert DDI & LOINC eGFR)',
-      'Responsive smartphone & tablet home-visit / chairside UX',
-      'HSE PCRS monthly GMS batch CSV export & GDPR Art. 9 PII redaction',
+      'Your choice of dedicated vertical (SlainteGP, SlainteDent, SlaintePsych, or SlaintePharm)',
+      'Fast hands-free visit notes turned into structured drafts ready for sign-off',
+      'Built-in allergy, high-risk drug interaction, and kidney dose checks',
+      'Clean touch-friendly layout for desktop PCs, iPads, and phones on house calls',
+      'Monthly Irish HSE GMS billing export with automated patient privacy redaction',
     ],
   },
   {
-    name: 'Tier 2 • Hospital Security & Coding Sidecar',
-    badge: 'Recommended Enterprise Land',
-    price: '€48,000 – €95,000',
+    name: 'Tier 2: Hospital Security & Coding Sidecar',
+    badge: 'Most Popular for Hospitals',
+    price: '€48,000 - €95,000',
     unit: 'annual site license',
     summary:
-      'Zero-disruption 15-minute SMART-on-FHIR v2 sidecar alongside Epic, Cerner, or MEDITECH with no EHR replacement.',
+      'Connects read-only beside Epic, Cerner, or MEDITECH in 15 minutes with zero disruption to doctors or nurses.',
     features: [
-      'SlainteShield Squad (BOLA Red-Team, FHIR Conformance SARIF, CVE Audit)',
-      'SlainteRev-Coding HIPE / ICD-10-AM DRG Revenue Uplift Scanner',
-      'SlainteGov-Audit Append-Only Ledger & CISO Compliance Certificates',
-      'Enterprise OIDC SSO (Keycloak / Entra ID / Okta) + HMAC SIEM Webhooks',
-      'Typical payback < 90 days from recovered uncoded DRG complexity alone',
+      'Continuous patient chart privacy testing and API vulnerability checks',
+      'Automated chart review to flag missed billable complexity before discharge coding',
+      'Tamper-proof security audit ledger and one-click board compliance certificates',
+      'Connects cleanly to hospital single sign-on and SOC alert tools',
+      'Often pays for itself within 90 days through recovered hospital billing codes',
     ],
     highlighted: true,
   },
   {
-    name: 'Tier 3 • Private VPC or Air-Gapped Appliance',
-    badge: 'Acute Trusts, EMS, Defence & Space',
+    name: 'Tier 3: Private Cloud or Offline Edition',
+    badge: 'Acute Hospitals, EMS & Defence',
     price: 'Custom Enterprise',
-    unit: 'dedicated VPC or offline hardware',
+    unit: 'private cloud or offline hardware',
     summary:
-      'Full 8-vertical, 16-agent sovereign deployment inside your hospital VPC or offline appliance with HL7v2 hospital bridge and zero external network dependency.',
+      'Full 8-setting, 16-module platform running inside your own data centre or offline hardware with legacy hospital bridges.',
     features: [
-      'All 8 Clinical Verticals (incl. Emergency Dept, Ambulance ePCR & Aerospace)',
-      'All 16 Clinical & Security Agents + Safety Engine :8081 + SlainteFHIR :8082',
-      'Native HL7v2 Pipe-Hat (ADT, ORU, RDE) Legacy PAS/LIS Hospital Bridge',
-      '100% Offline Local Execution (0 bytes transmitted off-premise)',
-      'Dedicated clinical safety engineering (DCB0129/0160) onboarding',
+      'All 8 care settings including Emergency Dept, Ambulance Tablet ePCR, and Aerospace',
+      'All 16 clinical, coding, and cybersecurity modules on one unified platform',
+      'Built-in legacy hospital message bridge for patient admissions, labs, and orders',
+      'Zero data leaves your building with optional 100% offline deployment',
+      'Dedicated clinical safety engineering support for hospital sign-off',
     ],
+  },
+];
+
+const PRICING_FAQS: FaqItem[] = [
+  {
+    question: 'What is included in Tier 2 vs Tier 3 technically?',
+    answer:
+      'Tier 2 runs as a SMART-on-FHIR v2 read-only sidecar hosting SlainteShield Security (:8081/:8000), SlainteRev-Coding HIPE/ICD-10-AM analysis, OASIS SARIF v2.1.0 outputs, OIDC SSO (Keycloak/Entra/Okta), HMAC-SHA256 SIEM webhooks, and append-only SQLite governance logs. Tier 3 unlocks the full HL7 FHIR R4 SlainteFHIR :8082 store, HL7v2 MSH/PID/AL1/OBX ingestion bridge, and all 8 clinical verticals.',
+  },
+  {
+    question: 'Why does the Hospital Sidecar often reach payback under 90 days?',
+    answer:
+      'Acute hospitals routinely miss secondary comorbidities (CC/MCC modifiers) in discharge summaries, reducing HIPE / DRG reimbursement. SlainteRev-Coding flags supported clinical evidence directly from chart data before final billing submission.',
+  },
+  {
+    question: 'Can GP practices export monthly HSE PCRS / GMS claim batches?',
+    answer:
+      'Yes. Tier 1 includes built-in HSE PCRS monthly GMS batch CSV exports along with GDPR Article 9 automated PII masking for cross-clinic reporting.',
+  },
+  {
+    question: 'Are there per-API-call fees or hidden egress costs?',
+    answer:
+      'No. All licensing is predictable per clinician/site (Tier 1) or per hospital site/private cloud instance (Tiers 2 and 3) with unlimited rule-based safety checks, NEWS2/MTS calculations, and security scans inside your licensed environment.',
   },
 ];
 
@@ -87,7 +114,7 @@ export default function PricingPage() {
       >
         <Container maxWidth="lg">
           <Typography variant="overline" sx={{ color: '#BAE6FD', fontWeight: 800, letterSpacing: '0.08em', display: 'block' }}>
-            Frictionless Procurement &amp; Immediate CFO Payback
+            Simple Licensing • Fast ROI • Zero EHR Disruption
           </Typography>
           <Typography
             component="h1"
@@ -96,10 +123,10 @@ export default function PricingPage() {
             tabIndex={-1}
             sx={{ color: '#FFFFFF', mb: 2, outline: 'none' }}
           >
-            Land With a 15-Minute Sidecar. Expand Across Every Vertical.
+            Start in 15 Minutes Beside Your Existing EHR. Scale When Ready.
           </Typography>
           <Typography variant="body1" sx={{ color: '#E2E8F0', maxWidth: 740 }}>
-            Hospitals do not need a 3-year EHR replacement to cut charting overload and prove NIS2 compliance. Start with read-only API security verification and HIPE DRG revenue recovery, or launch full clinical workspaces right away.
+            You do not need a 3-year system replacement to protect patient charts, prove NIS2 security compliance, or recover missed hospital billing. Launch as a quiet read-only sidecar, or run complete clinic workspaces on day one.
           </Typography>
         </Container>
       </Box>
@@ -107,7 +134,7 @@ export default function PricingPage() {
       <Box component="section" aria-labelledby="tiers-heading" sx={{ py: { xs: 6, md: 8 } }}>
         <Container maxWidth="lg">
           <Typography component="h2" variant="h2" id="tiers-heading" sx={{ color: '#0F172A', mb: 4 }}>
-            Commercial Licensing Tiers
+            Licensing Plans for Clinics, Hospitals &amp; Enterprise Fleets
           </Typography>
 
           <Grid container spacing={3} alignItems="stretch">
@@ -165,7 +192,7 @@ export default function PricingPage() {
                       fullWidth
                       endIcon={<ArrowForwardRoundedIcon aria-hidden="true" />}
                     >
-                      Request Pilot Proposal
+                      Book a 30-Day Pilot
                     </Button>
                   </CardActions>
                 </Card>
@@ -174,6 +201,13 @@ export default function PricingPage() {
           </Grid>
         </Container>
       </Box>
+
+      <TechnicalFaqSection
+        eyebrow="Procurement & Technical FAQ"
+        title="Licensing, Integration & Infrastructure FAQ"
+        subtitle="Technical specifications for sidecar vs core deployment, OIDC identity mapping, HSE PCRS billing exports, and clinical safety engineering."
+        items={PRICING_FAQS}
+      />
     </Box>
   );
 }

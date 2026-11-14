@@ -44,6 +44,10 @@ jobs:
           test -f public-site/CNAME
           test -f public-site/index.html
           test -f public-site/sitemap.xml
+          test -f public-site/robots.txt
+          test -f public-site/llms.txt
+          test -f public-site/llms-full.txt
+          test -f public-site/images/og/slainte-og.png
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3

@@ -1,14 +1,41 @@
-import type { Metadata } from 'next';
 import React from 'react';
 import { Box, Container, Paper, Stack, Typography } from '@mui/material';
 import Grid from '@mui/material/Grid2';
+import { TechnicalFaqSection, type FaqItem } from '@/components/TechnicalFaqSection';
+import { buildPageMetadata } from '@/utils/seo';
 import { ContactFormClient } from './ContactFormClient';
 
-export const metadata: Metadata = {
+export const metadata = buildPageMetadata({
   title: 'Book a 30-Day Clinical & Security Pilot | SlainteTech',
   description:
-    'Start a zero-disruption 30-day hospital SMART-on-FHIR pilot, clinic deployment, or executive platform walkthrough with SlainteTech.',
-};
+    'Start a zero-disruption 30-day hospital SMART-on-FHIR v2 pilot, clinic deployment, or executive platform walkthrough with SlainteTech.',
+  path: '/contact/',
+  ogImage: '/images/og/slainte-og.png',
+  ogImageAlt: 'Book a 30-Day Pilot with SlainteTech',
+});
+
+const CONTACT_FAQS: FaqItem[] = [
+  {
+    question: 'Do you need write access to our live hospital EHR during a 30-day pilot?',
+    answer:
+      'No. Tier 2 pilots connect using read-only SMART-on-FHIR v2 scopes (launch/patient, patient/*.read with PKCE S256) or operate against a de-identified synthetic / HL7v2 staging mirror inside your hospital network.',
+  },
+  {
+    question: 'What deliverables do IT, Finance, and Clinical leaders receive at day 30?',
+    answer:
+      'You receive an OASIS SARIF v2.1.0 security report with BOLA and FHIR R4 conformance findings, an executive EU NIS2 Article 21 gap certificate, and a quantified HIPE / ICD-10-AM missed DRG complexity recovery summary.',
+  },
+  {
+    question: 'How is OIDC single sign-on tested during the pilot?',
+    answer:
+      'You can point OIDC_DISCOVERY_URL to a test tenant in Microsoft Entra ID, Keycloak, or Okta so your information security team verifies role-based claims enforcement (consultant, gp, pharmacist, admin) directly.',
+  },
+  {
+    question: 'Can we test SlainteTech on-premise with zero external internet traffic?',
+    answer:
+      'Yes. We provide a self-contained Docker Compose appliance bundle for Linux hosts inside your firewall or offline evaluation lab.',
+  },
+];
 
 export default function ContactPage() {
   return (
@@ -20,7 +47,7 @@ export default function ContactPage() {
       >
         <Container maxWidth="lg">
           <Typography variant="overline" sx={{ color: '#BAE6FD', fontWeight: 800, letterSpacing: '0.08em', display: 'block' }}>
-            30-Day Hospital Pilots • CISO Security Audits • Investor Briefings
+            30-Day Hospital Pilots • Security Audits • Clinic Walkthroughs
           </Typography>
           <Typography
             component="h1"
@@ -29,10 +56,10 @@ export default function ContactPage() {
             tabIndex={-1}
             sx={{ color: '#FFFFFF', mb: 2, outline: 'none' }}
           >
-            Go Live in 15 Minutes With Zero Disruption to Your Existing EHR
+            Go Live in 15 Minutes With Zero Disruption to Your Existing System
           </Typography>
           <Typography variant="body1" sx={{ color: '#E2E8F0', maxWidth: 720 }}>
-            Connect SlainteTech alongside Epic, Cerner, MEDITECH, or your clinic database via read-only SMART-on-FHIR v2 and surface security gaps, missed HIPE revenue, and prescribing risks within days.
+            Run SlainteTech safely beside Epic, Cerner, MEDITECH, or your clinic software and uncover chart security gaps, missed billing revenue, and prescribing risks within weeks.
           </Typography>
         </Container>
       </Box>
@@ -47,10 +74,10 @@ export default function ContactPage() {
               <Stack spacing={2.5}>
                 <Paper elevation={0} sx={{ p: 3, bgcolor: '#FFFFFF', border: '1px solid #CBD5E1', borderRadius: 2.5 }}>
                   <Typography component="h2" variant="h3" sx={{ color: '#0F172A', mb: 1 }}>
-                    What Happens in a 30-Day Hospital Pilot?
+                    What Happens in a 30-Day Pilot?
                   </Typography>
                   <Typography variant="body2" sx={{ color: '#334155' }}>
-                    Week 1: Deploy read-only SMART-on-FHIR v2 or synthetic/staging HL7v2 mirror. Week 2: Run SlainteShield BOLA + FHIR SARIF conformance + SlainteRev-Coding HIPE gap audit. Week 3–4: Deliver executive CISO Compliance Certificate and quantified DRG uplift report.
+                    Week 1: Connect read-only beside your staging or test feed. Week 2: Run security lock checks, chart standards scans, and missed-billing reviews. Week 3 to 4: Deliver an executive NIS2 readiness score and quantified revenue recovery report.
                   </Typography>
                 </Paper>
                 <Paper elevation={0} sx={{ p: 3, bgcolor: '#FFFFFF', border: '1px solid #CBD5E1', borderRadius: 2.5 }}>
@@ -66,7 +93,7 @@ export default function ContactPage() {
                     </strong>
                   </Typography>
                   <Typography variant="caption" sx={{ color: '#475569' }}>
-                    Include your track (Pilot, CISO/Security, or Investor Data Room) in the subject line for priority routing.
+                    Include your track (Pilot, Security Audit, or Investor Data Room) in the subject line for priority routing.
                   </Typography>
                 </Paper>
               </Stack>
@@ -74,6 +101,13 @@ export default function ContactPage() {
           </Grid>
         </Container>
       </Box>
+
+      <TechnicalFaqSection
+        eyebrow="Pilot Setup & Security FAQ"
+        title="Onboarding, Access Scopes & Firewall FAQ"
+        subtitle="Technical answers covering read-only SMART-on-FHIR v2 scopes, OASIS SARIF deliverables, OIDC testing, and offline bundles."
+        items={CONTACT_FAQS}
+      />
     </Box>
   );
 }
