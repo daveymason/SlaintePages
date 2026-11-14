@@ -28,7 +28,7 @@ export const metadata = buildPageMetadata({
   description:
     'See live software screenshots across 8 healthcare settings: Emergency Departments, GP & Home Nursing, Psychiatry, Dentistry, Pharmacy, Ambulance ePCR, Sports Medicine, and Aerospace.',
   path: '/verticals/',
-  ogImage: '/images/og/verticals/emergency-departments.png',
+  ogImage: '/images/og/verticals.png',
   ogImageAlt: 'SlainteTech 8 Healthcare Vertical Workspaces Live Screenshots',
 });
 

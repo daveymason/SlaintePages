@@ -9,7 +9,7 @@ export const metadata = buildPageMetadata({
   description:
     'Inspect all 16 live SlainteTech modules for safer prescribing, faster charting, hospital HIPE revenue recovery, and healthcare API security.',
   path: '/health-tech-agents/',
-  ogImage: '/images/og/agents/pharmacotherapy-allergy-renal-safety-agent.png',
+  ogImage: '/images/og/health-tech-agents.png',
   ogImageAlt: 'SlainteTech 16 Clinical Safety & Security Modules Directory',
 });
 

@@ -11,7 +11,7 @@ export const metadata = buildPageMetadata({
   description:
     'SlainteTech builds verified clinical workflow software, rule-based prescription safety checks, and continuous healthcare API protection in Ireland.',
   path: '/about/',
-  ogImage: '/images/og/slainte-og.png',
+  ogImage: '/images/og/about.png',
   ogImageAlt: 'About SlainteTech Clinical Safety & Healthcare Software',
 });
 

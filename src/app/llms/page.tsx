@@ -15,7 +15,7 @@ export const metadata = buildPageMetadata({
   description:
     'Access SlainteTech structured technical references (/llms.txt and /llms-full.txt), canonical XML sitemap, and search engine crawler policies.',
   path: '/llms/',
-  ogImage: '/images/og/slainte-og.png',
+  ogImage: '/images/og/llms.png',
   ogImageAlt: 'SlainteTech /llms.txt, /llms-full.txt & Sitemap Hub',
 });
 

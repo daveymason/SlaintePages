@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 
 export const SITE_URL = 'https://slainte-tech.com';
 export const DEFAULT_OG_IMAGE = '/images/og/slainte-og.png';
+export const OG_CACHE_VERSION = '20261114b';
 
 export interface PageMetadataOptions {
   title: string;
@@ -26,16 +27,26 @@ export function buildPageMetadata({
 }: PageMetadataOptions): Metadata {
   const normalizedPath = path === '/' ? '/' : path.endsWith('/') ? path : `${path}/`;
   const canonicalUrl = `${SITE_URL}${normalizedPath}`;
-  const absoluteImageUrl = ogImage.startsWith('http')
+  const baseImageUrl = ogImage.startsWith('http')
     ? ogImage
     : `${SITE_URL}${ogImage.startsWith('/') ? ogImage : `/${ogImage}`}`;
+  const absoluteImageUrl = baseImageUrl.includes('?')
+    ? baseImageUrl
+    : `${baseImageUrl}?v=${OG_CACHE_VERSION}`;
 
   return {
+    metadataBase: new URL(SITE_URL),
     title,
     description,
     keywords,
     alternates: {
       canonical: canonicalUrl,
+      types: {
+        'text/plain': [
+          { url: `${SITE_URL}/llms.txt`, title: 'SlainteTech LLMs Index' },
+          { url: `${SITE_URL}/llms-full.txt`, title: 'SlainteTech Complete Technical Reference' },
+        ],
+      },
     },
     openGraph: {
       title,
@@ -47,6 +58,7 @@ export function buildPageMetadata({
       images: [
         {
           url: absoluteImageUrl,
+          secureUrl: absoluteImageUrl,
           width: 1200,
           height: 630,
           alt: ogImageAlt,

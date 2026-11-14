@@ -11,7 +11,7 @@ export const metadata = buildPageMetadata({
   description:
     'Technical integration guide for hospital IT teams covering SMART-on-FHIR v2 launch, HL7v2 hospital feeds, OIDC single sign-on, and safety APIs.',
   path: '/docs/',
-  ogImage: '/images/og/slainte-og.png',
+  ogImage: '/images/og/docs.png',
   ogImageAlt: 'SlainteTech Hospital IT & Integration Documentation',
 });
 

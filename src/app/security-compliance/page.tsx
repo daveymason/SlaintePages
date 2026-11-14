@@ -23,7 +23,7 @@ export const metadata = buildPageMetadata({
   description:
     'Turn EU NIS2, GDPR Article 9, OWASP API1 BOLA protection, and HIQA audit readiness into live, verifiable software checks instead of static spreadsheets.',
   path: '/security-compliance/',
-  ogImage: '/images/og/agents/eu-nis2-directive-compliance-agent.png',
+  ogImage: '/images/og/security-compliance.png',
   ogImageAlt: 'SlainteTech EU NIS2, GDPR Art. 9 & OWASP API Security Matrix',
 });
 

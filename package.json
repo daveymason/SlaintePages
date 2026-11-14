@@ -5,7 +5,7 @@
   "description": "SlainteTech: MUI + Next.js Static Public Platform (/health-tech-agents/* & /verticals/*)",
   "scripts": {
     "dev": "next dev --port 3001",
-    "build": "next build",
+    "build": "next build && node scripts/postprocess-static-export.mjs",
     "start": "npx serve public-site -l 3001"
   },
   "dependencies": {

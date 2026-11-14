@@ -20,7 +20,7 @@ export const metadata = buildPageMetadata({
   description:
     'Why SlainteTech wins regulated healthcare software: EU NIS2 and clinical safety compliance tailwinds, rule-based patient safety, and 8 clinical verticals on one platform.',
   path: '/investors/',
-  ogImage: '/images/og/slainte-og.png',
+  ogImage: '/images/og/investors.png',
   ogImageAlt: 'SlainteTech Investor Thesis & Market Defensibility',
 });
 

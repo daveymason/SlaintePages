@@ -13,7 +13,7 @@ export const metadata = buildPageMetadata({
   description:
     'Browse live screenshots and practical buyer summaries for all 16 SlainteTech safety, coding, and cybersecurity modules.',
   path: '/agents/',
-  ogImage: '/images/og/agents/bola-authorization-red-team-agent.png',
+  ogImage: '/images/og/agents.png',
   ogImageAlt: 'SlainteTech All 16 Clinical & Security Modules Gallery',
 });
 

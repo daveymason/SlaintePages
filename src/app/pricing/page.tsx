@@ -22,7 +22,7 @@ export const metadata = buildPageMetadata({
   description:
     'Transparent licensing for GP and dental clinics, 15-minute hospital security and billing sidecars, and private offline healthcare deployments.',
   path: '/pricing/',
-  ogImage: '/images/og/slainte-og.png',
+  ogImage: '/images/og/pricing.png',
   ogImageAlt: 'SlainteTech Commercial Pricing & Licensing',
 });
 

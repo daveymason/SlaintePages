@@ -43,11 +43,19 @@ jobs:
           test -f public-site/.nojekyll
           test -f public-site/CNAME
           test -f public-site/index.html
+          test -f public-site/evals.html
+          test -f public-site/agents.html
           test -f public-site/sitemap.xml
           test -f public-site/robots.txt
           test -f public-site/llms.txt
           test -f public-site/llms-full.txt
           test -f public-site/images/og/slainte-og.png
+          python3 -c '
+          import pathlib
+          html = pathlib.Path("public-site/index.html").read_text()
+          head_end = html.find("</head>")
+          assert 0 < head_end < 8192, f"Expected </head> under 8192 bytes, got {head_end}"
+          '
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3

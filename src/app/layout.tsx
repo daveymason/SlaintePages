@@ -60,25 +60,11 @@ const SITE_SCHEMA_GRAPH = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <head>
-        <link
-          rel="alternate"
-          type="text/plain"
-          href="https://slainte-tech.com/llms.txt"
-          title="SlainteTech LLMs Index"
-        />
-        <link
-          rel="alternate"
-          type="text/plain"
-          href="https://slainte-tech.com/llms-full.txt"
-          title="SlainteTech Complete Technical Reference"
-        />
+      <body>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(SITE_SCHEMA_GRAPH) }}
         />
-      </head>
-      <body>
         <AppRouterCacheProvider>
           <ThemeProvider theme={slainteTheme}>
             <CssBaseline />

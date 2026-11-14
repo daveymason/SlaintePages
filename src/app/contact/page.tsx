@@ -10,7 +10,7 @@ export const metadata = buildPageMetadata({
   description:
     'Start a zero-disruption 30-day hospital SMART-on-FHIR v2 pilot, clinic deployment, or executive platform walkthrough with SlainteTech.',
   path: '/contact/',
-  ogImage: '/images/og/slainte-og.png',
+  ogImage: '/images/og/contact.png',
   ogImageAlt: 'Book a 30-Day Pilot with SlainteTech',
 });
 

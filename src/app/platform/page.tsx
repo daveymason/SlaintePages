@@ -21,7 +21,7 @@ export const metadata = buildPageMetadata({
   description:
     'See how SlainteTech combines easy frontline clinical tools with tested Python safety rules, clean HL7 FHIR R4 records, and 5-minute private cloud or offline deployment.',
   path: '/platform/',
-  ogImage: '/images/og/slainte-og.png',
+  ogImage: '/images/og/platform.png',
   ogImageAlt: 'SlainteTech 4-Layer Clinical Safety & FHIR R4 Platform',
 });
 
