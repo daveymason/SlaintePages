@@ -121,10 +121,10 @@ export default function DocsPage() {
                   Inspect our structured <code>/llms.txt</code> and <code>/llms-full.txt</code> references covering every vertical and clinical safety module.
                 </Typography>
                 <Stack direction="row" spacing={1.5} flexWrap="wrap" useFlexGap>
-                  <Button component={Link} href="/llms.txt" variant="outlined" color="primary" size="small">
+                  <Button component="a" href="/llms.txt" variant="outlined" color="primary" size="small">
                     View /llms.txt
                   </Button>
-                  <Button component={Link} href="/llms-full.txt" variant="outlined" color="primary" size="small">
+                  <Button component="a" href="/llms-full.txt" variant="outlined" color="primary" size="small">
                     View /llms-full.txt
                   </Button>
                   <Button component={Link} href="/health-tech-agents/" variant="contained" color="primary" size="small">

@@ -259,18 +259,32 @@ export function SiteChrome({ children }: { children: React.ReactNode }) {
                     { label: 'XML Sitemap (/sitemap.xml)', href: '/sitemap.xml' },
                     { label: 'Platform Index (/llms.txt)', href: '/llms.txt' },
                     { label: 'Full Technical Reference (/llms-full.txt)', href: '/llms-full.txt' },
-                  ].map((item) => (
-                    <li key={item.href}>
-                      <Box
-                        component={Link}
-                        href={item.href}
-                        className="touch-nav-link"
-                        sx={{ color: '#CBD5E1', textDecoration: 'none', fontSize: '0.9rem', '&:hover': { color: '#7DD3FC', textDecoration: 'underline' } }}
-                      >
-                        {item.label}
-                      </Box>
-                    </li>
-                  ))}
+                  ].map((item) => {
+                    const isRawAsset = item.href.endsWith('.txt') || item.href.endsWith('.xml');
+                    return (
+                      <li key={item.href}>
+                        {isRawAsset ? (
+                          <Box
+                            component="a"
+                            href={item.href}
+                            className="touch-nav-link"
+                            sx={{ color: '#CBD5E1', textDecoration: 'none', fontSize: '0.9rem', '&:hover': { color: '#7DD3FC', textDecoration: 'underline' } }}
+                          >
+                            {item.label}
+                          </Box>
+                        ) : (
+                          <Box
+                            component={Link}
+                            href={item.href}
+                            className="touch-nav-link"
+                            sx={{ color: '#CBD5E1', textDecoration: 'none', fontSize: '0.9rem', '&:hover': { color: '#7DD3FC', textDecoration: 'underline' } }}
+                          >
+                            {item.label}
+                          </Box>
+                        )}
+                      </li>
+                    );
+                  })}
                 </Stack>
               </Grid>
             </Grid>

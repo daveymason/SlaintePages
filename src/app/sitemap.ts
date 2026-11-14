@@ -19,6 +19,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/pricing/',
     '/investors/',
     '/docs/',
+    '/llms/',
     '/about/',
     '/contact/',
   ].map((route) => ({
