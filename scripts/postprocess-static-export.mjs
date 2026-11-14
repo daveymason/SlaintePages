@@ -1,12 +1,12 @@
 #!/usr/bin/env node
 /**
  * Post-processes Next.js static export HTML in ./public-site/ for GitHub Pages and social scrapers:
- * 1. Moves bulky SSR <style data-emotion="mui ..."> blocks out of <head> to the top of <body>
- *    (keeping data-emotion="mui-global ..." in <head>), shrinking <head> from ~105-208 KB to <4.5 KB.
- * 2. Places charset, viewport, title, description, canonical, Open Graph, and Twitter Card tags
- *    at the very start of <head> before any <link rel="preload"> or <script> tags.
- * 3. Adds scraper compatibility tags (og:image:url, og:image:secure_url, name="image",
- *    twitter:image:src, property="twitter:*", link rel="image_src").
+ * 1. Strips the Next.js build-id HTML comment before <html> and adds prefix="og: https://ogp.me/ns#".
+ * 2. Moves bulky SSR <style data-emotion="mui ..."> blocks out of <head> to the top of <body>
+ *    (keeping data-emotion="mui-global ..." in <head>), shrinking <head> from ~105-208 KB to ~5 KB.
+ * 3. Places normalized <meta charset="utf-8" />, viewport, title, description, canonical, and
+ *    newline-delimited Open Graph / Twitter Card tags at the very top of <head> BEFORE any <script>
+ *    or preload tag, keeping exactly ONE structured og:image entry (with secure_url, width, height, alt, type).
  * 4. Writes extensionless sibling <route>.html files for every <route>/index.html so GitHub Pages
  *    returns HTTP 200 (instead of a 301 HTML stub) when links are shared without a trailing slash.
  */
@@ -55,8 +55,8 @@ function classifyHeadToken(token) {
     const propAttr = (getAttr(trimmed, 'property') || '').toLowerCase();
     if (nameAttr === 'viewport') return 'viewport';
     if (nameAttr === 'description') return 'description';
-    if (propAttr.startsWith('og:') || nameAttr === 'image') return 'og';
-    if (nameAttr.startsWith('twitter:') || propAttr.startsWith('twitter:')) return 'twitter';
+    if (propAttr.startsWith('og:')) return 'og';
+    if (nameAttr.startsWith('twitter:')) return 'twitter';
     return 'other_head';
   }
   if (/^<title\b/i.test(trimmed)) return 'title';
@@ -80,53 +80,56 @@ function tokenizeHead(headInner) {
   return tokens;
 }
 
+function normalizeCharsetTag(tag) {
+  return tag.replace(/\bcharSet\s*=/i, 'charset=').replace(/\s*\/>$/, ' />');
+}
+
+function enhanceSingleOgImageTag(tag) {
+  const prop = (getAttr(tag, 'property') || '').toLowerCase();
+  if (prop === 'og:image' && !/\bname\s*=/i.test(tag)) {
+    return tag.replace(/^<meta\s+property="og:image"/i, '<meta property="og:image" name="image"');
+  }
+  return tag;
+}
+
 function buildCompatibilityTags(ogTags, twitterTags) {
   let ogImage = null;
   let ogUrl = null;
-  const existingKeys = new Set();
+  const existingNames = new Set();
 
   for (const tag of [...ogTags, ...twitterTags]) {
     const prop = (getAttr(tag, 'property') || '').toLowerCase();
     const name = (getAttr(tag, 'name') || '').toLowerCase();
     const content = getAttr(tag, 'content');
-    if (prop) existingKeys.add(`property:${prop}`);
-    if (name) existingKeys.add(`name:${name}`);
+    if (name) existingNames.add(name);
     if (prop === 'og:image' && !ogImage && content) ogImage = content;
     if (prop === 'og:url' && !ogUrl && content) ogUrl = content;
   }
 
   const extraTags = [];
-  if (ogImage) {
-    if (!existingKeys.has('property:og:image:url')) {
-      extraTags.push(`<meta property="og:image:url" content="${ogImage}"/>`);
-    }
-    if (!existingKeys.has('property:og:image:secure_url')) {
-      extraTags.push(`<meta property="og:image:secure_url" content="${ogImage}"/>`);
-    }
-    if (!existingKeys.has('name:image')) {
-      extraTags.push(`<meta name="image" property="og:image" content="${ogImage}"/>`);
-    }
-    if (!existingKeys.has('name:twitter:image:src')) {
-      extraTags.push(`<meta name="twitter:image:src" content="${ogImage}"/>`);
-    }
-    if (!existingKeys.has('property:twitter:image')) {
-      extraTags.push(`<meta property="twitter:image" content="${ogImage}"/>`);
-    }
+  if (ogImage && !existingNames.has('twitter:image:src')) {
+    extraTags.push(`<meta name="twitter:image:src" content="${ogImage}" />`);
   }
-  if (!existingKeys.has('property:twitter:card')) {
-    extraTags.push(`<meta property="twitter:card" content="summary_large_image"/>`);
+  if (!existingNames.has('twitter:domain')) {
+    extraTags.push(`<meta name="twitter:domain" content="slainte-tech.com" />`);
   }
-  if (!existingKeys.has('property:twitter:domain')) {
-    extraTags.push(`<meta property="twitter:domain" content="slainte-tech.com"/>`);
+  if (ogUrl && !existingNames.has('twitter:url')) {
+    extraTags.push(`<meta name="twitter:url" content="${ogUrl}" />`);
   }
-  if (ogUrl && !existingKeys.has('property:twitter:url')) {
-    extraTags.push(`<meta property="twitter:url" content="${ogUrl}"/>`);
-  }
-  const extraImageLinks = ogImage ? [`<link rel="image_src" href="${ogImage}"/>`] : [];
+  const extraImageLinks = ogImage ? [`<link rel="image_src" href="${ogImage}" />`] : [];
   return { extraTags, extraImageLinks };
 }
 
-function processHtml(html, fileLabel) {
+function normalizeHtmlRoot(html) {
+  return html.replace(/<!DOCTYPE html>(?:\s*<!--[\s\S]*?-->)*\s*<html\b([^>]*)>/i, (_, attrs) => {
+    const cleanedAttrs = attrs.trim();
+    const prefixAttr = /\bprefix\s*=/i.test(cleanedAttrs) ? '' : ' prefix="og: https://ogp.me/ns#"';
+    return `<!DOCTYPE html>\n<html${cleanedAttrs ? ` ${cleanedAttrs}` : ''}${prefixAttr}>`;
+  });
+}
+
+function processHtml(rawHtml, fileLabel) {
+  const html = normalizeHtmlRoot(rawHtml);
   const headOpenMatch = html.match(/<head\b[^>]*>/i);
   if (!headOpenMatch) {
     throw new Error(`Missing <head> in ${fileLabel}`);
@@ -167,35 +170,35 @@ function processHtml(html, fileLabel) {
     buckets[kind].push(tok);
   }
 
-  const { extraTags, extraImageLinks } = buildCompatibilityTags(buckets.og, buckets.twitter);
+  const charsetTags = buckets.charset.map(normalizeCharsetTag);
+  const ogTags = buckets.og.map(enhanceSingleOgImageTag);
+  const { extraTags, extraImageLinks } = buildCompatibilityTags(ogTags, buckets.twitter);
   const imageSrcLinks = buckets.image_src.length > 0 ? buckets.image_src : extraImageLinks;
 
-  const orderedHead = [
-    ...buckets.charset,
+  const primaryMetaTags = [
+    ...charsetTags,
     ...buckets.viewport,
     ...buckets.title,
     ...buckets.description,
     ...buckets.canonical,
-    ...buckets.og,
+    ...ogTags,
     ...buckets.twitter,
     ...extraTags,
     ...imageSrcLinks,
-    ...buckets.other_head,
-  ].join('');
+  ];
 
-  // Check whether any existing emotion_mui style blocks are already at start of <body>
+  const orderedHead = `\n${primaryMetaTags.join('\n')}\n${buckets.other_head.join('')}`;
   const movedStyles = buckets.emotion_mui.join('');
   const betweenHeadAndBodyOpen = html.slice(headCloseIndex, bodyOpenEnd);
   const bodyRest = html.slice(bodyOpenEnd);
 
-  const newHtml =
+  return (
     html.slice(0, headContentStart) +
     orderedHead +
     betweenHeadAndBodyOpen +
     movedStyles +
-    bodyRest;
-
-  return newHtml;
+    bodyRest
+  );
 }
 
 function main() {
@@ -223,7 +226,6 @@ function main() {
     if (ogEnd > maxOgEndBytes) maxOgEndBytes = ogEnd;
   }
 
-  // Create extensionless sibling HTML files for every <route>/index.html (excluding root and 404)
   let siblingCount = 0;
   for (const filePath of htmlFiles) {
     const rel = path.relative(OUT_DIR, filePath);

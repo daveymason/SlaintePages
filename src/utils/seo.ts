@@ -2,7 +2,6 @@ import type { Metadata } from 'next';
 
 export const SITE_URL = 'https://slainte-tech.com';
 export const DEFAULT_OG_IMAGE = '/images/og/slainte-og.png';
-export const OG_CACHE_VERSION = '20261114b';
 
 export interface PageMetadataOptions {
   title: string;
@@ -15,7 +14,7 @@ export interface PageMetadataOptions {
 
 /**
  * Builds complete, route-specific SEO, Canonical, Open Graph, and Twitter Card metadata.
- * Ensures every statically exported page emits its exact canonical URL and a 1200x630 PNG card.
+ * Ensures every statically exported page emits its exact canonical URL and a clean 1200x630 JPEG card.
  */
 export function buildPageMetadata({
   title,
@@ -27,12 +26,10 @@ export function buildPageMetadata({
 }: PageMetadataOptions): Metadata {
   const normalizedPath = path === '/' ? '/' : path.endsWith('/') ? path : `${path}/`;
   const canonicalUrl = `${SITE_URL}${normalizedPath}`;
-  const baseImageUrl = ogImage.startsWith('http')
-    ? ogImage
-    : `${SITE_URL}${ogImage.startsWith('/') ? ogImage : `/${ogImage}`}`;
-  const absoluteImageUrl = baseImageUrl.includes('?')
-    ? baseImageUrl
-    : `${baseImageUrl}?v=${OG_CACHE_VERSION}`;
+  const cleanOgPath = ogImage.split('?')[0].replace(/\.png$/i, '.jpg');
+  const absoluteImageUrl = cleanOgPath.startsWith('http')
+    ? cleanOgPath
+    : `${SITE_URL}${cleanOgPath.startsWith('/') ? cleanOgPath : `/${cleanOgPath}`}`;
 
   return {
     metadataBase: new URL(SITE_URL),
@@ -62,7 +59,7 @@ export function buildPageMetadata({
           width: 1200,
           height: 630,
           alt: ogImageAlt,
-          type: 'image/png',
+          type: 'image/jpeg',
         },
       ],
     },

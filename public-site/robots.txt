@@ -1,8 +1,31 @@
-# SlainteTech robots.txt: Standard Search & Generative Engine Optimization
-User-agent: *
+# SlainteTech robots.txt: Social Link Previewers, Standard Search & Generative Engine Optimization
+User-agent: facebookexternalhit
 Allow: /
 
-# OpenAI Search & Discovery
+User-agent: Facebot
+Allow: /
+
+User-agent: meta-externalagent
+Allow: /
+
+User-agent: WhatsApp
+Allow: /
+
+User-agent: Twitterbot
+Allow: /
+
+User-agent: LinkedInBot
+Allow: /
+
+User-agent: Slackbot-LinkExpanding
+Allow: /
+
+User-agent: Discordbot
+Allow: /
+
+User-agent: TelegramBot
+Allow: /
+
 User-agent: OAI-SearchBot
 Allow: /
 
@@ -12,7 +35,6 @@ Allow: /
 User-agent: ChatGPT-User
 Allow: /
 
-# Anthropic, Perplexity, Google & Apple crawlers
 User-agent: ClaudeBot
 Allow: /
 
@@ -25,7 +47,7 @@ Allow: /
 User-agent: Applebot-Extended
 Allow: /
 
-Host: https://slainte-tech.com
+User-agent: *
+Allow: /
+
 Sitemap: https://slainte-tech.com/sitemap.xml
-LLMs-Txt: https://slainte-tech.com/llms.txt
-LLMs-Full-Txt: https://slainte-tech.com/llms-full.txt
